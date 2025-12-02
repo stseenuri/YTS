@@ -397,6 +397,172 @@ nav a:hover::after{
   100%{transform:translateY(100%);}
 }
 
+/* YOGA FINDER TOOL */
+.yoga-finder{
+  padding:150px 60px;
+  background:var(--earth);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.yoga-finder::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  right:-20%;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
+  border-radius:50%;
+}
+
+.finder-container{
+  max-width:1000px;
+  margin:auto;
+  position:relative;
+  z-index:1;
+}
+
+.finder-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+.finder-label{
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.finder-title{
+  font-size:clamp(36px,6vw,64px);
+  font-weight:600;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+.finder-subtitle{
+  font-size:18px;
+  color:rgba(255,255,255,0.7);
+}
+
+.body-map-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  margin-bottom:50px;
+}
+
+.body-part-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:30px;
+  transition:all 0.4s;
+  cursor:pointer;
+}
+.body-part-card:hover{
+  background:rgba(255,255,255,0.1);
+  border-color:var(--accent);
+  transform:translateY(-5px);
+}
+.body-part-card.active{
+  background:var(--sage);
+  border-color:var(--sage);
+}
+
+.body-part-icon{
+  font-size:40px;
+  margin-bottom:15px;
+}
+.body-part-name{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:8px;
+}
+.body-part-desc{
+  font-size:14px;
+  color:rgba(255,255,255,0.6);
+}
+
+.results-area{
+  margin-top:50px;
+  padding:40px;
+  background:rgba(255,255,255,0.08);
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  display:none;
+}
+.results-area.show{
+  display:block;
+  animation:fadeSlideUp 0.6s ease;
+}
+@keyframes fadeSlideUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.results-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+  padding-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,0.2);
+}
+.results-title{
+  font-size:24px;
+  font-weight:600;
+}
+.clear-btn{
+  padding:10px 20px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:100px;
+  color:#fff;
+  font-size:13px;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.clear-btn:hover{
+  background:rgba(255,255,255,0.2);
+}
+
+.asana-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px;
+}
+
+.asana-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:25px;
+  transition:all 0.3s;
+}
+.asana-card:hover{
+  background:rgba(255,255,255,0.08);
+  transform:translateY(-3px);
+}
+
+.asana-name{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:8px;
+  color:var(--accent);
+}
+.asana-sanskrit{
+  font-size:14px;
+  font-style:italic;
+  color:rgba(255,255,255,0.6);
+  margin-bottom:12px;
+}
+.asana-benefits{
+  font-size:14px;
+  line-height:1.7;
+  color:rgba(255,255,255,0.8);
+}
+
 /* LANGUAGES */
 .languages{
   padding:100px 60px;
@@ -592,7 +758,7 @@ nav a:hover::after{
 /* CONTACT */
 .contact{
   padding:150px 60px;
-  background:var(--earth);
+  background:var(--sage);
   color:#fff;
   text-align:center;
 }
@@ -655,7 +821,7 @@ nav a:hover::after{
 }
 .social-link:hover{
   background:#fff;
-  color:var(--earth);
+  color:var(--sage);
   transform:translateY(-5px);
 }
 
@@ -700,6 +866,9 @@ footer a:hover{
   nav a.cta-btn{display:block;}
   .hero-content{padding:0 24px;}
   .hero h1{line-height:1.1;}
+  .yoga-finder{padding:80px 24px;}
+  .body-map-grid{grid-template-columns:1fr;}
+  .asana-grid{grid-template-columns:1fr;}
   .languages{padding:80px 24px;}
   .language-cards{flex-direction:column;}
   .about{padding:80px 24px;}
@@ -731,6 +900,7 @@ footer a:hover{
 <header id="header">
   <div class="logo">Thanu Yoga</div>
   <nav>
+    <a href="#finder">Yoga Finder</a>
     <a href="#about">About</a>
     <a href="#classes">Classes</a>
     <a href="#contact">Contact</a>
@@ -756,13 +926,82 @@ footer a:hover{
     </p>
     <div class="hero-cta">
       <a href="tel:7676332452" class="btn-primary">Start Your Journey</a>
-      <a href="#classes" class="btn-secondary">Explore Classes</a>
+      <a href="#finder" class="btn-secondary">Find Your Asana</a>
     </div>
   </div>
   
   <div class="scroll-hint">
     <span>Scroll</span>
     <div class="line"></div>
+  </div>
+</section>
+
+<!-- YOGA FINDER TOOL -->
+<section class="yoga-finder" id="finder">
+  <div class="finder-container">
+    <div class="finder-header reveal">
+      <p class="finder-label">Smart Yoga Finder</p>
+      <h2 class="finder-title">Find the perfect asana for your needs.</h2>
+      <p class="finder-subtitle">Select your concern and discover personalized yoga recommendations</p>
+    </div>
+
+    <div class="body-map-grid">
+      <div class="body-part-card reveal" data-part="stress">
+        <div class="body-part-icon">🧠</div>
+        <h3 class="body-part-name">Stress & Anxiety</h3>
+        <p class="body-part-desc">Mental tension, overthinking, worry</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="neck">
+        <div class="body-part-icon">🦴</div>
+        <h3 class="body-part-name">Neck & Shoulders</h3>
+        <p class="body-part-desc">Stiffness, tension, pain</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="back">
+        <div class="body-part-icon">💪</div>
+        <h3 class="body-part-name">Back Pain</h3>
+        <p class="body-part-desc">Lower back, upper back discomfort</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="legs">
+        <div class="body-part-icon">🦵</div>
+        <h3 class="body-part-name">Legs & Knees</h3>
+        <p class="body-part-desc">Pain, weakness, stiffness</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="digestion">
+        <div class="body-part-icon">🫃</div>
+        <h3 class="body-part-name">Digestion Issues</h3>
+        <p class="body-part-desc">Bloating, constipation, discomfort</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="sleep">
+        <div class="body-part-icon">😴</div>
+        <h3 class="body-part-name">Sleep Problems</h3>
+        <p class="body-part-desc">Insomnia, restlessness</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="flexibility">
+        <div class="body-part-icon">🤸</div>
+        <h3 class="body-part-name">Flexibility</h3>
+        <p class="body-part-desc">Improve range of motion</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="energy">
+        <div class="body-part-icon">⚡</div>
+        <h3 class="body-part-name">Low Energy</h3>
+        <p class="body-part-desc">Fatigue, lethargy</p>
+      </div>
+    </div>
+
+    <div class="results-area" id="results">
+      <div class="results-header">
+        <h3 class="results-title">Recommended Asanas</h3>
+        <button class="clear-btn" onclick="clearResults()">Clear Selection</button>
+      </div>
+      <div class="asana-grid" id="asanaGrid"></div>
+    </div>
   </div>
 </section>
 
@@ -823,7 +1062,6 @@ footer a:hover{
       </div>
     </div>
     <div class="about-content reveal">
-      <!-- Placeholder for instructor image or yoga illustration -->
       <div style="width:100%;padding-bottom:130%;background:linear-gradient(135deg,var(--sage),var(--accent));border-radius:20px;position:relative;overflow:hidden;">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;color:rgba(255,255,255,0.3);">🧘‍♀️</div>
       </div>
@@ -910,10 +1148,62 @@ footer a:hover{
 <footer>
   <p>© 2025 Thanu Yoga Studio. All rights reserved.</p>
   <p>Online Yoga Classes • English • Telugu • Kannada</p>
-  <p><a href="tel:7676332452">Contact: 7676 332 452</a></p>
+  <p>Designed by <a href="mailto:stseenuri@outlook.com">Seenuri</a></p>
 </footer>
 
 <script>
+// YOGA DATABASE
+const yogaDatabase = {
+  stress: [
+    {name: "Child's Pose", sanskrit: "Balasana", benefits: "Calms the mind, relieves stress and anxiety, gently stretches the back"},
+    {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Relieves stress, improves breathing, massages spine and organs"},
+    {name: "Corpse Pose", sanskrit: "Shavasana", benefits: "Deep relaxation, reduces anxiety, lowers blood pressure"},
+    {name: "Bridge Pose", sanskrit: "Setu Bandhasana", benefits: "Calms the brain, reduces anxiety and stress, opens chest"}
+  ],
+  neck: [
+    {name: "Neck Rolls", sanskrit: "Greeva Sanchalana", benefits: "Releases neck tension, improves flexibility, reduces stiffness"},
+    {name: "Thread the Needle", sanskrit: "Parsva Balasana", benefits: "Stretches shoulders, relieves upper back tension"},
+    {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Stretches neck and spine, improves flexibility"},
+    {name: "Eagle Pose", sanskrit: "Garudasana", benefits: "Stretches shoulders and upper back, improves focus"}
+  ],
+  back: [
+    {name: "Downward Dog", sanskrit: "Adho Mukha Svanasana", benefits: "Strengthens back, relieves sciatica, stretches hamstrings"},
+    {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Relieves back pain, improves spinal flexibility"},
+    {name: "Cobra Pose", sanskrit: "Bhujangasana", benefits: "Strengthens spine, stretches abdomen, relieves sciatica"},
+    {name: "Child's Pose", sanskrit: "Balasana", benefits: "Gently stretches lower back, relieves tension"}
+  ],
+  legs: [
+    {name: "Warrior II", sanskrit: "Virabhadrasana II", benefits: "Strengthens legs and ankles, improves stamina and balance"},
+    {name: "Triangle Pose", sanskrit: "Trikonasana", benefits: "Strengthens legs, stretches hamstrings, improves balance"},
+    {name: "Chair Pose", sanskrit: "Utkatasana", benefits: "Strengthens thighs and ankles, tones leg muscles"},
+    {name: "Garland Pose", sanskrit: "Malasana", benefits: "Stretches ankles, groins and back, tones belly"}
+  ],
+  digestion: [
+    {name: "Wind-Relieving Pose", sanskrit: "Pawanmuktasana", benefits: "Aids digestion, relieves gas and bloating"},
+    {name: "Seated Twist", sanskrit: "Ardha Matsyendrasana", benefits: "Massages digestive organs, improves metabolism"},
+    {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Massages internal organs, improves digestion"},
+    {name: "Bow Pose", sanskrit: "Dhanurasana", benefits: "Stimulates digestive organs, relieves constipation"}
+  ],
+  sleep: [
+    {name: "Legs Up the Wall", sanskrit: "Viparita Karani", benefits: "Promotes relaxation, calms the mind, prepares for sleep"},
+    {name: "Corpse Pose", sanskrit: "Shavasana", benefits: "Deep relaxation, reduces insomnia, calms nervous system"},
+    {name: "Child's Pose", sanskrit: "Balasana", benefits: "Calming effect, relieves tension, prepares for rest"},
+    {name: "Reclined Butterfly", sanskrit: "Supta Baddha Konasana", benefits: "Relieves tension, promotes deep relaxation"}
+  ],
+  flexibility: [
+    {name: "Forward Fold", sanskrit: "Uttanasana", benefits: "Stretches hamstrings and spine, improves flexibility"},
+    {name: "Downward Dog", sanskrit: "Adho Mukha Svanasana", benefits: "Full body stretch, improves flexibility"},
+    {name: "Triangle Pose", sanskrit: "Trikonasana", benefits: "Stretches spine, hips and groin, improves flexibility"},
+    {name: "Pigeon Pose", sanskrit: "Eka Pada Rajakapotasana", benefits: "Deep hip stretch, increases flexibility"}
+  ],
+  energy: [
+    {name: "Sun Salutation", sanskrit: "Surya Namaskar", benefits: "Energizes entire body, improves circulation, boosts vitality"},
+    {name: "Warrior I", sanskrit: "Virabhadrasana I", benefits: "Builds stamina, energizes the body, improves focus"},
+    {name: "Camel Pose", sanskrit: "Ustrasana", benefits: "Opens chest, energizes the body, improves posture"},
+    {name: "Mountain Pose", sanskrit: "Tadasana", benefits: "Improves posture, energizes mind, builds awareness"}
+  ]
+};
+
 // LOADER
 window.addEventListener('load', () => {
   setTimeout(() => {
@@ -941,7 +1231,7 @@ function animateCursor() {
 animateCursor();
 
 // Cursor hover
-const hoverElements = document.querySelectorAll('a, button, .class-card, .language-card');
+const hoverElements = document.querySelectorAll('a, button, .class-card, .language-card, .body-part-card');
 hoverElements.forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
@@ -956,6 +1246,53 @@ window.addEventListener('scroll', () => {
     header.classList.remove('scrolled');
   }
 });
+
+// YOGA FINDER FUNCTIONALITY
+const bodyPartCards = document.querySelectorAll('.body-part-card');
+const resultsArea = document.getElementById('results');
+const asanaGrid = document.getElementById('asanaGrid');
+
+bodyPartCards.forEach(card => {
+  card.addEventListener('click', function() {
+    // Toggle active state
+    const wasActive = this.classList.contains('active');
+    
+    bodyPartCards.forEach(c => c.classList.remove('active'));
+    
+    if (!wasActive) {
+      this.classList.add('active');
+      const part = this.dataset.part;
+      showAsanas(part);
+    } else {
+      clearResults();
+    }
+  });
+});
+
+function showAsanas(part) {
+  const asanas = yogaDatabase[part];
+  asanaGrid.innerHTML = '';
+  
+  asanas.forEach((asana, index) => {
+    const card = document.createElement('div');
+    card.className = 'asana-card';
+    card.style.animationDelay = `${index * 0.1}s`;
+    card.innerHTML = `
+      <h4 class="asana-name">${asana.name}</h4>
+      <p class="asana-sanskrit">${asana.sanskrit}</p>
+      <p class="asana-benefits">${asana.benefits}</p>
+    `;
+    asanaGrid.appendChild(card);
+  });
+  
+  resultsArea.classList.add('show');
+}
+
+function clearResults() {
+  bodyPartCards.forEach(c => c.classList.remove('active'));
+  resultsArea.classList.remove('show');
+  asanaGrid.innerHTML = '';
+}
 
 // REVEAL ON SCROLL
 const reveals = document.querySelectorAll('.reveal');
