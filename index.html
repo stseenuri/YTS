@@ -4,35 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Thanu Yoga Studio — Online Yoga Classes in English, Telugu & Kannada</title>
-<meta name="description" content="Experience transformative online yoga classes. Learn from home in English, Telugu, or Kannada. Traditional practice meets modern convenience.">
+<title>Thanu Yoga Studio — Epic Online Yoga Journey | Transform Your Destiny</title>
+<meta name="description" content="Embark on an epic yoga journey. Master ancient asanas. Transform your body and mind. Online classes in English, Telugu & Kannada.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  /* La La Land Color Palette - Primary Bold Colors */
-  --electric-blue:#3a1c9c;
-  --deep-purple:#170063;
-  --vibrant-yellow:#fdff03;
-  --coral-pink:#ff6b9d;
-  --sunset-orange:#ff8c42;
-  --sky-blue:#87ceeb;
-  --lavender:#d4a5d4;
-  --emerald:#00b894;
+  /* Rajamouli Epic Color Palette - Baahubali/RRR inspired */
+  --royal-gold:#d4af37;
+  --bronze:#cd7f32;
+  --deep-orange:#ff6b35;
+  --warm-gold:#ffa500;
+  --ember-red:#dc143c;
+  --flame-orange:#ff4500;
+  --forest-green:#2d5016;
+  --earth-brown:#5c4033;
+  --sky-azure:#0080c0;
+  --sunset-amber:#ffbf00;
   
-  /* Pastels for depth */
-  --pastel-pink:#ffd6e8;
-  --pastel-blue:#d4e4f7;
-  --pastel-yellow:#fff9d4;
-  --pastel-lavender:#e8d4e8;
+  /* Dramatic grading */
+  --dark-charcoal:#1a1410;
+  --rich-brown:#3d2817;
+  --warm-beige:#d4c5b9;
+  --cream-light:#f5ede4;
+  --golden-highlight:#ffdf7f;
   
-  /* Neutrals */
-  --cream:#fbfbff;
-  --charcoal:#2d3436;
-  --soft-gray:#636e72;
+  /* Epic shadows */
+  --epic-shadow:0 20px 60px rgba(212,175,55,0.4);
+  --dramatic-shadow:0 30px 80px rgba(0,0,0,0.6);
 }
 
 *{
@@ -47,378 +49,491 @@ html{
 }
 
 body{
-  font-family:'Inter',sans-serif;
-  background:var(--cream);
-  color:var(--charcoal);
+  font-family:'Montserrat',sans-serif;
+  background:var(--dark-charcoal);
+  color:var(--cream-light);
   line-height:1.7;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
 
 ::selection{
-  background:var(--vibrant-yellow);
-  color:var(--deep-purple);
+  background:var(--royal-gold);
+  color:var(--dark-charcoal);
 }
 
-/* HEADER */
+/* EPIC PARTICLES BACKGROUND */
+.particles-bg{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(ellipse at center,var(--rich-brown) 0%,var(--dark-charcoal) 100%);
+  z-index:-1;
+}
+
+.particles-bg::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%,var(--warm-gold),transparent),
+    radial-gradient(2px 2px at 60% 70%,var(--bronze),transparent),
+    radial-gradient(1px 1px at 50% 50%,var(--royal-gold),transparent),
+    radial-gradient(1px 1px at 80% 10%,var(--warm-gold),transparent),
+    radial-gradient(2px 2px at 90% 60%,var(--bronze),transparent);
+  background-size:200% 200%;
+  animation:particleFloat 20s linear infinite;
+  opacity:0.3;
+}
+
+@keyframes particleFloat{
+  0%{background-position:0% 0%;}
+  100%{background-position:100% 100%;}
+}
+
+/* HEADER - Majestic */
 header{
   position:fixed;
   top:0;
   left:0;
   width:100%;
-  padding:28px 60px;
+  padding:24px 80px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  background:rgba(251,251,255,0.95);
-  backdrop-filter:blur(20px);
-  border-bottom:3px solid var(--vibrant-yellow);
-  transition:all 0.4s ease;
-}
-
-header.scrolled{
-  padding:20px 60px;
-  box-shadow:0 8px 32px rgba(58,28,156,0.15);
+  background:linear-gradient(180deg,rgba(26,20,16,0.98) 0%,rgba(26,20,16,0.8) 100%);
+  backdrop-filter:blur(10px);
+  border-bottom:2px solid var(--royal-gold);
+  box-shadow:0 8px 32px rgba(0,0,0,0.8);
 }
 
 .logo{
-  font-family:'Playfair Display',serif;
-  font-size:28px;
+  font-family:'Cinzel',serif;
+  font-size:32px;
   font-weight:900;
-  background:linear-gradient(135deg,var(--electric-blue),var(--coral-pink));
+  background:linear-gradient(135deg,var(--royal-gold) 0%,var(--warm-gold) 50%,var(--bronze) 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
-  letter-spacing:-1px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  filter:drop-shadow(0 4px 12px rgba(212,175,55,0.6));
+  position:relative;
+}
+
+.logo::after{
+  content:'';
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  width:100%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--royal-gold),transparent);
 }
 
 nav{
   display:flex;
-  gap:40px;
+  gap:48px;
   align-items:center;
 }
 
 nav a{
-  color:var(--electric-blue);
+  color:var(--warm-beige);
   text-decoration:none;
-  font-size:15px;
-  font-weight:600;
-  letter-spacing:0.5px;
-  transition:all 0.3s ease;
-  position:relative;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:2px;
   text-transform:uppercase;
+  transition:all 0.4s ease;
+  position:relative;
 }
 
-nav a::after{
+nav a::before{
   content:'';
   position:absolute;
-  bottom:-4px;
-  left:0;
-  width:100%;
-  height:3px;
-  background:var(--coral-pink);
-  transform:scaleX(0);
-  transition:transform 0.3s ease;
+  bottom:-6px;
+  left:50%;
+  transform:translateX(-50%) scaleX(0);
+  width:80%;
+  height:2px;
+  background:var(--royal-gold);
+  transition:transform 0.4s ease;
 }
 
 nav a:hover{
-  color:var(--coral-pink);
+  color:var(--royal-gold);
+  text-shadow:0 0 20px rgba(212,175,55,0.8);
 }
 
-nav a:hover::after{
-  transform:scaleX(1);
+nav a:hover::before{
+  transform:translateX(-50%) scaleX(1);
 }
 
 .nav-cta{
-  padding:14px 32px;
-  background:linear-gradient(135deg,var(--electric-blue),var(--deep-purple));
+  padding:14px 36px;
+  background:linear-gradient(135deg,var(--ember-red),var(--flame-orange));
   color:#fff;
-  border-radius:50px;
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:1px;
-  transition:all 0.4s ease;
-  box-shadow:0 8px 24px rgba(58,28,156,0.3);
+  border-radius:4px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:2px;
+  box-shadow:var(--epic-shadow);
+  border:2px solid var(--royal-gold);
+  position:relative;
+  overflow:hidden;
 }
 
-.nav-cta::after{
-  display:none;
+.nav-cta::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,var(--royal-gold),var(--warm-gold));
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+
+.nav-cta span{
+  position:relative;
+  z-index:1;
+}
+
+.nav-cta:hover::before{
+  opacity:1;
 }
 
 .nav-cta:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 32px rgba(58,28,156,0.4);
-  background:linear-gradient(135deg,var(--coral-pink),var(--sunset-orange));
+  transform:translateY(-2px);
+  box-shadow:0 24px 70px rgba(212,175,55,0.6);
 }
 
-/* HERO - Inspired by La La Land opening & "A Lovely Night" scene */
+/* HERO - Epic Grandeur */
 .hero{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   position:relative;
-  background:linear-gradient(135deg,var(--pastel-lavender) 0%,var(--pastel-blue) 50%,var(--pastel-yellow) 100%);
-  padding:0 60px;
   overflow:hidden;
+  background:linear-gradient(135deg,var(--dark-charcoal) 0%,var(--rich-brown) 50%,var(--dark-charcoal) 100%);
 }
 
-/* Floating color orbs - La La Land style */
-.color-orb{
+/* Dramatic light rays - Baahubali style */
+.hero::before{
+  content:'';
   position:absolute;
-  border-radius:50%;
-  filter:blur(60px);
-  opacity:0.4;
-  animation:dreamFloat 25s ease-in-out infinite;
+  top:-50%;
+  left:50%;
+  transform:translateX(-50%);
+  width:150%;
+  height:200%;
+  background:
+    linear-gradient(90deg,transparent 0%,rgba(212,175,55,0.1) 50%,transparent 100%),
+    linear-gradient(120deg,transparent 0%,rgba(255,165,0,0.08) 50%,transparent 100%);
+  animation:epicLight 8s ease-in-out infinite;
+  pointer-events:none;
 }
 
-.orb-1{
-  width:500px;
-  height:500px;
-  background:var(--electric-blue);
-  top:10%;
-  left:5%;
+@keyframes epicLight{
+  0%,100%{transform:translateX(-50%) rotate(0deg);}
+  50%{transform:translateX(-50%) rotate(5deg);}
+}
+
+/* Floating temple elements */
+.temple-element{
+  position:absolute;
+  background:linear-gradient(135deg,var(--bronze),var(--royal-gold));
+  opacity:0.15;
+  border-radius:8px;
+  animation:templeFloat 25s ease-in-out infinite;
+}
+
+.temple-1{
+  width:200px;
+  height:200px;
+  top:15%;
+  left:8%;
   animation-delay:0s;
+  clip-path:polygon(50% 0%,0% 100%,100% 100%);
 }
 
-.orb-2{
-  width:400px;
-  height:400px;
-  background:var(--coral-pink);
-  bottom:10%;
-  right:10%;
+.temple-2{
+  width:150px;
+  height:150px;
+  bottom:20%;
+  right:12%;
   animation-delay:8s;
+  clip-path:polygon(25% 0%,75% 0%,100% 100%,0% 100%);
 }
 
-.orb-3{
-  width:350px;
-  height:350px;
-  background:var(--vibrant-yellow);
-  top:50%;
-  right:20%;
+.temple-3{
+  width:180px;
+  height:180px;
+  top:60%;
+  right:25%;
   animation-delay:15s;
+  border-radius:50%;
 }
 
-@keyframes dreamFloat{
-  0%,100%{transform:translate(0,0) scale(1);}
-  33%{transform:translate(40px,-30px) scale(1.1);}
-  66%{transform:translate(-30px,40px) scale(0.9);}
+@keyframes templeFloat{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-30px) rotate(10deg);}
 }
 
 .hero-content{
-  max-width:1100px;
+  max-width:1200px;
   text-align:center;
   position:relative;
   z-index:10;
-  animation:fadeInUp 1.2s ease-out;
+  padding:0 60px;
 }
 
-@keyframes fadeInUp{
-  from{opacity:0;transform:translateY(60px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-.hero-label{
-  font-size:14px;
+.hero-badge{
+  display:inline-block;
+  padding:12px 32px;
+  background:rgba(212,175,55,0.15);
+  border:2px solid var(--royal-gold);
+  border-radius:4px;
+  font-size:12px;
+  font-weight:800;
   letter-spacing:3px;
   text-transform:uppercase;
-  color:var(--electric-blue);
-  margin-bottom:24px;
-  font-weight:700;
+  color:var(--royal-gold);
+  margin-bottom:40px;
+  box-shadow:0 8px 24px rgba(212,175,55,0.3);
+  animation:glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+  0%,100%{box-shadow:0 8px 24px rgba(212,175,55,0.3);}
+  50%{box-shadow:0 12px 40px rgba(212,175,55,0.6);}
 }
 
 .hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(64px,12vw,160px);
+  font-family:'Cinzel',serif;
+  font-size:clamp(56px,12vw,180px);
   font-weight:900;
-  line-height:0.95;
-  letter-spacing:-5px;
-  margin-bottom:32px;
-  background:linear-gradient(135deg,var(--deep-purple) 0%,var(--electric-blue) 50%,var(--coral-pink) 100%);
+  line-height:0.9;
+  letter-spacing:-2px;
+  margin-bottom:40px;
+  background:linear-gradient(180deg,var(--golden-highlight) 0%,var(--royal-gold) 50%,var(--bronze) 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
-  text-shadow:0 4px 20px rgba(58,28,156,0.2);
+  text-transform:uppercase;
+  filter:drop-shadow(0 8px 24px rgba(212,175,55,0.8));
+  animation:titleReveal 1.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes titleReveal{
+  from{opacity:0;transform:translateY(60px) scale(0.9);}
+  to{opacity:1;transform:translateY(0) scale(1);}
 }
 
 .hero-subtitle{
-  font-size:clamp(20px,2.5vw,28px);
-  color:var(--charcoal);
-  margin-bottom:48px;
-  font-weight:400;
-  max-width:750px;
+  font-size:clamp(18px,2.5vw,28px);
+  color:var(--warm-beige);
+  margin-bottom:60px;
+  font-weight:600;
+  max-width:800px;
   margin-left:auto;
   margin-right:auto;
-  line-height:1.6;
+  line-height:1.7;
+  text-shadow:0 4px 12px rgba(0,0,0,0.8);
+  letter-spacing:1px;
 }
 
 .hero-cta{
   display:flex;
-  gap:20px;
+  gap:24px;
   justify-content:center;
   flex-wrap:wrap;
 }
 
-.btn-primary{
-  padding:22px 56px;
-  background:linear-gradient(135deg,var(--vibrant-yellow) 0%,var(--sunset-orange) 100%);
-  color:var(--deep-purple);
-  border-radius:50px;
+.btn-epic{
+  padding:24px 64px;
+  background:linear-gradient(135deg,var(--ember-red) 0%,var(--flame-orange) 100%);
+  color:#fff;
+  border:3px solid var(--royal-gold);
+  border-radius:6px;
   font-size:16px;
-  font-weight:700;
+  font-weight:800;
   text-decoration:none;
-  letter-spacing:1px;
+  letter-spacing:2px;
   text-transform:uppercase;
-  transition:all 0.4s ease;
-  border:none;
-  cursor:pointer;
-  box-shadow:0 12px 32px rgba(253,255,3,0.4);
+  transition:all 0.5s cubic-bezier(0.4,0,0.2,1);
+  box-shadow:var(--epic-shadow);
+  position:relative;
+  overflow:hidden;
+  font-family:'Cinzel',serif;
 }
 
-.btn-primary:hover{
-  transform:translateY(-4px) scale(1.05);
-  box-shadow:0 16px 48px rgba(253,255,3,0.6);
+.btn-epic::before{
+  content:'';
+  position:absolute;
+  inset:-50%;
+  background:linear-gradient(45deg,transparent,rgba(255,255,255,0.3),transparent);
+  transform:translateX(-100%);
+  transition:transform 0.6s ease;
+}
+
+.btn-epic:hover::before{
+  transform:translateX(100%);
+}
+
+.btn-epic:hover{
+  transform:translateY(-6px) scale(1.05);
+  box-shadow:0 30px 90px rgba(220,20,60,0.6);
 }
 
 .btn-secondary{
-  padding:22px 56px;
-  border:3px solid var(--electric-blue);
-  color:var(--electric-blue);
-  background:rgba(255,255,255,0.8);
+  padding:24px 64px;
+  border:3px solid var(--royal-gold);
+  color:var(--royal-gold);
+  background:rgba(212,175,55,0.1);
   backdrop-filter:blur(10px);
-  border-radius:50px;
+  border-radius:6px;
   font-size:16px;
-  font-weight:700;
+  font-weight:800;
   text-decoration:none;
-  letter-spacing:1px;
+  letter-spacing:2px;
   text-transform:uppercase;
-  transition:all 0.4s ease;
+  transition:all 0.5s ease;
+  font-family:'Cinzel',serif;
 }
 
 .btn-secondary:hover{
-  background:var(--electric-blue);
-  color:#fff;
-  transform:translateY(-4px);
-  box-shadow:0 12px 32px rgba(58,28,156,0.3);
+  background:var(--royal-gold);
+  color:var(--dark-charcoal);
+  transform:translateY(-6px);
+  box-shadow:var(--epic-shadow);
 }
 
-/* SECTIONS */
+/* SECTION HEADERS - Epic Style */
 section{
-  padding:160px 60px;
+  padding:180px 80px;
   position:relative;
 }
 
-.section-label{
-  font-size:14px;
+.section-header{
+  text-align:center;
+  margin-bottom:100px;
+  position:relative;
+}
+
+.section-badge{
+  display:inline-block;
+  padding:10px 28px;
+  background:rgba(212,175,55,0.15);
+  border:2px solid var(--royal-gold);
+  border-radius:4px;
+  font-size:12px;
+  font-weight:800;
   letter-spacing:3px;
   text-transform:uppercase;
-  color:var(--electric-blue);
-  margin-bottom:20px;
-  font-weight:700;
+  color:var(--royal-gold);
+  margin-bottom:32px;
 }
 
 .section-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(48px,8vw,96px);
+  font-family:'Cinzel',serif;
+  font-size:clamp(48px,8vw,110px);
   font-weight:900;
-  letter-spacing:-4px;
-  margin-bottom:80px;
+  letter-spacing:-2px;
   line-height:1;
-  background:linear-gradient(135deg,var(--electric-blue),var(--coral-pink));
+  background:linear-gradient(135deg,var(--royal-gold),var(--warm-gold));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
+  text-transform:uppercase;
+  filter:drop-shadow(0 4px 20px rgba(212,175,55,0.6));
+  margin-bottom:24px;
 }
 
-/* YOGA FINDER - Bold Primary Colors */
+.section-subtitle{
+  font-size:20px;
+  color:var(--warm-beige);
+  max-width:700px;
+  margin:0 auto;
+  line-height:1.8;
+}
+
+/* YOGA FINDER - Epic Concern Selection */
 .yoga-finder{
-  background:linear-gradient(180deg,var(--cream) 0%,var(--pastel-pink) 100%);
+  background:linear-gradient(180deg,var(--dark-charcoal) 0%,var(--rich-brown) 50%,var(--dark-charcoal) 100%);
   position:relative;
   overflow:hidden;
 }
 
-.finder-container{
+.yoga-finder::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:800px;
+  height:800px;
+  background:radial-gradient(circle,rgba(212,175,55,0.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+
+.concerns-grid{
   max-width:1400px;
   margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:32px;
   position:relative;
   z-index:10;
 }
 
-.finder-intro{
-  text-align:center;
-  margin-bottom:100px;
-}
-
-.finder-subtitle{
-  font-size:22px;
-  color:var(--charcoal);
-  font-weight:400;
-  max-width:700px;
-  margin:0 auto;
-  line-height:1.7;
-}
-
-.concerns-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:28px;
-  margin-bottom:80px;
-}
-
 .concern-card{
-  background:#fff;
-  border-radius:24px;
+  background:linear-gradient(135deg,rgba(61,40,23,0.6),rgba(26,20,16,0.8));
+  border:3px solid var(--bronze);
+  border-radius:8px;
   padding:48px 32px;
   cursor:pointer;
-  transition:all 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
-  border:4px solid transparent;
+  transition:all 0.6s cubic-bezier(0.4,0,0.2,1);
   position:relative;
   overflow:hidden;
-  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  box-shadow:0 12px 40px rgba(0,0,0,0.6);
 }
 
 .concern-card::before{
   content:'';
   position:absolute;
   inset:0;
+  background:linear-gradient(135deg,var(--royal-gold),var(--warm-gold));
   opacity:0;
-  transition:opacity 0.4s ease;
+  transition:opacity 0.5s ease;
 }
 
-/* Each card gets unique La La Land color */
-.concern-card:nth-child(1){border-color:var(--electric-blue);}
-.concern-card:nth-child(1)::before{background:linear-gradient(135deg,var(--electric-blue),var(--deep-purple));}
-
-.concern-card:nth-child(2){border-color:var(--vibrant-yellow);}
-.concern-card:nth-child(2)::before{background:linear-gradient(135deg,var(--vibrant-yellow),var(--sunset-orange));}
-
-.concern-card:nth-child(3){border-color:var(--coral-pink);}
-.concern-card:nth-child(3)::before{background:linear-gradient(135deg,var(--coral-pink),var(--lavender));}
-
-.concern-card:nth-child(4){border-color:var(--emerald);}
-.concern-card:nth-child(4)::before{background:linear-gradient(135deg,var(--emerald),var(--sky-blue));}
-
-.concern-card:nth-child(5){border-color:var(--sunset-orange);}
-.concern-card:nth-child(5)::before{background:linear-gradient(135deg,var(--sunset-orange),var(--coral-pink));}
-
-.concern-card:nth-child(6){border-color:var(--lavender);}
-.concern-card:nth-child(6)::before{background:linear-gradient(135deg,var(--lavender),var(--pastel-lavender));}
-
-.concern-card:nth-child(7){border-color:var(--sky-blue);}
-.concern-card:nth-child(7)::before{background:linear-gradient(135deg,var(--sky-blue),var(--electric-blue));}
-
-.concern-card:nth-child(8){border-color:var(--vibrant-yellow);}
-.concern-card:nth-child(8)::before{background:linear-gradient(135deg,var(--vibrant-yellow),var(--emerald));}
+.concern-card::after{
+  content:'';
+  position:absolute;
+  top:-50%;
+  right:-50%;
+  width:200%;
+  height:200%;
+  background:linear-gradient(45deg,transparent,rgba(212,175,55,0.2),transparent);
+  transform:translateX(-100%) rotate(45deg);
+  transition:transform 0.8s ease;
+}
 
 .concern-card:hover{
-  transform:translateY(-12px) rotate(2deg);
-  box-shadow:0 24px 64px rgba(58,28,156,0.2);
+  transform:translateY(-12px) scale(1.05);
+  border-color:var(--royal-gold);
+  box-shadow:var(--epic-shadow);
+}
+
+.concern-card:hover::after{
+  transform:translateX(100%) rotate(45deg);
 }
 
 .concern-card.active{
-  transform:scale(1.05);
-  box-shadow:0 20px 60px rgba(58,28,156,0.25);
+  background:linear-gradient(135deg,var(--ember-red),var(--flame-orange));
+  border-color:var(--golden-highlight);
+  transform:scale(1.08);
+  box-shadow:0 28px 80px rgba(220,20,60,0.6);
 }
 
 .concern-card.active::before{
@@ -426,52 +541,72 @@ section{
 }
 
 .concern-icon{
-  font-size:56px;
+  font-size:64px;
   margin-bottom:24px;
   display:block;
   position:relative;
   z-index:1;
-  filter:drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,0.6));
 }
 
 .concern-name{
-  font-family:'Playfair Display',serif;
+  font-family:'Cinzel',serif;
   font-size:24px;
   font-weight:700;
-  color:var(--charcoal);
+  color:var(--golden-highlight);
   margin-bottom:12px;
-  letter-spacing:-0.5px;
+  letter-spacing:1px;
+  text-transform:uppercase;
   position:relative;
   z-index:1;
 }
 
 .concern-desc{
-  font-size:15px;
-  color:var(--soft-gray);
+  font-size:14px;
+  color:var(--warm-beige);
   line-height:1.6;
   position:relative;
   z-index:1;
 }
 
+/* RESULTS SECTION - Dramatic Reveal */
 .results-section{
   margin-top:80px;
   padding:80px;
-  background:#fff;
-  border-radius:32px;
+  background:linear-gradient(135deg,rgba(61,40,23,0.8),rgba(26,20,16,0.95));
+  border:4px solid var(--royal-gold);
+  border-radius:12px;
   display:none;
   position:relative;
-  border:4px solid var(--vibrant-yellow);
-  box-shadow:0 20px 60px rgba(253,255,3,0.2);
+  box-shadow:var(--dramatic-shadow);
+}
+
+.results-section::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(45deg,transparent 30%,rgba(212,175,55,0.05) 50%,transparent 70%),
+    linear-gradient(-45deg,transparent 30%,rgba(255,165,0,0.05) 50%,transparent 70%);
+  background-size:200% 200%;
+  animation:shimmer 8s linear infinite;
+  pointer-events:none;
+  border-radius:8px;
+}
+
+@keyframes shimmer{
+  0%{background-position:0% 0%;}
+  100%{background-position:100% 100%;}
 }
 
 .results-section.show{
   display:block;
-  animation:popIn 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  animation:epicReveal 1s cubic-bezier(0.4,0,0.2,1) forwards;
 }
 
-@keyframes popIn{
-  from{opacity:0;transform:scale(0.8);}
-  to{opacity:1;transform:scale(1);}
+@keyframes epicReveal{
+  from{opacity:0;transform:scale(0.8) translateY(60px);}
+  to{opacity:1;transform:scale(1) translateY(0);}
 }
 
 .results-header{
@@ -479,52 +614,60 @@ section{
   justify-content:space-between;
   align-items:center;
   margin-bottom:60px;
+  padding-bottom:24px;
+  border-bottom:3px solid var(--royal-gold);
+  position:relative;
+  z-index:1;
 }
 
 .results-title{
-  font-family:'Playfair Display',serif;
-  font-size:40px;
+  font-family:'Cinzel',serif;
+  font-size:42px;
   font-weight:900;
-  letter-spacing:-2px;
-  background:linear-gradient(135deg,var(--electric-blue),var(--coral-pink));
+  background:linear-gradient(135deg,var(--royal-gold),var(--warm-gold));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
+  text-transform:uppercase;
+  letter-spacing:2px;
 }
 
 .clear-btn{
   padding:14px 32px;
   background:transparent;
-  border:3px solid var(--electric-blue);
-  border-radius:50px;
-  color:var(--electric-blue);
-  font-size:14px;
-  font-weight:700;
+  border:2px solid var(--royal-gold);
+  border-radius:4px;
+  color:var(--royal-gold);
+  font-size:13px;
+  font-weight:800;
   cursor:pointer;
-  transition:all 0.3s ease;
-  font-family:'Inter',sans-serif;
+  transition:all 0.4s ease;
+  font-family:'Montserrat',sans-serif;
   text-transform:uppercase;
-  letter-spacing:1px;
+  letter-spacing:2px;
 }
 
 .clear-btn:hover{
-  background:var(--electric-blue);
-  color:#fff;
+  background:var(--royal-gold);
+  color:var(--dark-charcoal);
   transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(212,175,55,0.5);
 }
 
 .asanas-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:32px;
+  gap:36px;
+  position:relative;
+  z-index:1;
 }
 
 .asana-card{
-  background:linear-gradient(135deg,var(--pastel-blue) 0%,var(--pastel-pink) 100%);
-  border-radius:24px;
+  background:linear-gradient(135deg,rgba(92,64,51,0.4),rgba(61,40,23,0.6));
+  border:2px solid var(--bronze);
+  border-radius:8px;
   padding:40px;
-  transition:all 0.4s ease;
-  border:3px solid var(--sky-blue);
+  transition:all 0.5s ease;
   position:relative;
   overflow:hidden;
 }
@@ -532,27 +675,31 @@ section{
 .asana-card::before{
   content:'';
   position:absolute;
-  top:-50%;
-  right:-50%;
-  width:200%;
-  height:200%;
-  background:radial-gradient(circle,rgba(255,255,255,0.3) 0%,transparent 70%);
-  transform:rotate(45deg);
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,0.2),transparent);
+  transition:left 0.6s ease;
+}
+
+.asana-card:hover::before{
+  left:100%;
 }
 
 .asana-card:hover{
   transform:translateY(-8px);
-  box-shadow:0 20px 50px rgba(58,28,156,0.2);
-  border-color:var(--coral-pink);
+  border-color:var(--royal-gold);
+  box-shadow:0 20px 60px rgba(212,175,55,0.4);
 }
 
 .asana-name{
-  font-family:'Playfair Display',serif;
+  font-family:'Cinzel',serif;
   font-size:28px;
   font-weight:700;
-  color:var(--deep-purple);
+  color:var(--golden-highlight);
   margin-bottom:8px;
-  letter-spacing:-1px;
+  letter-spacing:1px;
   position:relative;
   z-index:1;
 }
@@ -560,7 +707,7 @@ section{
 .asana-sanskrit{
   font-size:16px;
   font-style:italic;
-  color:var(--electric-blue);
+  color:var(--warm-gold);
   margin-bottom:20px;
   position:relative;
   z-index:1;
@@ -569,16 +716,14 @@ section{
 .asana-benefits{
   font-size:16px;
   line-height:1.8;
-  color:var(--charcoal);
+  color:var(--warm-beige);
   position:relative;
   z-index:1;
 }
 
-/* LANGUAGES - Inspired by "Another Day of Sun" primary colors */
+/* LANGUAGES - Temple-inspired */
 .languages{
-  background:linear-gradient(135deg,var(--electric-blue) 0%,var(--deep-purple) 100%);
-  color:#fff;
-  text-align:center;
+  background:linear-gradient(135deg,var(--ember-red) 0%,var(--flame-orange) 50%,var(--deep-orange) 100%);
   position:relative;
   overflow:hidden;
 }
@@ -586,121 +731,96 @@ section{
 .languages::before{
   content:'';
   position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:800px;
-  height:800px;
-  background:radial-gradient(circle,rgba(253,255,3,0.2) 0%,transparent 70%);
-  border-radius:50%;
-  animation:pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse{
-  0%,100%{transform:translate(-50%,-50%) scale(1);}
-  50%{transform:translate(-50%,-50%) scale(1.1);}
-}
-
-.languages .section-title{
-  color:#fff;
-  background:none;
-  -webkit-text-fill-color:inherit;
-  position:relative;
-  z-index:10;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:
+    radial-gradient(circle at 30% 40%,rgba(255,223,127,0.2) 0%,transparent 50%),
+    radial-gradient(circle at 70% 60%,rgba(212,175,55,0.15) 0%,transparent 50%);
 }
 
 .language-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:40px;
   max-width:1200px;
   margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:48px;
   position:relative;
   z-index:10;
 }
 
 .language-card{
-  background:rgba(255,255,255,0.15);
+  background:rgba(26,20,16,0.6);
   backdrop-filter:blur(20px);
-  border:3px solid rgba(255,255,255,0.3);
-  border-radius:28px;
+  border:3px solid var(--royal-gold);
+  border-radius:12px;
   padding:64px 40px;
-  transition:all 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
+  transition:all 0.6s cubic-bezier(0.4,0,0.2,1);
   position:relative;
   overflow:hidden;
+  box-shadow:0 16px 48px rgba(0,0,0,0.6);
 }
 
 .language-card::before{
   content:'';
   position:absolute;
-  inset:0;
-  background:linear-gradient(135deg,var(--vibrant-yellow),var(--coral-pink));
+  inset:-50%;
+  background:conic-gradient(from 0deg,transparent,rgba(212,175,55,0.3),transparent);
+  animation:rotate 8s linear infinite;
   opacity:0;
-  transition:opacity 0.4s ease;
-}
-
-.language-card:hover{
-  background:rgba(255,255,255,0.25);
-  border-color:var(--vibrant-yellow);
-  transform:translateY(-12px) scale(1.05);
-  box-shadow:0 28px 70px rgba(253,255,3,0.3);
+  transition:opacity 0.5s ease;
 }
 
 .language-card:hover::before{
-  opacity:0.1;
+  opacity:1;
+}
+
+.language-card:hover{
+  transform:translateY(-16px) scale(1.05);
+  border-color:var(--golden-highlight);
+  box-shadow:var(--epic-shadow);
 }
 
 .language-symbol{
-  font-family:'Playfair Display',serif;
-  font-size:88px;
+  font-family:'Cinzel',serif;
+  font-size:96px;
   margin-bottom:32px;
   display:block;
   font-weight:900;
-  background:linear-gradient(135deg,var(--vibrant-yellow),var(--sunset-orange));
+  background:linear-gradient(135deg,var(--golden-highlight),var(--royal-gold));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
   position:relative;
   z-index:1;
-  filter:drop-shadow(0 4px 20px rgba(253,255,3,0.4));
+  filter:drop-shadow(0 8px 24px rgba(212,175,55,0.8));
 }
 
 .language-name{
-  font-family:'Playfair Display',serif;
+  font-family:'Cinzel',serif;
   font-size:32px;
   font-weight:700;
   margin-bottom:16px;
-  letter-spacing:-1px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--golden-highlight);
   position:relative;
   z-index:1;
 }
 
 .language-desc{
   font-size:16px;
-  color:rgba(255,255,255,0.8);
+  color:var(--warm-beige);
   line-height:1.7;
   position:relative;
   z-index:1;
 }
 
-/* ABOUT - Pastel "Planetarium" scene inspired */
+/* ABOUT - Epic Story */
 .about{
-  background:linear-gradient(180deg,var(--pastel-yellow) 0%,var(--pastel-lavender) 100%);
+  background:linear-gradient(180deg,var(--dark-charcoal) 0%,var(--rich-brown) 100%);
   position:relative;
-  overflow:hidden;
-}
-
-.about::before{
-  content:'';
-  position:absolute;
-  top:20%;
-  right:10%;
-  width:400px;
-  height:400px;
-  background:var(--coral-pink);
-  border-radius:50%;
-  filter:blur(100px);
-  opacity:0.3;
 }
 
 .about-grid{
@@ -710,27 +830,26 @@ section{
   grid-template-columns:1fr 1fr;
   gap:120px;
   align-items:center;
-  position:relative;
-  z-index:10;
 }
 
 .about-content h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(48px,6vw,80px);
+  font-family:'Cinzel',serif;
+  font-size:clamp(42px,6vw,80px);
   font-weight:900;
-  letter-spacing:-3px;
+  letter-spacing:-1px;
   margin-bottom:40px;
-  line-height:1;
-  background:linear-gradient(135deg,var(--deep-purple),var(--coral-pink));
+  line-height:1.1;
+  background:linear-gradient(135deg,var(--royal-gold),var(--warm-gold));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
+  text-transform:uppercase;
 }
 
 .about-text{
-  font-size:19px;
-  color:var(--charcoal);
-  line-height:1.8;
+  font-size:18px;
+  color:var(--warm-beige);
+  line-height:1.9;
   margin-bottom:24px;
 }
 
@@ -745,74 +864,92 @@ section{
   display:flex;
   align-items:center;
   gap:24px;
-  padding:24px;
-  background:rgba(255,255,255,0.7);
-  backdrop-filter:blur(10px);
-  border-radius:20px;
-  border:3px solid transparent;
-  transition:all 0.4s ease;
+  padding:28px;
+  background:linear-gradient(135deg,rgba(61,40,23,0.6),rgba(26,20,16,0.8));
+  border:2px solid var(--bronze);
+  border-radius:8px;
+  transition:all 0.5s ease;
+  position:relative;
+  overflow:hidden;
 }
 
-.feature-item:nth-child(1){border-color:var(--electric-blue);}
-.feature-item:nth-child(2){border-color:var(--vibrant-yellow);}
-.feature-item:nth-child(3){border-color:var(--coral-pink);}
-.feature-item:nth-child(4){border-color:var(--emerald);}
+.feature-item::before{
+  content:'';
+  position:absolute;
+  left:-100%;
+  top:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,0.2),transparent);
+  transition:left 0.6s ease;
+}
+
+.feature-item:hover::before{
+  left:100%;
+}
 
 .feature-item:hover{
-  transform:translateX(12px);
-  box-shadow:0 12px 40px rgba(58,28,156,0.2);
+  transform:translateX(16px);
+  border-color:var(--royal-gold);
+  box-shadow:0 12px 40px rgba(212,175,55,0.4);
 }
 
 .feature-icon{
-  width:64px;
-  height:64px;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--electric-blue),var(--coral-pink));
+  width:72px;
+  height:72px;
+  border-radius:8px;
+  background:linear-gradient(135deg,var(--ember-red),var(--flame-orange));
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
+  font-size:32px;
   flex-shrink:0;
-  box-shadow:0 8px 24px rgba(58,28,156,0.3);
+  border:2px solid var(--royal-gold);
+  box-shadow:0 8px 24px rgba(220,20,60,0.5);
+  position:relative;
+  z-index:1;
 }
 
 .feature-text{
   font-size:18px;
-  color:var(--charcoal);
+  color:var(--warm-beige);
   font-weight:600;
   line-height:1.5;
+  position:relative;
+  z-index:1;
 }
 
 .about-visual{
   position:relative;
-  height:650px;
-  border-radius:32px;
-  background:linear-gradient(135deg,var(--coral-pink) 0%,var(--lavender) 50%,var(--sky-blue) 100%);
+  height:700px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--ember-red),var(--flame-orange),var(--royal-gold));
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  border:5px solid #fff;
-  box-shadow:0 24px 80px rgba(58,28,156,0.3);
+  border:4px solid var(--royal-gold);
+  box-shadow:var(--dramatic-shadow);
 }
 
 .about-visual::before{
   content:'🧘‍♀️';
-  font-size:200px;
+  font-size:220px;
   opacity:0.3;
   position:absolute;
-  animation:float 6s ease-in-out infinite;
+  animation:float 8s ease-in-out infinite;
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,0.8));
 }
 
-/* CLASSES - Bold color blocks */
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-20px);}
+}
+
+/* CLASSES - Warrior Cards */
 .classes{
-  background:linear-gradient(180deg,var(--cream) 0%,var(--pastel-blue) 100%);
-}
-
-.classes-header{
-  text-align:center;
-  margin-bottom:100px;
+  background:linear-gradient(180deg,var(--rich-brown) 0%,var(--dark-charcoal) 100%);
 }
 
 .classes-grid{
@@ -820,85 +957,76 @@ section{
   margin:0 auto;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:40px;
+  gap:48px;
 }
 
 .class-card{
-  background:#fff;
-  border-radius:28px;
+  background:linear-gradient(135deg,rgba(61,40,23,0.8),rgba(26,20,16,0.95));
+  border:3px solid var(--bronze);
+  border-radius:12px;
   padding:56px 40px;
-  transition:all 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
+  transition:all 0.6s cubic-bezier(0.4,0,0.2,1);
   position:relative;
   overflow:hidden;
-  border:4px solid transparent;
-  box-shadow:0 12px 40px rgba(0,0,0,0.08);
+  box-shadow:0 16px 48px rgba(0,0,0,0.6);
 }
-
-.class-card:nth-child(1){border-color:var(--electric-blue);}
-.class-card:nth-child(2){border-color:var(--coral-pink);}
-.class-card:nth-child(3){border-color:var(--vibrant-yellow);}
 
 .class-card::before{
   content:'';
   position:absolute;
   inset:0;
+  background:linear-gradient(135deg,var(--royal-gold),var(--warm-gold));
   opacity:0;
-  transition:opacity 0.4s ease;
-}
-
-.class-card:nth-child(1)::before{background:linear-gradient(135deg,var(--electric-blue),var(--deep-purple));}
-.class-card:nth-child(2)::before{background:linear-gradient(135deg,var(--coral-pink),var(--sunset-orange));}
-.class-card:nth-child(3)::before{background:linear-gradient(135deg,var(--vibrant-yellow),var(--emerald));}
-
-.class-card:hover{
-  transform:translateY(-16px) rotate(-2deg);
-  box-shadow:0 32px 80px rgba(58,28,156,0.2);
+  transform:translateY(100%);
+  transition:all 0.6s ease;
 }
 
 .class-card:hover::before{
-  opacity:0.08;
+  opacity:0.1;
+  transform:translateY(0);
+}
+
+.class-card:hover{
+  transform:translateY(-20px);
+  border-color:var(--royal-gold);
+  box-shadow:var(--epic-shadow);
 }
 
 .class-icon-wrap{
-  width:96px;
-  height:96px;
-  border-radius:20px;
-  background:linear-gradient(135deg,var(--electric-blue),var(--coral-pink));
+  width:100px;
+  height:100px;
+  border-radius:8px;
+  background:linear-gradient(135deg,var(--ember-red),var(--flame-orange));
   display:flex;
   align-items:center;
   justify-content:center;
   margin-bottom:32px;
   position:relative;
   z-index:1;
-  box-shadow:0 12px 32px rgba(58,28,156,0.3);
-}
-
-.class-card:nth-child(2) .class-icon-wrap{
-  background:linear-gradient(135deg,var(--coral-pink),var(--lavender));
-}
-
-.class-card:nth-child(3) .class-icon-wrap{
-  background:linear-gradient(135deg,var(--vibrant-yellow),var(--sunset-orange));
+  border:3px solid var(--royal-gold);
+  box-shadow:0 12px 32px rgba(220,20,60,0.5);
 }
 
 .class-icon{
-  font-size:48px;
+  font-size:52px;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,0.6));
 }
 
 .class-title{
-  font-family:'Playfair Display',serif;
+  font-family:'Cinzel',serif;
   font-size:32px;
   font-weight:700;
   margin-bottom:16px;
-  color:var(--charcoal);
-  letter-spacing:-1px;
+  color:var(--golden-highlight);
+  letter-spacing:1px;
+  text-transform:uppercase;
   position:relative;
   z-index:1;
 }
 
 .class-desc{
   font-size:17px;
-  color:var(--soft-gray);
+  color:var(--warm-beige);
   line-height:1.8;
   margin-bottom:32px;
   position:relative;
@@ -909,18 +1037,17 @@ section{
   display:flex;
   gap:28px;
   font-size:15px;
-  color:var(--electric-blue);
-  font-weight:600;
+  color:var(--warm-gold);
+  font-weight:700;
   padding-top:28px;
-  border-top:3px solid var(--pastel-blue);
+  border-top:2px solid var(--bronze);
   position:relative;
   z-index:1;
 }
 
-/* CONTACT - Sunset gradient inspired */
+/* CONTACT - Epic Call to Action */
 .contact{
-  background:linear-gradient(135deg,var(--sunset-orange) 0%,var(--coral-pink) 50%,var(--lavender) 100%);
-  color:#fff;
+  background:linear-gradient(135deg,var(--dark-charcoal) 0%,var(--ember-red) 50%,var(--flame-orange) 100%);
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -929,37 +1056,44 @@ section{
 .contact::before{
   content:'';
   position:absolute;
-  bottom:-20%;
-  left:50%;
-  transform:translateX(-50%);
-  width:1000px;
-  height:1000px;
-  background:radial-gradient(circle,rgba(253,255,3,0.3) 0%,transparent 70%);
-  border-radius:50%;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 50%,rgba(212,175,55,0.2) 0%,transparent 50%),
+    radial-gradient(circle at 70% 50%,rgba(255,165,0,0.15) 0%,transparent 50%);
+  animation:contactGlow 6s ease-in-out infinite;
+}
+
+@keyframes contactGlow{
+  0%,100%{opacity:1;}
+  50%{opacity:0.7;}
 }
 
 .contact h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(56px,9vw,120px);
+  font-family:'Cinzel',serif;
+  font-size:clamp(56px,10vw,140px);
   font-weight:900;
-  letter-spacing:-5px;
+  letter-spacing:-3px;
   margin-bottom:24px;
   line-height:1;
+  color:var(--golden-highlight);
+  text-transform:uppercase;
   position:relative;
   z-index:10;
-  text-shadow:0 4px 30px rgba(0,0,0,0.2);
+  text-shadow:0 8px 32px rgba(0,0,0,0.8);
+  filter:drop-shadow(0 8px 24px rgba(212,175,55,0.6));
 }
 
 .contact-subtitle{
   font-size:22px;
-  color:rgba(255,255,255,0.95);
+  color:var(--warm-beige);
   margin-bottom:80px;
-  max-width:650px;
+  max-width:700px;
   margin-left:auto;
   margin-right:auto;
-  line-height:1.7;
+  line-height:1.8;
   position:relative;
   z-index:10;
+  text-shadow:0 4px 16px rgba(0,0,0,0.8);
 }
 
 .contact-info{
@@ -977,119 +1111,120 @@ section{
   letter-spacing:3px;
   text-transform:uppercase;
   margin-bottom:16px;
-  opacity:0.9;
-  font-weight:700;
+  color:var(--royal-gold);
+  font-weight:800;
 }
 
 .contact-item a{
-  color:#fff;
+  color:var(--golden-highlight);
   text-decoration:none;
-  font-family:'Playfair Display',serif;
-  font-size:32px;
+  font-family:'Cinzel',serif;
+  font-size:36px;
   font-weight:700;
-  transition:all 0.3s ease;
-  letter-spacing:-1px;
-  text-shadow:0 2px 20px rgba(0,0,0,0.2);
+  transition:all 0.4s ease;
+  letter-spacing:1px;
+  text-shadow:0 4px 20px rgba(0,0,0,0.8);
 }
 
 .contact-item a:hover{
+  color:#fff;
   transform:scale(1.1);
-  text-shadow:0 4px 30px rgba(0,0,0,0.4);
+  text-shadow:0 8px 32px rgba(255,223,127,0.8);
 }
 
 .contact-item p{
-  color:#fff;
-  font-family:'Playfair Display',serif;
-  font-size:32px;
+  color:var(--golden-highlight);
+  font-family:'Cinzel',serif;
+  font-size:36px;
   font-weight:700;
   margin:0;
-  letter-spacing:-1px;
+  letter-spacing:1px;
+  text-shadow:0 4px 20px rgba(0,0,0,0.8);
 }
 
 .social-links{
   display:flex;
-  gap:24px;
+  gap:28px;
   justify-content:center;
   position:relative;
   z-index:10;
 }
 
 .social-link{
-  width:72px;
-  height:72px;
-  border:3px solid rgba(255,255,255,0.5);
-  border-radius:20px;
+  width:80px;
+  height:80px;
+  border:3px solid var(--royal-gold);
+  border-radius:8px;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#fff;
+  color:var(--royal-gold);
   text-decoration:none;
-  font-size:28px;
-  transition:all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
-  background:rgba(255,255,255,0.1);
+  font-size:32px;
+  transition:all 0.5s cubic-bezier(0.4,0,0.2,1);
+  background:rgba(26,20,16,0.6);
   backdrop-filter:blur(10px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.6);
 }
 
 .social-link:hover{
-  background:var(--vibrant-yellow);
-  color:var(--deep-purple);
-  border-color:var(--vibrant-yellow);
-  transform:translateY(-8px) rotate(10deg) scale(1.15);
-  box-shadow:0 20px 50px rgba(253,255,3,0.4);
+  background:var(--royal-gold);
+  color:var(--dark-charcoal);
+  transform:translateY(-12px) rotate(5deg) scale(1.15);
+  box-shadow:var(--epic-shadow);
 }
 
 .social-link svg{
-  width:28px;
-  height:28px;
+  width:32px;
+  height:32px;
 }
 
 /* FOOTER */
 footer{
-  padding:56px 60px;
-  background:var(--deep-purple);
-  color:rgba(255,255,255,0.8);
+  padding:56px 80px;
+  background:var(--dark-charcoal);
+  color:var(--warm-beige);
   text-align:center;
   font-size:15px;
   display:flex;
   flex-direction:column;
   gap:16px;
-  border-top:4px solid var(--vibrant-yellow);
+  border-top:3px solid var(--royal-gold);
 }
 
 footer a{
-  color:var(--vibrant-yellow);
+  color:var(--royal-gold);
   text-decoration:none;
-  font-weight:600;
+  font-weight:700;
   transition:all 0.3s ease;
 }
 
 footer a:hover{
-  color:#fff;
-  text-shadow:0 0 20px var(--vibrant-yellow);
+  color:var(--golden-highlight);
+  text-shadow:0 0 20px rgba(212,175,55,0.8);
 }
 
-/* SCROLL REVEAL ANIMATIONS */
-.fade-up{
+/* SCROLL ANIMATIONS */
+.epic-reveal{
   opacity:0;
-  transform:translateY(60px);
-  transition:all 1s cubic-bezier(0.4,0,0.2,1);
+  transform:translateY(80px);
+  transition:all 1.2s cubic-bezier(0.4,0,0.2,1);
 }
 
-.fade-up.visible{
+.epic-reveal.visible{
   opacity:1;
   transform:translateY(0);
 }
 
 /* RESPONSIVE */
 @media(max-width:1024px){
-  header{padding:24px 40px;}
+  header{padding:20px 40px;}
   section{padding:120px 40px;}
-  .hero{padding:0 40px;}
   
   .concerns-grid{grid-template-columns:repeat(2,1fr);}
   .language-grid{grid-template-columns:1fr;}
   .about-grid{grid-template-columns:1fr;gap:80px;}
-  .classes-grid{grid-template-columns:1fr;gap:32px;}
+  .classes-grid{grid-template-columns:1fr;gap:40px;}
   .asanas-grid{grid-template-columns:1fr;}
   .results-section{padding:48px 32px;}
   
@@ -1097,23 +1232,30 @@ footer a:hover{
 }
 
 @media(max-width:640px){
-  header{padding:20px 24px;}
+  header{padding:16px 24px;}
   section{padding:80px 24px;}
-  .hero{padding:0 24px;}
   
-  .concerns-grid{grid-template-columns:1fr;gap:20px;}
+  .concerns-grid{grid-template-columns:1fr;gap:24px;}
   .concern-card{padding:32px 24px;}
   .results-section{padding:32px 24px;}
   .contact-info{flex-direction:column;gap:40px;}
   .hero-cta{flex-direction:column;width:100%;}
-  .btn-primary,.btn-secondary{width:100%;}
+  .btn-epic,.btn-secondary{width:100%;padding:20px 40px;}
   
-  .orb-1,.orb-2,.orb-3{display:none;}
+  .temple-1,.temple-2,.temple-3{display:none;}
+}
+
+@keyframes rotate{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 </style>
 </head>
 
 <body>
+
+<!-- PARTICLES BACKGROUND -->
+<div class="particles-bg"></div>
 
 <!-- HEADER -->
 <header id="header">
@@ -1123,120 +1265,120 @@ footer a:hover{
     <a href="#about">About</a>
     <a href="#classes">Classes</a>
     <a href="#contact">Contact</a>
-    <a href="tel:7676332452" class="nav-cta">Book Now</a>
+    <a href="tel:7676332452" class="nav-cta"><span>Book Now</span></a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="color-orb orb-1"></div>
-  <div class="color-orb orb-2"></div>
-  <div class="color-orb orb-3"></div>
+  <div class="temple-element temple-1"></div>
+  <div class="temple-element temple-2"></div>
+  <div class="temple-element temple-3"></div>
   
   <div class="hero-content">
-    <p class="hero-label">Online Yoga Classes</p>
-    <h1>Practice Yoga<br>From Anywhere</h1>
+    <div class="hero-badge">Ancient Wisdom • Modern Practice</div>
+    <h1>The Epic<br>Yoga Journey</h1>
     <p class="hero-subtitle">
-      Transform your body and mind with personalized online sessions in English, Telugu, or Kannada.
+      Transform your destiny through the ancient art of yoga. Master powerful asanas. Unleash your inner warrior.
     </p>
     <div class="hero-cta">
-      <a href="tel:7676332452" class="btn-primary">Start Your Journey</a>
-      <a href="#finder" class="btn-secondary">Find Your Asana</a>
+      <a href="tel:7676332452" class="btn-epic">Begin Your Quest</a>
+      <a href="#finder" class="btn-secondary">Discover Asanas</a>
     </div>
   </div>
 </section>
 
 <!-- YOGA FINDER -->
 <section class="yoga-finder" id="finder">
-  <div class="finder-container">
-    <div class="finder-intro fade-up">
-      <p class="section-label">Smart Yoga Finder</p>
-      <h2 class="section-title">Find the perfect asana</h2>
-      <p class="finder-subtitle">Select your concern and discover personalized yoga recommendations tailored to your body and mind.</p>
+  <div class="section-header epic-reveal">
+    <div class="section-badge">Personalized Training</div>
+    <h2 class="section-title">Choose Your Battle</h2>
+    <p class="section-subtitle">Select your challenge and discover the ancient asanas that will guide you to victory</p>
+  </div>
+
+  <div class="concerns-grid">
+    <div class="concern-card epic-reveal" data-concern="stress">
+      <span class="concern-icon">🧠</span>
+      <h3 class="concern-name">Stress & Anxiety</h3>
+      <p class="concern-desc">Conquer mental turmoil and find inner peace</p>
     </div>
 
-    <div class="concerns-grid">
-      <div class="concern-card fade-up" data-concern="stress">
-        <span class="concern-icon">🧠</span>
-        <h3 class="concern-name">Stress & Anxiety</h3>
-        <p class="concern-desc">Mental tension, overthinking, worry</p>
-      </div>
-
-      <div class="concern-card fade-up" data-concern="neck">
-        <span class="concern-icon">🦴</span>
-        <h3 class="concern-name">Neck & Shoulders</h3>
-        <p class="concern-desc">Stiffness, tension, pain</p>
-      </div>
-
-      <div class="concern-card fade-up" data-concern="back">
-        <span class="concern-icon">💪</span>
-        <h3 class="concern-name">Back Pain</h3>
-        <p class="concern-desc">Lower and upper back discomfort</p>
-      </div>
-
-      <div class="concern-card fade-up" data-concern="legs">
-        <span class="concern-icon">🦵</span>
-        <h3 class="concern-name">Legs & Knees</h3>
-        <p class="concern-desc">Pain, weakness, stiffness</p>
-      </div>
-
-      <div class="concern-card fade-up" data-concern="digestion">
-        <span class="concern-icon">🫃</span>
-        <h3 class="concern-name">Digestion Issues</h3>
-        <p class="concern-desc">Bloating, constipation, discomfort</p>
-      </div>
-
-      <div class="concern-card fade-up" data-concern="sleep">
-        <span class="concern-icon">😴</span>
-        <h3 class="concern-name">Sleep Problems</h3>
-        <p class="concern-desc">Insomnia, restlessness</p>
-      </div>
-
-      <div class="concern-card fade-up" data-concern="flexibility">
-        <span class="concern-icon">🤸</span>
-        <h3 class="concern-name">Flexibility</h3>
-        <p class="concern-desc">Improve range of motion</p>
-      </div>
-
-      <div class="concern-card fade-up" data-concern="energy">
-        <span class="concern-icon">⚡</span>
-        <h3 class="concern-name">Low Energy</h3>
-        <p class="concern-desc">Fatigue, lethargy</p>
-      </div>
+    <div class="concern-card epic-reveal" data-concern="neck">
+      <span class="concern-icon">🦴</span>
+      <h3 class="concern-name">Neck & Shoulders</h3>
+      <p class="concern-desc">Release tension from the warrior's burden</p>
     </div>
 
-    <div class="results-section" id="results">
-      <div class="results-header">
-        <h3 class="results-title">Recommended Asanas</h3>
-        <button class="clear-btn" onclick="clearResults()">Clear</button>
-      </div>
-      <div class="asanas-grid" id="asanasGrid"></div>
+    <div class="concern-card epic-reveal" data-concern="back">
+      <span class="concern-icon">💪</span>
+      <h3 class="concern-name">Back Pain</h3>
+      <p class="concern-desc">Strengthen the spine of champions</p>
     </div>
+
+    <div class="concern-card epic-reveal" data-concern="legs">
+      <span class="concern-icon">🦵</span>
+      <h3 class="concern-name">Legs & Knees</h3>
+      <p class="concern-desc">Build foundations of power</p>
+    </div>
+
+    <div class="concern-card epic-reveal" data-concern="digestion">
+      <span class="concern-icon">🫃</span>
+      <h3 class="concern-name">Digestion Issues</h3>
+      <p class="concern-desc">Restore balance to your core</p>
+    </div>
+
+    <div class="concern-card epic-reveal" data-concern="sleep">
+      <span class="concern-icon">😴</span>
+      <h3 class="concern-name">Sleep Problems</h3>
+      <p class="concern-desc">Find the peace of deep rest</p>
+    </div>
+
+    <div class="concern-card epic-reveal" data-concern="flexibility">
+      <span class="concern-icon">🤸</span>
+      <h3 class="concern-name">Flexibility</h3>
+      <p class="concern-desc">Move like water, flow like wind</p>
+    </div>
+
+    <div class="concern-card epic-reveal" data-concern="energy">
+      <span class="concern-icon">⚡</span>
+      <h3 class="concern-name">Low Energy</h3>
+      <p class="concern-desc">Awaken the fire within</p>
+    </div>
+  </div>
+
+  <div class="results-section" id="results">
+    <div class="results-header">
+      <h3 class="results-title">Your Sacred Asanas</h3>
+      <button class="clear-btn" onclick="clearResults()">Reset</button>
+    </div>
+    <div class="asanas-grid" id="asanasGrid"></div>
   </div>
 </section>
 
 <!-- LANGUAGES -->
 <section class="languages">
-  <p class="section-label fade-up">Available Languages</p>
-  <h2 class="section-title fade-up">Learn in your language</h2>
+  <div class="section-header epic-reveal">
+    <div class="section-badge" style="border-color:var(--golden-highlight);color:var(--golden-highlight);">Three Sacred Tongues</div>
+    <h2 class="section-title" style="color:var(--golden-highlight);background:none;-webkit-text-fill-color:var(--golden-highlight);">Master In Your Language</h2>
+  </div>
   
   <div class="language-grid">
-    <div class="language-card fade-up">
+    <div class="language-card epic-reveal">
       <span class="language-symbol">En</span>
       <h3 class="language-name">English</h3>
-      <p class="language-desc">Comprehensive instruction in English</p>
+      <p class="language-desc">Global warrior's language</p>
     </div>
     
-    <div class="language-card fade-up">
+    <div class="language-card epic-reveal">
       <span class="language-symbol">తె</span>
       <h3 class="language-name">Telugu</h3>
-      <p class="language-desc">తెలుగులో పూర్తి మార్గదర్శకత్వం</p>
+      <p class="language-desc">తెలుగు యోధుల భాష</p>
     </div>
     
-    <div class="language-card fade-up">
+    <div class="language-card epic-reveal">
       <span class="language-symbol">ಕ</span>
       <h3 class="language-name">Kannada</h3>
-      <p class="language-desc">ಕನ್ನಡದಲ್ಲಿ ಸಂಪೂರ್ಣ ಮಾರ್ಗದರ್ಶನ</p>
+      <p class="language-desc">ಕನ್ನಡ ಯೋಧರ ಭಾಷೆ</p>
     </div>
   </div>
 </section>
@@ -1244,91 +1386,92 @@ footer a:hover{
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-grid">
-    <div class="about-content fade-up">
-      <h2>Yoga from the comfort of home</h2>
+    <div class="about-content epic-reveal">
+      <h2>Your Legend Begins Here</h2>
       <p class="about-text">
-        At Thanu Yoga Studio, we bring authentic yoga practice directly to you through 
-        personalized online sessions. No matter where you are, experience the transformative 
-        power of yoga.
+        Every great warrior's journey begins with a single breath. At Thanu Yoga Studio, 
+        we forge champions through the ancient art of yoga, bringing the power of 
+        transformation directly to your realm.
       </p>
       <p class="about-text">
-        Our experienced instructor guides you through practices combining ancient wisdom 
-        with modern convenience, helping you achieve balance in body, mind, and spirit.
+        Our master instructor guides you through epic practices that blend timeless 
+        wisdom with modern discipline, helping you conquer challenges and achieve 
+        greatness in body, mind, and spirit.
       </p>
       <div class="features-list">
         <div class="feature-item">
           <div class="feature-icon">💻</div>
-          <span class="feature-text">Live interactive online classes</span>
+          <span class="feature-text">Live battle training sessions</span>
         </div>
         <div class="feature-item">
           <div class="feature-icon">🌏</div>
-          <span class="feature-text">Practice from anywhere</span>
+          <span class="feature-text">Train from any kingdom</span>
         </div>
         <div class="feature-item">
           <div class="feature-icon">👤</div>
-          <span class="feature-text">Personalized guidance</span>
+          <span class="feature-text">Personal guru guidance</span>
         </div>
         <div class="feature-item">
           <div class="feature-icon">🗣️</div>
-          <span class="feature-text">Multilingual instruction</span>
+          <span class="feature-text">Three sacred languages</span>
         </div>
       </div>
     </div>
     
-    <div class="about-visual fade-up"></div>
+    <div class="about-visual epic-reveal"></div>
   </div>
 </section>
 
 <!-- CLASSES -->
 <section class="classes" id="classes">
-  <div class="classes-header fade-up">
-    <p class="section-label">Our Classes</p>
-    <h2 class="section-title">Find your practice</h2>
+  <div class="section-header epic-reveal">
+    <div class="section-badge">Choose Your Path</div>
+    <h2 class="section-title">The Three Ways</h2>
   </div>
   
   <div class="classes-grid">
-    <div class="class-card fade-up">
+    <div class="class-card epic-reveal">
       <div class="class-icon-wrap">
         <span class="class-icon">🧘</span>
       </div>
       <h3 class="class-title">Hatha Yoga</h3>
       <p class="class-desc">
-        Traditional practice focusing on physical postures and breathing techniques 
-        for strength and flexibility.
+        The path of the warrior. Build strength, flexibility, and mastery 
+        through powerful postures and ancient breathing techniques.
       </p>
       <div class="class-meta">
         <span>⏱ 60 mins</span>
-        <span>📊 All levels</span>
+        <span>📊 All Warriors</span>
       </div>
     </div>
     
-    <div class="class-card fade-up">
+    <div class="class-card epic-reveal">
       <div class="class-icon-wrap">
         <span class="class-icon">🌊</span>
       </div>
       <h3 class="class-title">Vinyasa Flow</h3>
       <p class="class-desc">
-        Dynamic, flowing sequences synchronized with breath for building 
-        strength and improving flexibility.
+        The dance of champions. Dynamic sequences that flow like water, 
+        building unstoppable momentum and grace.
       </p>
       <div class="class-meta">
         <span>⏱ 75 mins</span>
-        <span>📊 Intermediate</span>
+        <span>📊 Advanced</span>
       </div>
     </div>
     
-    <div class="class-card fade-up">
+    <div class="class-card epic-reveal">
       <div class="class-icon-wrap">
         <span class="class-icon">🧠</span>
       </div>
       <h3 class="class-title">Meditation</h3>
       <p class="class-desc">
-        Guided meditation practices to calm the mind, reduce stress, 
-        and cultivate inner peace.
+        The sage's wisdom. Master your mind, conquer your fears, 
+        and find the stillness that precedes victory.
       </p>
       <div class="class-meta">
         <span>⏱ 45 mins</span>
-        <span>📊 Beginners</span>
+        <span>📊 All Levels</span>
       </div>
     </div>
   </div>
@@ -1336,21 +1479,21 @@ footer a:hover{
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <h2 class="fade-up">Begin your journey today</h2>
-  <p class="contact-subtitle fade-up">Join our online community and experience the transformative power of yoga.</p>
+  <h2 class="epic-reveal">Your Destiny Awaits</h2>
+  <p class="contact-subtitle epic-reveal">Join the legion of warriors and begin your epic transformation today</p>
   
-  <div class="contact-info fade-up">
+  <div class="contact-info epic-reveal">
     <div class="contact-item">
-      <h3>Call / WhatsApp</h3>
+      <h3>Call to Arms</h3>
       <a href="tel:7676332452">7676 332 452</a>
     </div>
     <div class="contact-item">
-      <h3>Format</h3>
-      <p>Online Classes</p>
+      <h3>Battle Ground</h3>
+      <p>Online Arena</p>
     </div>
   </div>
   
-  <div class="social-links fade-up">
+  <div class="social-links epic-reveal">
     <a href="https://www.youtube.com/@Thanuyogastudio" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">▶</a>
     <a href="https://www.instagram.com/thanuyogastudio/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1362,9 +1505,9 @@ footer a:hover{
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 Thanu Yoga Studio. All rights reserved.</p>
-  <p>Online Yoga Classes • English • Telugu • Kannada</p>
-  <p>Designed by <a href="mailto:stseenuri@outlook.com">Seenuri</a></p>
+  <p>© 2025 Thanu Yoga Studio. All Rights Reserved.</p>
+  <p>Epic Online Yoga Training • English • Telugu • Kannada</p>
+  <p>Crafted by <a href="mailto:stseenuri@outlook.com">Seenuri</a></p>
 </footer>
 
 <script>
@@ -1420,16 +1563,6 @@ const yogaDatabase = {
   ]
 };
 
-// HEADER SCROLL
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-});
-
 // YOGA FINDER
 const concernCards = document.querySelectorAll('.concern-card');
 const resultsSection = document.getElementById('results');
@@ -1458,7 +1591,7 @@ function showAsanas(concern) {
   asanas.forEach((asana, index) => {
     const card = document.createElement('div');
     card.className = 'asana-card';
-    card.style.animationDelay = `${index * 0.1}s`;
+    card.style.animationDelay = `${index * 0.15}s`;
     card.innerHTML = `
       <h4 class="asana-name">${asana.name}</h4>
       <p class="asana-sanskrit">${asana.sanskrit}</p>
@@ -1476,11 +1609,11 @@ function clearResults() {
   asanasGrid.innerHTML = '';
 }
 
-// INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
-const fadeElements = document.querySelectorAll('.fade-up');
+// SCROLL REVEAL
+const epicElements = document.querySelectorAll('.epic-reveal');
 const observerOptions = {
   threshold: 0.15,
-  rootMargin: '0px 0px -80px 0px'
+  rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -1491,7 +1624,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-fadeElements.forEach(el => observer.observe(el));
+epicElements.forEach(el => observer.observe(el));
 
 // SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
