@@ -7,29 +7,41 @@
 <title>Thanu Yoga Studio — Online Yoga Classes in English, Telugu & Kannada</title>
 <meta name="description" content="Experience transformative online yoga classes. Learn from home in English, Telugu, or Kannada. Traditional practice meets modern convenience.">
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --black:#1a1a1a;
-  --white:#fafafa;
-  --sage:#8b9d83;
-  --sand:#e8dcc4;
-  --earth:#6b5d4f;
-  --accent:#d4a574;
-  --gray:#999;
+  --black:#0a0a0a;
+  --charcoal:#2a2a2a;
+  --mid-gray:#6a6a6a;
+  --light-gray:#e5e5e5;
+  --off-white:#fafaf9;
+  --sage:#7a8f7e;
+  --terracotta:#c17a6f;
+  --accent-gradient:linear-gradient(135deg,#7a8f7e 0%,#c17a6f 100%);
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
 
 body{
-  font-family:'Space Grotesk',sans-serif;
-  background:var(--white);
-  color:var(--black);
+  font-family:'Inter',sans-serif;
+  background:var(--off-white);
+  color:var(--charcoal);
   line-height:1.7;
   overflow-x:hidden;
-  cursor:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
 ::selection{
@@ -37,167 +49,70 @@ body{
   color:#fff;
 }
 
-/* LOADER */
-.loader{
-  position:fixed;
-  inset:0;
-  background:var(--sage);
-  z-index:10000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:30px;
-}
-.loader-symbol{
-  width:80px;
-  height:80px;
-  border:2px solid rgba(255,255,255,0.3);
-  border-radius:50%;
-  position:relative;
-  animation:rotate 3s linear infinite;
-}
-.loader-symbol::before,
-.loader-symbol::after{
-  content:'';
-  position:absolute;
-  width:20px;
-  height:20px;
-  background:#fff;
-  border-radius:50%;
-  top:50%;
-  left:50%;
-}
-.loader-symbol::before{
-  transform:translate(-50%,-150%);
-}
-.loader-symbol::after{
-  transform:translate(-50%,50%);
-}
-@keyframes rotate{
-  to{transform:rotate(360deg);}
-}
-.loader-text{
-  color:#fff;
-  font-size:14px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  opacity:0.8;
-}
-.loader.done{
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 1s ease 0.5s;
-}
-
-/* CURSOR */
-.cursor{
-  position:fixed;
-  width:40px;
-  height:40px;
-  border:1px solid var(--sage);
-  border-radius:50%;
-  pointer-events:none;
-  z-index:9999;
-  mix-blend-mode:difference;
-  transition:transform 0.2s, width 0.3s, height 0.3s;
-}
-.cursor.expand{
-  width:80px;
-  height:80px;
-}
-
-/* NOISE */
-.noise{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:9998;
-  opacity:0.02;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
 /* HEADER */
 header{
   position:fixed;
-  top:0;left:0;
+  top:0;
+  left:0;
   width:100%;
-  padding:30px 60px;
+  padding:32px 80px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  transition:background 0.4s, padding 0.4s;
+  background:transparent;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
+
 header.scrolled{
-  background:rgba(250,250,250,0.95);
-  backdrop-filter:blur(10px);
-  padding:20px 60px;
-  box-shadow:0 2px 20px rgba(0,0,0,0.05);
+  background:rgba(250,250,249,0.98);
+  backdrop-filter:blur(20px);
+  padding:24px 80px;
+  border-bottom:1px solid var(--light-gray);
 }
 
 .logo{
-  font-size:22px;
-  font-weight:700;
-  color:var(--earth);
-  letter-spacing:-0.5px;
-  transition:color 0.3s;
-}
-.logo:hover{
-  color:var(--sage);
+  font-size:18px;
+  font-weight:600;
+  color:var(--black);
+  letter-spacing:-0.3px;
 }
 
 nav{
   display:flex;
-  gap:40px;
+  gap:48px;
   align-items:center;
 }
+
 nav a{
-  color:var(--earth);
+  color:var(--charcoal);
   text-decoration:none;
   font-size:14px;
   font-weight:500;
-  text-transform:uppercase;
-  letter-spacing:1px;
+  letter-spacing:0.2px;
+  transition:color 0.3s ease;
   position:relative;
-  transition:color 0.3s;
 }
-nav a::after{
-  content:'';
-  position:absolute;
-  bottom:-4px;
-  left:0;
-  width:100%;
-  height:1px;
-  background:var(--sage);
-  transform:scaleX(0);
-  transform-origin:right;
-  transition:transform 0.4s ease;
-}
+
 nav a:hover{
   color:var(--sage);
 }
-nav a:hover::after{
-  transform:scaleX(1);
-  transform-origin:left;
+
+.nav-cta{
+  padding:12px 32px;
+  background:var(--black);
+  color:#fff;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:500;
+  transition:all 0.3s ease;
+  letter-spacing:0;
 }
 
-.cta-btn{
-  padding:12px 28px;
+.nav-cta:hover{
   background:var(--sage);
-  color:#fff;
-  border-radius:100px;
-  font-size:13px;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  transition:all 0.4s;
-  text-decoration:none;
-}
-.cta-btn:hover{
-  background:var(--earth);
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(107,93,79,0.3);
+  transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(122,143,126,0.25);
 }
 
 /* HERO */
@@ -207,297 +122,241 @@ nav a:hover::after{
   align-items:center;
   justify-content:center;
   position:relative;
+  background:var(--off-white);
+  padding:0 80px;
   overflow:hidden;
-  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
 }
 
-.floating-element{
+.hero-bg-element{
   position:absolute;
+  top:15%;
+  right:10%;
+  width:400px;
+  height:400px;
+  background:var(--accent-gradient);
   border-radius:50%;
-  background:linear-gradient(135deg,var(--sage) 0%,var(--accent) 100%);
-  opacity:0.15;
+  opacity:0.08;
+  filter:blur(80px);
   animation:float 20s ease-in-out infinite;
 }
-.floating-element:nth-child(1){
-  width:300px;
-  height:300px;
-  top:10%;
-  left:5%;
-  animation-delay:0s;
-}
-.floating-element:nth-child(2){
-  width:200px;
-  height:200px;
-  bottom:15%;
-  right:10%;
-  animation-delay:3s;
-}
-.floating-element:nth-child(3){
-  width:150px;
-  height:150px;
-  top:40%;
-  right:20%;
-  animation-delay:6s;
-}
+
 @keyframes float{
   0%,100%{transform:translate(0,0) scale(1);}
-  25%{transform:translate(20px,-20px) scale(1.05);}
-  50%{transform:translate(-20px,20px) scale(0.95);}
-  75%{transform:translate(20px,10px) scale(1.02);}
+  50%{transform:translate(-30px,30px) scale(1.1);}
 }
 
 .hero-content{
+  max-width:1000px;
   text-align:center;
-  max-width:900px;
-  padding:0 40px;
   position:relative;
   z-index:1;
 }
 
 .hero-label{
-  font-size:12px;
-  letter-spacing:4px;
+  font-size:13px;
+  letter-spacing:2px;
   text-transform:uppercase;
-  color:var(--sage);
-  margin-bottom:30px;
-  overflow:hidden;
-}
-.hero-label span{
-  display:inline-block;
-  animation:slideUp 1s ease forwards;
-  animation-delay:1.8s;
-  transform:translateY(100%);
-}
-@keyframes slideUp{
-  to{transform:translateY(0);}
+  color:var(--mid-gray);
+  margin-bottom:24px;
+  font-weight:500;
 }
 
 .hero h1{
-  font-size:clamp(48px,9vw,120px);
-  font-weight:300;
+  font-size:clamp(56px,10vw,140px);
+  font-weight:600;
   line-height:1.05;
-  letter-spacing:-3px;
-  margin-bottom:30px;
-  color:var(--earth);
-}
-.hero h1 .line{
-  display:block;
-  overflow:hidden;
-}
-.hero h1 .line span{
-  display:inline-block;
-  animation:titleReveal 1.2s cubic-bezier(0.7,0,0.3,1) forwards;
-  transform:translateY(110%);
-}
-.hero h1 .line:nth-child(1) span{animation-delay:2s;}
-.hero h1 .line:nth-child(2) span{animation-delay:2.15s;}
-.hero h1 .line:nth-child(3) span{animation-delay:2.3s;}
-@keyframes titleReveal{
-  to{transform:translateY(0);}
+  letter-spacing:-4px;
+  margin-bottom:32px;
+  color:var(--black);
 }
 
 .hero-subtitle{
   font-size:clamp(18px,2vw,24px);
-  color:var(--gray);
-  margin-bottom:50px;
-  font-weight:300;
-  overflow:hidden;
-}
-.hero-subtitle span{
-  display:inline-block;
-  animation:slideUp 1s ease forwards;
-  animation-delay:2.5s;
-  transform:translateY(100%);
+  color:var(--mid-gray);
+  margin-bottom:64px;
+  font-weight:400;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.6;
 }
 
 .hero-cta{
   display:flex;
-  gap:20px;
+  gap:16px;
   justify-content:center;
-  opacity:0;
-  animation:fadeIn 1s ease forwards;
-  animation-delay:2.7s;
   flex-wrap:wrap;
-}
-@keyframes fadeIn{
-  to{opacity:1;}
 }
 
 .btn-primary{
-  padding:18px 40px;
-  background:var(--sage);
+  padding:20px 48px;
+  background:var(--black);
   color:#fff;
-  border-radius:100px;
-  font-size:15px;
-  font-weight:600;
-  text-decoration:none;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  transition:all 0.4s;
-}
-.btn-primary:hover{
-  background:var(--earth);
-  transform:translateY(-3px);
-  box-shadow:0 12px 32px rgba(107,93,79,0.3);
-}
-
-.btn-secondary{
-  padding:18px 40px;
-  border:1px solid var(--sage);
-  color:var(--earth);
-  border-radius:100px;
+  border-radius:12px;
   font-size:15px;
   font-weight:500;
   text-decoration:none;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  transition:all 0.4s;
-}
-.btn-secondary:hover{
-  background:var(--sage);
-  color:#fff;
-  border-color:var(--sage);
+  letter-spacing:0;
+  transition:all 0.3s ease;
+  border:none;
+  cursor:pointer;
 }
 
-.scroll-hint{
-  position:absolute;
-  bottom:50px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:12px;
-  font-size:11px;
+.btn-primary:hover{
+  background:var(--sage);
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(122,143,126,0.3);
+}
+
+.btn-secondary{
+  padding:20px 48px;
+  border:2px solid var(--black);
+  color:var(--black);
+  background:transparent;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:500;
+  text-decoration:none;
+  letter-spacing:0;
+  transition:all 0.3s ease;
+}
+
+.btn-secondary:hover{
+  background:var(--black);
+  color:#fff;
+}
+
+/* SECTION SPACING */
+section{
+  padding:200px 80px;
+}
+
+.section-label{
+  font-size:13px;
   letter-spacing:2px;
   text-transform:uppercase;
-  color:var(--gray);
-  animation:fadeIn 1s ease forwards;
-  animation-delay:3s;
-  opacity:0;
-}
-.scroll-hint .line{
-  width:1px;
-  height:60px;
-  background:var(--sage);
-  position:relative;
-  overflow:hidden;
-}
-.scroll-hint .line::after{
-  content:'';
-  position:absolute;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:var(--accent);
-  animation:scrollLine 2s ease-in-out infinite;
-}
-@keyframes scrollLine{
-  0%{transform:translateY(-100%);}
-  50%{transform:translateY(0);}
-  100%{transform:translateY(100%);}
+  color:var(--mid-gray);
+  margin-bottom:24px;
+  font-weight:500;
 }
 
-/* YOGA FINDER TOOL */
-.yoga-finder{
-  padding:150px 60px;
-  background:var(--earth);
-  color:#fff;
-  position:relative;
-  overflow:hidden;
+.section-title{
+  font-size:clamp(40px,6vw,72px);
+  font-weight:600;
+  letter-spacing:-3px;
+  color:var(--black);
+  margin-bottom:80px;
+  line-height:1.1;
 }
-.yoga-finder::before{
-  content:'';
-  position:absolute;
-  top:-50%;
-  right:-20%;
-  width:600px;
-  height:600px;
-  background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
-  border-radius:50%;
+
+/* YOGA FINDER */
+.yoga-finder{
+  background:#fff;
+  position:relative;
 }
 
 .finder-container{
-  max-width:1000px;
-  margin:auto;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.finder-intro{
+  text-align:center;
+  margin-bottom:100px;
+}
+
+.finder-subtitle{
+  font-size:20px;
+  color:var(--mid-gray);
+  font-weight:400;
+  max-width:600px;
+  margin:0 auto;
+}
+
+.concerns-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  margin-bottom:80px;
+}
+
+.concern-card{
+  background:var(--off-white);
+  border-radius:16px;
+  padding:48px 32px;
+  cursor:pointer;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+  border:2px solid transparent;
+  position:relative;
+  overflow:hidden;
+}
+
+.concern-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:var(--accent-gradient);
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+
+.concern-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 24px 64px rgba(0,0,0,0.08);
+}
+
+.concern-card.active{
+  background:#fff;
+  border-color:var(--sage);
+  box-shadow:0 12px 48px rgba(122,143,126,0.15);
+}
+
+.concern-card.active::before{
+  opacity:0.03;
+}
+
+.concern-icon{
+  font-size:48px;
+  margin-bottom:24px;
+  display:block;
   position:relative;
   z-index:1;
 }
 
-.finder-header{
-  text-align:center;
-  margin-bottom:60px;
-}
-.finder-label{
-  font-size:12px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:20px;
-}
-.finder-title{
-  font-size:clamp(36px,6vw,64px);
-  font-weight:600;
-  letter-spacing:-2px;
-  margin-bottom:20px;
-}
-.finder-subtitle{
-  font-size:18px;
-  color:rgba(255,255,255,0.7);
-}
-
-.body-map-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
-  margin-bottom:50px;
-}
-
-.body-part-card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:20px;
-  padding:30px;
-  transition:all 0.4s;
-  cursor:pointer;
-}
-.body-part-card:hover{
-  background:rgba(255,255,255,0.1);
-  border-color:var(--accent);
-  transform:translateY(-5px);
-}
-.body-part-card.active{
-  background:var(--sage);
-  border-color:var(--sage);
-}
-
-.body-part-icon{
-  font-size:40px;
-  margin-bottom:15px;
-}
-.body-part-name{
+.concern-name{
   font-size:20px;
   font-weight:600;
-  margin-bottom:8px;
-}
-.body-part-desc{
-  font-size:14px;
-  color:rgba(255,255,255,0.6);
+  color:var(--black);
+  margin-bottom:12px;
+  letter-spacing:-0.5px;
+  position:relative;
+  z-index:1;
 }
 
-.results-area{
-  margin-top:50px;
-  padding:40px;
-  background:rgba(255,255,255,0.08);
-  border-radius:20px;
-  backdrop-filter:blur(10px);
+.concern-desc{
+  font-size:14px;
+  color:var(--mid-gray);
+  line-height:1.6;
+  position:relative;
+  z-index:1;
+}
+
+.results-section{
+  margin-top:80px;
+  padding:80px;
+  background:var(--off-white);
+  border-radius:24px;
   display:none;
+  position:relative;
 }
-.results-area.show{
+
+.results-section.show{
   display:block;
-  animation:fadeSlideUp 0.6s ease;
+  animation:slideUp 0.6s cubic-bezier(0.4,0,0.2,1);
 }
-@keyframes fadeSlideUp{
-  from{opacity:0;transform:translateY(30px);}
+
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(40px);}
   to{opacity:1;transform:translateY(0);}
 }
 
@@ -505,523 +364,613 @@ nav a:hover::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:30px;
-  padding-bottom:20px;
-  border-bottom:1px solid rgba(255,255,255,0.2);
-}
-.results-title{
-  font-size:24px;
-  font-weight:600;
-}
-.clear-btn{
-  padding:10px 20px;
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.3);
-  border-radius:100px;
-  color:#fff;
-  font-size:13px;
-  cursor:pointer;
-  transition:all 0.3s;
-}
-.clear-btn:hover{
-  background:rgba(255,255,255,0.2);
+  margin-bottom:60px;
 }
 
-.asana-grid{
+.results-title{
+  font-size:32px;
+  font-weight:600;
+  letter-spacing:-1px;
+  color:var(--black);
+}
+
+.clear-btn{
+  padding:12px 28px;
+  background:transparent;
+  border:2px solid var(--light-gray);
+  border-radius:8px;
+  color:var(--charcoal);
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  font-family:'Inter',sans-serif;
+}
+
+.clear-btn:hover{
+  border-color:var(--charcoal);
+  background:var(--charcoal);
+  color:#fff;
+}
+
+.asanas-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(2,1fr);
+  gap:32px;
 }
 
 .asana-card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
+  background:#fff;
   border-radius:16px;
-  padding:25px;
-  transition:all 0.3s;
+  padding:40px;
+  transition:all 0.3s ease;
+  border:1px solid var(--light-gray);
 }
+
 .asana-card:hover{
-  background:rgba(255,255,255,0.08);
-  transform:translateY(-3px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.06);
+  transform:translateY(-4px);
 }
 
 .asana-name{
-  font-size:20px;
+  font-size:24px;
   font-weight:600;
+  color:var(--black);
   margin-bottom:8px;
-  color:var(--accent);
+  letter-spacing:-0.5px;
 }
+
 .asana-sanskrit{
-  font-size:14px;
+  font-size:15px;
   font-style:italic;
-  color:rgba(255,255,255,0.6);
-  margin-bottom:12px;
+  color:var(--mid-gray);
+  margin-bottom:20px;
 }
+
 .asana-benefits{
-  font-size:14px;
+  font-size:15px;
   line-height:1.7;
-  color:rgba(255,255,255,0.8);
+  color:var(--charcoal);
 }
 
 /* LANGUAGES */
 .languages{
-  padding:100px 60px;
-  background:var(--white);
+  background:var(--black);
+  color:#fff;
   text-align:center;
+  position:relative;
+  overflow:hidden;
 }
-.languages-label{
-  font-size:12px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--sage);
-  margin-bottom:20px;
+
+.languages::before{
+  content:'';
+  position:absolute;
+  top:20%;
+  left:50%;
+  transform:translateX(-50%);
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,rgba(122,143,126,0.15) 0%,transparent 70%);
+  border-radius:50%;
 }
-.languages h2{
-  font-size:clamp(32px,5vw,56px);
-  font-weight:600;
-  letter-spacing:-2px;
-  margin-bottom:50px;
-  color:var(--earth);
+
+.languages .section-title{
+  color:#fff;
+  position:relative;
+  z-index:1;
 }
-.language-cards{
-  display:flex;
-  gap:30px;
-  justify-content:center;
-  max-width:900px;
-  margin:auto;
-  flex-wrap:wrap;
+
+.language-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+  max-width:1200px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
 }
+
 .language-card{
-  flex:1;
-  min-width:250px;
-  padding:40px 30px;
-  background:#fff;
-  border:1px solid #e8e8e8;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
   border-radius:20px;
-  transition:all 0.4s;
+  padding:64px 40px;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
 }
+
 .language-card:hover{
+  background:rgba(255,255,255,0.08);
+  border-color:rgba(255,255,255,0.2);
   transform:translateY(-8px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.08);
-  border-color:var(--sage);
+  box-shadow:0 24px 64px rgba(0,0,0,0.2);
 }
-.language-icon{
-  font-size:48px;
-  margin-bottom:20px;
-}
-.language-name{
-  font-size:24px;
+
+.language-symbol{
+  font-size:72px;
+  margin-bottom:32px;
+  display:block;
   font-weight:600;
-  color:var(--earth);
-  margin-bottom:10px;
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
 }
+
+.language-name{
+  font-size:28px;
+  font-weight:600;
+  margin-bottom:16px;
+  letter-spacing:-0.5px;
+}
+
 .language-desc{
-  font-size:14px;
-  color:var(--gray);
+  font-size:15px;
+  color:rgba(255,255,255,0.6);
+  line-height:1.6;
 }
 
 /* ABOUT */
 .about{
-  padding:150px 60px;
-  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+  background:var(--off-white);
 }
+
 .about-grid{
-  max-width:1200px;
-  margin:auto;
+  max-width:1400px;
+  margin:0 auto;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:100px;
+  gap:120px;
   align-items:center;
 }
+
 .about-content h2{
-  font-size:clamp(36px,5vw,64px);
+  font-size:clamp(40px,5vw,64px);
   font-weight:600;
-  letter-spacing:-2px;
-  margin-bottom:30px;
-  color:var(--earth);
+  letter-spacing:-2.5px;
+  margin-bottom:40px;
+  color:var(--black);
+  line-height:1.1;
 }
-.about-content p{
+
+.about-text{
   font-size:18px;
-  color:var(--gray);
+  color:var(--mid-gray);
   line-height:1.8;
-  margin-bottom:20px;
+  margin-bottom:24px;
 }
-.about-features{
+
+.features-list{
   display:flex;
   flex-direction:column;
-  gap:20px;
-  margin-top:30px;
+  gap:24px;
+  margin-top:48px;
 }
+
 .feature-item{
   display:flex;
-  align-items:center;
-  gap:15px;
+  align-items:flex-start;
+  gap:20px;
 }
+
 .feature-icon{
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  background:var(--sage);
+  width:56px;
+  height:56px;
+  border-radius:12px;
+  background:var(--accent-gradient);
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:20px;
+  font-size:24px;
   flex-shrink:0;
 }
+
 .feature-text{
-  font-size:16px;
-  color:var(--earth);
+  font-size:17px;
+  color:var(--charcoal);
   font-weight:500;
+  padding-top:16px;
+  line-height:1.5;
+}
+
+.about-visual{
+  position:relative;
+  height:600px;
+  border-radius:24px;
+  background:var(--accent-gradient);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.about-visual::before{
+  content:'🧘‍♀️';
+  font-size:160px;
+  opacity:0.2;
+  position:absolute;
 }
 
 /* CLASSES */
 .classes{
-  padding:150px 60px;
-  background:var(--white);
+  background:#fff;
 }
+
 .classes-header{
-  max-width:1200px;
-  margin:0 auto 80px auto;
   text-align:center;
-}
-.classes-label{
-  font-size:12px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--sage);
-  margin-bottom:20px;
-}
-.classes-title{
-  font-size:clamp(40px,6vw,72px);
-  font-weight:600;
-  letter-spacing:-2px;
-  color:var(--earth);
+  margin-bottom:100px;
 }
 
 .classes-grid{
-  max-width:1200px;
-  margin:auto;
+  max-width:1400px;
+  margin:0 auto;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:30px;
+  gap:40px;
 }
 
 .class-card{
-  background:#fff;
-  border:1px solid #e8e8e8;
+  background:var(--off-white);
   border-radius:20px;
-  padding:40px;
-  transition:all 0.5s cubic-bezier(0.7,0,0.3,1);
+  padding:56px 40px;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+  position:relative;
+  overflow:hidden;
+  border:2px solid transparent;
 }
+
+.class-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:var(--accent-gradient);
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+
 .class-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.1);
+  transform:translateY(-12px);
+  box-shadow:0 32px 80px rgba(0,0,0,0.12);
   border-color:var(--sage);
 }
 
-.class-icon{
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  background:linear-gradient(135deg,var(--sage),var(--accent));
-  color:#fff;
+.class-card:hover::before{
+  opacity:0.05;
+}
+
+.class-icon-wrap{
+  width:80px;
+  height:80px;
+  border-radius:16px;
+  background:var(--accent-gradient);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:32px;
-  margin-bottom:25px;
+  margin-bottom:32px;
+  position:relative;
+  z-index:1;
+}
+
+.class-icon{
+  font-size:40px;
 }
 
 .class-title{
-  font-size:24px;
+  font-size:28px;
   font-weight:600;
-  margin-bottom:12px;
-  color:var(--earth);
+  margin-bottom:16px;
+  color:var(--black);
+  letter-spacing:-0.5px;
+  position:relative;
+  z-index:1;
 }
+
 .class-desc{
-  font-size:15px;
-  color:var(--gray);
+  font-size:16px;
+  color:var(--mid-gray);
   line-height:1.7;
-  margin-bottom:20px;
+  margin-bottom:32px;
+  position:relative;
+  z-index:1;
 }
+
 .class-meta{
   display:flex;
-  gap:20px;
-  font-size:13px;
-  color:var(--sage);
+  gap:24px;
+  font-size:14px;
+  color:var(--charcoal);
   font-weight:500;
-  padding-top:20px;
-  border-top:1px solid #e8e8e8;
+  padding-top:24px;
+  border-top:1px solid var(--light-gray);
+  position:relative;
+  z-index:1;
 }
 
 /* CONTACT */
 .contact{
-  padding:150px 60px;
   background:var(--sage);
   color:#fff;
   text-align:center;
 }
+
 .contact h2{
-  font-size:clamp(40px,7vw,80px);
+  font-size:clamp(48px,7vw,88px);
   font-weight:600;
-  letter-spacing:-2px;
-  margin-bottom:20px;
+  letter-spacing:-3px;
+  margin-bottom:24px;
+  line-height:1.1;
 }
-.contact p{
-  font-size:18px;
-  color:rgba(255,255,255,0.7);
-  margin-bottom:50px;
+
+.contact-subtitle{
+  font-size:20px;
+  color:rgba(255,255,255,0.8);
+  margin-bottom:80px;
   max-width:600px;
   margin-left:auto;
   margin-right:auto;
+  line-height:1.6;
 }
+
 .contact-info{
   display:flex;
-  gap:60px;
+  gap:80px;
   justify-content:center;
-  margin-bottom:50px;
+  margin-bottom:64px;
   flex-wrap:wrap;
 }
+
 .contact-item h3{
-  font-size:14px;
+  font-size:13px;
   letter-spacing:2px;
   text-transform:uppercase;
-  margin-bottom:12px;
+  margin-bottom:16px;
   opacity:0.7;
+  font-weight:500;
 }
+
 .contact-item a{
   color:#fff;
   text-decoration:none;
-  font-size:20px;
-  font-weight:500;
-  transition:color 0.3s;
+  font-size:24px;
+  font-weight:600;
+  transition:opacity 0.3s ease;
+  letter-spacing:-0.5px;
 }
+
 .contact-item a:hover{
-  color:var(--accent);
+  opacity:0.7;
+}
+
+.contact-item p{
+  color:#fff;
+  font-size:24px;
+  font-weight:600;
+  margin:0;
+  letter-spacing:-0.5px;
 }
 
 .social-links{
   display:flex;
-  gap:30px;
+  gap:20px;
   justify-content:center;
 }
+
 .social-link{
-  width:60px;
-  height:60px;
-  border:1px solid rgba(255,255,255,0.3);
-  border-radius:50%;
+  width:64px;
+  height:64px;
+  border:2px solid rgba(255,255,255,0.3);
+  border-radius:16px;
   display:flex;
   align-items:center;
   justify-content:center;
   color:#fff;
   text-decoration:none;
-  font-size:20px;
-  transition:all 0.4s;
+  font-size:24px;
+  transition:all 0.3s ease;
 }
+
 .social-link:hover{
   background:#fff;
   color:var(--sage);
-  transform:translateY(-5px);
+  border-color:#fff;
+  transform:translateY(-4px);
+}
+
+.social-link svg{
+  width:24px;
+  height:24px;
 }
 
 /* FOOTER */
 footer{
-  padding:40px 60px;
+  padding:48px 80px;
   background:var(--black);
-  color:#fff;
+  color:rgba(255,255,255,0.6);
   text-align:center;
-  font-size:13px;
+  font-size:14px;
   display:flex;
   flex-direction:column;
-  gap:15px;
+  gap:12px;
 }
+
 footer a{
   color:#fff;
   text-decoration:none;
-  opacity:0.7;
-  transition:opacity 0.3s;
-}
-footer a:hover{
-  opacity:1;
+  transition:opacity 0.3s ease;
 }
 
-/* REVEAL */
-.reveal{
-  opacity:0;
-  transform:translateY(60px);
-  transition:all 1s cubic-bezier(0.7,0,0.3,1);
-}
-.reveal.in-view{
-  opacity:1;
-  transform:translateY(0);
+footer a:hover{
+  opacity:0.7;
 }
 
 /* RESPONSIVE */
-@media(max-width:900px){
+@media(max-width:1024px){
+  header{padding:24px 40px;}
+  header.scrolled{padding:20px 40px;}
+  section{padding:120px 40px;}
+  .hero{padding:0 40px;}
+  
+  .concerns-grid{grid-template-columns:repeat(2,1fr);}
+  .language-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;gap:80px;}
+  .classes-grid{grid-template-columns:1fr;gap:32px;}
+  .asanas-grid{grid-template-columns:1fr;}
+  .results-section{padding:40px;}
+  
+  nav a:not(.nav-cta){display:none;}
+  footer{padding:40px;}
+}
+
+@media(max-width:640px){
   header{padding:20px 24px;}
-  header.scrolled{padding:15px 24px;}
-  nav{gap:16px;}
-  nav a{font-size:11px;display:none;}
-  nav a.cta-btn{display:block;}
-  .hero-content{padding:0 24px;}
-  .hero h1{line-height:1.1;}
-  .yoga-finder{padding:80px 24px;}
-  .body-map-grid{grid-template-columns:1fr;}
-  .asana-grid{grid-template-columns:1fr;}
-  .languages{padding:80px 24px;}
-  .language-cards{flex-direction:column;}
-  .about{padding:80px 24px;}
-  .about-grid{grid-template-columns:1fr;gap:50px;}
-  .classes{padding:80px 24px;}
-  .classes-grid{grid-template-columns:1fr;gap:24px;}
-  .contact{padding:80px 24px;}
-  .contact-info{flex-direction:column;gap:30px;}
-  footer{padding:30px 24px;}
+  section{padding:80px 24px;}
+  .hero{padding:0 24px;}
+  
+  .concerns-grid{grid-template-columns:1fr;gap:16px;}
+  .concern-card{padding:32px 24px;}
+  .results-section{padding:32px 24px;}
+  .contact-info{flex-direction:column;gap:40px;}
+  .hero-cta{flex-direction:column;}
+  .btn-primary,.btn-secondary{width:100%;}
+}
+
+/* SMOOTH ANIMATIONS */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  
+  .fade-in.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-symbol"></div>
-  <div class="loader-text">Thanu Yoga</div>
-</div>
-
-<!-- NOISE -->
-<div class="noise"></div>
-
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-
 <!-- HEADER -->
 <header id="header">
   <div class="logo">Thanu Yoga</div>
   <nav>
-    <a href="#finder">Yoga Finder</a>
+    <a href="#finder">Finder</a>
     <a href="#about">About</a>
     <a href="#classes">Classes</a>
     <a href="#contact">Contact</a>
-    <a href="tel:7676332452" class="cta-btn">Book Now</a>
+    <a href="tel:7676332452" class="nav-cta">Book Session</a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="floating-element"></div>
-  <div class="floating-element"></div>
-  <div class="floating-element"></div>
+  <div class="hero-bg-element"></div>
   
   <div class="hero-content">
-    <div class="hero-label"><span>Online Yoga Classes</span></div>
-    <h1>
-      <span class="line"><span>Practice Yoga</span></span>
-      <span class="line"><span>From</span></span>
-      <span class="line"><span>Anywhere</span></span>
-    </h1>
+    <p class="hero-label">Online Yoga Classes</p>
+    <h1>Practice Yoga<br>From Anywhere</h1>
     <p class="hero-subtitle">
-      <span>Transform your body and mind with personalized online sessions.</span>
+      Transform your body and mind with personalized online sessions in English, Telugu, or Kannada.
     </p>
     <div class="hero-cta">
       <a href="tel:7676332452" class="btn-primary">Start Your Journey</a>
       <a href="#finder" class="btn-secondary">Find Your Asana</a>
     </div>
   </div>
-  
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="line"></div>
-  </div>
 </section>
 
-<!-- YOGA FINDER TOOL -->
+<!-- YOGA FINDER -->
 <section class="yoga-finder" id="finder">
   <div class="finder-container">
-    <div class="finder-header reveal">
-      <p class="finder-label">Smart Yoga Finder</p>
-      <h2 class="finder-title">Find the perfect asana for your needs.</h2>
-      <p class="finder-subtitle">Select your concern and discover personalized yoga recommendations</p>
+    <div class="finder-intro fade-in">
+      <p class="section-label">Smart Yoga Finder</p>
+      <h2 class="section-title">Find the perfect asana<br>for your needs</h2>
+      <p class="finder-subtitle">Select your concern and discover personalized yoga recommendations tailored to your body and mind.</p>
     </div>
 
-    <div class="body-map-grid">
-      <div class="body-part-card reveal" data-part="stress">
-        <div class="body-part-icon">🧠</div>
-        <h3 class="body-part-name">Stress & Anxiety</h3>
-        <p class="body-part-desc">Mental tension, overthinking, worry</p>
+    <div class="concerns-grid">
+      <div class="concern-card fade-in" data-concern="stress">
+        <span class="concern-icon">🧠</span>
+        <h3 class="concern-name">Stress & Anxiety</h3>
+        <p class="concern-desc">Mental tension, overthinking, worry</p>
       </div>
 
-      <div class="body-part-card reveal" data-part="neck">
-        <div class="body-part-icon">🦴</div>
-        <h3 class="body-part-name">Neck & Shoulders</h3>
-        <p class="body-part-desc">Stiffness, tension, pain</p>
+      <div class="concern-card fade-in" data-concern="neck">
+        <span class="concern-icon">🦴</span>
+        <h3 class="concern-name">Neck & Shoulders</h3>
+        <p class="concern-desc">Stiffness, tension, pain</p>
       </div>
 
-      <div class="body-part-card reveal" data-part="back">
-        <div class="body-part-icon">💪</div>
-        <h3 class="body-part-name">Back Pain</h3>
-        <p class="body-part-desc">Lower back, upper back discomfort</p>
+      <div class="concern-card fade-in" data-concern="back">
+        <span class="concern-icon">💪</span>
+        <h3 class="concern-name">Back Pain</h3>
+        <p class="concern-desc">Lower and upper back discomfort</p>
       </div>
 
-      <div class="body-part-card reveal" data-part="legs">
-        <div class="body-part-icon">🦵</div>
-        <h3 class="body-part-name">Legs & Knees</h3>
-        <p class="body-part-desc">Pain, weakness, stiffness</p>
+      <div class="concern-card fade-in" data-concern="legs">
+        <span class="concern-icon">🦵</span>
+        <h3 class="concern-name">Legs & Knees</h3>
+        <p class="concern-desc">Pain, weakness, stiffness</p>
       </div>
 
-      <div class="body-part-card reveal" data-part="digestion">
-        <div class="body-part-icon">🫃</div>
-        <h3 class="body-part-name">Digestion Issues</h3>
-        <p class="body-part-desc">Bloating, constipation, discomfort</p>
+      <div class="concern-card fade-in" data-concern="digestion">
+        <span class="concern-icon">🫃</span>
+        <h3 class="concern-name">Digestion Issues</h3>
+        <p class="concern-desc">Bloating, constipation, discomfort</p>
       </div>
 
-      <div class="body-part-card reveal" data-part="sleep">
-        <div class="body-part-icon">😴</div>
-        <h3 class="body-part-name">Sleep Problems</h3>
-        <p class="body-part-desc">Insomnia, restlessness</p>
+      <div class="concern-card fade-in" data-concern="sleep">
+        <span class="concern-icon">😴</span>
+        <h3 class="concern-name">Sleep Problems</h3>
+        <p class="concern-desc">Insomnia, restlessness</p>
       </div>
 
-      <div class="body-part-card reveal" data-part="flexibility">
-        <div class="body-part-icon">🤸</div>
-        <h3 class="body-part-name">Flexibility</h3>
-        <p class="body-part-desc">Improve range of motion</p>
+      <div class="concern-card fade-in" data-concern="flexibility">
+        <span class="concern-icon">🤸</span>
+        <h3 class="concern-name">Flexibility</h3>
+        <p class="concern-desc">Improve range of motion</p>
       </div>
 
-      <div class="body-part-card reveal" data-part="energy">
-        <div class="body-part-icon">⚡</div>
-        <h3 class="body-part-name">Low Energy</h3>
-        <p class="body-part-desc">Fatigue, lethargy</p>
+      <div class="concern-card fade-in" data-concern="energy">
+        <span class="concern-icon">⚡</span>
+        <h3 class="concern-name">Low Energy</h3>
+        <p class="concern-desc">Fatigue, lethargy</p>
       </div>
     </div>
 
-    <div class="results-area" id="results">
+    <div class="results-section" id="results">
       <div class="results-header">
         <h3 class="results-title">Recommended Asanas</h3>
         <button class="clear-btn" onclick="clearResults()">Clear Selection</button>
       </div>
-      <div class="asana-grid" id="asanaGrid"></div>
+      <div class="asanas-grid" id="asanasGrid"></div>
     </div>
   </div>
 </section>
 
 <!-- LANGUAGES -->
 <section class="languages">
-  <p class="languages-label reveal">Classes Available In</p>
-  <h2 class="reveal">Learn in your language.</h2>
-  <div class="language-cards">
-    <div class="language-card reveal">
-      <div class="language-icon">🇬🇧</div>
+  <p class="section-label fade-in">Available Languages</p>
+  <h2 class="section-title fade-in">Learn in your<br>language</h2>
+  
+  <div class="language-grid">
+    <div class="language-card fade-in">
+      <span class="language-symbol">En</span>
       <h3 class="language-name">English</h3>
       <p class="language-desc">Comprehensive instruction in English</p>
     </div>
-    <div class="language-card reveal">
-      <div class="language-icon">తె</div>
+    
+    <div class="language-card fade-in">
+      <span class="language-symbol">తె</span>
       <h3 class="language-name">Telugu</h3>
       <p class="language-desc">తెలుగులో పూర్తి మార్గదర్శకత్వం</p>
     </div>
-    <div class="language-card reveal">
-      <div class="language-icon">ಕ</div>
+    
+    <div class="language-card fade-in">
+      <span class="language-symbol">ಕ</span>
       <h3 class="language-name">Kannada</h3>
       <p class="language-desc">ಕನ್ನಡದಲ್ಲಿ ಸಂಪೂರ್ಣ ಮಾರ್ಗದರ್ಶನ</p>
     </div>
@@ -1031,54 +980,53 @@ footer a:hover{
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-grid">
-    <div class="about-content reveal">
-      <h2>Yoga from the comfort of home.</h2>
-      <p>
+    <div class="about-content fade-in">
+      <h2>Yoga from the comfort of home</h2>
+      <p class="about-text">
         At Thanu Yoga Studio, we bring authentic yoga practice directly to you through 
         personalized online sessions. No matter where you are, experience the transformative 
         power of yoga.
       </p>
-      <p>
+      <p class="about-text">
         Our experienced instructor guides you through practices combining ancient wisdom 
         with modern convenience, helping you achieve balance in body, mind, and spirit.
       </p>
-      <div class="about-features">
+      <div class="features-list">
         <div class="feature-item">
           <div class="feature-icon">💻</div>
           <span class="feature-text">Live interactive online classes</span>
         </div>
         <div class="feature-item">
           <div class="feature-icon">🌏</div>
-          <span class="feature-text">Practice from anywhere in the world</span>
+          <span class="feature-text">Practice from anywhere</span>
         </div>
         <div class="feature-item">
           <div class="feature-icon">👤</div>
-          <span class="feature-text">Personalized attention & guidance</span>
+          <span class="feature-text">Personalized guidance</span>
         </div>
         <div class="feature-item">
           <div class="feature-icon">🗣️</div>
-          <span class="feature-text">Classes in English, Telugu & Kannada</span>
+          <span class="feature-text">Multilingual instruction</span>
         </div>
       </div>
     </div>
-    <div class="about-content reveal">
-      <div style="width:100%;padding-bottom:130%;background:linear-gradient(135deg,var(--sage),var(--accent));border-radius:20px;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;color:rgba(255,255,255,0.3);">🧘‍♀️</div>
-      </div>
-    </div>
+    
+    <div class="about-visual fade-in"></div>
   </div>
 </section>
 
 <!-- CLASSES -->
 <section class="classes" id="classes">
-  <div class="classes-header reveal">
-    <p class="classes-label">Our Classes</p>
-    <h2 class="classes-title">Find your practice.</h2>
+  <div class="classes-header fade-in">
+    <p class="section-label">Our Classes</p>
+    <h2 class="section-title">Find your practice</h2>
   </div>
   
   <div class="classes-grid">
-    <div class="class-card reveal">
-      <div class="class-icon">🧘</div>
+    <div class="class-card fade-in">
+      <div class="class-icon-wrap">
+        <span class="class-icon">🧘</span>
+      </div>
       <h3 class="class-title">Hatha Yoga</h3>
       <p class="class-desc">
         Traditional practice focusing on physical postures and breathing techniques 
@@ -1090,8 +1038,10 @@ footer a:hover{
       </div>
     </div>
     
-    <div class="class-card reveal">
-      <div class="class-icon">🌊</div>
+    <div class="class-card fade-in">
+      <div class="class-icon-wrap">
+        <span class="class-icon">🌊</span>
+      </div>
       <h3 class="class-title">Vinyasa Flow</h3>
       <p class="class-desc">
         Dynamic, flowing sequences synchronized with breath for building 
@@ -1103,8 +1053,10 @@ footer a:hover{
       </div>
     </div>
     
-    <div class="class-card reveal">
-      <div class="class-icon">🧠</div>
+    <div class="class-card fade-in">
+      <div class="class-icon-wrap">
+        <span class="class-icon">🧠</span>
+      </div>
       <h3 class="class-title">Meditation</h3>
       <p class="class-desc">
         Guided meditation practices to calm the mind, reduce stress, 
@@ -1120,24 +1072,24 @@ footer a:hover{
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <h2 class="reveal">Begin your journey today.</h2>
-  <p class="reveal">Join our online community and experience the transformative power of yoga from anywhere.</p>
+  <h2 class="fade-in">Begin your journey today</h2>
+  <p class="contact-subtitle fade-in">Join our online community and experience the transformative power of yoga.</p>
   
-  <div class="contact-info reveal">
+  <div class="contact-info fade-in">
     <div class="contact-item">
       <h3>Call / WhatsApp</h3>
       <a href="tel:7676332452">7676 332 452</a>
     </div>
     <div class="contact-item">
       <h3>Format</h3>
-      <p style="color:#fff;opacity:0.9;margin:0;font-size:20px;font-weight:500;">Online Classes</p>
+      <p>Online Classes</p>
     </div>
   </div>
   
-  <div class="social-links reveal">
-    <a href="https://www.youtube.com/@Thanuyogastudio" target="_blank" rel="noopener" class="social-link" aria-label="YouTube" title="Watch on YouTube">▶</a>
-    <a href="https://www.instagram.com/thanuyogastudio/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram" title="Follow on Instagram">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <div class="social-links fade-in">
+    <a href="https://www.youtube.com/@Thanuyogastudio" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">▶</a>
+    <a href="https://www.instagram.com/thanuyogastudio/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.509.5.902 1.105 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772c-.5.509-1.105.902-1.772 1.153-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z"/>
       </svg>
     </a>
@@ -1204,74 +1156,40 @@ const yogaDatabase = {
   ]
 };
 
-// LOADER
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('done');
-  }, 2200);
-});
-
-// CURSOR
-const cursor = document.getElementById('cursor');
-let cursorX = 0, cursorY = 0;
-let targetX = 0, targetY = 0;
-
-document.addEventListener('mousemove', (e) => {
-  targetX = e.clientX;
-  targetY = e.clientY;
-});
-
-function animateCursor() {
-  cursorX += (targetX - cursorX) * 0.1;
-  cursorY += (targetY - cursorY) * 0.1;
-  cursor.style.left = cursorX + 'px';
-  cursor.style.top = cursorY + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
-
-// Cursor hover
-const hoverElements = document.querySelectorAll('a, button, .class-card, .language-card, .body-part-card');
-hoverElements.forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-});
-
 // HEADER SCROLL
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
+  if (window.scrollY > 50) {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
   }
 });
 
-// YOGA FINDER FUNCTIONALITY
-const bodyPartCards = document.querySelectorAll('.body-part-card');
-const resultsArea = document.getElementById('results');
-const asanaGrid = document.getElementById('asanaGrid');
+// YOGA FINDER
+const concernCards = document.querySelectorAll('.concern-card');
+const resultsSection = document.getElementById('results');
+const asanasGrid = document.getElementById('asanasGrid');
 
-bodyPartCards.forEach(card => {
+concernCards.forEach(card => {
   card.addEventListener('click', function() {
-    // Toggle active state
     const wasActive = this.classList.contains('active');
     
-    bodyPartCards.forEach(c => c.classList.remove('active'));
+    concernCards.forEach(c => c.classList.remove('active'));
     
     if (!wasActive) {
       this.classList.add('active');
-      const part = this.dataset.part;
-      showAsanas(part);
+      const concern = this.dataset.concern;
+      showAsanas(concern);
     } else {
       clearResults();
     }
   });
 });
 
-function showAsanas(part) {
-  const asanas = yogaDatabase[part];
-  asanaGrid.innerHTML = '';
+function showAsanas(concern) {
+  const asanas = yogaDatabase[concern];
+  asanasGrid.innerHTML = '';
   
   asanas.forEach((asana, index) => {
     const card = document.createElement('div');
@@ -1282,30 +1200,34 @@ function showAsanas(part) {
       <p class="asana-sanskrit">${asana.sanskrit}</p>
       <p class="asana-benefits">${asana.benefits}</p>
     `;
-    asanaGrid.appendChild(card);
+    asanasGrid.appendChild(card);
   });
   
-  resultsArea.classList.add('show');
+  resultsSection.classList.add('show');
 }
 
 function clearResults() {
-  bodyPartCards.forEach(c => c.classList.remove('active'));
-  resultsArea.classList.remove('show');
-  asanaGrid.innerHTML = '';
+  concernCards.forEach(c => c.classList.remove('active'));
+  resultsSection.classList.remove('show');
+  asanasGrid.innerHTML = '';
 }
 
-// REVEAL ON SCROLL
-const reveals = document.querySelectorAll('.reveal');
-const revealOnScroll = () => {
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add('in-view');
+// INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS
+const fadeElements = document.querySelectorAll('.fade-in');
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
     }
   });
-};
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
+}, observerOptions);
+
+fadeElements.forEach(el => observer.observe(el));
 
 // SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
