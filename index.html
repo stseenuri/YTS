@@ -2,38 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Yoga by Thanu – Village Calm, City Life</title>
+  <title>Yoga by Thanu – Online Village Yoga from Hyderabad</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Slow, mindful yoga rooted in village simplicity. Gentle classes inspired by courtyards and calm mornings, from Hyderabad."
+    content="Live online yoga classes rooted in village simplicity. Small batches, three languages, real bodies. From Hyderabad to your screen."
   />
 
-  <!-- Nina-style typography: big serif + clean sans [page:0][web:80] -->
+  <!-- Clay-level type system: editorial serif + precision sans [web:69][web:71] -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      /* Village palette from earlier design [web:56][web:59] */
-      --bg-main: #f7f3ea;
-      --bg-alt: #f0e5d8;
-      --mud-brown: #553523;
-      --mud-brown-soft: #7a5540;
-      --eco-green: #4a7a4b;
-      --eco-green-soft: #789d76;
-      --terracotta: #c46a3d;
-      --border-soft: #ddcbb4;
+      /* Premium, restrained village palette [web:56][web:69] */
+      --bg-main: #faf7f2;
+      --bg-alt: #f2ebe0;
+      --bg-card: #fffcf7;
+      --mud-brown: #3d2817;
+      --mud-brown-soft: #65503e;
+      --eco-green: #3d5a3c;
+      --eco-green-soft: #5a7859;
+      --accent-terracotta: #b85c3a;
+      --border-soft: #d9cbb8;
+      --shadow-premium: 0 24px 56px rgba(61, 40, 23, 0.14);
 
-      --font-heading: "DM Serif Display", Georgia, serif;
+      --font-heading: "Playfair Display", Georgia, serif;
       --font-body: "Inter", system-ui, sans-serif;
 
-      --max-width: 1120px;
-      --radius-card: 18px;
+      --max-width: 1260px;
+      --radius-card: 20px;
+      --ease-premium: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
@@ -44,6 +47,7 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
@@ -51,7 +55,8 @@
       background: var(--bg-main);
       color: var(--mud-brown);
       -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
+      line-height: 1.65;
+      overflow-x: hidden;
     }
 
     img {
@@ -67,6 +72,7 @@
     button {
       font-family: inherit;
       cursor: pointer;
+      border: none;
     }
 
     .page {
@@ -79,46 +85,56 @@
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 40px;
     }
 
-    /* Simple sticky nav – minimal like Nina [page:0] */
+    /* Clay-style minimal nav [web:69][web:73] */
     .nav {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(247, 243, 234, 0.92);
-      border-bottom: 1px solid rgba(186, 158, 121, 0.3);
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(250, 247, 242, 0.88);
+      border-bottom: 1px solid rgba(217, 203, 184, 0.4);
+      transition: background 280ms var(--ease-premium);
+    }
+
+    .nav.scrolled {
+      background: rgba(250, 247, 242, 0.96);
+      box-shadow: 0 8px 32px rgba(61, 40, 23, 0.06);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 24px;
+      padding: 20px 40px;
     }
 
     .brand {
       font-family: var(--font-heading);
-      font-size: 16px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--mud-brown);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 32px;
       font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 0.08em;
     }
 
     .nav-links a {
       position: relative;
-      padding-bottom: 2px;
-      transition: color 160ms ease-out;
+      padding: 4px 0;
+      color: var(--mud-brown-soft);
+      transition: color 200ms var(--ease-premium);
     }
 
     .nav-links a::after {
@@ -129,7 +145,7 @@
       width: 0;
       height: 1px;
       background: var(--eco-green);
-      transition: width 180ms ease-out;
+      transition: width 240ms var(--ease-premium);
     }
 
     .nav-links a:hover {
@@ -140,107 +156,190 @@
       width: 100%;
     }
 
-    /* Nina-style stacked hero: huge type, one CTA [page:0] */
+    .btn-nav {
+      padding: 10px 24px;
+      border-radius: 999px;
+      background: var(--eco-green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 220ms var(--ease-premium);
+      box-shadow: 0 8px 24px rgba(61, 90, 60, 0.24);
+    }
+
+    .btn-nav:hover {
+      background: var(--eco-green-soft);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(61, 90, 60, 0.32);
+    }
+
+    /* Hero: premium editorial, Nina-inspired [page:0][web:73] */
     .hero {
-      min-height: 90vh;
+      min-height: 95vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 24px 100px;
+      padding: 140px 40px 100px;
       position: relative;
+      background: linear-gradient(
+        180deg,
+        rgba(250, 247, 242, 1) 0%,
+        rgba(242, 235, 224, 0.6) 100%
+      );
     }
 
-    .hero-label {
+    .hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid rgba(61, 90, 60, 0.3);
+      border-radius: 999px;
       font-size: 11px;
-      letter-spacing: 0.3em;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--eco-green);
-      margin-bottom: 24px;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(4rem, 14vw, 9rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
+      background: rgba(250, 252, 250, 0.8);
       margin-bottom: 32px;
     }
 
-    .hero-title-line {
-      display: block;
-    }
-
-    .hero-title-by {
-      font-size: clamp(2rem, 6vw, 4rem);
-      font-style: italic;
-      color: var(--mud-brown-soft);
-    }
-
-    .hero-subtitle {
-      font-size: clamp(15px, 2.2vw, 18px);
-      max-width: 560px;
-      margin: 0 auto 40px;
-      color: var(--mud-brown-soft);
-      line-height: 1.65;
-    }
-
-    .hero-cta {
-      display: inline-block;
-      padding: 14px 32px;
-      border: 1px solid var(--eco-green);
-      background: var(--eco-green);
-      color: #fdfbf7;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      border-radius: 999px;
-      transition: all 180ms ease-out;
-      box-shadow: 0 12px 28px rgba(74, 122, 75, 0.3);
-    }
-
-    .hero-cta:hover {
-      background: var(--eco-green-soft);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 36px rgba(74, 122, 75, 0.4);
-    }
-
-    .hero-meta {
-      margin-top: 32px;
-      font-size: 12px;
-      color: var(--mud-brown-soft);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-    }
-
-    .hero-pill {
-      padding: 6px 12px;
-      border: 1px dashed rgba(122, 85, 64, 0.5);
-      border-radius: 999px;
-      background: rgba(253, 250, 243, 0.8);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-pill-dot {
+    .hero-badge-dot {
       width: 6px;
       height: 6px;
       border-radius: 999px;
       background: var(--eco-green);
+      animation: pulse 2s ease-in-out infinite;
     }
 
-    /* Section style – big space, centered content [page:0][web:73] */
-    section {
-      padding: 100px 24px;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(3.2rem, 10vw, 7.5rem);
+      font-weight: 600;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      color: var(--mud-brown);
+    }
+
+    .hero-title-highlight {
+      font-style: italic;
+      color: var(--accent-terracotta);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(17px, 2.4vw, 21px);
+      line-height: 1.7;
+      color: var(--mud-brown-soft);
+      max-width: 680px;
+      margin: 0 auto 48px;
+      font-weight: 400;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn-primary {
+      padding: 16px 40px;
+      border-radius: 999px;
+      background: var(--eco-green);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 240ms var(--ease-premium);
+      box-shadow: 0 16px 40px rgba(61, 90, 60, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--eco-green-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 48px rgba(61, 90, 60, 0.36);
+    }
+
+    .btn-secondary {
+      padding: 16px 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(101, 80, 62, 0.35);
+      background: transparent;
+      color: var(--mud-brown-soft);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 240ms var(--ease-premium);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(101, 80, 62, 0.06);
+      border-color: var(--eco-green);
+      color: var(--eco-green);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--mud-brown-soft);
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .hero-stat-number {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--mud-brown);
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* How it works – premium process section [web:73][web:76] */
+    .how {
+      padding: 120px 40px;
+      background: var(--bg-card);
+    }
+
+    .section-header {
+      max-width: 740px;
+      margin: 0 auto 72px;
+      text-align: center;
     }
 
     .section-label {
       font-size: 11px;
-      letter-spacing: 0.28em;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--eco-green);
       margin-bottom: 16px;
@@ -248,233 +347,367 @@
 
     .section-title {
       font-family: var(--font-heading);
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
       margin-bottom: 20px;
-      line-height: 1.1;
+      color: var(--mud-brown);
     }
 
-    .section-content {
-      max-width: 720px;
+    .section-desc {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--mud-brown-soft);
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
-    .section-text {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--mud-brown-soft);
-      margin-bottom: 16px;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-top: 40px;
-      align-items: center;
-    }
-
-    .section-visual {
-      border-radius: 22px;
-      overflow: hidden;
+    .how-card {
+      background: var(--bg-main);
       border: 1px solid var(--border-soft);
-      min-height: 320px;
-      background: linear-gradient(135deg, rgba(85, 53, 35, 0.15), rgba(246, 241, 231, 0.9)),
-        url("https://images.pexels.com/photos/4325478/pexels-photo-4325478.jpeg?auto=compress&cs=tinysrgb&w=1200");
-      background-size: cover;
-      background-position: center;
-      filter: saturate(0.88) contrast(1.02);
+      border-radius: var(--radius-card);
+      padding: 40px 32px;
+      transition: all 280ms var(--ease-premium);
+      position: relative;
     }
 
-    /* About list */
-    .about-list {
-      list-style: none;
-      margin-top: 24px;
-      font-size: 15px;
+    .how-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(61, 90, 60, 0.4);
+      box-shadow: var(--shadow-premium);
     }
 
-    .about-list li {
+    .how-number {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-family: var(--font-heading);
+      font-size: 56px;
+      font-weight: 600;
+      color: rgba(61, 40, 23, 0.06);
+      line-height: 1;
+    }
+
+    .how-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--eco-green), var(--eco-green-soft));
       display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      margin-bottom: 10px;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 32px rgba(61, 90, 60, 0.24);
     }
 
-    .about-list-bullet {
-      margin-top: 6px;
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--eco-green);
-      flex-shrink: 0;
+    .how-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--mud-brown);
     }
 
-    /* Classes – simple card grid [page:0] */
+    .how-desc {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--mud-brown-soft);
+    }
+
+    /* Classes – product-grade cards [web:69][web:82] */
     .classes {
+      padding: 120px 40px;
       background: var(--bg-alt);
     }
 
     .classes-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
+      gap: 28px;
+      max-width: 1160px;
+      margin: 0 auto;
     }
 
     .class-card {
-      background: rgba(253, 250, 243, 0.95);
+      background: var(--bg-card);
       border: 1px solid var(--border-soft);
       border-radius: var(--radius-card);
-      padding: 24px 20px;
-      transition: transform 160ms ease-out, box-shadow 160ms ease-out, border-color 160ms ease-out;
-      box-shadow: 0 10px 24px rgba(96, 69, 45, 0.12);
+      padding: 32px 28px;
+      transition: all 280ms var(--ease-premium);
+      box-shadow: 0 12px 32px rgba(61, 40, 23, 0.08);
+      display: flex;
+      flex-direction: column;
     }
 
     .class-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(74, 122, 75, 0.6);
-      box-shadow: 0 16px 36px rgba(96, 69, 45, 0.18);
+      transform: translateY(-6px);
+      border-color: rgba(61, 90, 60, 0.5);
+      box-shadow: var(--shadow-premium);
     }
 
     .class-tag {
+      display: inline-block;
+      padding: 6px 12px;
+      border: 1px solid rgba(61, 90, 60, 0.3);
+      border-radius: 999px;
       font-size: 11px;
-      letter-spacing: 0.2em;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--eco-green);
-      margin-bottom: 12px;
-      display: block;
+      background: rgba(250, 252, 250, 0.8);
+      margin-bottom: 20px;
+      align-self: flex-start;
     }
 
     .class-title {
       font-family: var(--font-heading);
-      font-size: 22px;
-      margin-bottom: 10px;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: var(--mud-brown);
     }
 
     .class-desc {
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1.7;
       color: var(--mud-brown-soft);
-      line-height: 1.6;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
+      flex: 1;
     }
 
     .class-meta {
-      font-size: 12px;
-      color: var(--mud-brown-soft);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(217, 203, 184, 0.5);
+      font-size: 13px;
+      color: var(--mud-brown-soft);
     }
 
     .class-link {
-      font-size: 12px;
+      font-weight: 600;
+      color: var(--eco-green);
       text-decoration: underline;
       text-underline-offset: 3px;
-      color: var(--eco-green);
-      cursor: pointer;
+      text-decoration-thickness: 1px;
+      transition: color 200ms var(--ease-premium);
     }
 
-    /* Contact section [page:0] */
-    .contact-inner {
-      max-width: 640px;
+    .class-link:hover {
+      color: var(--eco-green-soft);
+    }
+
+    /* Testimonials – premium social proof [web:2][web:87] */
+    .testimonials {
+      padding: 120px 40px;
+      background: var(--bg-main);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1160px;
       margin: 0 auto;
-      text-align: center;
     }
 
-    .contact-text {
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
+      padding: 32px 28px;
+      box-shadow: 0 12px 32px rgba(61, 40, 23, 0.08);
+      transition: all 280ms var(--ease-premium);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-premium);
+    }
+
+    .testimonial-quote {
       font-size: 16px;
-      color: var(--mud-brown-soft);
-      margin-bottom: 32px;
       line-height: 1.7;
+      color: var(--mud-brown-soft);
+      margin-bottom: 24px;
+      font-style: italic;
     }
 
-    .contact-cta-row {
+    .testimonial-meta {
       display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
     }
 
-    .btn-primary {
-      padding: 14px 32px;
-      border: 1px solid var(--eco-green);
-      background: var(--eco-green);
-      color: #fdfbf7;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
       border-radius: 999px;
-      transition: all 180ms ease-out;
-      box-shadow: 0 12px 28px rgba(74, 122, 75, 0.3);
+      background: linear-gradient(135deg, #e8d5c4, var(--accent-terracotta));
+      border: 2px solid rgba(184, 92, 58, 0.3);
     }
 
-    .btn-primary:hover {
-      background: var(--eco-green-soft);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 36px rgba(74, 122, 75, 0.4);
+    .testimonial-author {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mud-brown);
     }
 
-    .btn-ghost {
-      padding: 14px 32px;
-      border: 1px solid rgba(122, 85, 64, 0.6);
-      background: transparent;
+    .testimonial-role {
+      font-size: 13px;
       color: var(--mud-brown-soft);
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      border-radius: 999px;
-      transition: all 180ms ease-out;
     }
 
-    .btn-ghost:hover {
-      background: rgba(122, 85, 64, 0.08);
-      border-color: var(--eco-green);
-      color: var(--eco-green);
-    }
-
-    /* Footer – simple like Nina [page:0] */
-    .footer {
-      padding: 32px 24px;
+    /* CTA – premium conversion section [web:73][web:76] */
+    .cta {
+      padding: 140px 40px;
+      background: linear-gradient(135deg, var(--eco-green) 0%, var(--eco-green-soft) 100%);
       text-align: center;
-      font-size: 12px;
-      color: var(--mud-brown-soft);
-      border-top: 1px solid rgba(186, 158, 121, 0.3);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 30% 50%,
+        rgba(255, 255, 255, 0.12) 0%,
+        transparent 60%
+      );
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    .cta-subtitle {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .cta-btn {
+      padding: 18px 48px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--eco-green);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 240ms var(--ease-premium);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28);
+    }
+
+    /* Footer – Clay-style minimal [web:69] */
+    .footer {
+      padding: 56px 40px 40px;
+      background: var(--mud-brown);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 48px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 280px;
+      line-height: 1.6;
     }
 
     .footer-links {
       display: flex;
-      gap: 16px;
-      justify-content: center;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
+      gap: 56px;
     }
 
-    .footer-links a {
-      position: relative;
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 16px;
     }
 
-    .footer-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0;
-      height: 1px;
-      background: var(--eco-green);
-      transition: width 160ms ease-out;
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .footer-links a:hover::after {
-      width: 100%;
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 200ms var(--ease-premium);
     }
 
-    /* Scroll reveal – Nina-style gentle fade [page:0] */
+    .footer-col a:hover {
+      color: var(--eco-green-soft);
+    }
+
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Scroll reveals [page:0][web:87] */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 480ms cubic-bezier(0.4, 0, 0.2, 1),
-                  transform 480ms cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(32px);
+      transition: opacity 520ms var(--ease-premium),
+                  transform 520ms var(--ease-premium);
     }
 
     .reveal.visible {
@@ -483,44 +716,65 @@
     }
 
     /* Responsive [web:83][web:89] */
-    @media (max-width: 960px) {
-      .section-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .classes-grid {
+    @media (max-width: 1024px) {
+      .how-grid,
+      .classes-grid,
+      .testimonials-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .hero {
-        padding: 60px 20px 80px;
+      .container {
+        padding: 0 32px;
       }
 
-      section {
-        padding: 80px 20px;
+      .nav-inner {
+        padding: 18px 32px;
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
 
-      .hero-title {
-        font-size: 3.5rem;
+      .hero {
+        padding: 120px 24px 80px;
       }
 
-      .classes-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-cta-row {
+      .hero-cta-row {
         flex-direction: column;
+        width: 100%;
       }
 
       .btn-primary,
-      .btn-ghost {
+      .btn-secondary {
         width: 100%;
+        max-width: 360px;
+      }
+
+      .how-grid,
+      .classes-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .how,
+      .classes,
+      .testimonials {
+        padding: 80px 24px;
+      }
+
+      .cta {
+        padding: 100px 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 32px;
       }
     }
   </style>
@@ -528,81 +782,102 @@
 <body>
   <div class="page">
     <!-- NAV -->
-    <header class="nav">
-      <div class="container nav-inner">
+    <header class="nav" id="nav">
+      <div class="nav-inner">
         <a href="#top" class="brand">Yoga by Thanu</a>
         <nav class="nav-links">
-          <a href="#about">About</a>
+          <a href="#how">How it works</a>
           <a href="#classes">Classes</a>
-          <a href="#contact">Contact</a>
+          <a href="#testimonials">Reviews</a>
+          <button class="btn-nav" onclick="scrollToCTA()">Book a class</button>
         </nav>
       </div>
     </header>
 
     <main id="top">
-      <!-- HERO – Nina-style stacked [page:0] -->
+      <!-- HERO -->
       <section class="hero">
-        <div class="container">
-          <div class="hero-label reveal">Hyderabad • Village-inspired studio</div>
+        <div class="hero-inner">
+          <div class="hero-badge reveal">
+            <span class="hero-badge-dot"></span>
+            Live online yoga • Hyderabad
+          </div>
           <h1 class="hero-title reveal">
-            <span class="hero-title-line">YOGA</span>
-            <span class="hero-title-line hero-title-by">by</span>
-            <span class="hero-title-line">THANU</span>
+            Yoga rooted in<br />
+            <span class="hero-title-highlight">village simplicity</span>
           </h1>
           <p class="hero-subtitle reveal">
-            Slow, mindful yoga rooted in village simplicity. Classes that feel
-            like stretching in your nani's courtyard — soft, grounded, and
-            honest.
+            Small-batch online classes that feel like stretching in your
+            nani's courtyard. Gentle, grounded, and taught in three languages
+            from Hyderabad to your screen.
           </p>
-          <a href="#about" class="hero-cta reveal">Meet your instructor</a>
-          <div class="hero-meta reveal">
-            <div class="hero-pill">
-              <span class="hero-pill-dot"></span>
-              In-studio &amp; online
+          <div class="hero-cta-row reveal">
+            <button class="btn-primary" onclick="scrollToCTA()">
+              Book your free trial
+            </button>
+            <button class="btn-secondary" onclick="scrollToClasses()">
+              Browse classes
+            </button>
+          </div>
+          <div class="hero-stats reveal">
+            <div class="hero-stat">
+              <div class="hero-stat-number">250+</div>
+              <div class="hero-stat-label">Students</div>
             </div>
-            <div class="hero-pill">
-              <span class="hero-pill-dot"></span>
-              English • తెలుగు • ಕನ್ನಡ
+            <div class="hero-stat">
+              <div class="hero-stat-number">12</div>
+              <div class="hero-stat-label">Weekly sessions</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">3</div>
+              <div class="hero-stat-label">Languages</div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ABOUT -->
-      <section id="about">
-        <div class="container section-content">
-          <div class="section-label reveal">About Thanu</div>
-          <h2 class="section-title reveal">Village heart,<br />city studio</h2>
-          <p class="section-text reveal">
-            Thanu grew up around courtyards, open skies, and slow mornings where
-            simple stretches, chai, and quiet conversations blended into one
-            ritual. Yoga by Thanu brings that feeling into modern city lives.
-          </p>
-          <p class="section-text reveal">
-            Expect soft cues, a mix of Indian and global music, and plenty of
-            options if you're stiff, recovering, or starting for the first time.
-            This isn't a performance studio — it's practice that can stay with
-            you like home.
-          </p>
+      <!-- HOW IT WORKS -->
+      <section id="how" class="how">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-label">How it works</div>
+            <h2 class="section-title">Join from anywhere,<br />practice like home</h2>
+            <p class="section-desc">
+              Three simple steps to start your practice. No studio commute, no
+              heavy equipment. Just you, your mat, and a calm Zoom session.
+            </p>
+          </div>
 
-          <div class="section-grid">
-            <div class="reveal">
-              <ul class="about-list">
-                <li>
-                  <div class="about-list-bullet"></div>
-                  <span>Beginner friendly with variations for knees, hips, and back.</span>
-                </li>
-                <li>
-                  <div class="about-list-bullet"></div>
-                  <span>Small, cozy batches for individual attention and safer postures.</span>
-                </li>
-                <li>
-                  <div class="about-list-bullet"></div>
-                  <span>Seasonal practices inspired by Indian rhythms — summer cooling, monsoon grounding, festive unwinds.</span>
-                </li>
-              </ul>
-            </div>
-            <div class="section-visual reveal"></div>
+          <div class="how-grid">
+            <article class="how-card reveal">
+              <div class="how-number">01</div>
+              <div class="how-icon">📅</div>
+              <h3 class="how-title">Pick your class</h3>
+              <p class="how-desc">
+                Choose from morning flows, evening unwinds, or weekend gentle
+                sessions. All levels welcome, small batches only.
+              </p>
+            </article>
+
+            <article class="how-card reveal">
+              <div class="how-number">02</div>
+              <div class="how-icon">📱</div>
+              <h3 class="how-title">Get Zoom link</h3>
+              <p class="how-desc">
+                Instant WhatsApp confirmation with Zoom link, class prep
+                checklist, and a short intro to Thanu's teaching style.
+              </p>
+            </article>
+
+            <article class="how-card reveal">
+              <div class="how-number">03</div>
+              <div class="how-icon">🧘</div>
+              <h3 class="how-title">Join & practice</h3>
+              <p class="how-desc">
+                Show up with your mat. Thanu guides you through soft postures,
+                breath, and rest — like a village morning, from your room.
+              </p>
+            </article>
           </div>
         </div>
       </section>
@@ -610,95 +885,174 @@
       <!-- CLASSES -->
       <section id="classes" class="classes">
         <div class="container">
-          <div class="section-content">
-            <div class="section-label reveal">Classes</div>
-            <h2 class="section-title reveal">Designed for<br />real bodies</h2>
-            <p class="section-text reveal">
-              Simple, slow sessions inspired by Indian daily life: sleepy
-              mornings, long workdays, busy parents, and joints that need extra
-              kindness.
+          <div class="section-header reveal">
+            <div class="section-label">Classes</div>
+            <h2 class="section-title">Designed for real bodies</h2>
+            <p class="section-desc">
+              Slow, accessible sessions inspired by Indian daily life. No
+              Instagram poses, just honest movement that fits your routine.
             </p>
           </div>
 
           <div class="classes-grid">
             <article class="class-card reveal">
-              <span class="class-tag">Morning • Courtyard flow</span>
+              <span class="class-tag">Morning • Beginner</span>
               <h3 class="class-title">Sunrise Angan Flow</h3>
               <p class="class-desc">
-                Gentle standing and floor postures designed to wake you up like
-                stepping into the verandah with your first chai.
+                Gentle standing and floor postures designed to wake you up
+                softly, like stepping into the verandah with your first chai.
               </p>
               <div class="class-meta">
                 <span>45 mins • Mon, Wed, Fri</span>
-                <button class="class-link" onclick="scrollToContact()">Book</button>
+                <button class="class-link" onclick="scrollToCTA()">Book now</button>
               </div>
             </article>
 
             <article class="class-card reveal">
-              <span class="class-tag">Evening • Gentle unwind</span>
+              <span class="class-tag">Evening • Gentle</span>
               <h3 class="class-title">Nidra Night Unwind</h3>
               <p class="class-desc">
                 Slow floor stretches plus yoga nidra to release the day and
-                invite deep, village-style sleep.
+                prepare for deep, village-style sleep.
               </p>
               <div class="class-meta">
                 <span>60 mins • Tue, Thu</span>
-                <button class="class-link" onclick="scrollToContact()">Book</button>
+                <button class="class-link" onclick="scrollToCTA()">Book now</button>
               </div>
             </article>
 
             <article class="class-card reveal">
-              <span class="class-tag">Weekend • Desi moms</span>
+              <span class="class-tag">Weekend • All levels</span>
               <h3 class="class-title">Desi Maa Gentle Yoga</h3>
               <p class="class-desc">
-                Low-impact movements focused on back, knees, and hips — perfect
+                Low-impact movements focused on back, knees, and hips. Perfect
                 for moms, aunties, and anyone starting again.
               </p>
               <div class="class-meta">
                 <span>45 mins • Sat, Sun</span>
-                <button class="class-link" onclick="scrollToContact()">Book</button>
+                <button class="class-link" onclick="scrollToCTA()">Book now</button>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- CONTACT -->
-      <section id="contact">
-        <div class="container contact-inner">
-          <div class="section-label reveal">Contact</div>
-          <h2 class="section-title reveal">Start with one<br />calm session</h2>
-          <p class="contact-text reveal">
-            Share a few details and choose a class that feels right. You'll
-            receive a WhatsApp confirmation with directions or Zoom link, and a
-            small checklist to prepare your space.
-          </p>
-          <div class="contact-cta-row reveal">
-            <button class="btn-primary" onclick="alert('Book via WhatsApp: +91 XXXXXXXXXX')">
-              Book a class
-            </button>
-            <button class="btn-ghost" onclick="window.open('https://wa.me/91XXXXXXXXXX','_blank')">
-              WhatsApp Thanu
-            </button>
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" class="testimonials">
+        <div class="container">
+          <div class="section-header reveal">
+            <div class="section-label">What students say</div>
+            <h2 class="section-title">It feels like home</h2>
+            <p class="section-desc">
+              People who thought yoga was only for flexible folks found a
+              softer, more honest way to move with Thanu.
+            </p>
           </div>
+
+          <div class="testimonials-grid">
+            <article class="testimonial-card reveal">
+              <p class="testimonial-quote">
+                "After years of back pain, this is the first space where I
+                don't feel judged for moving slowly. It honestly feels like
+                stretching in my nani's house."
+              </p>
+              <div class="testimonial-meta">
+                <div class="testimonial-avatar"></div>
+                <div>
+                  <div class="testimonial-author">Shreya M.</div>
+                  <div class="testimonial-role">New to yoga</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card reveal">
+              <p class="testimonial-quote">
+                "The village touches make everything feel familiar. No
+                performance, just practice. My mom and I join together on
+                weekends."
+              </p>
+              <div class="testimonial-meta">
+                <div class="testimonial-avatar"></div>
+                <div>
+                  <div class="testimonial-author">Sana K.</div>
+                  <div class="testimonial-role">Weekend batch</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card reveal">
+              <p class="testimonial-quote">
+                "Classes are calm, the pace is real-life, and Thanu's cues are
+                clear. I join from my 1BHK in Bangalore — feels like home."
+              </p>
+              <div class="testimonial-meta">
+                <div class="testimonial-avatar"></div>
+                <div>
+                  <div class="testimonial-author">Rahul P.</div>
+                  <div class="testimonial-role">Remote worker</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta">
+        <div class="cta-inner">
+          <h2 class="cta-title reveal">Start with one calm session</h2>
+          <p class="cta-subtitle reveal">
+            Your first trial class is free. No credit card, no commitment. Just
+            one session to see if village-style yoga fits your life.
+          </p>
+          <button class="cta-btn reveal" onclick="alert('Book via WhatsApp: +91 XXXXXXXXXX')">
+            Book your free trial
+          </button>
         </div>
       </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="footer">
-      <div class="container">
-        <div class="footer-links">
-          <a href="#about">About</a>
-          <a href="#classes">Classes</a>
-          <a href="#contact">Contact</a>
-          <a href="#">Terms</a>
-          <a href="#">Privacy</a>
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Yoga by Thanu</div>
+          <p class="footer-tagline">
+            Live online yoga rooted in village simplicity. From Hyderabad to
+            your screen, in English, Telugu, and Kannada.
+          </p>
         </div>
-        <p>
-          &copy; <span id="year"></span> Yoga by Thanu. Made with love in
-          Hyderabad, inspired by our villages.
-        </p>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Classes</h4>
+            <ul>
+              <li><a href="#classes">Morning Flow</a></li>
+              <li><a href="#classes">Evening Unwind</a></li>
+              <li><a href="#classes">Weekend Gentle</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="#">WhatsApp</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">YouTube</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Refunds</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Yoga by Thanu. Made with love in Hyderabad.</p>
       </div>
     </footer>
   </div>
@@ -707,13 +1061,28 @@
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Scroll to contact
-    function scrollToContact() {
-      var el = document.getElementById("contact");
+    // Scroll helpers
+    function scrollToCTA() {
+      var el = document.querySelector(".cta");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    // Reveal on scroll – Nina-style subtle [page:0]
+    function scrollToClasses() {
+      var el = document.getElementById("classes");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // Nav scroll effect
+    var nav = document.getElementById("nav");
+    window.addEventListener("scroll", function() {
+      if (window.scrollY > 80) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    });
+
+    // Reveal on scroll
     var revealEls = document.querySelectorAll(".reveal");
     var observer = new IntersectionObserver(
       function (entries) {
@@ -724,7 +1093,7 @@
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
 
     revealEls.forEach(function (el) {
