@@ -2,28 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Yoga by Thanu – A Village Yoga Story</title>
+  <title>Yoga by Thanu – A Village Yoga Odyssey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Symmetrical, whimsical online yoga classes inspired by village courtyards. Live sessions from Hyderabad in English, Telugu, and Kannada."
+    content="Cinematic online yoga classes with village soul. Live sessions from Hyderabad with epic visuals and intimate teaching in three languages."
   />
 
-  <!-- Wes Anderson typography: vintage serif + precise sans -->
+  <!-- Wes Anderson typography meets cinematic scale -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;1,400&family=Futura+PT:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;1,400&family=Archivo:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      /* Wes Anderson palette: pastels + earthy accents inspired by Grand Budapest / Darjeeling Limited */
+      /* Wes Anderson pastels [web:56] */
       --cream: #f4ebe1;
       --pale-pink: #f7d4c8;
       --dusty-rose: #d4a5a0;
@@ -36,15 +32,18 @@
       --charcoal: #2e2823;
       --warm-brown: #5a4a3a;
 
+      /* Cameron-style depth & glow */
+      --glow-green: rgba(168, 184, 157, 0.6);
+      --glow-orange: rgba(217, 120, 80, 0.5);
+      --shadow-epic: 0 32px 80px rgba(46, 40, 35, 0.3);
+      --shadow-deep: 0 48px 120px rgba(46, 40, 35, 0.45);
+
       --font-heading: "Bodoni Moda", Georgia, serif;
-      --font-body: "Archivo", "Futura PT", "Helvetica Neue", sans-serif;
+      --font-body: "Archivo", "Helvetica Neue", sans-serif;
 
       --border-width: 2px;
-      --border-style: solid;
       --radius-card: 8px;
-      --max-width: 1200px;
-      
-      --shadow-wes: 0 8px 24px rgba(46, 40, 35, 0.15);
+      --max-width: 1400px;
     }
 
     * {
@@ -55,14 +54,16 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
       font-family: var(--font-body);
-      background: var(--cream);
-      color: var(--charcoal);
+      background: var(--charcoal);
+      color: var(--cream);
       -webkit-font-smoothing: antialiased;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     img {
@@ -78,36 +79,88 @@
     button {
       font-family: inherit;
       cursor: pointer;
+      border: none;
     }
 
     .page {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
-    /* Wes Anderson symmetry: centered containers with strict alignment */
+    /* Cameron-style atmospheric background with depth layers */
+    .ambient-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(
+        ellipse at 50% 20%,
+        rgba(168, 184, 157, 0.15) 0%,
+        rgba(46, 40, 35, 0.95) 60%,
+        #2e2823 100%
+      );
+      animation: ambientPulse 12s ease-in-out infinite;
+    }
+
+    @keyframes ambientPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+
+    /* Floating particles – Cameron bioluminescence style */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: 
+        radial-gradient(2px 2px at 20% 30%, var(--glow-green), transparent),
+        radial-gradient(2px 2px at 60% 70%, var(--glow-orange), transparent),
+        radial-gradient(1px 1px at 50% 50%, var(--glow-green), transparent),
+        radial-gradient(1px 1px at 80% 10%, var(--glow-orange), transparent),
+        radial-gradient(2px 2px at 90% 60%, var(--glow-green), transparent);
+      background-size: 200% 200%;
+      animation: particleFloat 20s linear infinite;
+      opacity: 0.4;
+    }
+
+    @keyframes particleFloat {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
+    }
+
     .container {
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 40px;
     }
 
-    /* Nav: centered, precise, with border [web:73] */
+    /* Nav: Wes symmetry with Cameron depth */
     .nav {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      background: var(--pale-pink);
-      border-bottom: var(--border-width) var(--border-style) var(--charcoal);
+      background: rgba(247, 212, 200, 0.12);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: var(--border-width) solid rgba(244, 235, 225, 0.2);
+      transition: all 400ms ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(247, 212, 200, 0.95);
+      border-bottom-color: var(--charcoal);
+      box-shadow: 0 16px 48px rgba(46, 40, 35, 0.6);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 32px;
+      padding: 20px 40px;
     }
 
     .brand {
@@ -116,405 +169,545 @@
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
+      color: var(--cream);
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .nav.scrolled .brand {
       color: var(--charcoal);
+      text-shadow: none;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 32px;
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
     .nav-links a {
+      color: var(--cream);
+      transition: all 240ms ease;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav.scrolled .nav-links a {
       color: var(--warm-brown);
-      transition: color 200ms ease;
+      text-shadow: none;
     }
 
     .nav-links a:hover {
-      color: var(--terracotta);
+      color: var(--burnt-orange);
+      text-shadow: 0 0 20px var(--glow-orange);
     }
 
     .btn-nav {
-      padding: 10px 24px;
-      background: var(--mustard);
-      color: var(--charcoal);
-      border: var(--border-width) var(--border-style) var(--charcoal);
+      padding: 10px 28px;
+      background: var(--terracotta);
+      color: #fff;
+      border: var(--border-width) solid var(--charcoal);
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      transition: all 180ms ease;
+      transition: all 280ms ease;
+      box-shadow: 0 8px 24px rgba(197, 123, 87, 0.5), 0 0 40px var(--glow-orange);
     }
 
     .btn-nav:hover {
       background: var(--burnt-orange);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(217, 120, 80, 0.6), 0 0 60px var(--glow-orange);
     }
 
-    /* Hero: perfectly centered, symmetrical, framed like a movie poster */
+    /* Hero: Cameron-scale epic with Wes color blocking */
     .hero {
-      min-height: 85vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 80px 32px;
-      background: linear-gradient(180deg, var(--cream) 0%, var(--pale-pink) 100%);
-      border-bottom: var(--border-width) var(--border-style) var(--charcoal);
+      padding: 140px 40px 100px;
       position: relative;
+      background: linear-gradient(
+        180deg,
+        rgba(46, 40, 35, 0.7) 0%,
+        rgba(212, 165, 160, 0.3) 50%,
+        rgba(46, 40, 35, 0.9) 100%
+      );
+      overflow: hidden;
     }
 
-    /* Wes Anderson frame: geometric border insets */
+    /* Cameron light rays */
     .hero::before {
       content: "";
       position: absolute;
-      inset: 24px;
-      border: var(--border-width) var(--border-style) rgba(46, 40, 35, 0.2);
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 200%;
+      background: 
+        linear-gradient(90deg, transparent 0%, rgba(227, 175, 75, 0.15) 50%, transparent 100%),
+        linear-gradient(120deg, transparent 0%, rgba(168, 184, 157, 0.12) 50%, transparent 100%);
+      animation: epicRays 10s ease-in-out infinite;
       pointer-events: none;
     }
 
+    @keyframes epicRays {
+      0%, 100% { transform: translateX(-50%) rotate(0deg); }
+      50% { transform: translateX(-50%) rotate(8deg); }
+    }
+
+    /* Wes frame + Cameron depth */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 32px;
+      border: var(--border-width) solid rgba(244, 235, 225, 0.3);
+      pointer-events: none;
+      box-shadow: inset 0 0 80px rgba(168, 184, 157, 0.2);
+    }
+
     .hero-inner {
-      max-width: 720px;
+      max-width: 1000px;
       position: relative;
-      z-index: 1;
+      z-index: 10;
     }
 
     .hero-chapter {
       display: inline-block;
-      padding: 8px 20px;
-      background: var(--mint-green);
-      border: var(--border-width) var(--border-style) var(--charcoal);
+      padding: 10px 24px;
+      background: rgba(196, 213, 195, 0.25);
+      backdrop-filter: blur(12px);
+      border: var(--border-width) solid rgba(244, 235, 225, 0.4);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      margin-bottom: 32px;
-      color: var(--charcoal);
+      margin-bottom: 40px;
+      color: var(--mint-green);
+      box-shadow: 0 8px 32px rgba(168, 184, 157, 0.3), 0 0 60px var(--glow-green);
+      animation: chapterGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes chapterGlow {
+      0%, 100% { box-shadow: 0 8px 32px rgba(168, 184, 157, 0.3), 0 0 60px var(--glow-green); }
+      50% { box-shadow: 0 12px 48px rgba(168, 184, 157, 0.5), 0 0 90px var(--glow-green); }
     }
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-size: clamp(3.5rem, 12vw, 8rem);
       font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: 0.02em;
-      margin-bottom: 24px;
-      color: var(--charcoal);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+      color: var(--cream);
+      text-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 80px rgba(227, 175, 75, 0.4);
+      animation: titleReveal 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes titleReveal {
+      from { opacity: 0; transform: translateY(80px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .hero-subtitle {
-      font-size: clamp(16px, 2.2vw, 19px);
-      line-height: 1.7;
-      color: var(--warm-brown);
-      margin-bottom: 40px;
+      font-size: clamp(17px, 2.4vw, 21px);
+      line-height: 1.75;
+      color: var(--pale-pink);
+      max-width: 760px;
+      margin: 0 auto 56px;
       font-weight: 500;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
     }
 
     .hero-cta-row {
       display: flex;
-      gap: 16px;
+      gap: 20px;
       justify-content: center;
       flex-wrap: wrap;
+      margin-bottom: 72px;
     }
 
     .btn-primary {
-      padding: 14px 36px;
+      padding: 18px 48px;
       background: var(--terracotta);
       color: #fff;
-      border: var(--border-width) var(--border-style) var(--charcoal);
-      font-size: 12px;
+      border: var(--border-width) solid var(--charcoal);
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      transition: all 180ms ease;
-      box-shadow: 4px 4px 0 var(--charcoal);
+      transition: all 300ms ease;
+      box-shadow: 6px 6px 0 var(--charcoal), 0 12px 40px rgba(197, 123, 87, 0.5), 0 0 60px var(--glow-orange);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: translateX(-100%);
+      transition: transform 600ms ease;
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(100%);
     }
 
     .btn-primary:hover {
       background: var(--burnt-orange);
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--charcoal);
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0 var(--charcoal), 0 20px 60px rgba(217, 120, 80, 0.7), 0 0 100px var(--glow-orange);
     }
 
     .btn-secondary {
-      padding: 14px 36px;
-      background: var(--cream);
-      color: var(--charcoal);
-      border: var(--border-width) var(--border-style) var(--charcoal);
-      font-size: 12px;
+      padding: 18px 48px;
+      background: rgba(244, 235, 225, 0.15);
+      backdrop-filter: blur(12px);
+      color: var(--cream);
+      border: var(--border-width) solid rgba(244, 235, 225, 0.4);
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      transition: all 180ms ease;
-      box-shadow: 4px 4px 0 var(--charcoal);
+      transition: all 300ms ease;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
     }
 
     .btn-secondary:hover {
-      background: var(--pale-pink);
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--charcoal);
+      background: rgba(247, 212, 200, 0.3);
+      border-color: var(--pale-pink);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 60px var(--glow-green);
     }
 
-    /* Ornamental divider */
-    .ornament {
-      margin: 48px auto;
-      width: 80px;
-      height: 2px;
-      background: var(--charcoal);
-      position: relative;
+    /* Stats with Cameron HUD style */
+    .hero-stats {
+      display: flex;
+      gap: 64px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .ornament::before,
-    .ornament::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 8px;
-      height: 8px;
-      border: var(--border-width) var(--border-style) var(--charcoal);
-      background: var(--mustard);
-      transform: translateY(-50%) rotate(45deg);
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 20px 32px;
+      background: rgba(196, 213, 195, 0.15);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(244, 235, 225, 0.3);
+      border-radius: 4px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(168, 184, 157, 0.15);
     }
 
-    .ornament::before {
-      left: -16px;
+    .hero-stat-number {
+      font-family: var(--font-heading);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--mustard);
+      text-shadow: 0 4px 16px rgba(227, 175, 75, 0.8), 0 0 40px var(--glow-orange);
     }
 
-    .ornament::after {
-      right: -16px;
+    .hero-stat-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
     }
 
-    /* Section: symmetrical, color-blocked backgrounds */
+    /* Section: Wes color blocks + Cameron cinematic scale */
     section {
-      padding: 100px 32px;
+      padding: 140px 40px;
       position: relative;
+      border-top: var(--border-width) solid rgba(244, 235, 225, 0.2);
     }
 
     .section-header {
       text-align: center;
-      max-width: 700px;
-      margin: 0 auto 64px;
+      max-width: 800px;
+      margin: 0 auto 80px;
+      position: relative;
+      z-index: 1;
     }
 
     .section-chapter {
       display: inline-block;
-      padding: 6px 16px;
-      background: var(--sage);
-      border: var(--border-width) var(--border-style) var(--charcoal);
+      padding: 8px 20px;
+      background: rgba(168, 184, 157, 0.2);
+      backdrop-filter: blur(12px);
+      border: var(--border-width) solid rgba(168, 184, 157, 0.4);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      color: var(--charcoal);
+      margin-bottom: 24px;
+      color: var(--mint-green);
+      box-shadow: 0 8px 24px rgba(168, 184, 157, 0.3), 0 0 40px var(--glow-green);
     }
 
     .section-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
       font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      color: var(--charcoal);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: var(--cream);
+      text-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
     }
 
     .section-desc {
-      font-size: 17px;
-      line-height: 1.7;
-      color: var(--warm-brown);
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--pale-pink);
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
     }
 
-    /* How it works: tri-panel symmetry */
+    /* How: tri-panel with depth */
     .how {
-      background: var(--mint-green);
-      border-top: var(--border-width) var(--border-style) var(--charcoal);
-      border-bottom: var(--border-width) var(--border-style) var(--charcoal);
+      background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(212, 165, 160, 0.15) 0%,
+        rgba(46, 40, 35, 0.95) 70%
+      );
     }
 
     .how-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      max-width: 1100px;
+      gap: 32px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
     .how-card {
-      background: var(--cream);
-      border-right: var(--border-width) var(--border-style) var(--charcoal);
-      padding: 48px 32px;
+      background: rgba(244, 235, 225, 0.08);
+      backdrop-filter: blur(20px);
+      border: var(--border-width) solid rgba(244, 235, 225, 0.3);
+      padding: 56px 40px;
       text-align: center;
+      transition: all 400ms ease;
+      box-shadow: var(--shadow-epic);
       position: relative;
-      transition: background 200ms ease;
+      overflow: hidden;
     }
 
-    .how-card:last-child {
-      border-right: none;
+    .how-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 50% 0%,
+        rgba(168, 184, 157, 0.15) 0%,
+        transparent 60%
+      );
+      opacity: 0;
+      transition: opacity 400ms ease;
+    }
+
+    .how-card:hover::before {
+      opacity: 1;
     }
 
     .how-card:hover {
-      background: var(--pale-pink);
+      transform: translateY(-12px);
+      border-color: var(--sage);
+      box-shadow: var(--shadow-deep), 0 0 80px var(--glow-green);
     }
 
     .how-number {
       font-family: var(--font-heading);
-      font-size: 72px;
+      font-size: 96px;
       font-weight: 700;
-      color: rgba(46, 40, 35, 0.1);
+      color: rgba(244, 235, 225, 0.08);
       line-height: 1;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
     .how-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 24px;
-      background: var(--mustard);
-      border: var(--border-width) var(--border-style) var(--charcoal);
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 32px;
+      background: linear-gradient(135deg, var(--terracotta), var(--burnt-orange));
+      border: var(--border-width) solid var(--charcoal);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
-      box-shadow: 4px 4px 0 var(--charcoal);
+      font-size: 36px;
+      box-shadow: 4px 4px 0 var(--charcoal), 0 12px 36px rgba(197, 123, 87, 0.5), 0 0 60px var(--glow-orange);
     }
 
     .how-title {
       font-family: var(--font-heading);
-      font-size: 22px;
+      font-size: 26px;
       font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--charcoal);
+      margin-bottom: 16px;
+      color: var(--cream);
     }
 
     .how-desc {
-      font-size: 15px;
-      line-height: 1.65;
-      color: var(--warm-brown);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--pale-pink);
     }
 
-    /* Classes: card grid with Wes Anderson borders */
+    /* Classes: cinematic cards */
     .classes {
-      background: var(--pale-pink);
-      border-bottom: var(--border-width) var(--border-style) var(--charcoal);
+      background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(168, 184, 157, 0.12) 0%,
+        rgba(46, 40, 35, 1) 70%
+      );
     }
 
     .classes-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1100px;
+      gap: 32px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
     .class-card {
-      background: var(--cream);
-      border: var(--border-width) var(--border-style) var(--charcoal);
-      padding: 32px 24px;
+      background: rgba(247, 212, 200, 0.1);
+      backdrop-filter: blur(20px);
+      border: var(--border-width) solid rgba(247, 212, 200, 0.3);
+      padding: 40px 32px;
       text-align: center;
-      transition: all 200ms ease;
-      box-shadow: 4px 4px 0 var(--charcoal);
+      transition: all 400ms ease;
+      box-shadow: var(--shadow-epic);
       position: relative;
+      overflow: hidden;
+    }
+
+    .class-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 50% 100%,
+        rgba(217, 120, 80, 0.2) 0%,
+        transparent 60%
+      );
+      opacity: 0;
+      transition: opacity 400ms ease;
+    }
+
+    .class-card:hover::before {
+      opacity: 1;
     }
 
     .class-card:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--charcoal);
+      transform: translate(-4px, -4px);
+      border-color: var(--terracotta);
+      box-shadow: 8px 8px 0 var(--charcoal), var(--shadow-deep), 0 0 80px var(--glow-orange);
     }
 
     .class-tag {
       display: inline-block;
-      padding: 4px 12px;
-      background: var(--sage);
-      border: 1px solid var(--charcoal);
+      padding: 6px 14px;
+      background: rgba(168, 184, 157, 0.25);
+      border: 1px solid var(--sage);
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      color: var(--charcoal);
+      margin-bottom: 24px;
+      color: var(--mint-green);
+      box-shadow: 0 4px 16px rgba(168, 184, 157, 0.4);
     }
 
     .class-title {
       font-family: var(--font-heading);
-      font-size: 24px;
+      font-size: 28px;
       font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--charcoal);
+      margin-bottom: 16px;
+      color: var(--cream);
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
     }
 
     .class-desc {
-      font-size: 14px;
-      line-height: 1.65;
-      color: var(--warm-brown);
-      margin-bottom: 24px;
-      min-height: 80px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--pale-pink);
+      margin-bottom: 28px;
+      min-height: 90px;
     }
 
     .class-meta {
       font-size: 12px;
-      color: var(--warm-brown);
+      color: var(--dusty-rose);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
     }
 
     .class-btn {
-      padding: 10px 24px;
+      padding: 12px 32px;
       background: var(--terracotta);
       color: #fff;
-      border: var(--border-width) var(--border-style) var(--charcoal);
+      border: var(--border-width) solid var(--charcoal);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      transition: all 180ms ease;
-      box-shadow: 3px 3px 0 var(--charcoal);
+      transition: all 280ms ease;
+      box-shadow: 4px 4px 0 var(--charcoal), 0 8px 24px rgba(197, 123, 87, 0.5);
     }
 
     .class-btn:hover {
       background: var(--burnt-orange);
-      transform: translate(-1px, -1px);
-      box-shadow: 4px 4px 0 var(--charcoal);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--charcoal), 0 12px 36px rgba(217, 120, 80, 0.7), 0 0 60px var(--glow-orange);
     }
 
-    /* Testimonials: stacked quote cards */
+    /* Testimonials: glowing cards */
     .testimonials {
-      background: var(--cream);
-      border-bottom: var(--border-width) var(--border-style) var(--charcoal);
+      background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(196, 213, 195, 0.1) 0%,
+        rgba(46, 40, 35, 1) 70%
+      );
     }
 
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1100px;
+      gap: 32px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
     .testimonial-card {
-      background: var(--mint-green);
-      border: var(--border-width) var(--border-style) var(--charcoal);
-      padding: 32px 24px;
+      background: rgba(196, 213, 195, 0.12);
+      backdrop-filter: blur(20px);
+      border: var(--border-width) solid rgba(196, 213, 195, 0.3);
+      padding: 40px 32px;
       text-align: center;
-      box-shadow: 4px 4px 0 var(--charcoal);
-      transition: all 200ms ease;
+      box-shadow: var(--shadow-epic), 0 0 40px var(--glow-green);
+      transition: all 400ms ease;
     }
 
     .testimonial-card:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--charcoal);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-deep), 0 0 80px var(--glow-green);
     }
 
     .testimonial-quote {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--warm-brown);
-      margin-bottom: 24px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--pale-pink);
+      margin-bottom: 28px;
       font-style: italic;
     }
 
@@ -526,129 +719,153 @@
     }
 
     .testimonial-avatar {
-      width: 56px;
-      height: 56px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      border: var(--border-width) var(--border-style) var(--charcoal);
+      border: var(--border-width) solid var(--charcoal);
       background: linear-gradient(135deg, var(--dusty-rose), var(--terracotta));
-      box-shadow: 3px 3px 0 var(--charcoal);
+      box-shadow: 4px 4px 0 var(--charcoal), 0 8px 24px rgba(197, 123, 87, 0.5), 0 0 40px var(--glow-orange);
     }
 
     .testimonial-author {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
-      color: var(--charcoal);
+      color: var(--cream);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
     }
 
     .testimonial-role {
-      font-size: 12px;
-      color: var(--warm-brown);
+      font-size: 13px;
+      color: var(--sage);
     }
 
-    /* CTA: bold color block with centered message */
+    /* CTA: epic finale */
     .cta {
-      padding: 120px 32px;
-      background: var(--dusty-rose);
-      border-bottom: var(--border-width) var(--border-style) var(--charcoal);
+      padding: 160px 40px;
+      background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(212, 165, 160, 0.25) 0%,
+        rgba(46, 40, 35, 1) 60%
+      );
       text-align: center;
       position: relative;
+      overflow: hidden;
     }
 
     .cta::before {
       content: "";
       position: absolute;
-      inset: 24px;
-      border: var(--border-width) var(--border-style) rgba(46, 40, 35, 0.3);
+      inset: 40px;
+      border: var(--border-width) solid rgba(244, 235, 225, 0.3);
       pointer-events: none;
+      box-shadow: inset 0 0 100px rgba(217, 120, 80, 0.2);
     }
 
     .cta-inner {
       position: relative;
       z-index: 1;
-      max-width: 700px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     .cta-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-size: clamp(2.8rem, 7vw, 5rem);
       font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 24px;
-      color: var(--charcoal);
+      line-height: 1.1;
+      margin-bottom: 32px;
+      color: var(--cream);
+      text-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 80px var(--glow-orange);
     }
 
     .cta-subtitle {
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--warm-brown);
-      margin-bottom: 40px;
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--pale-pink);
+      margin-bottom: 48px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
     }
 
     .cta-btn {
-      padding: 18px 48px;
-      background: var(--charcoal);
-      color: var(--cream);
-      border: var(--border-width) var(--border-style) var(--charcoal);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      padding: 22px 64px;
+      background: var(--mustard);
+      color: var(--charcoal);
+      border: var(--border-width) solid var(--charcoal);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      transition: all 180ms ease;
-      box-shadow: 6px 6px 0 var(--rust);
+      transition: all 320ms ease;
+      box-shadow: 8px 8px 0 var(--charcoal), 0 20px 60px rgba(227, 175, 75, 0.6), 0 0 100px var(--glow-orange);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: translateX(-100%) rotate(45deg);
+      transition: transform 700ms ease;
+    }
+
+    .cta-btn:hover::before {
+      transform: translateX(100%) rotate(45deg);
     }
 
     .cta-btn:hover {
-      background: var(--rust);
-      transform: translate(-2px, -2px);
-      box-shadow: 8px 8px 0 var(--charcoal);
+      background: var(--burnt-orange);
+      color: #fff;
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0 var(--charcoal), 0 28px 80px rgba(217, 120, 80, 0.8), 0 0 140px var(--glow-orange);
     }
 
-    /* Footer: symmetrical, bordered */
+    /* Footer */
     .footer {
-      padding: 56px 32px;
-      background: var(--pale-pink);
-      border-top: var(--border-width) var(--border-style) var(--charcoal);
+      padding: 72px 40px 48px;
+      background: var(--charcoal);
+      border-top: var(--border-width) solid rgba(244, 235, 225, 0.2);
       text-align: center;
-      font-size: 13px;
-      color: var(--warm-brown);
+      color: var(--pale-pink);
     }
 
     .footer-brand {
       font-family: var(--font-heading);
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
-      color: var(--charcoal);
-      margin-bottom: 16px;
+      color: var(--cream);
+      margin-bottom: 20px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
     }
 
     .footer-links {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       justify-content: center;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       flex-wrap: wrap;
     }
 
     .footer-links a {
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       font-size: 12px;
-      transition: color 200ms ease;
+      transition: all 240ms ease;
     }
 
     .footer-links a:hover {
-      color: var(--terracotta);
+      color: var(--burnt-orange);
+      text-shadow: 0 0 20px var(--glow-orange);
     }
 
     .footer-copy {
       font-size: 12px;
-      color: var(--warm-brown);
+      color: var(--sage);
     }
 
     /* Responsive */
@@ -659,13 +876,8 @@
         grid-template-columns: 1fr;
       }
 
-      .how-card {
-        border-right: none;
-        border-bottom: var(--border-width) var(--border-style) var(--charcoal);
-      }
-
-      .how-card:last-child {
-        border-bottom: none;
+      .hero-stats {
+        gap: 32px;
       }
     }
 
@@ -675,41 +887,45 @@
       }
 
       .hero {
-        padding: 60px 24px;
+        padding: 120px 24px 80px;
       }
 
       section {
-        padding: 80px 24px;
+        padding: 100px 24px;
       }
 
       .hero-cta-row {
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
       }
 
       .btn-primary,
       .btn-secondary {
         width: 100%;
-        max-width: 320px;
+        max-width: 360px;
       }
 
       .cta {
-        padding: 100px 24px;
+        padding: 120px 24px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
+    <!-- Atmospheric layers -->
+    <div class="ambient-layer"></div>
+    <div class="particles"></div>
+
     <!-- NAV -->
-    <header class="nav">
+    <header class="nav" id="nav">
       <div class="nav-inner">
         <a href="#top" class="brand">Yoga by Thanu</a>
         <nav class="nav-links">
-          <a href="#how">How</a>
+          <a href="#how">Journey</a>
           <a href="#classes">Classes</a>
           <a href="#testimonials">Stories</a>
-          <button class="btn-nav" onclick="scrollToCTA()">Book Now</button>
+          <button class="btn-nav" onclick="scrollToCTA()">Begin</button>
         </nav>
       </div>
     </header>
@@ -718,36 +934,49 @@
       <!-- HERO -->
       <section class="hero">
         <div class="hero-inner">
-          <div class="hero-chapter">Chapter I: The Village Studio</div>
+          <div class="hero-chapter">Chapter I: Village Odyssey</div>
           <h1 class="hero-title">
             Yoga Rooted in<br />Village Simplicity
           </h1>
           <p class="hero-subtitle">
-            Small-batch online classes that feel like stretching in your nani's
-            courtyard. Live sessions from Hyderabad, taught in three languages.
+            Cinematic online classes that feel like stretching in your nani's
+            courtyard. Small batches, epic care, three languages. From Hyderabad
+            to your screen.
           </p>
           <div class="hero-cta-row">
             <button class="btn-primary" onclick="scrollToCTA()">
               Book Free Trial
             </button>
             <button class="btn-secondary" onclick="scrollToClasses()">
-              Browse Classes
+              Explore Classes
             </button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-number">250+</div>
+              <div class="hero-stat-label">Students</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">12</div>
+              <div class="hero-stat-label">Weekly Sessions</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">3</div>
+              <div class="hero-stat-label">Languages</div>
+            </div>
           </div>
         </div>
       </section>
 
-      <div class="ornament"></div>
-
-      <!-- HOW IT WORKS -->
+      <!-- HOW -->
       <section id="how" class="how">
         <div class="container">
           <div class="section-header">
-            <div class="section-chapter">Chapter II: The Journey</div>
-            <h2 class="section-title">How It Works</h2>
+            <div class="section-chapter">Chapter II: The Path</div>
+            <h2 class="section-title">Your Journey Begins</h2>
             <p class="section-desc">
-              Three symmetrical steps to begin your village-style yoga practice
-              from anywhere in the world.
+              Three steps to transform your practice from anywhere in the world.
+              No studio commute, just pure village calm.
             </p>
           </div>
 
@@ -755,43 +984,41 @@
             <article class="how-card">
               <div class="how-number">01</div>
               <div class="how-icon">📅</div>
-              <h3 class="how-title">Choose Your Class</h3>
+              <h3 class="how-title">Choose Class</h3>
               <p class="how-desc">
-                Select from morning flows, evening unwinds, or weekend gentle
-                sessions. All levels, small batches.
+                Morning flows, evening unwinds, weekend gentle sessions. All
+                levels, small batches only.
               </p>
             </article>
 
             <article class="how-card">
               <div class="how-number">02</div>
               <div class="how-icon">📱</div>
-              <h3 class="how-title">Receive Invitation</h3>
+              <h3 class="how-title">Receive Link</h3>
               <p class="how-desc">
-                Instant WhatsApp confirmation with Zoom link, preparation guide,
-                and intro to Thanu's teaching.
+                Instant WhatsApp with Zoom link, prep guide, and intro to
+                Thanu's teaching style.
               </p>
             </article>
 
             <article class="how-card">
               <div class="how-number">03</div>
               <div class="how-icon">🧘</div>
-              <h3 class="how-title">Practice Together</h3>
+              <h3 class="how-title">Practice Live</h3>
               <p class="how-desc">
-                Join with your mat. Guided postures, breath, and rest — like a
-                village morning from your room.
+                Join with your mat. Guided postures, breath, rest — like village
+                mornings from home.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <div class="ornament"></div>
-
       <!-- CLASSES -->
       <section id="classes" class="classes">
         <div class="container">
           <div class="section-header">
-            <div class="section-chapter">Chapter III: The Classes</div>
+            <div class="section-chapter">Chapter III: The Practice</div>
             <h2 class="section-title">Designed for Real Bodies</h2>
             <p class="section-desc">
               Slow, accessible sessions inspired by Indian daily life. No
@@ -816,7 +1043,7 @@
               <h3 class="class-title">Nidra Night Unwind</h3>
               <p class="class-desc">
                 Floor stretches and yoga nidra for deep, village-style sleep and
-                rest.
+                complete rest.
               </p>
               <div class="class-meta">60 mins • Tue, Thu</div>
               <button class="class-btn" onclick="scrollToCTA()">Book Now</button>
@@ -836,14 +1063,12 @@
         </div>
       </section>
 
-      <div class="ornament"></div>
-
       <!-- TESTIMONIALS -->
       <section id="testimonials" class="testimonials">
         <div class="container">
           <div class="section-header">
             <div class="section-chapter">Chapter IV: The Community</div>
-            <h2 class="section-title">Stories from Students</h2>
+            <h2 class="section-title">Stories of Transformation</h2>
             <p class="section-desc">
               People who found a softer, more honest way to move with village
               yoga.
@@ -853,8 +1078,8 @@
           <div class="testimonials-grid">
             <article class="testimonial-card">
               <p class="testimonial-quote">
-                "It honestly feels like stretching in my nani's house. No
-                judgment, just calm movement."
+                "It feels like stretching in my nani's house. No judgment, just
+                calm movement that fits my life."
               </p>
               <div class="testimonial-meta">
                 <div class="testimonial-avatar"></div>
@@ -865,8 +1090,8 @@
 
             <article class="testimonial-card">
               <p class="testimonial-quote">
-                "The village touches make it familiar. My mom and I join
-                together on weekends."
+                "The village touches make it familiar. My mom and I join together
+                on weekends from different cities."
               </p>
               <div class="testimonial-meta">
                 <div class="testimonial-avatar"></div>
@@ -877,8 +1102,8 @@
 
             <article class="testimonial-card">
               <p class="testimonial-quote">
-                "Classes are calm and the pace is real. I join from Bangalore —
-                feels like home."
+                "Classes are calm, the pace is real. I join from Bangalore — it
+                feels like coming home every session."
               </p>
               <div class="testimonial-meta">
                 <div class="testimonial-avatar"></div>
@@ -890,15 +1115,13 @@
         </div>
       </section>
 
-      <div class="ornament"></div>
-
       <!-- CTA -->
       <section class="cta">
         <div class="cta-inner">
-          <h2 class="cta-title">Begin Your Village Yoga Story</h2>
+          <h2 class="cta-title">Begin Your Epic Journey</h2>
           <p class="cta-subtitle">
             Your first trial class is free. No credit card, no commitment. One
-            calm session to see if this practice fits your life.
+            cinematic session to see if village yoga transforms your practice.
           </p>
           <button class="cta-btn" onclick="alert('WhatsApp: +91 XXXXXXXXXX')">
             Book Your Free Trial
@@ -911,15 +1134,15 @@
     <footer class="footer">
       <div class="footer-brand">Yoga by Thanu</div>
       <div class="footer-links">
-        <a href="#how">How</a>
+        <a href="#how">Journey</a>
         <a href="#classes">Classes</a>
         <a href="#testimonials">Stories</a>
         <a href="#">Terms</a>
         <a href="#">Privacy</a>
       </div>
       <p class="footer-copy">
-        © <span id="year"></span> Yoga by Thanu • Made with symmetry in
-        Hyderabad
+        © <span id="year"></span> Yoga by Thanu • Crafted with village soul and
+        cinematic vision in Hyderabad
       </p>
     </footer>
   </div>
@@ -938,6 +1161,16 @@
       var el = document.getElementById("classes");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+
+    // Nav scroll effect
+    var nav = document.getElementById("nav");
+    window.addEventListener("scroll", function() {
+      if (window.scrollY > 100) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    });
   </script>
 </body>
 </html>
