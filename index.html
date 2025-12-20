@@ -1,1558 +1,268 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Yoga by Thanu – Desi Village Inspired Yoga Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Yoga by Thanu is a calm, desi village-inspired yoga studio from Hyderabad offering gentle, mindful classes online and in-studio."
-  />
-
-  <!-- Basic Reset and Base Styles -->
-  <style>
-    :root {
-      /* Colors – earthy, desi village feel inspired by contemporary Indian earthy palettes */
-      --bg-main: #f7f3ea;      /* warm off-white / cream [web:56] */
-      --mud-brown: #5a3a25;    /* deep earthy brown [web:56] */
-      --mud-brown-soft: #7a5333;
-      --eco-green: #4f7c4f;    /* muted nature green [web:56][web:59] */
-      --eco-green-soft: #7f9f74;
-      --accent-terracotta: #c26b3e; /* clay pot / mitti [web:56] */
-      --border-soft: #e5dccb;
-
-      --font-heading: "Georgia", "Times New Roman", serif;
-      --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-
-      --radius-card: 18px;
-      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.06);
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html,
-    body {
-      height: 100%;
-      background-color: var(--bg-main);
-      color: var(--mud-brown);
-      font-family: var(--font-body);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    /* Layout helpers */
-    .page {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Top Navigation */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: rgba(247, 243, 234, 0.92);
-      border-bottom: 1px solid rgba(201, 178, 150, 0.3);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      border: 2px solid var(--eco-green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--eco-green);
-      background: radial-gradient(circle at 30% 30%, #ffffff, #ebf0e6);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-name {
-      font-family: var(--font-heading);
-      font-size: 18px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .brand-tagline {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--mud-brown-soft);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 14px;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 2px;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background-color: var(--eco-green);
-      transition: width 180ms ease-out;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .btn-primary {
-      border-radius: 999px;
-      border: 1px solid var(--eco-green);
-      background: var(--eco-green);
-      color: #fdfbf7;
-      padding: 8px 18px;
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition:
-        background 180ms ease-out,
-        color 180ms ease-out,
-        box-shadow 180ms ease-out,
-        transform 120ms ease-out;
-      box-shadow: 0 10px 30px rgba(79, 124, 79, 0.25);
-      cursor: pointer;
-    }
-
-    .btn-primary span {
-      font-size: 16px;
-      transform: translateY(1px);
-    }
-
-    .btn-primary:hover {
-      background: var(--eco-green-soft);
-      box-shadow: 0 14px 36px rgba(79, 124, 79, 0.35);
-      transform: translateY(-1px);
-    }
-
-    .btn-primary:active {
-      transform: translateY(0);
-      box-shadow: 0 8px 20px rgba(79, 124, 79, 0.2);
-    }
-
-    .btn-ghost {
-      border-radius: 999px;
-      border: 1px solid var(--mud-brown-soft);
-      background: transparent;
-      color: var(--mud-brown-soft);
-      padding: 7px 16px;
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition:
-        background 180ms ease-out,
-        color 180ms ease-out,
-        border-color 180ms ease-out;
-      cursor: pointer;
-    }
-
-    .btn-ghost span {
-      font-size: 14px;
-      transform: translateY(1px);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(122, 83, 51, 0.06);
-      border-color: var(--eco-green);
-      color: var(--eco-green);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 40px 0 60px;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--eco-green);
-      margin-bottom: 12px;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: 44px;
-      line-height: 1.05;
-      letter-spacing: 0.03em;
-      margin-bottom: 16px;
-    }
-
-    .hero-highlight {
-      color: var(--accent-terracotta);
-    }
-
-    .hero-subtitle {
-      font-size: 16px;
-      line-height: 1.5;
-      color: var(--mud-brown-soft);
-      max-width: 420px;
-      margin-bottom: 24px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 26px;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      font-size: 12px;
-      color: var(--mud-brown-soft);
-    }
-
-    .hero-pill {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px dashed rgba(122, 83, 51, 0.5);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.7);
-    }
-
-    .hero-pill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--eco-green);
-    }
-
-    .hero-aside {
-      position: relative;
-      padding: 18px;
-    }
-
-    .hero-card {
-      border-radius: 26px;
-      background: radial-gradient(
-          circle at 10% 0%,
-          rgba(255, 255, 255, 0.8),
-          transparent 45%
-        ),
-        linear-gradient(145deg, #fdfaf3 0%, #f0e4d3 40%, #eee2d3 80%);
-      box-shadow: var(--shadow-soft);
-      padding: 18px;
-      overflow: hidden;
-      position: relative;
-      border: 1px solid rgba(185, 158, 123, 0.35);
-    }
-
-    .hero-photo-main {
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(185, 158, 123, 0.45);
-      background: linear-gradient(
-        135deg,
-        rgba(90, 58, 37, 0.18),
-        rgba(247, 243, 234, 0.9)
-      );
-      min-height: 260px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      position: relative;
-      isolation: isolate;
-    }
-
-    .hero-photo-main::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(
-          rgba(0, 0, 0, 0.12),
-          rgba(0, 0, 0, 0.02) 45%,
-          rgba(255, 255, 255, 0.5)
-        ),
-        url("https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=1200");
-      background-size: cover;
-      background-position: center 30%;
-      mix-blend-mode: multiply;
-      opacity: 0.92;
-      z-index: -1;
-      filter: saturate(0.88) contrast(1.02);
-    }
-
-    .hero-photo-layer {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(
-          circle at 80% 10%,
-          rgba(247, 243, 234, 0.5),
-          transparent 55%
-        ),
-        radial-gradient(
-          circle at 0% 100%,
-          rgba(194, 107, 62, 0.25),
-          transparent 60%
-        );
-      mix-blend-mode: soft-light;
-    }
-
-    .hero-photo-ground {
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 38%;
-      background: linear-gradient(
-        to top,
-        rgba(83, 54, 34, 0.82),
-        rgba(83, 54, 34, 0)
-      );
-      mix-blend-mode: multiply;
-    }
-
-    .hero-photo-caption {
-      position: absolute;
-      left: 14px;
-      bottom: 14px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(247, 243, 234, 0.9);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(201, 178, 150, 0.6);
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--mud-brown);
-    }
-
-    .hero-photo-caption span {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--eco-green);
-    }
-
-    .hero-floating-card {
-      position: absolute;
-      right: 12px;
-      top: 18px;
-      padding: 10px 14px;
-      border-radius: 18px;
-      background: rgba(252, 248, 241, 0.95);
-      border: 1px solid rgba(201, 178, 150, 0.7);
-      font-size: 11px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      max-width: 170px;
-      backdrop-filter: blur(8px);
-    }
-
-    .hero-floating-card-label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--eco-green);
-    }
-
-    .hero-floating-card-main {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .hero-floating-number {
-      font-size: 18px;
-      font-weight: 600;
-      font-family: var(--font-heading);
-    }
-
-    .hero-floating-note {
-      font-size: 11px;
-      color: var(--mud-brown-soft);
-    }
-
-    .hero-aside-bottom {
-      margin-top: 16px;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 11px;
-      color: var(--mud-brown-soft);
-    }
-
-    .hero-aside-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(201, 178, 150, 0.8);
-      background: rgba(253, 250, 243, 0.9);
-    }
-
-    .hero-aside-badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent-terracotta);
-    }
-
-    /* Shared section styles */
-    section {
-      padding: 40px 0;
-    }
-
-    .section-heading-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-end;
-      margin-bottom: 26px;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 26px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .section-desc {
-      font-size: 14px;
-      max-width: 360px;
-      color: var(--mud-brown-soft);
-    }
-
-    .divider-line {
-      width: 58px;
-      height: 1px;
-      background: linear-gradient(
-        to right,
-        var(--eco-green),
-        rgba(79, 124, 79, 0)
-      );
-      margin-top: 10px;
-    }
-
-    /* Classes section */
-    .classes-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .class-card {
-      background: rgba(253, 250, 243, 0.9);
-      border-radius: var(--radius-card);
-      border: 1px solid var(--border-soft);
-      padding: 16px 16px 18px;
-      box-shadow: 0 12px 28px rgba(155, 122, 82, 0.08);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .class-tag-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .class-tag {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--eco-green);
-    }
-
-    .class-pill-level {
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(79, 124, 79, 0.35);
-      font-size: 11px;
-      color: var(--eco-green);
-      background: rgba(247, 252, 247, 0.9);
-    }
-
-    .class-title {
-      font-family: var(--font-heading);
-      font-size: 18px;
-    }
-
-    .class-desc {
-      font-size: 13px;
-      color: var(--mud-brown-soft);
-    }
-
-    .class-meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 6px;
-      font-size: 12px;
-      color: var(--mud-brown-soft);
-    }
-
-    .class-time {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .class-time-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 999px;
-      background: var(--accent-terracotta);
-    }
-
-    .class-link {
-      font-size: 12px;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      color: var(--eco-green);
-      cursor: pointer;
-    }
-
-    .class-bg-motif {
-      position: absolute;
-      inset: auto -10px -10px auto;
-      width: 90px;
-      height: 90px;
-      border-radius: 999px;
-      border: 1px dashed rgba(194, 107, 62, 0.3);
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    /* Schedule section */
-    .schedule-wrapper {
-      border-radius: 22px;
-      border: 1px solid var(--border-soft);
-      background: rgba(253, 250, 243, 0.9);
-      box-shadow: 0 16px 40px rgba(155, 122, 82, 0.12);
-      overflow: hidden;
-    }
-
-    .schedule-header {
-      display: flex;
-      justify-content: space-between;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(201, 178, 150, 0.5);
-      background: linear-gradient(
-        135deg,
-        rgba(247, 243, 234, 1),
-        rgba(240, 229, 213, 1)
-      );
-      align-items: center;
-      gap: 10px;
-    }
-
-    .schedule-title-mini {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-
-    .schedule-days {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      font-size: 12px;
-    }
-
-    .schedule-day {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition:
-        background 160ms ease-out,
-        border-color 160ms ease-out;
-      color: var(--mud-brown-soft);
-    }
-
-    .schedule-day.active {
-      background: rgba(79, 124, 79, 0.1);
-      border-color: var(--eco-green);
-      color: var(--eco-green);
-    }
-
-    .schedule-list {
-      padding: 12px 14px 14px;
-      font-size: 13px;
-    }
-
-    .schedule-row {
-      display: grid;
-      grid-template-columns: 70px 1.3fr 1.1fr auto;
-      gap: 12px;
-      align-items: center;
-      padding: 8px 6px;
-      border-radius: 12px;
-      position: relative;
-    }
-
-    .schedule-row + .schedule-row::before {
-      content: "";
-      position: absolute;
-      left: 6px;
-      right: 6px;
-      top: 0;
-      height: 1px;
-      background: linear-gradient(
-        to right,
-        rgba(201, 178, 150, 0.4),
-        rgba(201, 178, 150, 0.05)
-      );
-    }
-
-    .schedule-time {
-      font-variant-numeric: tabular-nums;
-      color: var(--mud-brown-soft);
-    }
-
-    .schedule-class-name {
-      font-weight: 500;
-      font-size: 13px;
-    }
-
-    .schedule-meta {
-      font-size: 12px;
-      color: var(--mud-brown-soft);
-    }
-
-    .schedule-btn {
-      border-radius: 999px;
-      border: 1px solid var(--eco-green);
-      background: transparent;
-      padding: 6px 10px;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--eco-green);
-      cursor: pointer;
-      transition:
-        background 160ms ease-out,
-        color 160ms ease-out;
-    }
-
-    .schedule-btn:hover {
-      background: var(--eco-green);
-      color: #fdfbf7;
-    }
-
-    /* About section */
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    .about-text p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--mud-brown-soft);
-      margin-bottom: 10px;
-    }
-
-    .about-list {
-      margin-top: 10px;
-      font-size: 13px;
-      list-style: none;
-    }
-
-    .about-list li {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      margin-bottom: 6px;
-    }
-
-    .about-list-bullet {
-      margin-top: 5px;
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--eco-green);
-      flex-shrink: 0;
-    }
-
-    .about-visual {
-      position: relative;
-      padding: 16px;
-    }
-
-    .about-main-card {
-      border-radius: 22px;
-      border: 1px solid rgba(201, 178, 150, 0.6);
-      background: linear-gradient(
-        135deg,
-        #fdfaf3 0%,
-        #f5ebdd 40%,
-        #f0e3d3 100%
-      );
-      padding: 14px;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-photo {
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(201, 178, 150, 0.7);
-      min-height: 220px;
-      background-image: url("https://images.pexels.com/photos/4325478/pexels-photo-4325478.jpeg?auto=compress&cs=tinysrgb&w=1200");
-      background-size: cover;
-      background-position: center 40%;
-      filter: saturate(0.9) contrast(1.03);
-      position: relative;
-    }
-
-    .about-photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at 0% 100%,
-        rgba(90, 58, 37, 0.5),
-        transparent 55%
-      );
-      mix-blend-mode: soft-light;
-    }
-
-    .about-caption-card {
-      position: absolute;
-      right: 20px;
-      bottom: 18px;
-      border-radius: 16px;
-      background: rgba(253, 250, 243, 0.98);
-      border: 1px solid rgba(201, 178, 150, 0.8);
-      padding: 8px 12px;
-      font-size: 11px;
-      max-width: 170px;
-      box-shadow: 0 10px 25px rgba(90, 58, 37, 0.25);
-    }
-
-    /* Testimonials */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .testimonial-card {
-      border-radius: 18px;
-      border: 1px solid var(--border-soft);
-      background: rgba(253, 250, 243, 0.95);
-      padding: 16px 16px 14px;
-      box-shadow: 0 10px 24px rgba(155, 122, 82, 0.08);
-      font-size: 13px;
-      color: var(--mud-brown-soft);
-      position: relative;
-    }
-
-    .testimonial-quote {
-      margin-bottom: 10px;
-    }
-
-    .testimonial-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-    }
-
-    .testimonial-avatar {
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      background: radial-gradient(
-        circle at 30% 20%,
-        #fdf4e6,
-        #c26b3e
-      );
-      border: 1px solid rgba(194, 107, 62, 0.8);
-    }
-
-    /* Contact / footer */
-    .contact-section-inner {
-      border-radius: 22px;
-      border: 1px solid var(--border-soft);
-      padding: 26px 20px;
-      background: linear-gradient(
-        135deg,
-        rgba(253, 250, 243, 0.98),
-        rgba(245, 235, 221, 1)
-      );
-      box-shadow: 0 20px 46px rgba(155, 122, 82, 0.18);
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 26px;
-      align-items: center;
-    }
-
-    .contact-text-main {
-      font-size: 15px;
-      color: var(--mud-brown-soft);
-      margin: 8px 0 14px;
-      max-width: 420px;
-    }
-
-    .contact-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 12px;
-      color: var(--mud-brown-soft);
-    }
-
-    .contact-pill {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(201, 178, 150, 0.9);
-      background: rgba(253, 250, 243, 0.96);
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 10px;
-      font-size: 13px;
-    }
-
-    .field-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .field-group label {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mud-brown-soft);
-    }
-
-    .field-group input,
-    .field-group textarea,
-    .field-group select {
-      border-radius: 12px;
-      border: 1px solid rgba(201, 178, 150, 0.9);
-      padding: 8px 10px;
-      font-size: 13px;
-      background: rgba(253, 250, 243, 0.98);
-      color: var(--mud-brown);
-      outline: none;
-      transition:
-        border-color 160ms ease-out,
-        box-shadow 160ms ease-out;
-    }
-
-    .field-group input:focus,
-    .field-group textarea:focus,
-    .field-group select:focus {
-      border-color: var(--eco-green);
-      box-shadow: 0 0 0 1px rgba(79, 124, 79, 0.15);
-    }
-
-    .field-group textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-
-    .footer {
-      padding: 18px 20px 26px;
-      font-size: 12px;
-      color: var(--mud-brown-soft);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      position: relative;
-    }
-
-    .footer-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      width: 0;
-      height: 1px;
-      background-color: var(--eco-green);
-      transition: width 160ms ease-out;
-    }
-
-    .footer-links a:hover::after {
-      width: 100%;
-    }
-
-    /* Responsive */
-    @media (max-width: 960px) {
-      .hero-inner,
-      .about-grid,
-      .contact-section-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-inner {
-        gap: 26px;
-      }
-
-      .hero-title {
-        font-size: 36px;
-      }
-
-      .classes-grid,
-      .testimonials-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .schedule-row {
-        grid-template-columns: 60px 1.7fr auto;
-      }
-
-      .schedule-meta {
-        display: none;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-inner {
-        padding-inline: 14px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 26px 0 34px;
-      }
-
-      .hero-title {
-        font-size: 32px;
-      }
-
-      .hero-subtitle {
-        font-size: 14px;
-      }
-
-      .section-heading-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .section-title {
-        font-size: 22px;
-      }
-
-      .classes-grid,
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .schedule-row {
-        grid-template-columns: 1fr;
-        align-items: flex-start;
-      }
-
-      .contact-section-inner {
-        padding: 20px 16px;
-      }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Yoga by Thanu — Calm Online Yoga Practice</title>
+<meta name="description" content="Yoga by Thanu offers calm, guided online yoga sessions in English, Telugu and Kannada. A gentle practice for real life." />
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-main:#FAF9F7;
+  --bg-soft:#F1EEE9;
+  --text-main:#1f1f1f;
+  --text-muted:#6f6f6f;
+  --accent:#c97a5a;
+  --border:#e3ded8;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Inter, sans-serif;
+  background:var(--bg-main);
+  color:var(--text-main);
+  line-height:1.7;
+}
+
+section{
+  padding:120px 24px;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(250,249,247,0.9);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border);
+  z-index:100;
+}
+
+.nav{
+  max-width:1100px;
+  margin:auto;
+  padding:20px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-family:"Playfair Display",serif;
+  font-size:22px;
+}
+
+.nav a{
+  margin-left:24px;
+  text-decoration:none;
+  color:var(--text-main);
+  font-size:14px;
+}
+
+.cta{
+  padding:10px 18px;
+  border:1px solid var(--accent);
+  border-radius:24px;
+  color:var(--accent);
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+}
+
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(42px,7vw,72px);
+  margin-bottom:20px;
+}
+
+.hero p{
+  max-width:520px;
+  color:var(--text-muted);
+  font-size:18px;
+  margin-bottom:36px;
+}
+
+.hero-buttons a{
+  margin-right:16px;
+  padding:14px 28px;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.primary{
+  background:var(--accent);
+  color:#fff;
+}
+
+.secondary{
+  border:1px solid var(--border);
+  color:var(--text-main);
+}
+
+/* SECTIONS */
+.section-title{
+  font-family:"Playfair Display",serif;
+  font-size:40px;
+  margin-bottom:24px;
+}
+
+.section-sub{
+  max-width:600px;
+  color:var(--text-muted);
+  margin-bottom:64px;
+}
+
+/* CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
+}
+
+.card{
+  padding:32px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--bg-soft);
+  transition:.3s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+}
+
+/* ABOUT */
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+}
+
+.about img{
+  width:100%;
+  border-radius:24px;
+}
+
+/* CONTACT */
+.contact{
+  text-align:center;
+}
+
+.contact h2{
+  font-family:"Playfair Display",serif;
+  font-size:48px;
+}
+
+footer{
+  padding:60px 24px;
+  text-align:center;
+  color:var(--text-muted);
+  font-size:14px;
+}
+
+/* SCROLL ANIMATIONS */
+.reveal{
+  opacity:0;
+  transform:translateY(14px);
+  transition:all .8s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+@media(max-width:768px){
+  .about{grid-template-columns:1fr}
+  header .nav a:not(.cta){display:none}
+}
+</style>
 </head>
+
 <body>
-  <div class="page">
-    <!-- NAV -->
-    <header class="nav">
-      <div class="container nav-inner">
-        <a href="#top" class="brand">
-          <div class="brand-mark">T</div>
-          <div class="brand-text">
-            <div class="brand-name">Yoga by Thanu</div>
-            <div class="brand-tagline">Village calm • City life</div>
-          </div>
-        </a>
 
-        <nav class="nav-links">
-          <a href="#classes">Classes</a>
-          <a href="#schedule">Schedule</a>
-          <a href="#about">About Thanu</a>
-          <a href="#testimonials">Stories</a>
-          <button class="btn-primary" onclick="scrollToContact()">
-            Book a class <span>↗</span>
-          </button>
-        </nav>
-      </div>
-    </header>
-
-    <main id="top">
-      <!-- HERO -->
-      <section class="hero">
-        <div class="container hero-inner">
-          <div>
-            <div class="section-label">
-              Hyderabadi desi village-inspired yoga studio
-            </div>
-            <h1 class="hero-title">
-              Slow, mindful yoga
-              <br />
-              rooted in <span class="hero-highlight">village simplicity</span>.
-            </h1>
-            <p class="hero-subtitle">
-              Yoga by Thanu blends gentle movement, breath, and everyday Indian
-              rituals so your practice feels like a calm morning in your
-              nani&rsquo;s courtyard.
-            </p>
-
-            <div class="hero-actions">
-              <button class="btn-primary" onclick="scrollToContact()">
-                Book free trial <span>✶</span>
-              </button>
-              <button class="btn-ghost" onclick="scrollToClasses()">
-                View class styles <span>↓</span>
-              </button>
-            </div>
-
-            <div class="hero-meta">
-              <div class="hero-pill">
-                <span class="hero-pill-dot"></span>
-                In-studio &amp; online from Hyderabad
-              </div>
-              <div class="hero-pill">
-                <span class="hero-pill-dot"></span>
-                Gentle, beginner-friendly &amp; desi-mom friendly
-              </div>
-            </div>
-          </div>
-
-          <aside class="hero-aside">
-            <div class="hero-card">
-              <div class="hero-photo-main">
-                <div class="hero-photo-layer"></div>
-                <div class="hero-photo-ground"></div>
-                <div class="hero-photo-caption">
-                  <span></span>
-                  Morning practice in the courtyard
-                </div>
-                <div class="hero-floating-card">
-                  <div class="hero-floating-card-label">This week</div>
-                  <div class="hero-floating-card-main">
-                    <div>
-                      <div class="hero-floating-number">08</div>
-                      <div class="hero-floating-note">sessions running</div>
-                    </div>
-                    <div class="hero-floating-note">
-                      Sunrise flows &amp; evening unwinds.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="hero-aside-bottom">
-              <div class="hero-aside-badge">
-                <div class="hero-aside-badge-dot"></div>
-                Feels like home, not a gym.
-              </div>
-              <div class="hero-aside-badge">
-                <div class="hero-aside-badge-dot"></div>
-                Desi playlists • gentle cues • chai after class.
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <!-- CLASSES -->
-      <section id="classes">
-        <div class="container">
-          <div class="section-heading-row">
-            <div>
-              <div class="section-label">Classes</div>
-              <h2 class="section-title">Designed for real bodies</h2>
-              <div class="divider-line"></div>
-            </div>
-            <p class="section-desc">
-              Each class is simple, slow, and rooted in everyday Indian life,
-              whether you&rsquo;re a working professional, a new parent, or
-              easing back into movement after years.
-            </p>
-          </div>
-
-          <div class="classes-grid">
-            <!-- Class 1 -->
-            <article class="class-card">
-              <div class="class-tag-row">
-                <div class="class-tag">Morning • Courtyard flow</div>
-                <div class="class-pill-level">Beginner</div>
-              </div>
-              <h3 class="class-title">Sunrise Angan Flow</h3>
-              <p class="class-desc">
-                A soft, energizing practice inspired by village mornings &mdash;
-                birds, light stretches, and gentle standing flows that wake your
-                joints without burning you out.
-              </p>
-              <div class="class-meta-row">
-                <div class="class-time">
-                  <div class="class-time-dot"></div>
-                  45 mins • Mon, Wed, Fri
-                </div>
-                <button class="class-link" onclick="scrollToContact()">
-                  Book this class
-                </button>
-              </div>
-              <div class="class-bg-motif"></div>
-            </article>
-
-            <!-- Class 2 -->
-            <article class="class-card">
-              <div class="class-tag-row">
-                <div class="class-tag">Evening • Gentle stretch</div>
-                <div class="class-pill-level">Gentle</div>
-              </div>
-              <h3 class="class-title">Nidra Night Unwind</h3>
-              <p class="class-desc">
-                Slow floor-based stretches, restorative holds, and guided yoga
-                nidra to release the day and prepare your body for deep, village
-                style sleep.
-              </p>
-              <div class="class-meta-row">
-                <div class="class-time">
-                  <div class="class-time-dot"></div>
-                  60 mins • Tue, Thu
-                </div>
-                <button class="class-link" onclick="scrollToContact()">
-                  Book this class
-                </button>
-              </div>
-              <div class="class-bg-motif"></div>
-            </article>
-
-            <!-- Class 3 -->
-            <article class="class-card">
-              <div class="class-tag-row">
-                <div class="class-tag">Mid-morning • Desi maa friendly</div>
-                <div class="class-pill-level">Beginner</div>
-              </div>
-              <h3 class="class-title">Desi Maa Gentle Yoga</h3>
-              <p class="class-desc">
-                Low-impact joints-first movements and supported postures focused
-                on back, knees, and hips &mdash; perfect for moms, aunties, and
-                anyone starting again.
-              </p>
-              <div class="class-meta-row">
-                <div class="class-time">
-                  <div class="class-time-dot"></div>
-                  45 mins • Sat, Sun
-                </div>
-                <button class="class-link" onclick="scrollToContact()">
-                  Book this class
-                </button>
-              </div>
-              <div class="class-bg-motif"></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- SCHEDULE -->
-      <section id="schedule">
-        <div class="container">
-          <div class="section-heading-row">
-            <div>
-              <div class="section-label">Schedule</div>
-              <h2 class="section-title">A rhythm you can keep</h2>
-              <div class="divider-line"></div>
-            </div>
-            <p class="section-desc">
-              Soft, realistic timings that fit into regular Indian routines,
-              from early office goers to parents putting kids to sleep.
-            </p>
-          </div>
-
-          <div class="schedule-wrapper">
-            <div class="schedule-header">
-              <div>
-                <div class="schedule-title-mini">Weekly timetable</div>
-                <div style="font-size: 12px; color: var(--mud-brown-soft);">
-                  Join in-studio in Hyderabad or online from anywhere.
-                </div>
-              </div>
-              <div class="schedule-days">
-                <button class="schedule-day active">Mon</button>
-                <button class="schedule-day">Tue</button>
-                <button class="schedule-day">Wed</button>
-                <button class="schedule-day">Thu</button>
-                <button class="schedule-day">Fri</button>
-                <button class="schedule-day">Sat</button>
-                <button class="schedule-day">Sun</button>
-              </div>
-            </div>
-
-            <div class="schedule-list">
-              <!-- Example static schedule; hook to backend later -->
-              <div class="schedule-row">
-                <div class="schedule-time">06:30</div>
-                <div class="schedule-class-name">Sunrise Angan Flow</div>
-                <div class="schedule-meta">Hybrid • In-studio + Zoom</div>
-                <button class="schedule-btn" onclick="scrollToContact()">
-                  Join
-                </button>
-              </div>
-              <div class="schedule-row">
-                <div class="schedule-time">08:00</div>
-                <div class="schedule-class-name">Desi Maa Gentle Yoga</div>
-                <div class="schedule-meta">In-studio • Women focused</div>
-                <button class="schedule-btn" onclick="scrollToContact()">
-                  Join
-                </button>
-              </div>
-              <div class="schedule-row">
-                <div class="schedule-time">19:15</div>
-                <div class="schedule-class-name">Nidra Night Unwind</div>
-                <div class="schedule-meta">Online • All levels</div>
-                <button class="schedule-btn" onclick="scrollToContact()">
-                  Join
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ABOUT -->
-      <section id="about">
-        <div class="container">
-          <div class="section-heading-row">
-            <div>
-              <div class="section-label">About Thanu</div>
-              <h2 class="section-title">Village heart, city studio</h2>
-              <div class="divider-line"></div>
-            </div>
-            <p class="section-desc">
-              Mixing the warmth of a village verandah with the clarity of modern
-              teaching, Thanu keeps yoga honest, gentle, and deeply human.
-            </p>
-          </div>
-
-          <div class="about-grid">
-            <div class="about-text">
-              <p>
-                Thanu grew up around courtyards, open skies, and slow mornings
-                where stretching, chai, and chatter blended into one quiet
-                ritual. Yoga by Thanu brings that feeling into everyday city
-                life.
-              </p>
-              <p>
-                Expect soft cues, desi playlists, and plenty of options if
-                you&rsquo;re stiff, recovering, or just starting. This is not a
-                performative studio; this is practice that can stay with you
-                like home.
-              </p>
-              <ul class="about-list">
-                <li>
-                  <div class="about-list-bullet"></div>
-                  <span>Beginner friendly, with adaptations for knees, hips, and back.</span>
-                </li>
-                <li>
-                  <div class="about-list-bullet"></div>
-                  <span>Small, cozy batches for individual attention and safer postures.</span>
-                </li>
-                <li>
-                  <div class="about-list-bullet"></div>
-                  <span>Seasonal practices inspired by Indian rhythms &mdash; from monsoon grounding to festive unwinds.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="about-visual">
-              <div class="about-main-card">
-                <div class="about-photo"></div>
-                <div class="about-caption-card">
-                  Classes from a calm, courtyard-inspired space in Hyderabad,
-                  with plants, mitti tones, and space to breathe.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TESTIMONIALS -->
-      <section id="testimonials">
-        <div class="container">
-          <div class="section-heading-row">
-            <div>
-              <div class="section-label">Stories</div>
-              <h2 class="section-title">It feels like home</h2>
-              <div class="divider-line"></div>
-            </div>
-            <p class="section-desc">
-              People who thought yoga was only for flexible folks in big studios
-              found a slower, kinder way to move with Thanu.
-            </p>
-          </div>
-
-          <div class="testimonials-grid">
-            <article class="testimonial-card">
-              <p class="testimonial-quote">
-                &ldquo;After years of back pain, this is the first space where I
-                don&rsquo;t feel judged for moving slowly. It honestly feels
-                like stretching in my nani&rsquo;s house.&rdquo;
-              </p>
-              <div class="testimonial-meta">
-                <div>
-                  <strong>Shreya</strong>
-                  <div>New to yoga</div>
-                </div>
-                <div class="testimonial-avatar"></div>
-              </div>
-            </article>
-
-            <article class="testimonial-card">
-              <p class="testimonial-quote">
-                &ldquo;Classes are calm, music is soft, and the cues are
-                simple. I join from my 1BHK, but mentally I&rsquo;m back in our
-                village verandah.&rdquo;
-              </p>
-              <div class="testimonial-meta">
-                <div>
-                  <strong>Rahul</strong>
-                  <div>Remote worker</div>
-                </div>
-                <div class="testimonial-avatar"></div>
-              </div>
-            </article>
-
-            <article class="testimonial-card">
-              <p class="testimonial-quote">
-                &ldquo;My mom and I practice together on weekends. She loves
-                that the class names, music, and pace all feel familiar and
-                desi, not foreign.&rdquo;
-              </p>
-              <div class="testimonial-meta">
-                <div>
-                  <strong>Sana &amp; Amma</strong>
-                  <div>Weekend batch</div>
-                </div>
-                <div class="testimonial-avatar"></div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT / CTA -->
-      <section id="contact">
-        <div class="container">
-          <div class="contact-section-inner">
-            <div>
-              <div class="section-label">Book a class</div>
-              <h2 class="section-title">Start with one calm session</h2>
-              <p class="contact-text-main">
-                Share a few details and pick a class that feels right. You&rsquo;ll
-                receive WhatsApp confirmation with directions or Zoom link,
-                along with a small checklist to prepare your space.
-              </p>
-              <div class="contact-pill-row">
-                <div class="contact-pill">Free first trial (limited slots)</div>
-                <div class="contact-pill">In-studio: Manikonda, Hyderabad</div>
-                <div class="contact-pill">Online: Zoom from anywhere</div>
-              </div>
-            </div>
-
-            <form
-              class="contact-form"
-              onsubmit="event.preventDefault(); alert('Thank you! Thanu will reach out on WhatsApp soon.');"
-            >
-              <div class="field-group">
-                <label for="name">Name</label>
-                <input id="name" type="text" placeholder="Your full name" required />
-              </div>
-              <div class="field-group">
-                <label for="whatsapp">WhatsApp number</label>
-                <input
-                  id="whatsapp"
-                  type="tel"
-                  placeholder="+91 ..."
-                  required
-                />
-              </div>
-              <div class="field-group">
-                <label for="class">Preferred class</label>
-                <select id="class">
-                  <option>Sunrise Angan Flow</option>
-                  <option>Nidra Night Unwind</option>
-                  <option>Desi Maa Gentle Yoga</option>
-                  <option>Not sure, please guide me</option>
-                </select>
-              </div>
-              <div class="field-group">
-                <label for="mode">Mode</label>
-                <select id="mode">
-                  <option>In-studio (Hyderabad)</option>
-                  <option>Online (Zoom)</option>
-                </select>
-              </div>
-              <div class="field-group">
-                <label for="note">Anything you&apos;d like to share?</label>
-                <textarea
-                  id="note"
-                  placeholder="Injuries, experience level, or what you’re hoping yoga will support."
-                ></textarea>
-              </div>
-
-              <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
-                <button type="submit" class="btn-primary">
-                  Request my trial <span>↗</span>
-                </button>
-                <button
-                  type="button"
-                  class="btn-ghost"
-                  onclick="window.open('https://wa.me/91XXXXXXXXXX','_blank');"
-                >
-                  WhatsApp Thanu <span>✆</span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div>
-          &copy; <span id="year"></span> Yoga by Thanu. Made with love in
-          Hyderabad, inspired by our villages.
-        </div>
-        <div class="footer-links">
-          <a href="#top">Top</a>
-          <a href="#classes">Classes</a>
-          <a href="#schedule">Schedule</a>
-          <a href="#about">About</a>
-          <a href="#contact">Book</a>
-        </div>
-      </div>
-    </footer>
+<header>
+  <div class="nav">
+    <div class="logo">Yoga by Thanu</div>
+    <div>
+      <a href="#classes">Classes</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="cta">Book Session</a>
+    </div>
   </div>
+</header>
 
-  <script>
-    // Simple helpers for scrolling
-    function scrollToContact() {
-      const el = document.getElementById("contact");
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+<section class="hero">
+  <div class="container reveal">
+    <h1>A calm yoga practice for real life</h1>
+    <p>Online yoga sessions guided with care — available in English, Telugu & Kannada.</p>
+    <div class="hero-buttons">
+      <a href="#classes" class="primary">Start your practice</a>
+      <a href="#contact" class="secondary">Talk to Thanu</a>
+    </div>
+  </div>
+</section>
 
-    function scrollToClasses() {
-      const el = document.getElementById("classes");
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+<section id="classes">
+  <div class="container reveal">
+    <h2 class="section-title">Classes</h2>
+    <p class="section-sub">Simple, guided sessions designed to support your body and mind.</p>
+    <div class="grid">
+      <div class="card">Hatha Yoga<br><small>Steady & grounding</small></div>
+      <div class="card">Vinyasa Flow<br><small>Gentle movement</small></div>
+      <div class="card">Meditation<br><small>Calm & focus</small></div>
+    </div>
+  </div>
+</section>
 
-    // Year in footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<section id="about">
+  <div class="container about reveal">
+    <div>
+      <h2 class="section-title">Meet Thanu</h2>
+      <p class="section-sub">
+        I guide people through a calm, respectful yoga practice focused on breath, mobility and everyday balance.
+      </p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1554344058-2588a3f8f8b1" alt="Yoga practice">
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container reveal">
+    <h2>Start gently. Stay consistent.</h2>
+    <p class="section-sub">Book a session or reach out to begin your practice.</p>
+    <a href="tel:7676332452" class="primary">Call Thanu</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Yoga by Thanu · Online Yoga Practice
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("visible");
+  });
+},{threshold:0.2});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+</script>
+
 </body>
 </html>
