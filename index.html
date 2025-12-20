@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Yoga by Thanu – A Village Yoga Odyssey</title>
+  <title>Yoga by Thanu – Cinematic Online Yoga</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Cinematic online yoga classes with village soul. Live sessions from Hyderabad with epic visuals and intimate teaching in three languages."
+    content="Cinematic online yoga for real bodies. Live, small-batch classes from Hyderabad in English, Telugu, and Kannada."
   />
 
-  <!-- Wes Anderson typography meets cinematic scale -->
+  <!-- Cinematic typography: Bodoni + Archivo -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -19,31 +19,33 @@
 
   <style>
     :root {
-      /* Wes Anderson pastels [web:56] */
-      --cream: #f4ebe1;
-      --pale-pink: #f7d4c8;
-      --dusty-rose: #d4a5a0;
-      --mint-green: #c4d5c3;
-      --sage: #a8b89d;
-      --terracotta: #c57b57;
-      --burnt-orange: #d97850;
-      --mustard: #e3af4b;
-      --rust: #a65e44;
-      --charcoal: #2e2823;
-      --warm-brown: #5a4a3a;
+      /* La La Land palette [web:97][web:100][web:113] */
+      --indigo-deep: #0b0424;
+      --indigo-rich: #170063;
+      --purple-primary: #3a1c9c;
+      --purple-bright: #5f2fbd;
+      --purple-light: #7a3fd6;
+      --lala-yellow: #fdff03;
+      --yellow-warm: #f6d548;
+      --teal-accent: #4dd9d6;
+      --off-white: #fbfbff;
+      --warm-white: #fdf7ee;
+      --pink-soft: #f7d4c8;
+      --charcoal: #1a1520;
 
       /* Cameron-style depth & glow */
-      --glow-green: rgba(168, 184, 157, 0.6);
-      --glow-orange: rgba(217, 120, 80, 0.5);
-      --shadow-epic: 0 32px 80px rgba(46, 40, 35, 0.3);
-      --shadow-deep: 0 48px 120px rgba(46, 40, 35, 0.45);
+      --glow-purple: rgba(122, 63, 214, 0.6);
+      --glow-yellow: rgba(253, 255, 3, 0.5);
+      --glow-teal: rgba(77, 217, 214, 0.4);
+      --shadow-epic: 0 32px 80px rgba(26, 21, 32, 0.5);
+      --shadow-deep: 0 48px 120px rgba(26, 21, 32, 0.7);
 
       --font-heading: "Bodoni Moda", Georgia, serif;
       --font-body: "Archivo", "Helvetica Neue", sans-serif;
 
       --border-width: 2px;
-      --radius-card: 8px;
-      --max-width: 1400px;
+      --radius-card: 12px;
+      --max-width: 1440px;
     }
 
     * {
@@ -59,8 +61,8 @@
 
     body {
       font-family: var(--font-body);
-      background: var(--charcoal);
-      color: var(--cream);
+      background: var(--indigo-deep);
+      color: var(--off-white);
       -webkit-font-smoothing: antialiased;
       line-height: 1.6;
       overflow-x: hidden;
@@ -89,40 +91,40 @@
       position: relative;
     }
 
-    /* Cameron-style atmospheric background with depth layers */
+    /* Cameron-style atmospheric background with La La Land gradient [web:97][web:102] */
     .ambient-layer {
       position: fixed;
       inset: 0;
       z-index: -1;
       background: radial-gradient(
         ellipse at 50% 20%,
-        rgba(168, 184, 157, 0.15) 0%,
-        rgba(46, 40, 35, 0.95) 60%,
-        #2e2823 100%
+        rgba(122, 63, 214, 0.2) 0%,
+        rgba(23, 0, 99, 0.9) 50%,
+        #0b0424 100%
       );
-      animation: ambientPulse 12s ease-in-out infinite;
+      animation: ambientPulse 14s ease-in-out infinite;
     }
 
     @keyframes ambientPulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
+      50% { opacity: 0.88; }
     }
 
-    /* Floating particles – Cameron bioluminescence style */
+    /* Floating particles – Cameron bioluminescence with La La Land colors */
     .particles {
       position: fixed;
       inset: 0;
       z-index: -1;
       pointer-events: none;
       background-image: 
-        radial-gradient(2px 2px at 20% 30%, var(--glow-green), transparent),
-        radial-gradient(2px 2px at 60% 70%, var(--glow-orange), transparent),
-        radial-gradient(1px 1px at 50% 50%, var(--glow-green), transparent),
-        radial-gradient(1px 1px at 80% 10%, var(--glow-orange), transparent),
-        radial-gradient(2px 2px at 90% 60%, var(--glow-green), transparent);
-      background-size: 200% 200%;
-      animation: particleFloat 20s linear infinite;
-      opacity: 0.4;
+        radial-gradient(2px 2px at 15% 25%, var(--glow-teal), transparent),
+        radial-gradient(2px 2px at 65% 75%, var(--glow-yellow), transparent),
+        radial-gradient(1px 1px at 45% 55%, var(--glow-purple), transparent),
+        radial-gradient(1px 1px at 85% 15%, var(--glow-teal), transparent),
+        radial-gradient(2px 2px at 95% 65%, var(--glow-yellow), transparent);
+      background-size: 250% 250%;
+      animation: particleFloat 25s linear infinite;
+      opacity: 0.5;
     }
 
     @keyframes particleFloat {
@@ -134,265 +136,286 @@
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 40px;
+      padding: 0 48px;
     }
 
-    /* Nav: Wes symmetry with Cameron depth */
+    /* Nav: Glass morphism with La La Land tint [web:119] */
     .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(247, 212, 200, 0.12);
-      backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: var(--border-width) solid rgba(244, 235, 225, 0.2);
+      background: rgba(11, 4, 36, 0.15);
+      backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(251, 251, 255, 0.15);
       transition: all 400ms ease;
     }
 
     .nav.scrolled {
-      background: rgba(247, 212, 200, 0.95);
-      border-bottom-color: var(--charcoal);
-      box-shadow: 0 16px 48px rgba(46, 40, 35, 0.6);
+      background: rgba(23, 0, 99, 0.92);
+      border-bottom-color: rgba(122, 63, 214, 0.4);
+      box-shadow: 0 16px 48px rgba(26, 21, 32, 0.8);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 40px;
+      padding: 22px 48px;
     }
 
     .brand {
       font-family: var(--font-heading);
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--cream);
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      color: var(--off-white);
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 40px var(--glow-purple);
+      transition: all 300ms ease;
     }
 
-    .nav.scrolled .brand {
-      color: var(--charcoal);
-      text-shadow: none;
+    .brand:hover {
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 60px var(--glow-yellow);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 36px;
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     .nav-links a {
-      color: var(--cream);
-      transition: all 240ms ease;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      color: var(--off-white);
+      transition: all 280ms ease;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      position: relative;
     }
 
-    .nav.scrolled .nav-links a {
-      color: var(--warm-brown);
-      text-shadow: none;
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--lala-yellow);
+      box-shadow: 0 0 12px var(--glow-yellow);
+      transition: width 320ms ease;
     }
 
     .nav-links a:hover {
-      color: var(--burnt-orange);
-      text-shadow: 0 0 20px var(--glow-orange);
+      color: var(--lala-yellow);
+      text-shadow: 0 0 24px var(--glow-yellow);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .btn-nav {
-      padding: 10px 28px;
-      background: var(--terracotta);
-      color: #fff;
-      border: var(--border-width) solid var(--charcoal);
+      padding: 11px 30px;
+      background: var(--lala-yellow);
+      color: var(--indigo-deep);
+      border: var(--border-width) solid var(--indigo-deep);
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      font-weight: 800;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      transition: all 280ms ease;
-      box-shadow: 0 8px 24px rgba(197, 123, 87, 0.5), 0 0 40px var(--glow-orange);
+      transition: all 300ms ease;
+      box-shadow: 0 8px 28px rgba(253, 255, 3, 0.4), 0 0 50px var(--glow-yellow);
+      border-radius: 4px;
     }
 
     .btn-nav:hover {
-      background: var(--burnt-orange);
+      background: var(--yellow-warm);
       transform: translateY(-2px);
-      box-shadow: 0 12px 36px rgba(217, 120, 80, 0.6), 0 0 60px var(--glow-orange);
+      box-shadow: 0 12px 40px rgba(246, 213, 72, 0.6), 0 0 70px var(--glow-yellow);
     }
 
-    /* Hero: Cameron-scale epic with Wes color blocking */
+    /* Hero: Full cinematic scale with La La Land grading [web:97][web:119] */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 140px 40px 100px;
+      padding: 160px 48px 120px;
       position: relative;
       background: linear-gradient(
         180deg,
-        rgba(46, 40, 35, 0.7) 0%,
-        rgba(212, 165, 160, 0.3) 50%,
-        rgba(46, 40, 35, 0.9) 100%
+        rgba(11, 4, 36, 0.5) 0%,
+        rgba(58, 28, 156, 0.4) 40%,
+        rgba(23, 0, 99, 0.8) 100%
       );
       overflow: hidden;
     }
 
-    /* Cameron light rays */
+    /* Cameron volumetric light rays with purple/yellow tint */
     .hero::before {
       content: "";
       position: absolute;
       top: -50%;
       left: 50%;
       transform: translateX(-50%);
-      width: 150%;
-      height: 200%;
+      width: 180%;
+      height: 220%;
       background: 
-        linear-gradient(90deg, transparent 0%, rgba(227, 175, 75, 0.15) 50%, transparent 100%),
-        linear-gradient(120deg, transparent 0%, rgba(168, 184, 157, 0.12) 50%, transparent 100%);
-      animation: epicRays 10s ease-in-out infinite;
+        linear-gradient(95deg, transparent 0%, rgba(122, 63, 214, 0.18) 50%, transparent 100%),
+        linear-gradient(125deg, transparent 0%, rgba(253, 255, 3, 0.12) 50%, transparent 100%);
+      animation: epicRays 12s ease-in-out infinite;
       pointer-events: none;
     }
 
     @keyframes epicRays {
       0%, 100% { transform: translateX(-50%) rotate(0deg); }
-      50% { transform: translateX(-50%) rotate(8deg); }
+      50% { transform: translateX(-50%) rotate(10deg); }
     }
 
-    /* Wes frame + Cameron depth */
+    /* Cinematic frame border */
     .hero::after {
       content: "";
       position: absolute;
-      inset: 32px;
-      border: var(--border-width) solid rgba(244, 235, 225, 0.3);
+      inset: 40px;
+      border: 1px solid rgba(251, 251, 255, 0.2);
       pointer-events: none;
-      box-shadow: inset 0 0 80px rgba(168, 184, 157, 0.2);
+      box-shadow: inset 0 0 100px rgba(122, 63, 214, 0.15);
     }
 
     .hero-inner {
-      max-width: 1000px;
+      max-width: 1100px;
       position: relative;
       z-index: 10;
     }
 
     .hero-chapter {
       display: inline-block;
-      padding: 10px 24px;
-      background: rgba(196, 213, 195, 0.25);
-      backdrop-filter: blur(12px);
-      border: var(--border-width) solid rgba(244, 235, 225, 0.4);
+      padding: 10px 28px;
+      background: rgba(77, 217, 214, 0.15);
+      backdrop-filter: blur(16px);
+      border: var(--border-width) solid rgba(77, 217, 214, 0.4);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      margin-bottom: 40px;
-      color: var(--mint-green);
-      box-shadow: 0 8px 32px rgba(168, 184, 157, 0.3), 0 0 60px var(--glow-green);
-      animation: chapterGlow 3s ease-in-out infinite;
+      margin-bottom: 48px;
+      color: var(--teal-accent);
+      box-shadow: 0 8px 32px rgba(77, 217, 214, 0.4), 0 0 70px var(--glow-teal);
+      animation: chapterGlow 3.5s ease-in-out infinite;
+      border-radius: 4px;
     }
 
     @keyframes chapterGlow {
-      0%, 100% { box-shadow: 0 8px 32px rgba(168, 184, 157, 0.3), 0 0 60px var(--glow-green); }
-      50% { box-shadow: 0 12px 48px rgba(168, 184, 157, 0.5), 0 0 90px var(--glow-green); }
+      0%, 100% { box-shadow: 0 8px 32px rgba(77, 217, 214, 0.4), 0 0 70px var(--glow-teal); }
+      50% { box-shadow: 0 12px 48px rgba(77, 217, 214, 0.6), 0 0 100px var(--glow-teal); }
     }
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(3.5rem, 12vw, 8rem);
+      font-size: clamp(4rem, 14vw, 9.5rem);
       font-weight: 700;
-      line-height: 0.95;
-      letter-spacing: -0.01em;
-      margin-bottom: 32px;
-      color: var(--cream);
-      text-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 80px rgba(227, 175, 75, 0.4);
-      animation: titleReveal 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      line-height: 0.92;
+      letter-spacing: -0.015em;
+      margin-bottom: 40px;
+      color: var(--off-white);
+      text-shadow: 0 12px 40px rgba(0, 0, 0, 0.9), 0 0 100px var(--glow-purple);
+      animation: titleReveal 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 
     @keyframes titleReveal {
-      from { opacity: 0; transform: translateY(80px) scale(0.9); }
+      from { opacity: 0; transform: translateY(100px) scale(0.92); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+    .hero-title-line {
+      display: block;
+    }
+
     .hero-subtitle {
-      font-size: clamp(17px, 2.4vw, 21px);
-      line-height: 1.75;
-      color: var(--pale-pink);
-      max-width: 760px;
-      margin: 0 auto 56px;
+      font-size: clamp(18px, 2.6vw, 23px);
+      line-height: 1.8;
+      color: var(--pink-soft);
+      max-width: 800px;
+      margin: 0 auto 64px;
       font-weight: 500;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
     }
 
     .hero-cta-row {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 72px;
+      margin-bottom: 80px;
     }
 
     .btn-primary {
-      padding: 18px 48px;
-      background: var(--terracotta);
-      color: #fff;
-      border: var(--border-width) solid var(--charcoal);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+      padding: 20px 56px;
+      background: var(--lala-yellow);
+      color: var(--indigo-deep);
+      border: var(--border-width) solid var(--indigo-deep);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      transition: all 300ms ease;
-      box-shadow: 6px 6px 0 var(--charcoal), 0 12px 40px rgba(197, 123, 87, 0.5), 0 0 60px var(--glow-orange);
+      transition: all 340ms ease;
+      box-shadow: 8px 8px 0 var(--indigo-deep), 0 16px 48px rgba(253, 255, 3, 0.5), 0 0 80px var(--glow-yellow);
       position: relative;
       overflow: hidden;
+      border-radius: 6px;
     }
 
     .btn-primary::before {
       content: "";
       position: absolute;
-      inset: -50%;
-      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transform: translateX(-100%);
-      transition: transform 600ms ease;
+      inset: -60%;
+      background: linear-gradient(50deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: translateX(-120%) rotate(45deg);
+      transition: transform 700ms ease;
     }
 
     .btn-primary:hover::before {
-      transform: translateX(100%);
+      transform: translateX(120%) rotate(45deg);
     }
 
     .btn-primary:hover {
-      background: var(--burnt-orange);
-      transform: translate(-3px, -3px);
-      box-shadow: 9px 9px 0 var(--charcoal), 0 20px 60px rgba(217, 120, 80, 0.7), 0 0 100px var(--glow-orange);
+      background: var(--yellow-warm);
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0 var(--indigo-deep), 0 24px 64px rgba(246, 213, 72, 0.7), 0 0 120px var(--glow-yellow);
     }
 
     .btn-secondary {
-      padding: 18px 48px;
-      background: rgba(244, 235, 225, 0.15);
-      backdrop-filter: blur(12px);
-      color: var(--cream);
-      border: var(--border-width) solid rgba(244, 235, 225, 0.4);
-      font-size: 13px;
+      padding: 20px 56px;
+      background: rgba(251, 251, 255, 0.12);
+      backdrop-filter: blur(16px);
+      color: var(--off-white);
+      border: var(--border-width) solid rgba(251, 251, 255, 0.35);
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      transition: all 300ms ease;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+      transition: all 340ms ease;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+      border-radius: 6px;
     }
 
     .btn-secondary:hover {
-      background: rgba(247, 212, 200, 0.3);
-      border-color: var(--pale-pink);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 60px var(--glow-green);
+      background: rgba(77, 217, 214, 0.2);
+      border-color: var(--teal-accent);
+      color: var(--teal-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 56px rgba(0, 0, 0, 0.7), 0 0 80px var(--glow-teal);
     }
 
-    /* Stats with Cameron HUD style */
+    /* HUD-style stats */
     .hero-stats {
       display: flex;
-      gap: 64px;
+      gap: 72px;
       justify-content: center;
       flex-wrap: wrap;
     }
@@ -401,192 +424,205 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
-      padding: 20px 32px;
-      background: rgba(196, 213, 195, 0.15);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(244, 235, 225, 0.3);
-      border-radius: 4px;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(168, 184, 157, 0.15);
+      gap: 10px;
+      padding: 24px 40px;
+      background: rgba(77, 217, 214, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(77, 217, 214, 0.25);
+      border-radius: var(--radius-card);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 0 60px rgba(122, 63, 214, 0.1);
     }
 
     .hero-stat-number {
       font-family: var(--font-heading);
-      font-size: 42px;
+      font-size: 48px;
       font-weight: 700;
-      color: var(--mustard);
-      text-shadow: 0 4px 16px rgba(227, 175, 75, 0.8), 0 0 40px var(--glow-orange);
+      color: var(--lala-yellow);
+      text-shadow: 0 4px 20px rgba(253, 255, 3, 0.8), 0 0 50px var(--glow-yellow);
     }
 
     .hero-stat-label {
       font-size: 11px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--sage);
+      color: var(--teal-accent);
     }
 
-    /* Section: Wes color blocks + Cameron cinematic scale */
+    /* Section: Cinematic chapters [web:119][web:122] */
     section {
-      padding: 140px 40px;
+      padding: 160px 48px;
       position: relative;
-      border-top: var(--border-width) solid rgba(244, 235, 225, 0.2);
+      border-top: 1px solid rgba(251, 251, 255, 0.1);
     }
 
     .section-header {
       text-align: center;
-      max-width: 800px;
-      margin: 0 auto 80px;
+      max-width: 900px;
+      margin: 0 auto 96px;
       position: relative;
       z-index: 1;
     }
 
     .section-chapter {
       display: inline-block;
-      padding: 8px 20px;
-      background: rgba(168, 184, 157, 0.2);
-      backdrop-filter: blur(12px);
-      border: var(--border-width) solid rgba(168, 184, 157, 0.4);
+      padding: 8px 24px;
+      background: rgba(122, 63, 214, 0.15);
+      backdrop-filter: blur(16px);
+      border: var(--border-width) solid rgba(122, 63, 214, 0.4);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      margin-bottom: 24px;
-      color: var(--mint-green);
-      box-shadow: 0 8px 24px rgba(168, 184, 157, 0.3), 0 0 40px var(--glow-green);
+      margin-bottom: 28px;
+      color: var(--purple-light);
+      box-shadow: 0 8px 28px rgba(122, 63, 214, 0.4), 0 0 60px var(--glow-purple);
+      border-radius: 4px;
     }
 
     .section-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-size: clamp(3rem, 7vw, 5.5rem);
       font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 24px;
-      color: var(--cream);
-      text-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
+      line-height: 1.08;
+      margin-bottom: 28px;
+      color: var(--off-white);
+      text-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
     }
 
     .section-desc {
-      font-size: 18px;
-      line-height: 1.75;
-      color: var(--pale-pink);
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+      font-size: 19px;
+      line-height: 1.8;
+      color: var(--pink-soft);
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
     }
 
-    /* How: tri-panel with depth */
-    .how {
+    /* Journey (How it works) */
+    .journey {
       background: radial-gradient(
         ellipse at 50% 50%,
-        rgba(212, 165, 160, 0.15) 0%,
-        rgba(46, 40, 35, 0.95) 70%
+        rgba(95, 47, 189, 0.12) 0%,
+        rgba(11, 4, 36, 1) 75%
       );
     }
 
-    .how-grid {
+    .journey-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 1300px;
+      gap: 36px;
+      max-width: 1360px;
       margin: 0 auto;
     }
 
-    .how-card {
-      background: rgba(244, 235, 225, 0.08);
-      backdrop-filter: blur(20px);
-      border: var(--border-width) solid rgba(244, 235, 225, 0.3);
-      padding: 56px 40px;
+    .journey-card {
+      background: rgba(251, 251, 255, 0.06);
+      backdrop-filter: blur(24px);
+      border: var(--border-width) solid rgba(251, 251, 255, 0.2);
+      padding: 64px 48px;
       text-align: center;
-      transition: all 400ms ease;
+      transition: all 420ms ease;
       box-shadow: var(--shadow-epic);
       position: relative;
       overflow: hidden;
+      border-radius: var(--radius-card);
     }
 
-    .how-card::before {
+    .journey-card::before {
       content: "";
       position: absolute;
       inset: 0;
       background: radial-gradient(
         circle at 50% 0%,
-        rgba(168, 184, 157, 0.15) 0%,
-        transparent 60%
+        rgba(122, 63, 214, 0.15) 0%,
+        transparent 70%
       );
       opacity: 0;
-      transition: opacity 400ms ease;
+      transition: opacity 420ms ease;
     }
 
-    .how-card:hover::before {
+    .journey-card:hover::before {
       opacity: 1;
     }
 
-    .how-card:hover {
-      transform: translateY(-12px);
-      border-color: var(--sage);
-      box-shadow: var(--shadow-deep), 0 0 80px var(--glow-green);
+    .journey-card:hover {
+      transform: translateY(-16px);
+      border-color: var(--purple-light);
+      box-shadow: var(--shadow-deep), 0 0 100px var(--glow-purple);
     }
 
-    .how-number {
-      font-family: var(--font-heading);
-      font-size: 96px;
+    .journey-scene {
+      font-size: 11px;
       font-weight: 700;
-      color: rgba(244, 235, 225, 0.08);
-      line-height: 1;
-      margin-bottom: 24px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--teal-accent);
+      margin-bottom: 20px;
     }
 
-    .how-icon {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 32px;
-      background: linear-gradient(135deg, var(--terracotta), var(--burnt-orange));
-      border: var(--border-width) solid var(--charcoal);
+    .journey-number {
+      font-family: var(--font-heading);
+      font-size: 112px;
+      font-weight: 700;
+      color: rgba(251, 251, 255, 0.05);
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+
+    .journey-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 36px;
+      background: linear-gradient(135deg, var(--purple-primary), var(--purple-bright));
+      border: var(--border-width) solid var(--indigo-deep);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
-      box-shadow: 4px 4px 0 var(--charcoal), 0 12px 36px rgba(197, 123, 87, 0.5), 0 0 60px var(--glow-orange);
+      font-size: 40px;
+      box-shadow: 6px 6px 0 var(--indigo-deep), 0 16px 48px rgba(95, 47, 189, 0.6), 0 0 80px var(--glow-purple);
+      border-radius: 8px;
     }
 
-    .how-title {
+    .journey-title {
       font-family: var(--font-heading);
-      font-size: 26px;
+      font-size: 30px;
       font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--cream);
+      margin-bottom: 18px;
+      color: var(--off-white);
     }
 
-    .how-desc {
+    .journey-desc {
       font-size: 16px;
-      line-height: 1.7;
-      color: var(--pale-pink);
+      line-height: 1.75;
+      color: var(--pink-soft);
     }
 
-    /* Classes: cinematic cards */
+    /* Classes */
     .classes {
       background: radial-gradient(
         ellipse at 50% 50%,
-        rgba(168, 184, 157, 0.12) 0%,
-        rgba(46, 40, 35, 1) 70%
+        rgba(77, 217, 214, 0.08) 0%,
+        rgba(11, 4, 36, 1) 70%
       );
     }
 
     .classes-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 1300px;
+      gap: 36px;
+      max-width: 1360px;
       margin: 0 auto;
     }
 
     .class-card {
-      background: rgba(247, 212, 200, 0.1);
-      backdrop-filter: blur(20px);
-      border: var(--border-width) solid rgba(247, 212, 200, 0.3);
-      padding: 40px 32px;
+      background: rgba(253, 247, 238, 0.08);
+      backdrop-filter: blur(24px);
+      border: var(--border-width) solid rgba(247, 212, 200, 0.25);
+      padding: 48px 40px;
       text-align: center;
-      transition: all 400ms ease;
+      transition: all 420ms ease;
       box-shadow: var(--shadow-epic);
       position: relative;
       overflow: hidden;
+      border-radius: var(--radius-card);
     }
 
     .class-card::before {
@@ -595,11 +631,11 @@
       inset: 0;
       background: radial-gradient(
         circle at 50% 100%,
-        rgba(217, 120, 80, 0.2) 0%,
-        transparent 60%
+        rgba(253, 255, 3, 0.12) 0%,
+        transparent 65%
       );
       opacity: 0;
-      transition: opacity 400ms ease;
+      transition: opacity 420ms ease;
     }
 
     .class-card:hover::before {
@@ -607,146 +643,150 @@
     }
 
     .class-card:hover {
-      transform: translate(-4px, -4px);
-      border-color: var(--terracotta);
-      box-shadow: 8px 8px 0 var(--charcoal), var(--shadow-deep), 0 0 80px var(--glow-orange);
+      transform: translate(-6px, -6px);
+      border-color: var(--lala-yellow);
+      box-shadow: 10px 10px 0 var(--indigo-deep), var(--shadow-deep), 0 0 100px var(--glow-yellow);
     }
 
     .class-tag {
       display: inline-block;
-      padding: 6px 14px;
-      background: rgba(168, 184, 157, 0.25);
-      border: 1px solid var(--sage);
+      padding: 6px 16px;
+      background: rgba(77, 217, 214, 0.2);
+      border: 1px solid var(--teal-accent);
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 24px;
-      color: var(--mint-green);
-      box-shadow: 0 4px 16px rgba(168, 184, 157, 0.4);
+      margin-bottom: 28px;
+      color: var(--teal-accent);
+      box-shadow: 0 4px 20px rgba(77, 217, 214, 0.5);
+      border-radius: 4px;
     }
 
     .class-title {
       font-family: var(--font-heading);
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--cream);
-      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      margin-bottom: 20px;
+      color: var(--off-white);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
     }
 
     .class-desc {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--pale-pink);
-      margin-bottom: 28px;
-      min-height: 90px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--pink-soft);
+      margin-bottom: 32px;
+      min-height: 96px;
     }
 
     .class-meta {
       font-size: 12px;
-      color: var(--dusty-rose);
+      color: var(--teal-accent);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 20px;
+      letter-spacing: 0.12em;
+      margin-bottom: 24px;
     }
 
     .class-btn {
-      padding: 12px 32px;
-      background: var(--terracotta);
-      color: #fff;
-      border: var(--border-width) solid var(--charcoal);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      padding: 14px 36px;
+      background: var(--lala-yellow);
+      color: var(--indigo-deep);
+      border: var(--border-width) solid var(--indigo-deep);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      transition: all 280ms ease;
-      box-shadow: 4px 4px 0 var(--charcoal), 0 8px 24px rgba(197, 123, 87, 0.5);
+      transition: all 320ms ease;
+      box-shadow: 5px 5px 0 var(--indigo-deep), 0 8px 28px rgba(253, 255, 3, 0.5);
+      border-radius: 4px;
     }
 
     .class-btn:hover {
-      background: var(--burnt-orange);
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 var(--charcoal), 0 12px 36px rgba(217, 120, 80, 0.7), 0 0 60px var(--glow-orange);
+      background: var(--yellow-warm);
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0 var(--indigo-deep), 0 12px 40px rgba(246, 213, 72, 0.7), 0 0 80px var(--glow-yellow);
     }
 
-    /* Testimonials: glowing cards */
-    .testimonials {
+    /* Testimonials (Stories) */
+    .stories {
       background: radial-gradient(
         ellipse at 50% 50%,
-        rgba(196, 213, 195, 0.1) 0%,
-        rgba(46, 40, 35, 1) 70%
+        rgba(122, 63, 214, 0.1) 0%,
+        rgba(11, 4, 36, 1) 70%
       );
     }
 
-    .testimonials-grid {
+    .stories-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 1300px;
+      gap: 36px;
+      max-width: 1360px;
       margin: 0 auto;
     }
 
-    .testimonial-card {
-      background: rgba(196, 213, 195, 0.12);
-      backdrop-filter: blur(20px);
-      border: var(--border-width) solid rgba(196, 213, 195, 0.3);
-      padding: 40px 32px;
+    .story-card {
+      background: rgba(122, 63, 214, 0.08);
+      backdrop-filter: blur(24px);
+      border: var(--border-width) solid rgba(122, 63, 214, 0.25);
+      padding: 48px 40px;
       text-align: center;
-      box-shadow: var(--shadow-epic), 0 0 40px var(--glow-green);
-      transition: all 400ms ease;
+      box-shadow: var(--shadow-epic), 0 0 60px var(--glow-purple);
+      transition: all 420ms ease;
+      border-radius: var(--radius-card);
     }
 
-    .testimonial-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-deep), 0 0 80px var(--glow-green);
+    .story-card:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--shadow-deep), 0 0 100px var(--glow-purple);
     }
 
-    .testimonial-quote {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--pale-pink);
-      margin-bottom: 28px;
+    .story-quote {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--pink-soft);
+      margin-bottom: 32px;
       font-style: italic;
     }
 
-    .testimonial-meta {
+    .story-meta {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .testimonial-avatar {
-      width: 64px;
-      height: 64px;
+    .story-avatar {
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      border: var(--border-width) solid var(--charcoal);
-      background: linear-gradient(135deg, var(--dusty-rose), var(--terracotta));
-      box-shadow: 4px 4px 0 var(--charcoal), 0 8px 24px rgba(197, 123, 87, 0.5), 0 0 40px var(--glow-orange);
+      border: var(--border-width) solid var(--indigo-deep);
+      background: linear-gradient(135deg, var(--purple-primary), var(--lala-yellow));
+      box-shadow: 5px 5px 0 var(--indigo-deep), 0 12px 36px rgba(253, 255, 3, 0.5), 0 0 60px var(--glow-yellow);
     }
 
-    .testimonial-author {
-      font-size: 15px;
+    .story-author {
+      font-size: 16px;
       font-weight: 700;
-      color: var(--cream);
+      color: var(--off-white);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
     }
 
-    .testimonial-role {
+    .story-role {
       font-size: 13px;
-      color: var(--sage);
+      color: var(--teal-accent);
     }
 
-    /* CTA: epic finale */
+    /* CTA: Epic finale */
     .cta {
-      padding: 160px 40px;
+      padding: 180px 48px;
       background: radial-gradient(
         ellipse at 50% 50%,
-        rgba(212, 165, 160, 0.25) 0%,
-        rgba(46, 40, 35, 1) 60%
+        rgba(253, 255, 3, 0.15) 0%,
+        rgba(23, 0, 99, 0.95) 55%,
+        rgba(11, 4, 36, 1) 85%
       );
       text-align: center;
       position: relative;
@@ -756,128 +796,138 @@
     .cta::before {
       content: "";
       position: absolute;
-      inset: 40px;
-      border: var(--border-width) solid rgba(244, 235, 225, 0.3);
+      inset: 48px;
+      border: 1px solid rgba(251, 251, 255, 0.25);
       pointer-events: none;
-      box-shadow: inset 0 0 100px rgba(217, 120, 80, 0.2);
+      box-shadow: inset 0 0 120px rgba(253, 255, 3, 0.15);
+      border-radius: 8px;
     }
 
     .cta-inner {
       position: relative;
       z-index: 1;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .cta-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-size: clamp(3.2rem, 8vw, 6rem);
       font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 32px;
-      color: var(--cream);
-      text-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 80px var(--glow-orange);
+      line-height: 1.08;
+      margin-bottom: 40px;
+      color: var(--off-white);
+      text-shadow: 0 12px 48px rgba(0, 0, 0, 0.9), 0 0 120px var(--glow-yellow);
     }
 
     .cta-subtitle {
-      font-size: 19px;
-      line-height: 1.75;
-      color: var(--pale-pink);
-      margin-bottom: 48px;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+      line-height: 1.8;
+      color: var(--pink-soft);
+      margin-bottom: 56px;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
     }
 
     .cta-btn {
-      padding: 22px 64px;
-      background: var(--mustard);
-      color: var(--charcoal);
-      border: var(--border-width) solid var(--charcoal);
-      font-size: 14px;
+      padding: 26px 72px;
+      background: var(--lala-yellow);
+      color: var(--indigo-deep);
+      border: var(--border-width) solid var(--indigo-deep);
+      font-size: 15px;
       font-weight: 800;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      transition: all 320ms ease;
-      box-shadow: 8px 8px 0 var(--charcoal), 0 20px 60px rgba(227, 175, 75, 0.6), 0 0 100px var(--glow-orange);
+      transition: all 360ms ease;
+      box-shadow: 10px 10px 0 var(--indigo-deep), 0 24px 72px rgba(253, 255, 3, 0.6), 0 0 140px var(--glow-yellow);
       position: relative;
       overflow: hidden;
+      border-radius: 6px;
     }
 
     .cta-btn::before {
       content: "";
       position: absolute;
-      inset: -50%;
-      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transform: translateX(-100%) rotate(45deg);
-      transition: transform 700ms ease;
+      inset: -70%;
+      background: linear-gradient(55deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      transform: translateX(-140%) rotate(50deg);
+      transition: transform 800ms ease;
     }
 
     .cta-btn:hover::before {
-      transform: translateX(100%) rotate(45deg);
+      transform: translateX(140%) rotate(50deg);
     }
 
     .cta-btn:hover {
-      background: var(--burnt-orange);
-      color: #fff;
-      transform: translate(-4px, -4px);
-      box-shadow: 12px 12px 0 var(--charcoal), 0 28px 80px rgba(217, 120, 80, 0.8), 0 0 140px var(--glow-orange);
+      background: var(--yellow-warm);
+      transform: translate(-6px, -6px);
+      box-shadow: 16px 16px 0 var(--indigo-deep), 0 32px 96px rgba(246, 213, 72, 0.8), 0 0 180px var(--glow-yellow);
     }
 
     /* Footer */
     .footer {
-      padding: 72px 40px 48px;
-      background: var(--charcoal);
-      border-top: var(--border-width) solid rgba(244, 235, 225, 0.2);
+      padding: 80px 48px 56px;
+      background: var(--indigo-deep);
+      border-top: 1px solid rgba(251, 251, 255, 0.1);
       text-align: center;
-      color: var(--pale-pink);
+      color: var(--pink-soft);
     }
 
     .footer-brand {
       font-family: var(--font-heading);
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 20px;
+      color: var(--off-white);
+      margin-bottom: 24px;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      letter-spacing: 0.08em;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .footer-tagline {
+      font-size: 15px;
+      color: var(--pink-soft);
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .footer-links {
       display: flex;
-      gap: 28px;
+      gap: 32px;
       justify-content: center;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       flex-wrap: wrap;
     }
 
     .footer-links a {
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       font-size: 12px;
-      transition: all 240ms ease;
+      transition: all 280ms ease;
     }
 
     .footer-links a:hover {
-      color: var(--burnt-orange);
-      text-shadow: 0 0 20px var(--glow-orange);
+      color: var(--lala-yellow);
+      text-shadow: 0 0 24px var(--glow-yellow);
     }
 
     .footer-copy {
       font-size: 12px;
-      color: var(--sage);
+      color: var(--teal-accent);
     }
 
     /* Responsive */
-    @media (max-width: 1024px) {
-      .how-grid,
+    @media (max-width: 1200px) {
+      .journey-grid,
       .classes-grid,
-      .testimonials-grid {
+      .stories-grid {
         grid-template-columns: 1fr;
       }
 
       .hero-stats {
-        gap: 32px;
+        gap: 48px;
       }
     }
 
@@ -887,26 +937,34 @@
       }
 
       .hero {
-        padding: 120px 24px 80px;
+        padding: 140px 28px 100px;
       }
 
       section {
-        padding: 100px 24px;
+        padding: 120px 28px;
       }
 
       .hero-cta-row {
         flex-direction: column;
-        gap: 16px;
+        gap: 20px;
       }
 
       .btn-primary,
       .btn-secondary {
         width: 100%;
-        max-width: 360px;
+        max-width: 380px;
       }
 
       .cta {
-        padding: 120px 24px;
+        padding: 140px 28px;
+      }
+
+      .container {
+        padding: 0 28px;
+      }
+
+      .nav-inner {
+        padding: 18px 28px;
       }
     }
   </style>
@@ -922,10 +980,10 @@
       <div class="nav-inner">
         <a href="#top" class="brand">Yoga by Thanu</a>
         <nav class="nav-links">
-          <a href="#how">Journey</a>
+          <a href="#journey">Journey</a>
           <a href="#classes">Classes</a>
-          <a href="#testimonials">Stories</a>
-          <button class="btn-nav" onclick="scrollToCTA()">Begin</button>
+          <a href="#stories">Stories</a>
+          <button class="btn-nav" onclick="scrollToCTA()">Enter Studio</button>
         </nav>
       </div>
     </header>
@@ -934,14 +992,15 @@
       <!-- HERO -->
       <section class="hero">
         <div class="hero-inner">
-          <div class="hero-chapter">Chapter I: Village Odyssey</div>
+          <div class="hero-chapter">ACT I · THE BEGINNING</div>
           <h1 class="hero-title">
-            Yoga Rooted in<br />Village Simplicity
+            <span class="hero-title-line">YOGA</span>
+            <span class="hero-title-line">BY</span>
+            <span class="hero-title-line">THANU</span>
           </h1>
           <p class="hero-subtitle">
-            Cinematic online classes that feel like stretching in your nani's
-            courtyard. Small batches, epic care, three languages. From Hyderabad
-            to your screen.
+            Cinematic online yoga for real bodies. Live, small-batch classes
+            from Hyderabad, taught in English, Telugu, and Kannada.
           </p>
           <div class="hero-cta-row">
             <button class="btn-primary" onclick="scrollToCTA()">
@@ -968,46 +1027,49 @@
         </div>
       </section>
 
-      <!-- HOW -->
-      <section id="how" class="how">
+      <!-- JOURNEY -->
+      <section id="journey" class="journey">
         <div class="container">
           <div class="section-header">
-            <div class="section-chapter">Chapter II: The Path</div>
+            <div class="section-chapter">ACT II · THE PATH</div>
             <h2 class="section-title">Your Journey Begins</h2>
             <p class="section-desc">
-              Three steps to transform your practice from anywhere in the world.
-              No studio commute, just pure village calm.
+              Three cinematic steps to transform your practice from anywhere in
+              the world. No studio commute, just pure calm and connection.
             </p>
           </div>
 
-          <div class="how-grid">
-            <article class="how-card">
-              <div class="how-number">01</div>
-              <div class="how-icon">📅</div>
-              <h3 class="how-title">Choose Class</h3>
-              <p class="how-desc">
-                Morning flows, evening unwinds, weekend gentle sessions. All
-                levels, small batches only.
+          <div class="journey-grid">
+            <article class="journey-card">
+              <div class="journey-scene">Scene I</div>
+              <div class="journey-number">01</div>
+              <div class="journey-icon">📅</div>
+              <h3 class="journey-title">Choose Your Class</h3>
+              <p class="journey-desc">
+                Morning flows, evening unwinds, weekend sessions. All levels
+                welcome, small batches only.
               </p>
             </article>
 
-            <article class="how-card">
-              <div class="how-number">02</div>
-              <div class="how-icon">📱</div>
-              <h3 class="how-title">Receive Link</h3>
-              <p class="how-desc">
+            <article class="journey-card">
+              <div class="journey-scene">Scene II</div>
+              <div class="journey-number">02</div>
+              <div class="journey-icon">📱</div>
+              <h3 class="journey-title">Receive Your Link</h3>
+              <p class="journey-desc">
                 Instant WhatsApp with Zoom link, prep guide, and intro to
-                Thanu's teaching style.
+                Thanu's teaching approach.
               </p>
             </article>
 
-            <article class="how-card">
-              <div class="how-number">03</div>
-              <div class="how-icon">🧘</div>
-              <h3 class="how-title">Practice Live</h3>
-              <p class="how-desc">
-                Join with your mat. Guided postures, breath, rest — like village
-                mornings from home.
+            <article class="journey-card">
+              <div class="journey-scene">Scene III</div>
+              <div class="journey-number">03</div>
+              <div class="journey-icon">🧘</div>
+              <h3 class="journey-title">Practice Live</h3>
+              <p class="journey-desc">
+                Join with your mat. Guided postures, breath work, and deep rest
+                in real time.
               </p>
             </article>
           </div>
@@ -1018,97 +1080,97 @@
       <section id="classes" class="classes">
         <div class="container">
           <div class="section-header">
-            <div class="section-chapter">Chapter III: The Practice</div>
+            <div class="section-chapter">ACT III · THE PRACTICE</div>
             <h2 class="section-title">Designed for Real Bodies</h2>
             <p class="section-desc">
-              Slow, accessible sessions inspired by Indian daily life. No
-              Instagram poses, just honest movement.
+              Slow, accessible sessions for stiff backs, busy parents, and
+              late-night coders. No Instagram poses, just honest movement.
             </p>
           </div>
 
           <div class="classes-grid">
             <article class="class-card">
               <span class="class-tag">Morning</span>
-              <h3 class="class-title">Sunrise Angan Flow</h3>
+              <h3 class="class-title">Sunrise Flow</h3>
               <p class="class-desc">
-                Gentle postures to wake you softly, like stepping into the
-                verandah with chai.
+                Gentle postures to wake you softly. A calm way to begin your day
+                with breath and movement.
               </p>
-              <div class="class-meta">45 mins • Mon, Wed, Fri</div>
+              <div class="class-meta">45 mins · Mon, Wed, Fri</div>
               <button class="class-btn" onclick="scrollToCTA()">Book Now</button>
             </article>
 
             <article class="class-card">
               <span class="class-tag">Evening</span>
-              <h3 class="class-title">Nidra Night Unwind</h3>
+              <h3 class="class-title">Night Unwind</h3>
               <p class="class-desc">
-                Floor stretches and yoga nidra for deep, village-style sleep and
-                complete rest.
+                Floor stretches and yoga nidra for deep rest. Release the day
+                and prepare for restorative sleep.
               </p>
-              <div class="class-meta">60 mins • Tue, Thu</div>
+              <div class="class-meta">60 mins · Tue, Thu</div>
               <button class="class-btn" onclick="scrollToCTA()">Book Now</button>
             </article>
 
             <article class="class-card">
               <span class="class-tag">Weekend</span>
-              <h3 class="class-title">Desi Maa Gentle Yoga</h3>
+              <h3 class="class-title">Gentle Practice</h3>
               <p class="class-desc">
-                Low-impact for back, knees, hips. Perfect for moms and anyone
-                starting again.
+                Low-impact movements for backs, knees, and hips. Perfect for
+                beginners and anyone starting again.
               </p>
-              <div class="class-meta">45 mins • Sat, Sun</div>
+              <div class="class-meta">45 mins · Sat, Sun</div>
               <button class="class-btn" onclick="scrollToCTA()">Book Now</button>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- TESTIMONIALS -->
-      <section id="testimonials" class="testimonials">
+      <!-- STORIES -->
+      <section id="stories" class="stories">
         <div class="container">
           <div class="section-header">
-            <div class="section-chapter">Chapter IV: The Community</div>
+            <div class="section-chapter">ACT IV · THE COMMUNITY</div>
             <h2 class="section-title">Stories of Transformation</h2>
             <p class="section-desc">
-              People who found a softer, more honest way to move with village
-              yoga.
+              People who found a softer, more honest way to move with cinematic
+              online yoga.
             </p>
           </div>
 
-          <div class="testimonials-grid">
-            <article class="testimonial-card">
-              <p class="testimonial-quote">
-                "It feels like stretching in my nani's house. No judgment, just
-                calm movement that fits my life."
+          <div class="stories-grid">
+            <article class="story-card">
+              <p class="story-quote">
+                "After years of back pain, this is the first space where I don't
+                feel judged for moving slowly. It's honest and calm."
               </p>
-              <div class="testimonial-meta">
-                <div class="testimonial-avatar"></div>
-                <div class="testimonial-author">Shreya M.</div>
-                <div class="testimonial-role">New to yoga</div>
+              <div class="story-meta">
+                <div class="story-avatar"></div>
+                <div class="story-author">Shreya M.</div>
+                <div class="story-role">New to yoga</div>
               </div>
             </article>
 
-            <article class="testimonial-card">
-              <p class="testimonial-quote">
-                "The village touches make it familiar. My mom and I join together
-                on weekends from different cities."
+            <article class="story-card">
+              <p class="story-quote">
+                "The teaching is clear and the pace is real. My mom and I join
+                together on weekends from different cities."
               </p>
-              <div class="testimonial-meta">
-                <div class="testimonial-avatar"></div>
-                <div class="testimonial-author">Sana K.</div>
-                <div class="testimonial-role">Weekend batch</div>
+              <div class="story-meta">
+                <div class="story-avatar"></div>
+                <div class="story-author">Sana K.</div>
+                <div class="story-role">Weekend batch</div>
               </div>
             </article>
 
-            <article class="testimonial-card">
-              <p class="testimonial-quote">
-                "Classes are calm, the pace is real. I join from Bangalore — it
-                feels like coming home every session."
+            <article class="story-card">
+              <p class="story-quote">
+                "Classes are calm, never rushed. I join from Bangalore after long
+                work days — it feels like coming home."
               </p>
-              <div class="testimonial-meta">
-                <div class="testimonial-avatar"></div>
-                <div class="testimonial-author">Rahul P.</div>
-                <div class="testimonial-role">Remote worker</div>
+              <div class="story-meta">
+                <div class="story-avatar"></div>
+                <div class="story-author">Rahul P.</div>
+                <div class="story-role">Remote worker</div>
               </div>
             </article>
           </div>
@@ -1118,10 +1180,10 @@
       <!-- CTA -->
       <section class="cta">
         <div class="cta-inner">
-          <h2 class="cta-title">Begin Your Epic Journey</h2>
+          <h2 class="cta-title">Begin Your Cinematic Journey</h2>
           <p class="cta-subtitle">
             Your first trial class is free. No credit card, no commitment. One
-            cinematic session to see if village yoga transforms your practice.
+            live session to see if this practice transforms your routine.
           </p>
           <button class="cta-btn" onclick="alert('WhatsApp: +91 XXXXXXXXXX')">
             Book Your Free Trial
@@ -1133,16 +1195,20 @@
     <!-- FOOTER -->
     <footer class="footer">
       <div class="footer-brand">Yoga by Thanu</div>
+      <p class="footer-tagline">
+        Cinematic online yoga for real bodies. Live classes from Hyderabad in
+        English, Telugu, and Kannada.
+      </p>
       <div class="footer-links">
-        <a href="#how">Journey</a>
+        <a href="#journey">Journey</a>
         <a href="#classes">Classes</a>
-        <a href="#testimonials">Stories</a>
+        <a href="#stories">Stories</a>
         <a href="#">Terms</a>
         <a href="#">Privacy</a>
       </div>
       <p class="footer-copy">
-        © <span id="year"></span> Yoga by Thanu • Crafted with village soul and
-        cinematic vision in Hyderabad
+        © <span id="year"></span> Yoga by Thanu · Crafted with cinematic vision
+        in Hyderabad
       </p>
     </footer>
   </div>
