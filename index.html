@@ -1,1242 +1,1323 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Yoga by Thanu – Cinematic Online Yoga</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Cinematic online yoga for real bodies. Live, small-batch classes from Hyderabad in English, Telugu, and Kannada."
-  />
-
-  <!-- Cinematic typography: Bodoni + Archivo -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;1,400&family=Archivo:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    :root {
-      /* La La Land palette [web:97][web:100][web:113] */
-      --indigo-deep: #0b0424;
-      --indigo-rich: #170063;
-      --purple-primary: #3a1c9c;
-      --purple-bright: #5f2fbd;
-      --purple-light: #7a3fd6;
-      --lala-yellow: #fdff03;
-      --yellow-warm: #f6d548;
-      --teal-accent: #4dd9d6;
-      --off-white: #fbfbff;
-      --warm-white: #fdf7ee;
-      --pink-soft: #f7d4c8;
-      --charcoal: #1a1520;
-
-      /* Cameron-style depth & glow */
-      --glow-purple: rgba(122, 63, 214, 0.6);
-      --glow-yellow: rgba(253, 255, 3, 0.5);
-      --glow-teal: rgba(77, 217, 214, 0.4);
-      --shadow-epic: 0 32px 80px rgba(26, 21, 32, 0.5);
-      --shadow-deep: 0 48px 120px rgba(26, 21, 32, 0.7);
-
-      --font-heading: "Bodoni Moda", Georgia, serif;
-      --font-body: "Archivo", "Helvetica Neue", sans-serif;
-
-      --border-width: 2px;
-      --radius-card: 12px;
-      --max-width: 1440px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--indigo-deep);
-      color: var(--off-white);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    /* Cameron-style atmospheric background with La La Land gradient [web:97][web:102] */
-    .ambient-layer {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: radial-gradient(
-        ellipse at 50% 20%,
-        rgba(122, 63, 214, 0.2) 0%,
-        rgba(23, 0, 99, 0.9) 50%,
-        #0b0424 100%
-      );
-      animation: ambientPulse 14s ease-in-out infinite;
-    }
-
-    @keyframes ambientPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.88; }
-    }
-
-    /* Floating particles – Cameron bioluminescence with La La Land colors */
-    .particles {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background-image: 
-        radial-gradient(2px 2px at 15% 25%, var(--glow-teal), transparent),
-        radial-gradient(2px 2px at 65% 75%, var(--glow-yellow), transparent),
-        radial-gradient(1px 1px at 45% 55%, var(--glow-purple), transparent),
-        radial-gradient(1px 1px at 85% 15%, var(--glow-teal), transparent),
-        radial-gradient(2px 2px at 95% 65%, var(--glow-yellow), transparent);
-      background-size: 250% 250%;
-      animation: particleFloat 25s linear infinite;
-      opacity: 0.5;
-    }
-
-    @keyframes particleFloat {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 100% 100%; }
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 48px;
-    }
-
-    /* Nav: Glass morphism with La La Land tint [web:119] */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(11, 4, 36, 0.15);
-      backdrop-filter: blur(24px) saturate(180%);
-      border-bottom: 1px solid rgba(251, 251, 255, 0.15);
-      transition: all 400ms ease;
-    }
-
-    .nav.scrolled {
-      background: rgba(23, 0, 99, 0.92);
-      border-bottom-color: rgba(122, 63, 214, 0.4);
-      box-shadow: 0 16px 48px rgba(26, 21, 32, 0.8);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 48px;
-    }
-
-    .brand {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--off-white);
-      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 0 40px var(--glow-purple);
-      transition: all 300ms ease;
-    }
-
-    .brand:hover {
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 60px var(--glow-yellow);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .nav-links a {
-      color: var(--off-white);
-      transition: all 280ms ease;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background: var(--lala-yellow);
-      box-shadow: 0 0 12px var(--glow-yellow);
-      transition: width 320ms ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--lala-yellow);
-      text-shadow: 0 0 24px var(--glow-yellow);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .btn-nav {
-      padding: 11px 30px;
-      background: var(--lala-yellow);
-      color: var(--indigo-deep);
-      border: var(--border-width) solid var(--indigo-deep);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      transition: all 300ms ease;
-      box-shadow: 0 8px 28px rgba(253, 255, 3, 0.4), 0 0 50px var(--glow-yellow);
-      border-radius: 4px;
-    }
-
-    .btn-nav:hover {
-      background: var(--yellow-warm);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(246, 213, 72, 0.6), 0 0 70px var(--glow-yellow);
-    }
-
-    /* Hero: Full cinematic scale with La La Land grading [web:97][web:119] */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 160px 48px 120px;
-      position: relative;
-      background: linear-gradient(
-        180deg,
-        rgba(11, 4, 36, 0.5) 0%,
-        rgba(58, 28, 156, 0.4) 40%,
-        rgba(23, 0, 99, 0.8) 100%
-      );
-      overflow: hidden;
-    }
-
-    /* Cameron volumetric light rays with purple/yellow tint */
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 180%;
-      height: 220%;
-      background: 
-        linear-gradient(95deg, transparent 0%, rgba(122, 63, 214, 0.18) 50%, transparent 100%),
-        linear-gradient(125deg, transparent 0%, rgba(253, 255, 3, 0.12) 50%, transparent 100%);
-      animation: epicRays 12s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes epicRays {
-      0%, 100% { transform: translateX(-50%) rotate(0deg); }
-      50% { transform: translateX(-50%) rotate(10deg); }
-    }
-
-    /* Cinematic frame border */
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 40px;
-      border: 1px solid rgba(251, 251, 255, 0.2);
-      pointer-events: none;
-      box-shadow: inset 0 0 100px rgba(122, 63, 214, 0.15);
-    }
-
-    .hero-inner {
-      max-width: 1100px;
-      position: relative;
-      z-index: 10;
-    }
-
-    .hero-chapter {
-      display: inline-block;
-      padding: 10px 28px;
-      background: rgba(77, 217, 214, 0.15);
-      backdrop-filter: blur(16px);
-      border: var(--border-width) solid rgba(77, 217, 214, 0.4);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      margin-bottom: 48px;
-      color: var(--teal-accent);
-      box-shadow: 0 8px 32px rgba(77, 217, 214, 0.4), 0 0 70px var(--glow-teal);
-      animation: chapterGlow 3.5s ease-in-out infinite;
-      border-radius: 4px;
-    }
-
-    @keyframes chapterGlow {
-      0%, 100% { box-shadow: 0 8px 32px rgba(77, 217, 214, 0.4), 0 0 70px var(--glow-teal); }
-      50% { box-shadow: 0 12px 48px rgba(77, 217, 214, 0.6), 0 0 100px var(--glow-teal); }
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(4rem, 14vw, 9.5rem);
-      font-weight: 700;
-      line-height: 0.92;
-      letter-spacing: -0.015em;
-      margin-bottom: 40px;
-      color: var(--off-white);
-      text-shadow: 0 12px 40px rgba(0, 0, 0, 0.9), 0 0 100px var(--glow-purple);
-      animation: titleReveal 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    @keyframes titleReveal {
-      from { opacity: 0; transform: translateY(100px) scale(0.92); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    .hero-title-line {
-      display: block;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(18px, 2.6vw, 23px);
-      line-height: 1.8;
-      color: var(--pink-soft);
-      max-width: 800px;
-      margin: 0 auto 64px;
-      font-weight: 500;
-      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
-    }
-
-    .hero-cta-row {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 80px;
-    }
-
-    .btn-primary {
-      padding: 20px 56px;
-      background: var(--lala-yellow);
-      color: var(--indigo-deep);
-      border: var(--border-width) solid var(--indigo-deep);
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      transition: all 340ms ease;
-      box-shadow: 8px 8px 0 var(--indigo-deep), 0 16px 48px rgba(253, 255, 3, 0.5), 0 0 80px var(--glow-yellow);
-      position: relative;
-      overflow: hidden;
-      border-radius: 6px;
-    }
-
-    .btn-primary::before {
-      content: "";
-      position: absolute;
-      inset: -60%;
-      background: linear-gradient(50deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transform: translateX(-120%) rotate(45deg);
-      transition: transform 700ms ease;
-    }
-
-    .btn-primary:hover::before {
-      transform: translateX(120%) rotate(45deg);
-    }
-
-    .btn-primary:hover {
-      background: var(--yellow-warm);
-      transform: translate(-4px, -4px);
-      box-shadow: 12px 12px 0 var(--indigo-deep), 0 24px 64px rgba(246, 213, 72, 0.7), 0 0 120px var(--glow-yellow);
-    }
-
-    .btn-secondary {
-      padding: 20px 56px;
-      background: rgba(251, 251, 255, 0.12);
-      backdrop-filter: blur(16px);
-      color: var(--off-white);
-      border: var(--border-width) solid rgba(251, 251, 255, 0.35);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      transition: all 340ms ease;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-      border-radius: 6px;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(77, 217, 214, 0.2);
-      border-color: var(--teal-accent);
-      color: var(--teal-accent);
-      transform: translateY(-4px);
-      box-shadow: 0 18px 56px rgba(0, 0, 0, 0.7), 0 0 80px var(--glow-teal);
-    }
-
-    /* HUD-style stats */
-    .hero-stats {
-      display: flex;
-      gap: 72px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .hero-stat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      padding: 24px 40px;
-      background: rgba(77, 217, 214, 0.08);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(77, 217, 214, 0.25);
-      border-radius: var(--radius-card);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 0 60px rgba(122, 63, 214, 0.1);
-    }
-
-    .hero-stat-number {
-      font-family: var(--font-heading);
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--lala-yellow);
-      text-shadow: 0 4px 20px rgba(253, 255, 3, 0.8), 0 0 50px var(--glow-yellow);
-    }
-
-    .hero-stat-label {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--teal-accent);
-    }
-
-    /* Section: Cinematic chapters [web:119][web:122] */
-    section {
-      padding: 160px 48px;
-      position: relative;
-      border-top: 1px solid rgba(251, 251, 255, 0.1);
-    }
-
-    .section-header {
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 96px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-chapter {
-      display: inline-block;
-      padding: 8px 24px;
-      background: rgba(122, 63, 214, 0.15);
-      backdrop-filter: blur(16px);
-      border: var(--border-width) solid rgba(122, 63, 214, 0.4);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      color: var(--purple-light);
-      box-shadow: 0 8px 28px rgba(122, 63, 214, 0.4), 0 0 60px var(--glow-purple);
-      border-radius: 4px;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.08;
-      margin-bottom: 28px;
-      color: var(--off-white);
-      text-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
-    }
-
-    .section-desc {
-      font-size: 19px;
-      line-height: 1.8;
-      color: var(--pink-soft);
-      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
-    }
-
-    /* Journey (How it works) */
-    .journey {
-      background: radial-gradient(
-        ellipse at 50% 50%,
-        rgba(95, 47, 189, 0.12) 0%,
-        rgba(11, 4, 36, 1) 75%
-      );
-    }
-
-    .journey-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 36px;
-      max-width: 1360px;
-      margin: 0 auto;
-    }
-
-    .journey-card {
-      background: rgba(251, 251, 255, 0.06);
-      backdrop-filter: blur(24px);
-      border: var(--border-width) solid rgba(251, 251, 255, 0.2);
-      padding: 64px 48px;
-      text-align: center;
-      transition: all 420ms ease;
-      box-shadow: var(--shadow-epic);
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-card);
-    }
-
-    .journey-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at 50% 0%,
-        rgba(122, 63, 214, 0.15) 0%,
-        transparent 70%
-      );
-      opacity: 0;
-      transition: opacity 420ms ease;
-    }
-
-    .journey-card:hover::before {
-      opacity: 1;
-    }
-
-    .journey-card:hover {
-      transform: translateY(-16px);
-      border-color: var(--purple-light);
-      box-shadow: var(--shadow-deep), 0 0 100px var(--glow-purple);
-    }
-
-    .journey-scene {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--teal-accent);
-      margin-bottom: 20px;
-    }
-
-    .journey-number {
-      font-family: var(--font-heading);
-      font-size: 112px;
-      font-weight: 700;
-      color: rgba(251, 251, 255, 0.05);
-      line-height: 1;
-      margin-bottom: 28px;
-    }
-
-    .journey-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 36px;
-      background: linear-gradient(135deg, var(--purple-primary), var(--purple-bright));
-      border: var(--border-width) solid var(--indigo-deep);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      box-shadow: 6px 6px 0 var(--indigo-deep), 0 16px 48px rgba(95, 47, 189, 0.6), 0 0 80px var(--glow-purple);
-      border-radius: 8px;
-    }
-
-    .journey-title {
-      font-family: var(--font-heading);
-      font-size: 30px;
-      font-weight: 700;
-      margin-bottom: 18px;
-      color: var(--off-white);
-    }
-
-    .journey-desc {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--pink-soft);
-    }
-
-    /* Classes */
-    .classes {
-      background: radial-gradient(
-        ellipse at 50% 50%,
-        rgba(77, 217, 214, 0.08) 0%,
-        rgba(11, 4, 36, 1) 70%
-      );
-    }
-
-    .classes-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 36px;
-      max-width: 1360px;
-      margin: 0 auto;
-    }
-
-    .class-card {
-      background: rgba(253, 247, 238, 0.08);
-      backdrop-filter: blur(24px);
-      border: var(--border-width) solid rgba(247, 212, 200, 0.25);
-      padding: 48px 40px;
-      text-align: center;
-      transition: all 420ms ease;
-      box-shadow: var(--shadow-epic);
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-card);
-    }
-
-    .class-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at 50% 100%,
-        rgba(253, 255, 3, 0.12) 0%,
-        transparent 65%
-      );
-      opacity: 0;
-      transition: opacity 420ms ease;
-    }
-
-    .class-card:hover::before {
-      opacity: 1;
-    }
-
-    .class-card:hover {
-      transform: translate(-6px, -6px);
-      border-color: var(--lala-yellow);
-      box-shadow: 10px 10px 0 var(--indigo-deep), var(--shadow-deep), 0 0 100px var(--glow-yellow);
-    }
-
-    .class-tag {
-      display: inline-block;
-      padding: 6px 16px;
-      background: rgba(77, 217, 214, 0.2);
-      border: 1px solid var(--teal-accent);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      color: var(--teal-accent);
-      box-shadow: 0 4px 20px rgba(77, 217, 214, 0.5);
-      border-radius: 4px;
-    }
-
-    .class-title {
-      font-family: var(--font-heading);
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--off-white);
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-    }
-
-    .class-desc {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--pink-soft);
-      margin-bottom: 32px;
-      min-height: 96px;
-    }
-
-    .class-meta {
-      font-size: 12px;
-      color: var(--teal-accent);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 24px;
-    }
-
-    .class-btn {
-      padding: 14px 36px;
-      background: var(--lala-yellow);
-      color: var(--indigo-deep);
-      border: var(--border-width) solid var(--indigo-deep);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      transition: all 320ms ease;
-      box-shadow: 5px 5px 0 var(--indigo-deep), 0 8px 28px rgba(253, 255, 3, 0.5);
-      border-radius: 4px;
-    }
-
-    .class-btn:hover {
-      background: var(--yellow-warm);
-      transform: translate(-3px, -3px);
-      box-shadow: 8px 8px 0 var(--indigo-deep), 0 12px 40px rgba(246, 213, 72, 0.7), 0 0 80px var(--glow-yellow);
-    }
-
-    /* Testimonials (Stories) */
-    .stories {
-      background: radial-gradient(
-        ellipse at 50% 50%,
-        rgba(122, 63, 214, 0.1) 0%,
-        rgba(11, 4, 36, 1) 70%
-      );
-    }
-
-    .stories-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 36px;
-      max-width: 1360px;
-      margin: 0 auto;
-    }
-
-    .story-card {
-      background: rgba(122, 63, 214, 0.08);
-      backdrop-filter: blur(24px);
-      border: var(--border-width) solid rgba(122, 63, 214, 0.25);
-      padding: 48px 40px;
-      text-align: center;
-      box-shadow: var(--shadow-epic), 0 0 60px var(--glow-purple);
-      transition: all 420ms ease;
-      border-radius: var(--radius-card);
-    }
-
-    .story-card:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--shadow-deep), 0 0 100px var(--glow-purple);
-    }
-
-    .story-quote {
-      font-size: 17px;
-      line-height: 1.8;
-      color: var(--pink-soft);
-      margin-bottom: 32px;
-      font-style: italic;
-    }
-
-    .story-meta {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .story-avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      border: var(--border-width) solid var(--indigo-deep);
-      background: linear-gradient(135deg, var(--purple-primary), var(--lala-yellow));
-      box-shadow: 5px 5px 0 var(--indigo-deep), 0 12px 36px rgba(253, 255, 3, 0.5), 0 0 60px var(--glow-yellow);
-    }
-
-    .story-author {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--off-white);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .story-role {
-      font-size: 13px;
-      color: var(--teal-accent);
-    }
-
-    /* CTA: Epic finale */
-    .cta {
-      padding: 180px 48px;
-      background: radial-gradient(
-        ellipse at 50% 50%,
-        rgba(253, 255, 3, 0.15) 0%,
-        rgba(23, 0, 99, 0.95) 55%,
-        rgba(11, 4, 36, 1) 85%
-      );
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta::before {
-      content: "";
-      position: absolute;
-      inset: 48px;
-      border: 1px solid rgba(251, 251, 255, 0.25);
-      pointer-events: none;
-      box-shadow: inset 0 0 120px rgba(253, 255, 3, 0.15);
-      border-radius: 8px;
-    }
-
-    .cta-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .cta-title {
-      font-family: var(--font-heading);
-      font-size: clamp(3.2rem, 8vw, 6rem);
-      font-weight: 700;
-      line-height: 1.08;
-      margin-bottom: 40px;
-      color: var(--off-white);
-      text-shadow: 0 12px 48px rgba(0, 0, 0, 0.9), 0 0 120px var(--glow-yellow);
-    }
-
-    .cta-subtitle {
-      font-size: 21px;
-      line-height: 1.8;
-      color: var(--pink-soft);
-      margin-bottom: 56px;
-      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
-    }
-
-    .cta-btn {
-      padding: 26px 72px;
-      background: var(--lala-yellow);
-      color: var(--indigo-deep);
-      border: var(--border-width) solid var(--indigo-deep);
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: all 360ms ease;
-      box-shadow: 10px 10px 0 var(--indigo-deep), 0 24px 72px rgba(253, 255, 3, 0.6), 0 0 140px var(--glow-yellow);
-      position: relative;
-      overflow: hidden;
-      border-radius: 6px;
-    }
-
-    .cta-btn::before {
-      content: "";
-      position: absolute;
-      inset: -70%;
-      background: linear-gradient(55deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-      transform: translateX(-140%) rotate(50deg);
-      transition: transform 800ms ease;
-    }
-
-    .cta-btn:hover::before {
-      transform: translateX(140%) rotate(50deg);
-    }
-
-    .cta-btn:hover {
-      background: var(--yellow-warm);
-      transform: translate(-6px, -6px);
-      box-shadow: 16px 16px 0 var(--indigo-deep), 0 32px 96px rgba(246, 213, 72, 0.8), 0 0 180px var(--glow-yellow);
-    }
-
-    /* Footer */
-    .footer {
-      padding: 80px 48px 56px;
-      background: var(--indigo-deep);
-      border-top: 1px solid rgba(251, 251, 255, 0.1);
-      text-align: center;
-      color: var(--pink-soft);
-    }
-
-    .footer-brand {
-      font-family: var(--font-heading);
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--off-white);
-      margin-bottom: 24px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-    }
-
-    .footer-tagline {
-      font-size: 15px;
-      color: var(--pink-soft);
-      margin-bottom: 32px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 32px;
-      justify-content: center;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 12px;
-      transition: all 280ms ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--lala-yellow);
-      text-shadow: 0 0 24px var(--glow-yellow);
-    }
-
-    .footer-copy {
-      font-size: 12px;
-      color: var(--teal-accent);
-    }
-
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .journey-grid,
-      .classes-grid,
-      .stories-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-stats {
-        gap: 48px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 140px 28px 100px;
-      }
-
-      section {
-        padding: 120px 28px;
-      }
-
-      .hero-cta-row {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .btn-primary,
-      .btn-secondary {
-        width: 100%;
-        max-width: 380px;
-      }
-
-      .cta {
-        padding: 140px 28px;
-      }
-
-      .container {
-        padding: 0 28px;
-      }
-
-      .nav-inner {
-        padding: 18px 28px;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Thanu Yoga Studio — Online Yoga Classes in English, Telugu & Kannada</title>
+<meta name="description" content="Experience transformative online yoga classes. Learn from home in English, Telugu, or Kannada. Traditional practice meets modern convenience.">
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#1a1a1a;
+  --white:#fafafa;
+  --sage:#8b9d83;
+  --sand:#e8dcc4;
+  --earth:#6b5d4f;
+  --accent:#d4a574;
+  --gray:#999;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--white);
+  color:var(--black);
+  line-height:1.7;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+::selection{
+  background:var(--sage);
+  color:#fff;
+}
+
+/* LOADER */
+.loader{
+  position:fixed;
+  inset:0;
+  background:var(--sage);
+  z-index:10000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:30px;
+}
+.loader-symbol{
+  width:80px;
+  height:80px;
+  border:2px solid rgba(255,255,255,0.3);
+  border-radius:50%;
+  position:relative;
+  animation:rotate 3s linear infinite;
+}
+.loader-symbol::before,
+.loader-symbol::after{
+  content:'';
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:#fff;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+}
+.loader-symbol::before{
+  transform:translate(-50%,-150%);
+}
+.loader-symbol::after{
+  transform:translate(-50%,50%);
+}
+@keyframes rotate{
+  to{transform:rotate(360deg);}
+}
+.loader-text{
+  color:#fff;
+  font-size:14px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  opacity:0.8;
+}
+.loader.done{
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 1s ease 0.5s;
+}
+
+/* CURSOR */
+.cursor{
+  position:fixed;
+  width:40px;
+  height:40px;
+  border:1px solid var(--sage);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  mix-blend-mode:difference;
+  transition:transform 0.2s, width 0.3s, height 0.3s;
+}
+.cursor.expand{
+  width:80px;
+  height:80px;
+}
+
+/* NOISE */
+.noise{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9998;
+  opacity:0.02;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  padding:30px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  transition:background 0.4s, padding 0.4s;
+}
+header.scrolled{
+  background:rgba(250,250,250,0.95);
+  backdrop-filter:blur(10px);
+  padding:20px 60px;
+  box-shadow:0 2px 20px rgba(0,0,0,0.05);
+}
+
+.logo{
+  font-size:22px;
+  font-weight:700;
+  color:var(--earth);
+  letter-spacing:-0.5px;
+  transition:color 0.3s;
+}
+.logo:hover{
+  color:var(--sage);
+}
+
+nav{
+  display:flex;
+  gap:40px;
+  align-items:center;
+}
+nav a{
+  color:var(--earth);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  position:relative;
+  transition:color 0.3s;
+}
+nav a::after{
+  content:'';
+  position:absolute;
+  bottom:-4px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:var(--sage);
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform 0.4s ease;
+}
+nav a:hover{
+  color:var(--sage);
+}
+nav a:hover::after{
+  transform:scaleX(1);
+  transform-origin:left;
+}
+
+.cta-btn{
+  padding:12px 28px;
+  background:var(--sage);
+  color:#fff;
+  border-radius:100px;
+  font-size:13px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  transition:all 0.4s;
+  text-decoration:none;
+}
+.cta-btn:hover{
+  background:var(--earth);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(107,93,79,0.3);
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+}
+
+.floating-element{
+  position:absolute;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--sage) 0%,var(--accent) 100%);
+  opacity:0.15;
+  animation:float 20s ease-in-out infinite;
+}
+.floating-element:nth-child(1){
+  width:300px;
+  height:300px;
+  top:10%;
+  left:5%;
+  animation-delay:0s;
+}
+.floating-element:nth-child(2){
+  width:200px;
+  height:200px;
+  bottom:15%;
+  right:10%;
+  animation-delay:3s;
+}
+.floating-element:nth-child(3){
+  width:150px;
+  height:150px;
+  top:40%;
+  right:20%;
+  animation-delay:6s;
+}
+@keyframes float{
+  0%,100%{transform:translate(0,0) scale(1);}
+  25%{transform:translate(20px,-20px) scale(1.05);}
+  50%{transform:translate(-20px,20px) scale(0.95);}
+  75%{transform:translate(20px,10px) scale(1.02);}
+}
+
+.hero-content{
+  text-align:center;
+  max-width:900px;
+  padding:0 40px;
+  position:relative;
+  z-index:1;
+}
+
+.hero-label{
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--sage);
+  margin-bottom:30px;
+  overflow:hidden;
+}
+.hero-label span{
+  display:inline-block;
+  animation:slideUp 1s ease forwards;
+  animation-delay:1.8s;
+  transform:translateY(100%);
+}
+@keyframes slideUp{
+  to{transform:translateY(0);}
+}
+
+.hero h1{
+  font-size:clamp(48px,9vw,120px);
+  font-weight:300;
+  line-height:1.05;
+  letter-spacing:-3px;
+  margin-bottom:30px;
+  color:var(--earth);
+}
+.hero h1 .line{
+  display:block;
+  overflow:hidden;
+}
+.hero h1 .line span{
+  display:inline-block;
+  animation:titleReveal 1.2s cubic-bezier(0.7,0,0.3,1) forwards;
+  transform:translateY(110%);
+}
+.hero h1 .line:nth-child(1) span{animation-delay:2s;}
+.hero h1 .line:nth-child(2) span{animation-delay:2.15s;}
+.hero h1 .line:nth-child(3) span{animation-delay:2.3s;}
+@keyframes titleReveal{
+  to{transform:translateY(0);}
+}
+
+.hero-subtitle{
+  font-size:clamp(18px,2vw,24px);
+  color:var(--gray);
+  margin-bottom:50px;
+  font-weight:300;
+  overflow:hidden;
+}
+.hero-subtitle span{
+  display:inline-block;
+  animation:slideUp 1s ease forwards;
+  animation-delay:2.5s;
+  transform:translateY(100%);
+}
+
+.hero-cta{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  opacity:0;
+  animation:fadeIn 1s ease forwards;
+  animation-delay:2.7s;
+  flex-wrap:wrap;
+}
+@keyframes fadeIn{
+  to{opacity:1;}
+}
+
+.btn-primary{
+  padding:18px 40px;
+  background:var(--sage);
+  color:#fff;
+  border-radius:100px;
+  font-size:15px;
+  font-weight:600;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  transition:all 0.4s;
+}
+.btn-primary:hover{
+  background:var(--earth);
+  transform:translateY(-3px);
+  box-shadow:0 12px 32px rgba(107,93,79,0.3);
+}
+
+.btn-secondary{
+  padding:18px 40px;
+  border:1px solid var(--sage);
+  color:var(--earth);
+  border-radius:100px;
+  font-size:15px;
+  font-weight:500;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  transition:all 0.4s;
+}
+.btn-secondary:hover{
+  background:var(--sage);
+  color:#fff;
+  border-color:var(--sage);
+}
+
+.scroll-hint{
+  position:absolute;
+  bottom:50px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--gray);
+  animation:fadeIn 1s ease forwards;
+  animation-delay:3s;
+  opacity:0;
+}
+.scroll-hint .line{
+  width:1px;
+  height:60px;
+  background:var(--sage);
+  position:relative;
+  overflow:hidden;
+}
+.scroll-hint .line::after{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:var(--accent);
+  animation:scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine{
+  0%{transform:translateY(-100%);}
+  50%{transform:translateY(0);}
+  100%{transform:translateY(100%);}
+}
+
+/* YOGA FINDER TOOL */
+.yoga-finder{
+  padding:150px 60px;
+  background:var(--earth);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.yoga-finder::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  right:-20%;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
+  border-radius:50%;
+}
+
+.finder-container{
+  max-width:1000px;
+  margin:auto;
+  position:relative;
+  z-index:1;
+}
+
+.finder-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+.finder-label{
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.finder-title{
+  font-size:clamp(36px,6vw,64px);
+  font-weight:600;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+.finder-subtitle{
+  font-size:18px;
+  color:rgba(255,255,255,0.7);
+}
+
+.body-map-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  margin-bottom:50px;
+}
+
+.body-part-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:30px;
+  transition:all 0.4s;
+  cursor:pointer;
+}
+.body-part-card:hover{
+  background:rgba(255,255,255,0.1);
+  border-color:var(--accent);
+  transform:translateY(-5px);
+}
+.body-part-card.active{
+  background:var(--sage);
+  border-color:var(--sage);
+}
+
+.body-part-icon{
+  font-size:40px;
+  margin-bottom:15px;
+}
+.body-part-name{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:8px;
+}
+.body-part-desc{
+  font-size:14px;
+  color:rgba(255,255,255,0.6);
+}
+
+.results-area{
+  margin-top:50px;
+  padding:40px;
+  background:rgba(255,255,255,0.08);
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  display:none;
+}
+.results-area.show{
+  display:block;
+  animation:fadeSlideUp 0.6s ease;
+}
+@keyframes fadeSlideUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.results-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+  padding-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,0.2);
+}
+.results-title{
+  font-size:24px;
+  font-weight:600;
+}
+.clear-btn{
+  padding:10px 20px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:100px;
+  color:#fff;
+  font-size:13px;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.clear-btn:hover{
+  background:rgba(255,255,255,0.2);
+}
+
+.asana-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px;
+}
+
+.asana-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:25px;
+  transition:all 0.3s;
+}
+.asana-card:hover{
+  background:rgba(255,255,255,0.08);
+  transform:translateY(-3px);
+}
+
+.asana-name{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:8px;
+  color:var(--accent);
+}
+.asana-sanskrit{
+  font-size:14px;
+  font-style:italic;
+  color:rgba(255,255,255,0.6);
+  margin-bottom:12px;
+}
+.asana-benefits{
+  font-size:14px;
+  line-height:1.7;
+  color:rgba(255,255,255,0.8);
+}
+
+/* LANGUAGES */
+.languages{
+  padding:100px 60px;
+  background:var(--white);
+  text-align:center;
+}
+.languages-label{
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--sage);
+  margin-bottom:20px;
+}
+.languages h2{
+  font-size:clamp(32px,5vw,56px);
+  font-weight:600;
+  letter-spacing:-2px;
+  margin-bottom:50px;
+  color:var(--earth);
+}
+.language-cards{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+  max-width:900px;
+  margin:auto;
+  flex-wrap:wrap;
+}
+.language-card{
+  flex:1;
+  min-width:250px;
+  padding:40px 30px;
+  background:#fff;
+  border:1px solid #e8e8e8;
+  border-radius:20px;
+  transition:all 0.4s;
+}
+.language-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.08);
+  border-color:var(--sage);
+}
+.language-icon{
+  font-size:48px;
+  margin-bottom:20px;
+}
+.language-name{
+  font-size:24px;
+  font-weight:600;
+  color:var(--earth);
+  margin-bottom:10px;
+}
+.language-desc{
+  font-size:14px;
+  color:var(--gray);
+}
+
+/* ABOUT */
+.about{
+  padding:150px 60px;
+  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+}
+.about-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:100px;
+  align-items:center;
+}
+.about-content h2{
+  font-size:clamp(36px,5vw,64px);
+  font-weight:600;
+  letter-spacing:-2px;
+  margin-bottom:30px;
+  color:var(--earth);
+}
+.about-content p{
+  font-size:18px;
+  color:var(--gray);
+  line-height:1.8;
+  margin-bottom:20px;
+}
+.about-features{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  margin-top:30px;
+}
+.feature-item{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.feature-icon{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:var(--sage);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  flex-shrink:0;
+}
+.feature-text{
+  font-size:16px;
+  color:var(--earth);
+  font-weight:500;
+}
+
+/* CLASSES */
+.classes{
+  padding:150px 60px;
+  background:var(--white);
+}
+.classes-header{
+  max-width:1200px;
+  margin:0 auto 80px auto;
+  text-align:center;
+}
+.classes-label{
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--sage);
+  margin-bottom:20px;
+}
+.classes-title{
+  font-size:clamp(40px,6vw,72px);
+  font-weight:600;
+  letter-spacing:-2px;
+  color:var(--earth);
+}
+
+.classes-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.class-card{
+  background:#fff;
+  border:1px solid #e8e8e8;
+  border-radius:20px;
+  padding:40px;
+  transition:all 0.5s cubic-bezier(0.7,0,0.3,1);
+}
+.class-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.1);
+  border-color:var(--sage);
+}
+
+.class-icon{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--sage),var(--accent));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  margin-bottom:25px;
+}
+
+.class-title{
+  font-size:24px;
+  font-weight:600;
+  margin-bottom:12px;
+  color:var(--earth);
+}
+.class-desc{
+  font-size:15px;
+  color:var(--gray);
+  line-height:1.7;
+  margin-bottom:20px;
+}
+.class-meta{
+  display:flex;
+  gap:20px;
+  font-size:13px;
+  color:var(--sage);
+  font-weight:500;
+  padding-top:20px;
+  border-top:1px solid #e8e8e8;
+}
+
+/* CONTACT */
+.contact{
+  padding:150px 60px;
+  background:var(--sage);
+  color:#fff;
+  text-align:center;
+}
+.contact h2{
+  font-size:clamp(40px,7vw,80px);
+  font-weight:600;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+.contact p{
+  font-size:18px;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:50px;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.contact-info{
+  display:flex;
+  gap:60px;
+  justify-content:center;
+  margin-bottom:50px;
+  flex-wrap:wrap;
+}
+.contact-item h3{
+  font-size:14px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  opacity:0.7;
+}
+.contact-item a{
+  color:#fff;
+  text-decoration:none;
+  font-size:20px;
+  font-weight:500;
+  transition:color 0.3s;
+}
+.contact-item a:hover{
+  color:var(--accent);
+}
+
+.social-links{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+}
+.social-link{
+  width:60px;
+  height:60px;
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  text-decoration:none;
+  font-size:20px;
+  transition:all 0.4s;
+}
+.social-link:hover{
+  background:#fff;
+  color:var(--sage);
+  transform:translateY(-5px);
+}
+
+/* FOOTER */
+footer{
+  padding:40px 60px;
+  background:var(--black);
+  color:#fff;
+  text-align:center;
+  font-size:13px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+footer a{
+  color:#fff;
+  text-decoration:none;
+  opacity:0.7;
+  transition:opacity 0.3s;
+}
+footer a:hover{
+  opacity:1;
+}
+
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(60px);
+  transition:all 1s cubic-bezier(0.7,0,0.3,1);
+}
+.reveal.in-view{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  header{padding:20px 24px;}
+  header.scrolled{padding:15px 24px;}
+  nav{gap:16px;}
+  nav a{font-size:11px;display:none;}
+  nav a.cta-btn{display:block;}
+  .hero-content{padding:0 24px;}
+  .hero h1{line-height:1.1;}
+  .yoga-finder{padding:80px 24px;}
+  .body-map-grid{grid-template-columns:1fr;}
+  .asana-grid{grid-template-columns:1fr;}
+  .languages{padding:80px 24px;}
+  .language-cards{flex-direction:column;}
+  .about{padding:80px 24px;}
+  .about-grid{grid-template-columns:1fr;gap:50px;}
+  .classes{padding:80px 24px;}
+  .classes-grid{grid-template-columns:1fr;gap:24px;}
+  .contact{padding:80px 24px;}
+  .contact-info{flex-direction:column;gap:30px;}
+  footer{padding:30px 24px;}
+}
+</style>
 </head>
+
 <body>
-  <div class="page">
-    <!-- Atmospheric layers -->
-    <div class="ambient-layer"></div>
-    <div class="particles"></div>
 
-    <!-- NAV -->
-    <header class="nav" id="nav">
-      <div class="nav-inner">
-        <a href="#top" class="brand">Yoga by Thanu</a>
-        <nav class="nav-links">
-          <a href="#journey">Journey</a>
-          <a href="#classes">Classes</a>
-          <a href="#stories">Stories</a>
-          <button class="btn-nav" onclick="scrollToCTA()">Enter Studio</button>
-        </nav>
-      </div>
-    </header>
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-symbol"></div>
+  <div class="loader-text">Thanu Yoga</div>
+</div>
 
-    <main id="top">
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-inner">
-          <div class="hero-chapter">ACT I · THE BEGINNING</div>
-          <h1 class="hero-title">
-            <span class="hero-title-line">YOGA</span>
-            <span class="hero-title-line">BY</span>
-            <span class="hero-title-line">THANU</span>
-          </h1>
-          <p class="hero-subtitle">
-            Cinematic online yoga for real bodies. Live, small-batch classes
-            from Hyderabad, taught in English, Telugu, and Kannada.
-          </p>
-          <div class="hero-cta-row">
-            <button class="btn-primary" onclick="scrollToCTA()">
-              Book Free Trial
-            </button>
-            <button class="btn-secondary" onclick="scrollToClasses()">
-              Explore Classes
-            </button>
-          </div>
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="hero-stat-number">250+</div>
-              <div class="hero-stat-label">Students</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-number">12</div>
-              <div class="hero-stat-label">Weekly Sessions</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-number">3</div>
-              <div class="hero-stat-label">Languages</div>
-            </div>
-          </div>
-        </div>
-      </section>
+<!-- NOISE -->
+<div class="noise"></div>
 
-      <!-- JOURNEY -->
-      <section id="journey" class="journey">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-chapter">ACT II · THE PATH</div>
-            <h2 class="section-title">Your Journey Begins</h2>
-            <p class="section-desc">
-              Three cinematic steps to transform your practice from anywhere in
-              the world. No studio commute, just pure calm and connection.
-            </p>
-          </div>
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
 
-          <div class="journey-grid">
-            <article class="journey-card">
-              <div class="journey-scene">Scene I</div>
-              <div class="journey-number">01</div>
-              <div class="journey-icon">📅</div>
-              <h3 class="journey-title">Choose Your Class</h3>
-              <p class="journey-desc">
-                Morning flows, evening unwinds, weekend sessions. All levels
-                welcome, small batches only.
-              </p>
-            </article>
+<!-- HEADER -->
+<header id="header">
+  <div class="logo">Thanu Yoga</div>
+  <nav>
+    <a href="#finder">Yoga Finder</a>
+    <a href="#about">About</a>
+    <a href="#classes">Classes</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:7676332452" class="cta-btn">Book Now</a>
+  </nav>
+</header>
 
-            <article class="journey-card">
-              <div class="journey-scene">Scene II</div>
-              <div class="journey-number">02</div>
-              <div class="journey-icon">📱</div>
-              <h3 class="journey-title">Receive Your Link</h3>
-              <p class="journey-desc">
-                Instant WhatsApp with Zoom link, prep guide, and intro to
-                Thanu's teaching approach.
-              </p>
-            </article>
-
-            <article class="journey-card">
-              <div class="journey-scene">Scene III</div>
-              <div class="journey-number">03</div>
-              <div class="journey-icon">🧘</div>
-              <h3 class="journey-title">Practice Live</h3>
-              <p class="journey-desc">
-                Join with your mat. Guided postures, breath work, and deep rest
-                in real time.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- CLASSES -->
-      <section id="classes" class="classes">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-chapter">ACT III · THE PRACTICE</div>
-            <h2 class="section-title">Designed for Real Bodies</h2>
-            <p class="section-desc">
-              Slow, accessible sessions for stiff backs, busy parents, and
-              late-night coders. No Instagram poses, just honest movement.
-            </p>
-          </div>
-
-          <div class="classes-grid">
-            <article class="class-card">
-              <span class="class-tag">Morning</span>
-              <h3 class="class-title">Sunrise Flow</h3>
-              <p class="class-desc">
-                Gentle postures to wake you softly. A calm way to begin your day
-                with breath and movement.
-              </p>
-              <div class="class-meta">45 mins · Mon, Wed, Fri</div>
-              <button class="class-btn" onclick="scrollToCTA()">Book Now</button>
-            </article>
-
-            <article class="class-card">
-              <span class="class-tag">Evening</span>
-              <h3 class="class-title">Night Unwind</h3>
-              <p class="class-desc">
-                Floor stretches and yoga nidra for deep rest. Release the day
-                and prepare for restorative sleep.
-              </p>
-              <div class="class-meta">60 mins · Tue, Thu</div>
-              <button class="class-btn" onclick="scrollToCTA()">Book Now</button>
-            </article>
-
-            <article class="class-card">
-              <span class="class-tag">Weekend</span>
-              <h3 class="class-title">Gentle Practice</h3>
-              <p class="class-desc">
-                Low-impact movements for backs, knees, and hips. Perfect for
-                beginners and anyone starting again.
-              </p>
-              <div class="class-meta">45 mins · Sat, Sun</div>
-              <button class="class-btn" onclick="scrollToCTA()">Book Now</button>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- STORIES -->
-      <section id="stories" class="stories">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-chapter">ACT IV · THE COMMUNITY</div>
-            <h2 class="section-title">Stories of Transformation</h2>
-            <p class="section-desc">
-              People who found a softer, more honest way to move with cinematic
-              online yoga.
-            </p>
-          </div>
-
-          <div class="stories-grid">
-            <article class="story-card">
-              <p class="story-quote">
-                "After years of back pain, this is the first space where I don't
-                feel judged for moving slowly. It's honest and calm."
-              </p>
-              <div class="story-meta">
-                <div class="story-avatar"></div>
-                <div class="story-author">Shreya M.</div>
-                <div class="story-role">New to yoga</div>
-              </div>
-            </article>
-
-            <article class="story-card">
-              <p class="story-quote">
-                "The teaching is clear and the pace is real. My mom and I join
-                together on weekends from different cities."
-              </p>
-              <div class="story-meta">
-                <div class="story-avatar"></div>
-                <div class="story-author">Sana K.</div>
-                <div class="story-role">Weekend batch</div>
-              </div>
-            </article>
-
-            <article class="story-card">
-              <p class="story-quote">
-                "Classes are calm, never rushed. I join from Bangalore after long
-                work days — it feels like coming home."
-              </p>
-              <div class="story-meta">
-                <div class="story-avatar"></div>
-                <div class="story-author">Rahul P.</div>
-                <div class="story-role">Remote worker</div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="cta">
-        <div class="cta-inner">
-          <h2 class="cta-title">Begin Your Cinematic Journey</h2>
-          <p class="cta-subtitle">
-            Your first trial class is free. No credit card, no commitment. One
-            live session to see if this practice transforms your routine.
-          </p>
-          <button class="cta-btn" onclick="alert('WhatsApp: +91 XXXXXXXXXX')">
-            Book Your Free Trial
-          </button>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-brand">Yoga by Thanu</div>
-      <p class="footer-tagline">
-        Cinematic online yoga for real bodies. Live classes from Hyderabad in
-        English, Telugu, and Kannada.
-      </p>
-      <div class="footer-links">
-        <a href="#journey">Journey</a>
-        <a href="#classes">Classes</a>
-        <a href="#stories">Stories</a>
-        <a href="#">Terms</a>
-        <a href="#">Privacy</a>
-      </div>
-      <p class="footer-copy">
-        © <span id="year"></span> Yoga by Thanu · Crafted with cinematic vision
-        in Hyderabad
-      </p>
-    </footer>
+<!-- HERO -->
+<section class="hero">
+  <div class="floating-element"></div>
+  <div class="floating-element"></div>
+  <div class="floating-element"></div>
+  
+  <div class="hero-content">
+    <div class="hero-label"><span>Online Yoga Classes</span></div>
+    <h1>
+      <span class="line"><span>Practice Yoga</span></span>
+      <span class="line"><span>From</span></span>
+      <span class="line"><span>Anywhere</span></span>
+    </h1>
+    <p class="hero-subtitle">
+      <span>Transform your body and mind with personalized online sessions.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="tel:7676332452" class="btn-primary">Start Your Journey</a>
+      <a href="#finder" class="btn-secondary">Find Your Asana</a>
+    </div>
   </div>
+  
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="line"></div>
+  </div>
+</section>
 
-  <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
+<!-- YOGA FINDER TOOL -->
+<section class="yoga-finder" id="finder">
+  <div class="finder-container">
+    <div class="finder-header reveal">
+      <p class="finder-label">Smart Yoga Finder</p>
+      <h2 class="finder-title">Find the perfect asana for your needs.</h2>
+      <p class="finder-subtitle">Select your concern and discover personalized yoga recommendations</p>
+    </div>
 
-    // Scroll helpers
-    function scrollToCTA() {
-      var el = document.querySelector(".cta");
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    <div class="body-map-grid">
+      <div class="body-part-card reveal" data-part="stress">
+        <div class="body-part-icon">🧠</div>
+        <h3 class="body-part-name">Stress & Anxiety</h3>
+        <p class="body-part-desc">Mental tension, overthinking, worry</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="neck">
+        <div class="body-part-icon">🦴</div>
+        <h3 class="body-part-name">Neck & Shoulders</h3>
+        <p class="body-part-desc">Stiffness, tension, pain</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="back">
+        <div class="body-part-icon">💪</div>
+        <h3 class="body-part-name">Back Pain</h3>
+        <p class="body-part-desc">Lower back, upper back discomfort</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="legs">
+        <div class="body-part-icon">🦵</div>
+        <h3 class="body-part-name">Legs & Knees</h3>
+        <p class="body-part-desc">Pain, weakness, stiffness</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="digestion">
+        <div class="body-part-icon">🫃</div>
+        <h3 class="body-part-name">Digestion Issues</h3>
+        <p class="body-part-desc">Bloating, constipation, discomfort</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="sleep">
+        <div class="body-part-icon">😴</div>
+        <h3 class="body-part-name">Sleep Problems</h3>
+        <p class="body-part-desc">Insomnia, restlessness</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="flexibility">
+        <div class="body-part-icon">🤸</div>
+        <h3 class="body-part-name">Flexibility</h3>
+        <p class="body-part-desc">Improve range of motion</p>
+      </div>
+
+      <div class="body-part-card reveal" data-part="energy">
+        <div class="body-part-icon">⚡</div>
+        <h3 class="body-part-name">Low Energy</h3>
+        <p class="body-part-desc">Fatigue, lethargy</p>
+      </div>
+    </div>
+
+    <div class="results-area" id="results">
+      <div class="results-header">
+        <h3 class="results-title">Recommended Asanas</h3>
+        <button class="clear-btn" onclick="clearResults()">Clear Selection</button>
+      </div>
+      <div class="asana-grid" id="asanaGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="languages">
+  <p class="languages-label reveal">Classes Available In</p>
+  <h2 class="reveal">Learn in your language.</h2>
+  <div class="language-cards">
+    <div class="language-card reveal">
+      <div class="language-icon">🇬🇧</div>
+      <h3 class="language-name">English</h3>
+      <p class="language-desc">Comprehensive instruction in English</p>
+    </div>
+    <div class="language-card reveal">
+      <div class="language-icon">తె</div>
+      <h3 class="language-name">Telugu</h3>
+      <p class="language-desc">తెలుగులో పూర్తి మార్గదర్శకత్వం</p>
+    </div>
+    <div class="language-card reveal">
+      <div class="language-icon">ಕ</div>
+      <h3 class="language-name">Kannada</h3>
+      <p class="language-desc">ಕನ್ನಡದಲ್ಲಿ ಸಂಪೂರ್ಣ ಮಾರ್ಗದರ್ಶನ</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-content reveal">
+      <h2>Yoga from the comfort of home.</h2>
+      <p>
+        At Thanu Yoga Studio, we bring authentic yoga practice directly to you through 
+        personalized online sessions. No matter where you are, experience the transformative 
+        power of yoga.
+      </p>
+      <p>
+        Our experienced instructor guides you through practices combining ancient wisdom 
+        with modern convenience, helping you achieve balance in body, mind, and spirit.
+      </p>
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon">💻</div>
+          <span class="feature-text">Live interactive online classes</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌏</div>
+          <span class="feature-text">Practice from anywhere in the world</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">👤</div>
+          <span class="feature-text">Personalized attention & guidance</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🗣️</div>
+          <span class="feature-text">Classes in English, Telugu & Kannada</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div style="width:100%;padding-bottom:130%;background:linear-gradient(135deg,var(--sage),var(--accent));border-radius:20px;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;color:rgba(255,255,255,0.3);">🧘‍♀️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSES -->
+<section class="classes" id="classes">
+  <div class="classes-header reveal">
+    <p class="classes-label">Our Classes</p>
+    <h2 class="classes-title">Find your practice.</h2>
+  </div>
+  
+  <div class="classes-grid">
+    <div class="class-card reveal">
+      <div class="class-icon">🧘</div>
+      <h3 class="class-title">Hatha Yoga</h3>
+      <p class="class-desc">
+        Traditional practice focusing on physical postures and breathing techniques 
+        for strength and flexibility.
+      </p>
+      <div class="class-meta">
+        <span>⏱ 60 mins</span>
+        <span>📊 All levels</span>
+      </div>
+    </div>
+    
+    <div class="class-card reveal">
+      <div class="class-icon">🌊</div>
+      <h3 class="class-title">Vinyasa Flow</h3>
+      <p class="class-desc">
+        Dynamic, flowing sequences synchronized with breath for building 
+        strength and improving flexibility.
+      </p>
+      <div class="class-meta">
+        <span>⏱ 75 mins</span>
+        <span>📊 Intermediate</span>
+      </div>
+    </div>
+    
+    <div class="class-card reveal">
+      <div class="class-icon">🧠</div>
+      <h3 class="class-title">Meditation</h3>
+      <p class="class-desc">
+        Guided meditation practices to calm the mind, reduce stress, 
+        and cultivate inner peace.
+      </p>
+      <div class="class-meta">
+        <span>⏱ 45 mins</span>
+        <span>📊 Beginners</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="reveal">Begin your journey today.</h2>
+  <p class="reveal">Join our online community and experience the transformative power of yoga from anywhere.</p>
+  
+  <div class="contact-info reveal">
+    <div class="contact-item">
+      <h3>Call / WhatsApp</h3>
+      <a href="tel:7676332452">7676 332 452</a>
+    </div>
+    <div class="contact-item">
+      <h3>Format</h3>
+      <p style="color:#fff;opacity:0.9;margin:0;font-size:20px;font-weight:500;">Online Classes</p>
+    </div>
+  </div>
+  
+  <div class="social-links reveal">
+    <a href="https://www.youtube.com/@Thanuyogastudio" target="_blank" rel="noopener" class="social-link" aria-label="YouTube" title="Watch on YouTube">▶</a>
+    <a href="https://www.instagram.com/thanuyogastudio/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram" title="Follow on Instagram">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.509.5.902 1.105 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772c-.5.509-1.105.902-1.772 1.153-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Thanu Yoga Studio. All rights reserved.</p>
+  <p>Online Yoga Classes • English • Telugu • Kannada</p>
+  <p>Designed by <a href="mailto:stseenuri@outlook.com">Seenuri</a></p>
+</footer>
+
+<script>
+// YOGA DATABASE
+const yogaDatabase = {
+  stress: [
+    {name: "Child's Pose", sanskrit: "Balasana", benefits: "Calms the mind, relieves stress and anxiety, gently stretches the back"},
+    {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Relieves stress, improves breathing, massages spine and organs"},
+    {name: "Corpse Pose", sanskrit: "Shavasana", benefits: "Deep relaxation, reduces anxiety, lowers blood pressure"},
+    {name: "Bridge Pose", sanskrit: "Setu Bandhasana", benefits: "Calms the brain, reduces anxiety and stress, opens chest"}
+  ],
+  neck: [
+    {name: "Neck Rolls", sanskrit: "Greeva Sanchalana", benefits: "Releases neck tension, improves flexibility, reduces stiffness"},
+    {name: "Thread the Needle", sanskrit: "Parsva Balasana", benefits: "Stretches shoulders, relieves upper back tension"},
+    {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Stretches neck and spine, improves flexibility"},
+    {name: "Eagle Pose", sanskrit: "Garudasana", benefits: "Stretches shoulders and upper back, improves focus"}
+  ],
+  back: [
+    {name: "Downward Dog", sanskrit: "Adho Mukha Svanasana", benefits: "Strengthens back, relieves sciatica, stretches hamstrings"},
+    {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Relieves back pain, improves spinal flexibility"},
+    {name: "Cobra Pose", sanskrit: "Bhujangasana", benefits: "Strengthens spine, stretches abdomen, relieves sciatica"},
+    {name: "Child's Pose", sanskrit: "Balasana", benefits: "Gently stretches lower back, relieves tension"}
+  ],
+  legs: [
+    {name: "Warrior II", sanskrit: "Virabhadrasana II", benefits: "Strengthens legs and ankles, improves stamina and balance"},
+    {name: "Triangle Pose", sanskrit: "Trikonasana", benefits: "Strengthens legs, stretches hamstrings, improves balance"},
+    {name: "Chair Pose", sanskrit: "Utkatasana", benefits: "Strengthens thighs and ankles, tones leg muscles"},
+    {name: "Garland Pose", sanskrit: "Malasana", benefits: "Stretches ankles, groins and back, tones belly"}
+  ],
+  digestion: [
+    {name: "Wind-Relieving Pose", sanskrit: "Pawanmuktasana", benefits: "Aids digestion, relieves gas and bloating"},
+    {name: "Seated Twist", sanskrit: "Ardha Matsyendrasana", benefits: "Massages digestive organs, improves metabolism"},
+    {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Massages internal organs, improves digestion"},
+    {name: "Bow Pose", sanskrit: "Dhanurasana", benefits: "Stimulates digestive organs, relieves constipation"}
+  ],
+  sleep: [
+    {name: "Legs Up the Wall", sanskrit: "Viparita Karani", benefits: "Promotes relaxation, calms the mind, prepares for sleep"},
+    {name: "Corpse Pose", sanskrit: "Shavasana", benefits: "Deep relaxation, reduces insomnia, calms nervous system"},
+    {name: "Child's Pose", sanskrit: "Balasana", benefits: "Calming effect, relieves tension, prepares for rest"},
+    {name: "Reclined Butterfly", sanskrit: "Supta Baddha Konasana", benefits: "Relieves tension, promotes deep relaxation"}
+  ],
+  flexibility: [
+    {name: "Forward Fold", sanskrit: "Uttanasana", benefits: "Stretches hamstrings and spine, improves flexibility"},
+    {name: "Downward Dog", sanskrit: "Adho Mukha Svanasana", benefits: "Full body stretch, improves flexibility"},
+    {name: "Triangle Pose", sanskrit: "Trikonasana", benefits: "Stretches spine, hips and groin, improves flexibility"},
+    {name: "Pigeon Pose", sanskrit: "Eka Pada Rajakapotasana", benefits: "Deep hip stretch, increases flexibility"}
+  ],
+  energy: [
+    {name: "Sun Salutation", sanskrit: "Surya Namaskar", benefits: "Energizes entire body, improves circulation, boosts vitality"},
+    {name: "Warrior I", sanskrit: "Virabhadrasana I", benefits: "Builds stamina, energizes the body, improves focus"},
+    {name: "Camel Pose", sanskrit: "Ustrasana", benefits: "Opens chest, energizes the body, improves posture"},
+    {name: "Mountain Pose", sanskrit: "Tadasana", benefits: "Improves posture, energizes mind, builds awareness"}
+  ]
+};
+
+// LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('done');
+  }, 2200);
+});
+
+// CURSOR
+const cursor = document.getElementById('cursor');
+let cursorX = 0, cursorY = 0;
+let targetX = 0, targetY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  targetX = e.clientX;
+  targetY = e.clientY;
+});
+
+function animateCursor() {
+  cursorX += (targetX - cursorX) * 0.1;
+  cursorY += (targetY - cursorY) * 0.1;
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Cursor hover
+const hoverElements = document.querySelectorAll('a, button, .class-card, .language-card, .body-part-card');
+hoverElements.forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+});
+
+// HEADER SCROLL
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+// YOGA FINDER FUNCTIONALITY
+const bodyPartCards = document.querySelectorAll('.body-part-card');
+const resultsArea = document.getElementById('results');
+const asanaGrid = document.getElementById('asanaGrid');
+
+bodyPartCards.forEach(card => {
+  card.addEventListener('click', function() {
+    // Toggle active state
+    const wasActive = this.classList.contains('active');
+    
+    bodyPartCards.forEach(c => c.classList.remove('active'));
+    
+    if (!wasActive) {
+      this.classList.add('active');
+      const part = this.dataset.part;
+      showAsanas(part);
+    } else {
+      clearResults();
     }
+  });
+});
 
-    function scrollToClasses() {
-      var el = document.getElementById("classes");
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+function showAsanas(part) {
+  const asanas = yogaDatabase[part];
+  asanaGrid.innerHTML = '';
+  
+  asanas.forEach((asana, index) => {
+    const card = document.createElement('div');
+    card.className = 'asana-card';
+    card.style.animationDelay = `${index * 0.1}s`;
+    card.innerHTML = `
+      <h4 class="asana-name">${asana.name}</h4>
+      <p class="asana-sanskrit">${asana.sanskrit}</p>
+      <p class="asana-benefits">${asana.benefits}</p>
+    `;
+    asanaGrid.appendChild(card);
+  });
+  
+  resultsArea.classList.add('show');
+}
+
+function clearResults() {
+  bodyPartCards.forEach(c => c.classList.remove('active'));
+  resultsArea.classList.remove('show');
+  asanaGrid.innerHTML = '';
+}
+
+// REVEAL ON SCROLL
+const reveals = document.querySelectorAll('.reveal');
+const revealOnScroll = () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add('in-view');
     }
+  });
+};
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
 
-    // Nav scroll effect
-    var nav = document.getElementById("nav");
-    window.addEventListener("scroll", function() {
-      if (window.scrollY > 100) {
-        nav.classList.add("scrolled");
-      } else {
-        nav.classList.remove("scrolled");
-      }
-    });
-  </script>
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
 </body>
 </html>
