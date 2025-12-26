@@ -5,32 +5,107 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Thanu Yoga Studio — Online Yoga Classes in English, Telugu & Kannada</title>
-<meta name="description" content="Experience transformative online yoga classes. Learn from home in English, Telugu, or Kannada. Traditional practice meets modern convenience.">
+<meta name="description" content="Experience transformative online yoga classes with Thanuja. Specialized in therapeutic yoga, back pain management, PCOD/PCOS wellness, and women's health. Learn from home in English, Telugu, or Kannada.">
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
 <style>
+/* ===========================
+   CSS VARIABLES & RESET
+   =========================== */
 :root{
+  /* Color Palette */
   --black:#1a1a1a;
   --white:#fafafa;
   --sage:#8b9d83;
+  --sage-light:#a8b89f;
+  --sage-dark:#6d7a66;
   --sand:#e8dcc4;
   --earth:#6b5d4f;
+  --earth-light:#8a7864;
   --accent:#d4a574;
+  --accent-light:#e0b892;
   --gray:#999;
+  --gray-light:#c5c5c5;
+  --gray-dark:#666;
   --cream:#f5f1e8;
+  --cream-dark:#e8e1d3;
+  
+  /* Spacing */
+  --spacing-xs:8px;
+  --spacing-sm:16px;
+  --spacing-md:24px;
+  --spacing-lg:40px;
+  --spacing-xl:60px;
+  --spacing-2xl:100px;
+  --spacing-3xl:150px;
+  
+  /* Typography */
+  --font-primary:'Space Grotesk',sans-serif;
+  --font-serif:'Playfair Display',Georgia,serif;
+  
+  /* Transitions */
+  --transition-fast:0.2s ease;
+  --transition-base:0.3s ease;
+  --transition-slow:0.5s cubic-bezier(0.7,0,0.3,1);
+  --transition-bounce:0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  
+  /* Borders & Radius */
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:20px;
+  --radius-xl:24px;
+  --radius-full:100px;
+  
+  /* Shadows */
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.05);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg:0 12px 32px rgba(0,0,0,0.1);
+  --shadow-xl:0 20px 60px rgba(0,0,0,0.15);
+  --shadow-2xl:0 30px 80px rgba(0,0,0,0.2);
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
 
 body{
-  font-family:'Space Grotesk',sans-serif;
+  font-family:var(--font-primary);
   background:var(--white);
   color:var(--black);
   line-height:1.7;
   overflow-x:hidden;
   cursor:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font-family:inherit;
+  border:none;
+  cursor:pointer;
+  background:none;
 }
 
 ::selection{
@@ -38,11 +113,18 @@ body{
   color:#fff;
 }
 
-/* LOADER */
+::-moz-selection{
+  background:var(--sage);
+  color:#fff;
+}
+
+/* ===========================
+   LOADER ANIMATION
+   =========================== */
 .loader{
   position:fixed;
   inset:0;
-  background:var(--sage);
+  background:linear-gradient(135deg,var(--sage) 0%,var(--sage-dark) 100%);
   z-index:10000;
   display:flex;
   align-items:center;
@@ -50,14 +132,16 @@ body{
   flex-direction:column;
   gap:30px;
 }
+
 .loader-symbol{
   width:80px;
   height:80px;
-  border:2px solid rgba(255,255,255,0.3);
+  border:3px solid rgba(255,255,255,0.2);
   border-radius:50%;
   position:relative;
   animation:rotate 3s linear infinite;
 }
+
 .loader-symbol::before,
 .loader-symbol::after{
   content:'';
@@ -68,84 +152,160 @@ body{
   border-radius:50%;
   top:50%;
   left:50%;
+  box-shadow:0 0 20px rgba(255,255,255,0.5);
 }
+
 .loader-symbol::before{
   transform:translate(-50%,-150%);
+  animation:pulse 1.5s ease-in-out infinite;
 }
+
 .loader-symbol::after{
   transform:translate(-50%,50%);
+  animation:pulse 1.5s ease-in-out infinite 0.75s;
 }
+
 @keyframes rotate{
   to{transform:rotate(360deg);}
 }
+
+@keyframes pulse{
+  0%,100%{opacity:1;transform:translate(-50%,-150%) scale(1);}
+  50%{opacity:0.6;transform:translate(-50%,-150%) scale(0.8);}
+}
+
 .loader-text{
   color:#fff;
   font-size:14px;
   letter-spacing:4px;
   text-transform:uppercase;
-  opacity:0.8;
+  opacity:0.9;
+  animation:fadeInOut 2s ease-in-out infinite;
 }
+
+@keyframes fadeInOut{
+  0%,100%{opacity:0.9;}
+  50%{opacity:0.5;}
+}
+
 .loader.done{
   opacity:0;
   pointer-events:none;
   transition:opacity 1s ease 0.5s;
 }
 
-/* CURSOR */
+/* ===========================
+   CUSTOM CURSOR
+   =========================== */
 .cursor{
   position:fixed;
   width:40px;
   height:40px;
-  border:1px solid var(--sage);
+  border:2px solid var(--sage);
   border-radius:50%;
   pointer-events:none;
   z-index:9999;
   mix-blend-mode:difference;
-  transition:transform 0.2s, width 0.3s, height 0.3s;
+  transition:transform var(--transition-fast), width var(--transition-base), height var(--transition-base);
+  transform:translate(-50%,-50%);
 }
+
 .cursor.expand{
   width:80px;
   height:80px;
+  border-width:1px;
 }
 
-/* NOISE */
+.cursor-dot{
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:var(--sage);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9998;
+  mix-blend-mode:difference;
+  transition:transform 0.1s ease;
+  transform:translate(-50%,-50%);
+}
+
+/* ===========================
+   NOISE TEXTURE OVERLAY
+   =========================== */
 .noise{
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:9998;
-  opacity:0.02;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index:9997;
+  opacity:0.015;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 8s steps(10) infinite;
 }
 
-/* HEADER */
+@keyframes grain{
+  0%,100%{transform:translate(0,0);}
+  10%{transform:translate(-5%,-10%);}
+  20%{transform:translate(-15%,5%);}
+  30%{transform:translate(7%,-25%);}
+  40%{transform:translate(-5%,25%);}
+  50%{transform:translate(-15%,10%);}
+  60%{transform:translate(15%,0%);}
+  70%{transform:translate(0%,15%);}
+  80%{transform:translate(3%,35%);}
+  90%{transform:translate(-10%,10%);}
+}
+
+/* ===========================
+   HEADER NAVIGATION
+   =========================== */
 header{
   position:fixed;
-  top:0;left:0;
+  top:0;
+  left:0;
   width:100%;
-  padding:30px 60px;
+  padding:30px var(--spacing-xl);
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  transition:background 0.4s, padding 0.4s;
+  transition:all var(--transition-slow);
 }
+
 header.scrolled{
-  background:rgba(250,250,250,0.95);
-  backdrop-filter:blur(10px);
-  padding:20px 60px;
-  box-shadow:0 2px 20px rgba(0,0,0,0.05);
+  background:rgba(250,250,250,0.98);
+  backdrop-filter:blur(16px) saturate(180%);
+  padding:20px var(--spacing-xl);
+  box-shadow:var(--shadow-md);
+  border-bottom:1px solid rgba(0,0,0,0.05);
 }
 
 .logo{
-  font-size:22px;
+  font-size:24px;
   font-weight:700;
   color:var(--earth);
   letter-spacing:-0.5px;
-  transition:color 0.3s;
+  transition:all var(--transition-base);
+  position:relative;
 }
+
+.logo::after{
+  content:'';
+  position:absolute;
+  bottom:-4px;
+  left:0;
+  width:0;
+  height:2px;
+  background:var(--sage);
+  transition:width var(--transition-base);
+}
+
+.logo:hover::after{
+  width:100%;
+}
+
 .logo:hover{
   color:var(--sage);
+  transform:translateY(-2px);
 }
 
 nav{
@@ -153,6 +313,7 @@ nav{
   gap:40px;
   align-items:center;
 }
+
 nav a{
   color:var(--earth);
   text-decoration:none;
@@ -161,24 +322,27 @@ nav a{
   text-transform:uppercase;
   letter-spacing:1px;
   position:relative;
-  transition:color 0.3s;
+  transition:color var(--transition-base);
 }
-nav a::after{
+
+nav a:not(.cta-btn)::after{
   content:'';
   position:absolute;
-  bottom:-4px;
+  bottom:-6px;
   left:0;
   width:100%;
   height:1px;
   background:var(--sage);
   transform:scaleX(0);
   transform-origin:right;
-  transition:transform 0.4s ease;
+  transition:transform var(--transition-slow);
 }
-nav a:hover{
+
+nav a:not(.cta-btn):hover{
   color:var(--sage);
 }
-nav a:hover::after{
+
+nav a:not(.cta-btn):hover::after{
   transform:scaleX(1);
   transform-origin:left;
 }
@@ -187,21 +351,53 @@ nav a:hover::after{
   padding:12px 28px;
   background:var(--sage);
   color:#fff;
-  border-radius:100px;
+  border-radius:var(--radius-full);
   font-size:13px;
   font-weight:600;
   text-transform:uppercase;
   letter-spacing:1px;
-  transition:all 0.4s;
-  text-decoration:none;
-}
-.cta-btn:hover{
-  background:var(--earth);
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(107,93,79,0.3);
+  transition:all var(--transition-base);
+  box-shadow:0 4px 16px rgba(139,157,131,0.3);
 }
 
-/* HERO */
+.cta-btn:hover{
+  background:var(--earth);
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px rgba(107,93,79,0.4);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+  z-index:1001;
+}
+
+.menu-toggle span{
+  width:28px;
+  height:2px;
+  background:var(--earth);
+  transition:all var(--transition-base);
+  border-radius:2px;
+}
+
+.menu-toggle.active span:nth-child(1){
+  transform:rotate(45deg) translateY(8px);
+}
+
+.menu-toggle.active span:nth-child(2){
+  opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+  transform:rotate(-45deg) translateY(-8px);
+}
+
+/* ===========================
+   HERO SECTION
+   =========================== */
 .hero{
   min-height:100vh;
   display:flex;
@@ -209,50 +405,87 @@ nav a:hover::after{
   justify-content:center;
   position:relative;
   overflow:hidden;
-  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+  background:linear-gradient(135deg,var(--sand) 0%,var(--cream) 50%,var(--white) 100%);
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:120%;
+  height:120%;
+  background:radial-gradient(circle at center,rgba(139,157,131,0.03) 0%,transparent 70%);
+  pointer-events:none;
 }
 
 .floating-element{
   position:absolute;
   border-radius:50%;
   background:linear-gradient(135deg,var(--sage) 0%,var(--accent) 100%);
-  opacity:0.15;
+  opacity:0.12;
   animation:float 20s ease-in-out infinite;
+  filter:blur(40px);
 }
+
 .floating-element:nth-child(1){
-  width:300px;
-  height:300px;
+  width:400px;
+  height:400px;
   top:10%;
   left:5%;
   animation-delay:0s;
 }
+
 .floating-element:nth-child(2){
-  width:200px;
-  height:200px;
+  width:300px;
+  height:300px;
   bottom:15%;
   right:10%;
   animation-delay:3s;
 }
+
 .floating-element:nth-child(3){
-  width:150px;
-  height:150px;
+  width:200px;
+  height:200px;
   top:40%;
   right:20%;
   animation-delay:6s;
 }
+
+.floating-element:nth-child(4){
+  width:250px;
+  height:250px;
+  bottom:30%;
+  left:15%;
+  animation-delay:9s;
+}
+
 @keyframes float{
-  0%,100%{transform:translate(0,0) scale(1);}
-  25%{transform:translate(20px,-20px) scale(1.05);}
-  50%{transform:translate(-20px,20px) scale(0.95);}
-  75%{transform:translate(20px,10px) scale(1.02);}
+  0%,100%{
+    transform:translate(0,0) scale(1);
+    opacity:0.12;
+  }
+  25%{
+    transform:translate(30px,-30px) scale(1.1);
+    opacity:0.15;
+  }
+  50%{
+    transform:translate(-30px,30px) scale(0.9);
+    opacity:0.1;
+  }
+  75%{
+    transform:translate(20px,15px) scale(1.05);
+    opacity:0.13;
+  }
 }
 
 .hero-content{
   text-align:center;
-  max-width:900px;
-  padding:0 40px;
+  max-width:1000px;
+  padding:0 var(--spacing-lg);
   position:relative;
-  z-index:1;
+  z-index:10;
 }
 
 .hero-label{
@@ -262,51 +495,72 @@ nav a:hover::after{
   color:var(--sage);
   margin-bottom:30px;
   overflow:hidden;
+  font-weight:600;
 }
+
 .hero-label span{
   display:inline-block;
-  animation:slideUp 1s ease forwards;
+  animation:slideUp 1s cubic-bezier(0.7,0,0.3,1) forwards;
   animation-delay:1.8s;
   transform:translateY(100%);
 }
+
 @keyframes slideUp{
   to{transform:translateY(0);}
 }
 
 .hero h1{
-  font-size:clamp(48px,9vw,120px);
+  font-size:clamp(52px,10vw,130px);
   font-weight:300;
-  line-height:1.05;
-  letter-spacing:-3px;
-  margin-bottom:30px;
+  line-height:1.02;
+  letter-spacing:-4px;
+  margin-bottom:35px;
   color:var(--earth);
+  font-family:var(--font-primary);
 }
+
 .hero h1 .line{
   display:block;
   overflow:hidden;
 }
+
 .hero h1 .line span{
   display:inline-block;
   animation:titleReveal 1.2s cubic-bezier(0.7,0,0.3,1) forwards;
   transform:translateY(110%);
 }
-.hero h1 .line:nth-child(1) span{animation-delay:2s;}
-.hero h1 .line:nth-child(2) span{animation-delay:2.15s;}
-.hero h1 .line:nth-child(3) span{animation-delay:2.3s;}
+
+.hero h1 .line:nth-child(1) span{
+  animation-delay:2s;
+}
+
+.hero h1 .line:nth-child(2) span{
+  animation-delay:2.15s;
+}
+
+.hero h1 .line:nth-child(3) span{
+  animation-delay:2.3s;
+}
+
 @keyframes titleReveal{
   to{transform:translateY(0);}
 }
 
 .hero-subtitle{
-  font-size:clamp(18px,2vw,24px);
+  font-size:clamp(19px,2.2vw,26px);
   color:var(--gray);
   margin-bottom:50px;
-  font-weight:300;
+  font-weight:400;
+  line-height:1.6;
   overflow:hidden;
+  max-width:850px;
+  margin-left:auto;
+  margin-right:auto;
 }
+
 .hero-subtitle span{
   display:inline-block;
-  animation:slideUp 1s ease forwards;
+  animation:slideUp 1s cubic-bezier(0.7,0,0.3,1) forwards;
   animation-delay:2.5s;
   transform:translateY(100%);
 }
@@ -320,44 +574,90 @@ nav a:hover::after{
   animation-delay:2.7s;
   flex-wrap:wrap;
 }
+
 @keyframes fadeIn{
   to{opacity:1;}
 }
 
 .btn-primary{
-  padding:18px 40px;
+  padding:20px 48px;
   background:var(--sage);
   color:#fff;
-  border-radius:100px;
+  border-radius:var(--radius-full);
   font-size:15px;
   font-weight:600;
   text-decoration:none;
   text-transform:uppercase;
-  letter-spacing:1px;
-  transition:all 0.4s;
+  letter-spacing:1.2px;
+  transition:all var(--transition-base);
+  box-shadow:0 8px 24px rgba(139,157,131,0.3);
+  position:relative;
+  overflow:hidden;
 }
-.btn-primary:hover{
+
+.btn-primary::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  width:100%;
+  height:100%;
   background:var(--earth);
-  transform:translateY(-3px);
-  box-shadow:0 12px 32px rgba(107,93,79,0.3);
+  border-radius:var(--radius-full);
+  transition:transform var(--transition-slow);
+  z-index:-1;
+}
+
+.btn-primary:hover::before{
+  transform:translate(-50%,-50%) scale(1);
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(107,93,79,0.4);
+  color:#fff;
 }
 
 .btn-secondary{
-  padding:18px 40px;
-  border:1px solid var(--sage);
+  padding:20px 48px;
+  border:2px solid var(--sage);
   color:var(--earth);
-  border-radius:100px;
+  border-radius:var(--radius-full);
   font-size:15px;
-  font-weight:500;
+  font-weight:600;
   text-decoration:none;
   text-transform:uppercase;
-  letter-spacing:1px;
-  transition:all 0.4s;
+  letter-spacing:1.2px;
+  transition:all var(--transition-base);
+  background:transparent;
+  position:relative;
+  overflow:hidden;
 }
-.btn-secondary:hover{
+
+.btn-secondary::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  width:100%;
+  height:100%;
   background:var(--sage);
+  border-radius:var(--radius-full);
+  transition:transform var(--transition-slow);
+  z-index:-1;
+}
+
+.btn-secondary:hover::before{
+  transform:translate(-50%,-50%) scale(1);
+}
+
+.btn-secondary:hover{
   color:#fff;
   border-color:var(--sage);
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(139,157,131,0.3);
 }
 
 .scroll-hint{
@@ -368,7 +668,7 @@ nav a:hover::after{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:12px;
+  gap:14px;
   font-size:11px;
   letter-spacing:2px;
   text-transform:uppercase;
@@ -377,39 +677,128 @@ nav a:hover::after{
   animation-delay:3s;
   opacity:0;
 }
+
 .scroll-hint .line{
   width:1px;
-  height:60px;
-  background:var(--sage);
+  height:70px;
+  background:linear-gradient(to bottom,var(--sage) 0%,transparent 100%);
   position:relative;
   overflow:hidden;
 }
+
 .scroll-hint .line::after{
   content:'';
   position:absolute;
-  top:0;left:0;
-  width:100%;height:100%;
+  top:0;
+  left:0;
+  width:100%;
+  height:40%;
   background:var(--accent);
-  animation:scrollLine 2s ease-in-out infinite;
-}
-@keyframes scrollLine{
-  0%{transform:translateY(-100%);}
-  50%{transform:translateY(0);}
-  100%{transform:translateY(100%);}
+  animation:scrollLine 2.5s ease-in-out infinite;
 }
 
-/* INSTRUCTOR SECTION */
+@keyframes scrollLine{
+  0%{transform:translateY(-100%);}
+  50%{transform:translateY(150%);}
+  100%{transform:translateY(250%);}
+}
+
+/* ===========================
+   STATS SECTION
+   =========================== */
+.stats{
+  padding:var(--spacing-2xl) var(--spacing-xl);
+  background:var(--white);
+  border-top:1px solid rgba(0,0,0,0.05);
+}
+
+.stats-container{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+}
+
+.stat-card{
+  text-align:center;
+  padding:var(--spacing-lg);
+  background:#fff;
+  border:1px solid #e8e8e8;
+  border-radius:var(--radius-lg);
+  transition:all var(--transition-slow);
+  position:relative;
+  overflow:hidden;
+}
+
+.stat-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,var(--sage),var(--accent));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform var(--transition-slow);
+}
+
+.stat-card:hover::before{
+  transform:scaleX(1);
+}
+
+.stat-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--sage);
+}
+
+.stat-number{
+  font-size:clamp(40px,5vw,56px);
+  font-weight:700;
+  color:var(--sage);
+  margin-bottom:12px;
+  font-family:var(--font-primary);
+  line-height:1;
+}
+
+.stat-label{
+  font-size:14px;
+  color:var(--gray);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:500;
+}
+
+/* ===========================
+   INSTRUCTOR SECTION (ABOUT)
+   =========================== */
 .instructor{
-  padding:150px 60px;
+  padding:var(--spacing-3xl) var(--spacing-xl);
   background:var(--cream);
   position:relative;
+  overflow:hidden;
+}
+
+.instructor::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  right:-200px;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,rgba(139,157,131,0.08) 0%,transparent 70%);
+  border-radius:50%;
+  transform:translateY(-50%);
+  pointer-events:none;
 }
 
 .instructor-container{
   max-width:1400px;
   margin:0 auto;
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:45% 55%;
   gap:100px;
   align-items:center;
 }
@@ -418,22 +807,43 @@ nav a:hover::after{
   position:relative;
 }
 
+.instructor-image-wrapper::before{
+  content:'';
+  position:absolute;
+  top:20px;
+  left:20px;
+  width:100%;
+  height:100%;
+  border:2px solid var(--sage);
+  border-radius:var(--radius-lg);
+  z-index:1;
+  transition:all var(--transition-slow);
+}
+
+.instructor-image-wrapper:hover::before{
+  top:30px;
+  left:30px;
+}
+
 .instructor-image{
   width:100%;
   height:auto;
-  border-radius:20px;
-  box-shadow:0 30px 80px rgba(0,0,0,0.15);
-  transition:all 0.5s cubic-bezier(0.7,0,0.3,1);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-2xl);
+  transition:all var(--transition-slow);
   object-fit:cover;
+  position:relative;
+  z-index:2;
+  display:block;
 }
 
 .instructor-image:hover{
-  transform:translateY(-10px);
-  box-shadow:0 40px 100px rgba(0,0,0,0.2);
+  transform:translate(-10px,-10px);
+  box-shadow:0 40px 100px rgba(0,0,0,0.25);
 }
 
 .instructor-content{
-  padding:40px 0;
+  padding:var(--spacing-lg) 0;
 }
 
 .instructor-label{
@@ -442,44 +852,114 @@ nav a:hover::after{
   text-transform:uppercase;
   color:var(--sage);
   margin-bottom:20px;
+  font-weight:600;
+  display:inline-block;
+  position:relative;
+}
+
+.instructor-label::after{
+  content:'';
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  width:40px;
+  height:2px;
+  background:var(--accent);
 }
 
 .instructor-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(40px,6vw,72px);
+  font-family:var(--font-serif);
+  font-size:clamp(44px,6vw,76px);
   font-weight:600;
   letter-spacing:-2px;
-  margin-bottom:30px;
+  margin-bottom:35px;
   color:var(--earth);
   line-height:1.1;
 }
 
 .instructor-content p{
-  font-size:18px;
-  color:var(--gray);
-  line-height:1.8;
+  font-size:17px;
+  color:var(--gray-dark);
+  line-height:1.9;
   margin-bottom:24px;
+}
+
+.instructor-content p:first-of-type{
+  font-size:19px;
+  color:var(--earth);
+  font-weight:500;
+}
+
+.instructor-highlight{
+  background:linear-gradient(135deg,rgba(139,157,131,0.1),rgba(232,220,196,0.1));
+  padding:var(--spacing-md);
+  border-radius:var(--radius-md);
+  border-left:4px solid var(--sage);
+  margin:var(--spacing-lg) 0;
+}
+
+.instructor-highlight p{
+  margin-bottom:0;
+  font-style:italic;
+  color:var(--earth);
 }
 
 .instructor-meta{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:24px;
-  margin-top:40px;
+  margin-top:50px;
 }
 
 .meta-item{
-  padding:24px;
+  padding:28px;
   background:#fff;
-  border-radius:16px;
+  border-radius:var(--radius-md);
   border:1px solid #e8e8e8;
-  transition:all 0.3s;
+  transition:all var(--transition-base);
+  position:relative;
+  overflow:hidden;
+}
+
+.meta-item::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,var(--sage),var(--accent));
+  opacity:0;
+  transition:opacity var(--transition-base);
+  z-index:1;
+}
+
+.meta-item:hover::before{
+  opacity:0.05;
 }
 
 .meta-item:hover{
   border-color:var(--sage);
-  transform:translateY(-3px);
-  box-shadow:0 12px 32px rgba(0,0,0,0.08);
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-lg);
+}
+
+.meta-item > *{
+  position:relative;
+  z-index:2;
+}
+
+.meta-icon{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--sage),var(--accent));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  margin-bottom:16px;
 }
 
 .meta-label{
@@ -487,36 +967,173 @@ nav a:hover::after{
   letter-spacing:2px;
   text-transform:uppercase;
   color:var(--sage);
-  margin-bottom:8px;
+  margin-bottom:10px;
+  font-weight:600;
 }
 
 .meta-value{
-  font-size:16px;
+  font-size:17px;
   font-weight:600;
   color:var(--earth);
+  line-height:1.4;
 }
 
-/* YOGA FINDER TOOL */
+/* ===========================
+   SPECIALIZATION SECTION
+   =========================== */
+.specialization{
+  padding:var(--spacing-3xl) var(--spacing-xl);
+  background:var(--white);
+}
+
+.specialization-header{
+  text-align:center;
+  max-width:900px;
+  margin:0 auto 80px auto;
+}
+
+.section-label{
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--sage);
+  margin-bottom:20px;
+  font-weight:600;
+}
+
+.section-title{
+  font-family:var(--font-serif);
+  font-size:clamp(40px,6vw,64px);
+  font-weight:600;
+  letter-spacing:-2px;
+  color:var(--earth);
+  margin-bottom:24px;
+  line-height:1.15;
+}
+
+.section-desc{
+  font-size:18px;
+  color:var(--gray);
+  line-height:1.8;
+  max-width:700px;
+  margin:0 auto;
+}
+
+.specialization-grid{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+}
+
+.specialization-card{
+  background:#fff;
+  border:1px solid #e8e8e8;
+  border-radius:var(--radius-lg);
+  padding:var(--spacing-lg);
+  text-align:center;
+  transition:all var(--transition-slow);
+  position:relative;
+  overflow:hidden;
+}
+
+.specialization-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,var(--sage) 0%,var(--accent) 100%);
+  opacity:0;
+  transition:opacity var(--transition-base);
+  z-index:1;
+}
+
+.specialization-card:hover::before{
+  opacity:0.03;
+}
+
+.specialization-card:hover{
+  transform:translateY(-12px);
+  box-shadow:var(--shadow-xl);
+  border-color:var(--sage);
+}
+
+.specialization-card > *{
+  position:relative;
+  z-index:2;
+}
+
+.spec-icon{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--sage),var(--accent));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  margin:0 auto 24px auto;
+  box-shadow:0 8px 24px rgba(139,157,131,0.3);
+  transition:all var(--transition-base);
+}
+
+.specialization-card:hover .spec-icon{
+  transform:scale(1.1) rotate(5deg);
+  box-shadow:0 12px 32px rgba(139,157,131,0.4);
+}
+
+.spec-title{
+  font-size:20px;
+  font-weight:600;
+  color:var(--earth);
+  margin-bottom:12px;
+}
+
+.spec-desc{
+  font-size:14px;
+  color:var(--gray);
+  line-height:1.7;
+}
+
+/* ===========================
+   YOGA FINDER TOOL
+   =========================== */
 .yoga-finder{
-  padding:150px 60px;
+  padding:var(--spacing-3xl) var(--spacing-xl);
   background:var(--earth);
   color:#fff;
   position:relative;
   overflow:hidden;
 }
+
 .yoga-finder::before{
   content:'';
   position:absolute;
   top:-50%;
   right:-20%;
+  width:700px;
+  height:700px;
+  background:radial-gradient(circle,rgba(255,255,255,0.04) 0%,transparent 70%);
+  border-radius:50%;
+}
+
+.yoga-finder::after{
+  content:'';
+  position:absolute;
+  bottom:-30%;
+  left:-15%;
   width:600px;
   height:600px;
-  background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(212,165,116,0.06) 0%,transparent 70%);
   border-radius:50%;
 }
 
 .finder-container{
-  max-width:1000px;
+  max-width:1200px;
   margin:auto;
   position:relative;
   z-index:1;
@@ -524,510 +1141,967 @@ nav a:hover::after{
 
 .finder-header{
   text-align:center;
-  margin-bottom:60px;
+  margin-bottom:70px;
 }
+
 .finder-label{
   font-size:12px;
   letter-spacing:4px;
   text-transform:uppercase;
   color:var(--accent);
   margin-bottom:20px;
+  font-weight:600;
 }
+
 .finder-title{
-  font-size:clamp(36px,6vw,64px);
+  font-family:var(--font-serif);
+  font-size:clamp(38px,6vw,68px);
   font-weight:600;
   letter-spacing:-2px;
-  margin-bottom:20px;
+  margin-bottom:24px;
+  line-height:1.15;
 }
+
 .finder-subtitle{
-  font-size:18px;
-  color:rgba(255,255,255,0.7);
+  font-size:19px;
+  color:rgba(255,255,255,0.75);
+  line-height:1.6;
+  max-width:700px;
+  margin:0 auto;
 }
 
 .body-map-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
-  margin-bottom:50px;
+  gap:24px;
+  margin-bottom:60px;
 }
 
 .body-part-card{
-  background:rgba(255,255,255,0.05);
+  background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.1);
-  border-radius:20px;
-  padding:30px;
-  transition:all 0.4s;
+  border-radius:var(--radius-lg);
+  padding:35px;
+  transition:all var(--transition-slow);
   cursor:pointer;
+  position:relative;
+  overflow:hidden;
 }
+
+.body-part-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,rgba(139,157,131,0.15),rgba(212,165,116,0.15));
+  opacity:0;
+  transition:opacity var(--transition-base);
+}
+
+.body-part-card:hover::before{
+  opacity:1;
+}
+
 .body-part-card:hover{
-  background:rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.08);
   border-color:var(--accent);
-  transform:translateY(-5px);
+  transform:translateY(-8px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.3);
 }
+
 .body-part-card.active{
   background:var(--sage);
   border-color:var(--sage);
+  transform:translateY(-8px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+
+.body-part-card > *{
+  position:relative;
+  z-index:1;
 }
 
 .body-part-icon{
-  font-size:40px;
-  margin-bottom:15px;
+  font-size:48px;
+  margin-bottom:18px;
+  display:block;
+  filter:grayscale(0.2);
 }
+
+.body-part-card:hover .body-part-icon,
+.body-part-card.active .body-part-icon{
+  filter:grayscale(0);
+  transform:scale(1.1);
+  transition:all var(--transition-base);
+}
+
 .body-part-name{
-  font-size:20px;
+  font-size:22px;
   font-weight:600;
-  margin-bottom:8px;
+  margin-bottom:10px;
+  line-height:1.3;
 }
+
 .body-part-desc{
-  font-size:14px;
-  color:rgba(255,255,255,0.6);
+  font-size:15px;
+  color:rgba(255,255,255,0.65);
+  line-height:1.6;
+}
+
+.body-part-card:hover .body-part-desc,
+.body-part-card.active .body-part-desc{
+  color:rgba(255,255,255,0.9);
 }
 
 .results-area{
-  margin-top:50px;
-  padding:40px;
-  background:rgba(255,255,255,0.08);
-  border-radius:20px;
-  backdrop-filter:blur(10px);
+  margin-top:60px;
+  padding:50px;
+  background:rgba(255,255,255,0.06);
+  border-radius:var(--radius-xl);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.1);
   display:none;
 }
+
 .results-area.show{
   display:block;
-  animation:fadeSlideUp 0.6s ease;
+  animation:fadeSlideUp 0.7s cubic-bezier(0.7,0,0.3,1);
 }
+
 @keyframes fadeSlideUp{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .results-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:30px;
-  padding-bottom:20px;
-  border-bottom:1px solid rgba(255,255,255,0.2);
+  margin-bottom:40px;
+  padding-bottom:24px;
+  border-bottom:1px solid rgba(255,255,255,0.15);
 }
+
 .results-title{
-  font-size:24px;
+  font-size:28px;
   font-weight:600;
+  font-family:var(--font-serif);
 }
+
 .clear-btn{
-  padding:10px 20px;
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.3);
-  border-radius:100px;
+  padding:12px 28px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:var(--radius-full);
   color:#fff;
   font-size:13px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:1px;
   cursor:pointer;
-  transition:all 0.3s;
+  transition:all var(--transition-base);
 }
+
 .clear-btn:hover{
-  background:rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.15);
+  border-color:rgba(255,255,255,0.3);
+  transform:translateY(-2px);
 }
 
 .asana-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:24px;
 }
 
 .asana-card{
-  background:rgba(255,255,255,0.05);
+  background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;
-  padding:25px;
-  transition:all 0.3s;
+  border-radius:var(--radius-md);
+  padding:30px;
+  transition:all var(--transition-base);
 }
+
 .asana-card:hover{
   background:rgba(255,255,255,0.08);
-  transform:translateY(-3px);
+  border-color:rgba(255,255,255,0.2);
+  transform:translateY(-5px);
+  box-shadow:0 12px 32px rgba(0,0,0,0.2);
 }
 
 .asana-name{
-  font-size:20px;
+  font-size:22px;
   font-weight:600;
-  margin-bottom:8px;
+  margin-bottom:10px;
   color:var(--accent);
 }
+
 .asana-sanskrit{
-  font-size:14px;
+  font-size:15px;
   font-style:italic;
   color:rgba(255,255,255,0.6);
-  margin-bottom:12px;
-}
-.asana-benefits{
-  font-size:14px;
-  line-height:1.7;
-  color:rgba(255,255,255,0.8);
+  margin-bottom:16px;
 }
 
-/* TESTIMONIALS SECTION */
+.asana-benefits{
+  font-size:15px;
+  line-height:1.8;
+  color:rgba(255,255,255,0.85);
+}
+
+/* ===========================
+   TESTIMONIALS SECTION
+   =========================== */
 .testimonials{
-  padding:150px 60px;
+  padding:var(--spacing-3xl) var(--spacing-xl);
   background:var(--white);
+  position:relative;
 }
 
 .testimonials-header{
   text-align:center;
-  margin-bottom:80px;
-}
-
-.testimonials-label{
-  font-size:12px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--sage);
-  margin-bottom:20px;
+  margin-bottom:90px;
 }
 
 .testimonials-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(40px,6vw,64px);
+  font-family:var(--font-serif);
+  font-size:clamp(42px,6vw,68px);
   font-weight:600;
   letter-spacing:-2px;
   color:var(--earth);
-  margin-bottom:20px;
+  margin-bottom:24px;
+  line-height:1.15;
 }
 
 .testimonials-subtitle{
-  font-size:18px;
+  font-size:19px;
   color:var(--gray);
-  max-width:600px;
+  max-width:700px;
   margin:0 auto;
+  line-height:1.7;
 }
 
 .testimonials-grid{
-  max-width:1200px;
+  max-width:1400px;
   margin:0 auto;
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:50px;
+  margin-bottom:60px;
 }
 
 .testimonial-card{
   background:#fff;
   border:1px solid #e8e8e8;
-  border-radius:24px;
+  border-radius:var(--radius-xl);
   overflow:hidden;
-  transition:all 0.5s cubic-bezier(0.7,0,0.3,1);
-  box-shadow:0 10px 40px rgba(0,0,0,0.05);
+  transition:all var(--transition-slow);
+  box-shadow:var(--shadow-md);
+  display:flex;
+  flex-direction:column;
 }
 
 .testimonial-card:hover{
-  transform:translateY(-12px);
-  box-shadow:0 30px 80px rgba(0,0,0,0.12);
+  transform:translateY(-16px);
+  box-shadow:var(--shadow-2xl);
   border-color:var(--sage);
 }
 
 .testimonial-image{
   width:100%;
-  height:350px;
+  height:380px;
   object-fit:cover;
   display:block;
+  transition:transform var(--transition-slow);
+}
+
+.testimonial-card:hover .testimonial-image{
+  transform:scale(1.05);
 }
 
 .testimonial-content{
-  padding:40px;
+  padding:45px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
 }
 
 .testimonial-quote{
-  font-size:18px;
+  font-size:19px;
   line-height:1.8;
-  color:var(--gray);
-  margin-bottom:30px;
+  color:var(--gray-dark);
+  margin-bottom:35px;
   font-style:italic;
   position:relative;
+  padding-left:30px;
+  flex:1;
 }
 
 .testimonial-quote::before{
   content:'"';
-  font-size:80px;
-  font-family:'Playfair Display',serif;
+  font-size:100px;
+  font-family:var(--font-serif);
   color:var(--sand);
   position:absolute;
   top:-30px;
   left:-10px;
   line-height:1;
+  opacity:0.6;
+}
+
+.testimonial-meta{
+  border-top:1px solid #e8e8e8;
+  padding-top:24px;
 }
 
 .testimonial-author{
-  font-size:18px;
+  font-size:19px;
   font-weight:600;
   color:var(--earth);
-  margin-bottom:6px;
+  margin-bottom:8px;
 }
 
 .testimonial-role{
   font-size:14px;
   color:var(--sage);
   text-transform:uppercase;
-  letter-spacing:1px;
+  letter-spacing:1.5px;
+  font-weight:500;
 }
 
-/* LANGUAGES */
+.testimonial-rating{
+  display:flex;
+  gap:6px;
+  margin-top:16px;
+}
+
+.star{
+  color:var(--accent);
+  font-size:18px;
+}
+
+/* More Testimonials Grid */
+.more-testimonials-grid{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+.text-testimonial{
+  background:#fff;
+  border:1px solid #e8e8e8;
+  border-radius:var(--radius-lg);
+  padding:40px;
+  transition:all var(--transition-slow);
+  box-shadow:var(--shadow-sm);
+  display:flex;
+  flex-direction:column;
+}
+
+.text-testimonial:hover{
+  transform:translateY(-10px);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--sage);
+}
+
+.text-testimonial .testimonial-quote{
+  font-size:17px;
+  padding-left:0;
+  margin-bottom:30px;
+}
+
+.text-testimonial .testimonial-quote::before{
+  font-size:80px;
+  top:-25px;
+  left:-5px;
+}
+
+/* ===========================
+   LANGUAGES SECTION
+   =========================== */
 .languages{
-  padding:100px 60px;
+  padding:var(--spacing-2xl) var(--spacing-xl);
   background:var(--cream);
   text-align:center;
 }
-.languages-label{
-  font-size:12px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--sage);
-  margin-bottom:20px;
-}
+
 .languages h2{
-  font-size:clamp(32px,5vw,56px);
+  font-family:var(--font-serif);
+  font-size:clamp(36px,5vw,60px);
   font-weight:600;
   letter-spacing:-2px;
-  margin-bottom:50px;
+  margin-bottom:60px;
   color:var(--earth);
 }
+
 .language-cards{
   display:flex;
-  gap:30px;
+  gap:35px;
   justify-content:center;
-  max-width:900px;
+  max-width:1000px;
   margin:auto;
   flex-wrap:wrap;
 }
+
 .language-card{
   flex:1;
-  min-width:250px;
-  padding:40px 30px;
+  min-width:280px;
+  padding:50px 35px;
   background:#fff;
   border:1px solid #e8e8e8;
-  border-radius:20px;
-  transition:all 0.4s;
-}
-.language-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.08);
-  border-color:var(--sage);
-}
-.language-icon{
-  font-size:48px;
-  margin-bottom:20px;
-}
-.language-name{
-  font-size:24px;
-  font-weight:600;
-  color:var(--earth);
-  margin-bottom:10px;
-}
-.language-desc{
-  font-size:14px;
-  color:var(--gray);
+  border-radius:var(--radius-lg);
+  transition:all var(--transition-slow);
+  position:relative;
+  overflow:hidden;
 }
 
-/* CLASSES */
+.language-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,var(--sage),var(--accent));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform var(--transition-slow);
+}
+
+.language-card:hover::before{
+  transform:scaleX(1);
+}
+
+.language-card:hover{
+  transform:translateY(-10px);
+  box-shadow:var(--shadow-xl);
+  border-color:var(--sage);
+}
+
+.language-icon{
+  font-size:56px;
+  margin-bottom:24px;
+  display:block;
+}
+
+.language-name{
+  font-size:26px;
+  font-weight:600;
+  color:var(--earth);
+  margin-bottom:12px;
+}
+
+.language-desc{
+  font-size:15px;
+  color:var(--gray);
+  line-height:1.6;
+}
+
+/* ===========================
+   CLASSES SECTION
+   =========================== */
 .classes{
-  padding:150px 60px;
+  padding:var(--spacing-3xl) var(--spacing-xl);
   background:var(--white);
 }
+
 .classes-header{
   max-width:1200px;
-  margin:0 auto 80px auto;
+  margin:0 auto 90px auto;
   text-align:center;
 }
-.classes-label{
-  font-size:12px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--sage);
-  margin-bottom:20px;
-}
+
 .classes-title{
-  font-size:clamp(40px,6vw,72px);
+  font-family:var(--font-serif);
+  font-size:clamp(42px,6vw,76px);
   font-weight:600;
   letter-spacing:-2px;
   color:var(--earth);
+  margin-bottom:24px;
 }
 
 .classes-grid{
-  max-width:1200px;
+  max-width:1400px;
   margin:auto;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:30px;
+  gap:35px;
 }
 
 .class-card{
   background:#fff;
   border:1px solid #e8e8e8;
-  border-radius:20px;
-  padding:40px;
-  transition:all 0.5s cubic-bezier(0.7,0,0.3,1);
+  border-radius:var(--radius-lg);
+  padding:45px;
+  transition:all var(--transition-slow);
+  position:relative;
+  overflow:hidden;
 }
+
+.class-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,var(--sage),var(--accent));
+  opacity:0;
+  transition:opacity var(--transition-base);
+  z-index:1;
+}
+
+.class-card:hover::before{
+  opacity:0.03;
+}
+
 .class-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.1);
+  transform:translateY(-12px);
+  box-shadow:var(--shadow-xl);
   border-color:var(--sage);
 }
 
+.class-card > *{
+  position:relative;
+  z-index:2;
+}
+
 .class-icon{
-  width:70px;
-  height:70px;
+  width:80px;
+  height:80px;
   border-radius:50%;
   background:linear-gradient(135deg,var(--sage),var(--accent));
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:32px;
-  margin-bottom:25px;
+  font-size:38px;
+  margin-bottom:28px;
+  box-shadow:0 8px 24px rgba(139,157,131,0.3);
+  transition:all var(--transition-base);
+}
+
+.class-card:hover .class-icon{
+  transform:scale(1.1) rotate(8deg);
+  box-shadow:0 12px 32px rgba(139,157,131,0.4);
 }
 
 .class-title{
-  font-size:24px;
+  font-size:26px;
   font-weight:600;
-  margin-bottom:12px;
+  margin-bottom:16px;
   color:var(--earth);
 }
+
 .class-desc{
-  font-size:15px;
+  font-size:16px;
   color:var(--gray);
-  line-height:1.7;
-  margin-bottom:20px;
-}
-.class-meta{
-  display:flex;
-  gap:20px;
-  font-size:13px;
-  color:var(--sage);
-  font-weight:500;
-  padding-top:20px;
-  border-top:1px solid #e8e8e8;
+  line-height:1.8;
+  margin-bottom:24px;
 }
 
-/* CONTACT */
-.contact{
-  padding:150px 60px;
-  background:var(--sage);
-  color:#fff;
-  text-align:center;
-}
-.contact h2{
-  font-size:clamp(40px,7vw,80px);
-  font-weight:600;
-  letter-spacing:-2px;
-  margin-bottom:20px;
-}
-.contact p{
-  font-size:18px;
-  color:rgba(255,255,255,0.7);
-  margin-bottom:50px;
-  max-width:600px;
-  margin-left:auto;
-  margin-right:auto;
-}
-.contact-info{
+.class-meta{
   display:flex;
-  gap:60px;
-  justify-content:center;
-  margin-bottom:50px;
+  gap:24px;
+  font-size:14px;
+  color:var(--sage);
+  font-weight:500;
+  padding-top:24px;
+  border-top:1px solid #e8e8e8;
   flex-wrap:wrap;
 }
-.contact-item h3{
-  font-size:14px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-bottom:12px;
-  opacity:0.7;
+
+.class-meta span{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
+
+/* ===========================
+   CONTACT SECTION
+   =========================== */
+.contact{
+  padding:var(--spacing-3xl) var(--spacing-xl);
+  background:linear-gradient(135deg,var(--sage) 0%,var(--sage-dark) 100%);
+  color:#fff;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.contact::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:150%;
+  height:150%;
+  background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.contact-content{
+  position:relative;
+  z-index:1;
+}
+
+.contact h2{
+  font-family:var(--font-serif);
+  font-size:clamp(44px,7vw,86px);
+  font-weight:600;
+  letter-spacing:-2px;
+  margin-bottom:28px;
+  line-height:1.1;
+}
+
+.contact p{
+  font-size:20px;
+  color:rgba(255,255,255,0.8);
+  margin-bottom:60px;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.7;
+}
+
+.contact-info{
+  display:flex;
+  gap:80px;
+  justify-content:center;
+  margin-bottom:60px;
+  flex-wrap:wrap;
+}
+
+.contact-item h3{
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+  opacity:0.75;
+  font-weight:600;
+}
+
 .contact-item a{
   color:#fff;
   text-decoration:none;
-  font-size:20px;
-  font-weight:500;
-  transition:color 0.3s;
+  font-size:32px;
+  font-weight:600;
+  transition:all var(--transition-base);
+  display:inline-block;
+  font-family:var(--font-primary);
 }
+
 .contact-item a:hover{
   color:var(--accent);
+  transform:translateY(-3px);
+}
+
+.contact-item p{
+  color:#fff;
+  opacity:0.95;
+  margin:0;
+  font-size:24px;
+  font-weight:500;
 }
 
 .social-links{
   display:flex;
-  gap:30px;
+  gap:35px;
   justify-content:center;
 }
+
 .social-link{
-  width:60px;
-  height:60px;
-  border:1px solid rgba(255,255,255,0.3);
+  width:70px;
+  height:70px;
+  border:2px solid rgba(255,255,255,0.25);
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   color:#fff;
   text-decoration:none;
-  font-size:20px;
-  transition:all 0.4s;
+  font-size:24px;
+  transition:all var(--transition-base);
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
 }
+
 .social-link:hover{
   background:#fff;
   color:var(--sage);
-  transform:translateY(-5px);
+  transform:translateY(-8px) rotate(5deg);
+  box-shadow:0 12px 32px rgba(0,0,0,0.3);
+  border-color:#fff;
 }
 
-/* FOOTER */
+/* ===========================
+   FOOTER
+   =========================== */
 footer{
-  padding:40px 60px;
+  padding:50px var(--spacing-xl);
   background:var(--black);
   color:#fff;
   text-align:center;
-  font-size:13px;
+  font-size:14px;
   display:flex;
   flex-direction:column;
-  gap:15px;
+  gap:18px;
 }
+
+footer p{
+  opacity:0.7;
+  line-height:1.6;
+}
+
 footer a{
   color:#fff;
   text-decoration:none;
   opacity:0.7;
-  transition:opacity 0.3s;
-}
-footer a:hover{
-  opacity:1;
+  transition:opacity var(--transition-base);
+  display:inline-block;
 }
 
-/* REVEAL */
+footer a:hover{
+  opacity:1;
+  text-decoration:underline;
+}
+
+/* ===========================
+   REVEAL ON SCROLL ANIMATION
+   =========================== */
 .reveal{
   opacity:0;
-  transform:translateY(60px);
-  transition:all 1s cubic-bezier(0.7,0,0.3,1);
+  transform:translateY(80px);
+  transition:all 1.2s cubic-bezier(0.7,0,0.3,1);
 }
+
 .reveal.in-view{
   opacity:1;
   transform:translateY(0);
 }
 
-/* RESPONSIVE */
+.reveal-left{
+  opacity:0;
+  transform:translateX(-80px);
+  transition:all 1.2s cubic-bezier(0.7,0,0.3,1);
+}
+
+.reveal-left.in-view{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.reveal-right{
+  opacity:0;
+  transform:translateX(80px);
+  transition:all 1.2s cubic-bezier(0.7,0,0.3,1);
+}
+
+.reveal-right.in-view{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.reveal-scale{
+  opacity:0;
+  transform:scale(0.9);
+  transition:all 1.2s cubic-bezier(0.7,0,0.3,1);
+}
+
+.reveal-scale.in-view{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+@media(max-width:1200px){
+  .stats-container{
+    grid-template-columns:repeat(2,1fr);
+  }
+  
+  .specialization-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  
+  .instructor-container{
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+  
+  .instructor-image-wrapper::before{
+    display:none;
+  }
+  
+  .classes-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+}
+
 @media(max-width:900px){
-  header{padding:20px 24px;}
-  header.scrolled{padding:15px 24px;}
-  nav{gap:16px;}
-  nav a{font-size:11px;display:none;}
-  nav a.cta-btn{display:block;}
-  .hero-content{padding:0 24px;}
-  .hero h1{line-height:1.1;}
-  .instructor{padding:80px 24px;}
-  .instructor-container{grid-template-columns:1fr;gap:50px;}
-  .instructor-meta{grid-template-columns:1fr;}
-  .yoga-finder{padding:80px 24px;}
-  .body-map-grid{grid-template-columns:1fr;}
-  .asana-grid{grid-template-columns:1fr;}
-  .testimonials{padding:80px 24px;}
-  .testimonials-grid{grid-template-columns:1fr;gap:40px;}
-  .languages{padding:80px 24px;}
-  .language-cards{flex-direction:column;}
-  .classes{padding:80px 24px;}
-  .classes-grid{grid-template-columns:1fr;gap:24px;}
-  .contact{padding:80px 24px;}
-  .contact-info{flex-direction:column;gap:30px;}
-  footer{padding:30px 24px;}
+  header{
+    padding:20px var(--spacing-md);
+  }
+  
+  header.scrolled{
+    padding:15px var(--spacing-md);
+  }
+  
+  nav{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:300px;
+    height:100vh;
+    background:var(--white);
+    flex-direction:column;
+    padding:100px 40px 40px;
+    gap:30px;
+    transition:right var(--transition-slow);
+    box-shadow:var(--shadow-2xl);
+    align-items:flex-start;
+  }
+  
+  nav.active{
+    right:0;
+  }
+  
+  nav a{
+    display:block !important;
+    font-size:16px;
+  }
+  
+  .menu-toggle{
+    display:flex;
+  }
+  
+  .hero-content{
+    padding:0 var(--spacing-md);
+  }
+  
+  .hero h1{
+    line-height:1.1;
+  }
+  
+  .stats{
+    padding:var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .stats-container{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  
+  .instructor{
+    padding:var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .instructor-meta{
+    grid-template-columns:1fr;
+  }
+  
+  .specialization{
+    padding:var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .specialization-grid{
+    grid-template-columns:1fr;
+  }
+  
+  .yoga-finder{
+    padding:var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .body-map-grid{
+    grid-template-columns:1fr;
+  }
+  
+  .asana-grid{
+    grid-template-columns:1fr;
+  }
+  
+  .results-area{
+    padding:30px 24px;
+  }
+  
+  .testimonials{
+    padding:var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .testimonials-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  
+  .more-testimonials-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+  
+  .languages{
+    padding:var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .language-cards{
+    flex-direction:column;
+  }
+  
+  .classes{
+    padding:var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .contact{
+    padding:var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .contact-info{
+    flex-direction:column;
+    gap:40px;
+  }
+  
+  .contact-item a{
+    font-size:24px;
+  }
+  
+  footer{
+    padding:40px var(--spacing-md);
+  }
+}
+
+@media(max-width:600px){
+  .hero-cta{
+    flex-direction:column;
+    width:100%;
+  }
+  
+  .btn-primary,
+  .btn-secondary{
+    width:100%;
+    max-width:350px;
+  }
+  
+  .social-links{
+    gap:24px;
+  }
+  
+  .social-link{
+    width:60px;
+    height:60px;
+    font-size:20px;
+  }
 }
 </style>
 </head>
@@ -1045,14 +2119,21 @@ footer a:hover{
 
 <!-- CURSOR -->
 <div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 
 <!-- HEADER -->
 <header id="header">
   <div class="logo">Thanu Yoga</div>
-  <nav>
-    <a href="#instructor">Instructor</a>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav id="nav">
+    <a href="#instructor">About</a>
+    <a href="#specialization">Specialization</a>
     <a href="#finder">Yoga Finder</a>
-    <a href="#testimonials">Stories</a>
+    <a href="#testimonials">Testimonials</a>
     <a href="#classes">Classes</a>
     <a href="#contact">Contact</a>
     <a href="tel:7676332452" class="cta-btn">Book Now</a>
@@ -1064,16 +2145,17 @@ footer a:hover{
   <div class="floating-element"></div>
   <div class="floating-element"></div>
   <div class="floating-element"></div>
+  <div class="floating-element"></div>
   
   <div class="hero-content">
     <div class="hero-label"><span>Online Yoga Classes</span></div>
     <h1>
-      <span class="line"><span>Practice Yoga</span></span>
-      <span class="line"><span>From</span></span>
-      <span class="line"><span>Anywhere</span></span>
+      <span class="line"><span>Transform Your</span></span>
+      <span class="line"><span>Body & Mind</span></span>
+      <span class="line"><span>From Home</span></span>
     </h1>
     <p class="hero-subtitle">
-      <span>Transform your body and mind with personalized online sessions.</span>
+      <span>Personalized therapeutic yoga sessions guided by certified instructor Thanuja. Specialized in back pain, PCOD/PCOS wellness, and women's health.</span>
     </p>
     <div class="hero-cta">
       <a href="tel:7676332452" class="btn-primary">Start Your Journey</a>
@@ -1087,12 +2169,34 @@ footer a:hover{
   </div>
 </section>
 
-<!-- INSTRUCTOR SECTION -->
+<!-- STATS SECTION -->
+<section class="stats">
+  <div class="stats-container">
+    <div class="stat-card reveal">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Students Taught</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Years Practice</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Languages</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-number">200hr</div>
+      <div class="stat-label">YTT Certified</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR SECTION (ABOUT ME) -->
 <section class="instructor" id="instructor">
   <div class="instructor-container">
-    <div class="instructor-image-wrapper reveal">
+    <div class="instructor-image-wrapper reveal-left">
       <img 
-        src="about_the_instructor.webp" 
+        src="webp/about_the_instructor.webp" 
         alt="Thanuja - Certified Yoga Instructor" 
         class="instructor-image"
         loading="lazy"
@@ -1100,35 +2204,43 @@ footer a:hover{
     </div>
     
     <div class="instructor-content">
-      <p class="instructor-label reveal">Meet Your Instructor</p>
-      <h2 class="instructor-title reveal">Thanuja</h2>
+      <p class="instructor-label reveal">About Me</p>
+      <h2 class="instructor-title reveal">Meet Thanuja</h2>
       <p class="reveal">
-        I am Thanuja, a certified yoga practitioner with a 200-hour Yoga Teacher Training (YTT), 
-        Therapeutic Yoga training, and a Diploma in Yoga. I have been practicing yoga for over 5 years 
-        and teaching for nearly a year.
+        I am Thanuja, a certified yoga practitioner with a 200-hour Yoga Teacher Training (YTT) certification, Therapeutic Yoga training, and a Diploma in Yoga.
       </p>
       <p class="reveal">
-        My teaching approach is grounded in slow, mindful movement. I design each session to be 
-        accessible and therapeutic—perfect for stiff backs, busy parents, desk workers, and anyone 
-        seeking pain-free movement and deeper rest.
+        I have been practicing yoga for over 5 years and have been teaching yoga for nearly a year, guiding individuals through mindful, condition-based yoga practices. Over this period, I have taught 100+ students through both online and offline sessions from my home studio, offering personalized attention and consistent support.
       </p>
       <p class="reveal">
-        Through my teachings, I help individuals move toward pain-free movement, better sleep, 
-        hormonal balance, and inner harmony, supporting the body, mind, and soul.
+        My expertise lies in therapeutic yoga, with a strong focus on back pain management, sleep-related issues, women's hormonal health (PCOD/PCOS), and menstrual wellness. I specialize in creating customized yoga protocols based on individual needs, combining asana, pranayama, and relaxation techniques for sustainable and curative results.
+      </p>
+      
+      <div class="instructor-highlight reveal">
+        <p>
+          I strongly believe in yoga as a holistic healing system, not just a physical practice. My approach emphasizes breath awareness, mindful movement, and deep relaxation, helping students restore balance, improve body awareness, and build long-term well-being.
+        </p>
+      </div>
+      
+      <p class="reveal">
+        Through my teachings, I help individuals move toward pain-free movement, better sleep, hormonal balance, and inner harmony, supporting the body, mind, and soul.
       </p>
       
       <div class="instructor-meta">
         <div class="meta-item reveal">
+          <div class="meta-icon">📜</div>
           <div class="meta-label">Certifications</div>
-          <div class="meta-value">200hr YTT + Therapeutic</div>
+          <div class="meta-value">200hr YTT + Therapeutic Yoga + Diploma</div>
         </div>
         <div class="meta-item reveal">
+          <div class="meta-icon">⏱️</div>
           <div class="meta-label">Experience</div>
-          <div class="meta-value">5+ Years Practice</div>
+          <div class="meta-value">5+ Years Practice · 1 Year Teaching</div>
         </div>
         <div class="meta-item reveal">
+          <div class="meta-icon">🎯</div>
           <div class="meta-label">Specialization</div>
-          <div class="meta-value">Therapeutic Yoga</div>
+          <div class="meta-value">Therapeutic & Condition-Based Yoga</div>
         </div>
         <div class="meta-item reveal">
           <div class="meta-label">Languages</div>
@@ -1139,62 +2251,99 @@ footer a:hover{
   </div>
 </section>
 
+<!-- SPECIALIZATION SECTION -->
+<section class="specialization" id="specialization">
+  <div class="specialization-header">
+    <p class="section-label reveal">My Expertise</p>
+    <h2 class="section-title reveal">Specialized Therapeutic Yoga</h2>
+    <p class="section-desc reveal">
+      Customized yoga protocols combining asana, pranayama, and relaxation techniques for sustainable healing and long-term wellness.
+    </p>
+  </div>
+  
+  <div class="specialization-grid">
+    <div class="specialization-card reveal">
+      <div class="spec-icon">🧘‍♀️</div>
+      <h3 class="spec-title">Back Pain Management</h3>
+      <p class="spec-desc">Targeted practices for chronic back pain relief, spinal health, and posture correction</p>
+    </div>
+    
+    <div class="specialization-card reveal">
+      <div class="spec-icon">😴</div>
+      <h3 class="spec-title">Sleep Wellness</h3>
+      <p class="spec-desc">Restorative techniques for insomnia, sleep disorders, and deep relaxation</p>
+    </div>
+    
+    <div class="specialization-card reveal">
+      <div class="spec-icon">💫</div>
+      <h3 class="spec-title">PCOD/PCOS Wellness</h3>
+      <p class="spec-desc">Specialized protocols for hormonal balance and reproductive health</p>
+    </div>
+    
+    <div class="specialization-card reveal">
+      <div class="spec-icon">🌸</div>
+      <h3 class="spec-title">Menstrual Health</h3>
+      <p class="spec-desc">Gentle practices for menstrual wellness, cramps relief, and cycle regulation</p>
+    </div>
+  </div>
+</section>
+
 <!-- YOGA FINDER TOOL -->
 <section class="yoga-finder" id="finder">
   <div class="finder-container">
     <div class="finder-header reveal">
       <p class="finder-label">Smart Yoga Finder</p>
-      <h2 class="finder-title">Find the perfect asana for your needs.</h2>
-      <p class="finder-subtitle">Select your concern and discover personalized yoga recommendations</p>
+      <h2 class="finder-title">Find the perfect asana for your needs</h2>
+      <p class="finder-subtitle">Select your concern and discover personalized yoga recommendations tailored to your wellness goals</p>
     </div>
 
     <div class="body-map-grid">
       <div class="body-part-card reveal" data-part="stress">
         <div class="body-part-icon">🧠</div>
         <h3 class="body-part-name">Stress & Anxiety</h3>
-        <p class="body-part-desc">Mental tension, overthinking, worry</p>
+        <p class="body-part-desc">Mental tension, overthinking, worry, nervous system balance</p>
       </div>
 
       <div class="body-part-card reveal" data-part="neck">
         <div class="body-part-icon">🦴</div>
         <h3 class="body-part-name">Neck & Shoulders</h3>
-        <p class="body-part-desc">Stiffness, tension, pain</p>
+        <p class="body-part-desc">Stiffness, tension, pain, limited mobility</p>
       </div>
 
       <div class="body-part-card reveal" data-part="back">
         <div class="body-part-icon">💪</div>
         <h3 class="body-part-name">Back Pain</h3>
-        <p class="body-part-desc">Lower back, upper back discomfort</p>
+        <p class="body-part-desc">Lower back, upper back discomfort, spinal health</p>
       </div>
 
       <div class="body-part-card reveal" data-part="legs">
         <div class="body-part-icon">🦵</div>
         <h3 class="body-part-name">Legs & Knees</h3>
-        <p class="body-part-desc">Pain, weakness, stiffness</p>
+        <p class="body-part-desc">Pain, weakness, stiffness, joint health</p>
       </div>
 
       <div class="body-part-card reveal" data-part="digestion">
         <div class="body-part-icon">🫃</div>
         <h3 class="body-part-name">Digestion Issues</h3>
-        <p class="body-part-desc">Bloating, constipation, discomfort</p>
+        <p class="body-part-desc">Bloating, constipation, digestive discomfort</p>
       </div>
 
       <div class="body-part-card reveal" data-part="sleep">
         <div class="body-part-icon">😴</div>
         <h3 class="body-part-name">Sleep Problems</h3>
-        <p class="body-part-desc">Insomnia, restlessness</p>
+        <p class="body-part-desc">Insomnia, restlessness, sleep quality</p>
       </div>
 
       <div class="body-part-card reveal" data-part="flexibility">
         <div class="body-part-icon">🤸</div>
         <h3 class="body-part-name">Flexibility</h3>
-        <p class="body-part-desc">Improve range of motion</p>
+        <p class="body-part-desc">Improve range of motion, mobility, suppleness</p>
       </div>
 
       <div class="body-part-card reveal" data-part="energy">
         <div class="body-part-icon">⚡</div>
         <h3 class="body-part-name">Low Energy</h3>
-        <p class="body-part-desc">Fatigue, lethargy</p>
+        <p class="body-part-desc">Fatigue, lethargy, vitality boost</p>
       </div>
     </div>
 
@@ -1211,10 +2360,10 @@ footer a:hover{
 <!-- TESTIMONIALS SECTION -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-header">
-    <p class="testimonials-label reveal">Student Stories</p>
-    <h2 class="testimonials-title reveal">Transformations</h2>
+    <p class="section-label reveal">Student Stories</p>
+    <h2 class="testimonials-title reveal">Real Results, Real People</h2>
     <p class="testimonials-subtitle reveal">
-      Real experiences from students who found balance through online yoga practice.
+      Hear from students who have transformed their health and well-being through therapeutic yoga practice.
     </p>
   </div>
   
@@ -1228,11 +2377,19 @@ footer a:hover{
       />
       <div class="testimonial-content">
         <p class="testimonial-quote">
-          After years of back pain, this is the first space where I don't feel judged 
-          for moving slowly. It's honest and calm.
+          After years of back pain, this is the first space where I don't feel judged for moving slowly. It's honest and calm. Thanuja's approach truly heals.
         </p>
-        <div class="testimonial-author">Shreya M.</div>
-        <div class="testimonial-role">New to yoga</div>
+        <div class="testimonial-meta">
+          <div class="testimonial-author">Chandana V.</div>
+          <div class="testimonial-role">PCOD Management</div>
+          <div class="testimonial-rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+        </div>
       </div>
     </div>
     
@@ -1245,25 +2402,137 @@ footer a:hover{
       />
       <div class="testimonial-content">
         <p class="testimonial-quote">
-          The teaching is clear and the pace is real. My mom and I join together 
-          on weekends from different cities.
+          The teaching is clear and the pace is real. My mom and I join together on weekends from different cities. Thanuja makes yoga accessible for everyone.
         </p>
-        <div class="testimonial-author">Sana K.</div>
-        <div class="testimonial-role">Weekend batch</div>
+        <div class="testimonial-meta">
+          <div class="testimonial-author">Vani Reddy</div>
+          <div class="testimonial-role">Weekend Batch</div>
+          <div class="testimonial-rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="more-testimonials-grid" style="margin-top:50px;">
+    <div class="text-testimonial reveal">
+      <p class="testimonial-quote">
+        Instructor's instructions are very clear and impactful. Thanks for all the efforts you put in to shape us. Only a truly passionate human can do it. Wishing you all success the coming year.
+      </p>
+      <div class="testimonial-meta">
+        <div class="testimonial-author">Vani Reddy</div>
+        <div class="testimonial-role">Online Student</div>
+        <div class="testimonial-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-testimonial reveal">
+      <p class="testimonial-quote">
+        I practiced yoga with Thanuja for a month. And being very honest I could see very good results with my PCOD issue. The way she teaches and her patience is very good.
+      </p>
+      <div class="testimonial-meta">
+        <div class="testimonial-author">Chandana V.</div>
+        <div class="testimonial-role">PCOD Recovery</div>
+        <div class="testimonial-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-testimonial reveal">
+      <p class="testimonial-quote">
+        Thanu's yoga classes have helped me build more discipline and strength. It has also helped me better my health and reverse my condition of PCOD. Practicing yoga with Thanu has made me healthier, stronger and happier.
+      </p>
+      <div class="testimonial-meta">
+        <div class="testimonial-author">Vaishnavi</div>
+        <div class="testimonial-role">Long-term Student</div>
+        <div class="testimonial-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">☆</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-testimonial reveal">
+      <p class="testimonial-quote">
+        It was really good to be a part of online yoga class. My health is so much better now. Thanuja is very friendly and she teaches yoga from the basic which is very helpful for the beginners. Had a wonderful experience.
+      </p>
+      <div class="testimonial-meta">
+        <div class="testimonial-author">Aishwarya</div>
+        <div class="testimonial-role">Beginner Student</div>
+        <div class="testimonial-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-testimonial reveal">
+      <p class="testimonial-quote">
+        Hi Thanu, thank you for being such a positive influence and the energy you bring. I really appreciate how clear your yoga sessions are; they encourage me to go further in my learning.
+      </p>
+      <div class="testimonial-meta">
+        <div class="testimonial-author">Raghav</div>
+        <div class="testimonial-role">Regular Practitioner</div>
+        <div class="testimonial-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-testimonial reveal">
+      <p class="testimonial-quote">
+        I appreciate the way you teach yoga—not just as a practice, but as a way of life. Your calm presence and thoughtful guidance make every session meaningful. Thank you for inspiring mindfulness and self-growth.
+      </p>
+      <div class="testimonial-meta">
+        <div class="testimonial-author">Pallavi B V</div>
+        <div class="testimonial-role">Mindful Practitioner</div>
+        <div class="testimonial-rating">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LANGUAGES -->
+<!-- LANGUAGES SECTION -->
 <section class="languages">
-  <p class="languages-label reveal">Classes Available In</p>
-  <h2 class="reveal">Learn in your language.</h2>
+  <p class="section-label reveal">Classes Available In</p>
+  <h2 class="reveal">Learn in your language</h2>
   <div class="language-cards">
     <div class="language-card reveal">
       <div class="language-icon">🇬🇧</div>
       <h3 class="language-name">English</h3>
-      <p class="language-desc">Comprehensive instruction in English</p>
+      <p class="language-desc">Comprehensive instruction in English for global accessibility</p>
     </div>
     <div class="language-card reveal">
       <div class="language-icon">తె</div>
@@ -1278,11 +2547,11 @@ footer a:hover{
   </div>
 </section>
 
-<!-- CLASSES -->
+<!-- CLASSES SECTION -->
 <section class="classes" id="classes">
   <div class="classes-header reveal">
-    <p class="classes-label">Our Classes</p>
-    <h2 class="classes-title">Find your practice.</h2>
+    <p class="section-label">Our Classes</p>
+    <h2 class="classes-title">Find your practice</h2>
   </div>
   
   <div class="classes-grid">
@@ -1290,8 +2559,7 @@ footer a:hover{
       <div class="class-icon">🧘</div>
       <h3 class="class-title">Hatha Yoga</h3>
       <p class="class-desc">
-        Traditional practice focusing on physical postures and breathing techniques 
-        for strength and flexibility.
+        Traditional practice focusing on physical postures and breathing techniques for strength, flexibility, and inner balance.
       </p>
       <div class="class-meta">
         <span>⏱ 60 mins</span>
@@ -1303,8 +2571,7 @@ footer a:hover{
       <div class="class-icon">🌊</div>
       <h3 class="class-title">Vinyasa Flow</h3>
       <p class="class-desc">
-        Dynamic, flowing sequences synchronized with breath for building 
-        strength and improving flexibility.
+        Dynamic, flowing sequences synchronized with breath for building strength, improving flexibility, and cardiovascular health.
       </p>
       <div class="class-meta">
         <span>⏱ 75 mins</span>
@@ -1314,10 +2581,9 @@ footer a:hover{
     
     <div class="class-card reveal">
       <div class="class-icon">🧠</div>
-      <h3 class="class-title">Meditation</h3>
+      <h3 class="class-title">Meditation & Pranayama</h3>
       <p class="class-desc">
-        Guided meditation practices to calm the mind, reduce stress, 
-        and cultivate inner peace.
+        Guided meditation practices combined with breathwork to calm the mind, reduce stress, and cultivate inner peace and awareness.
       </p>
       <div class="class-meta">
         <span>⏱ 45 mins</span>
@@ -1327,102 +2593,120 @@ footer a:hover{
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT SECTION -->
 <section class="contact" id="contact">
-  <h2 class="reveal">Begin your journey today.</h2>
-  <p class="reveal">Join our online community and experience the transformative power of yoga from anywhere.</p>
-  
-  <div class="contact-info reveal">
-    <div class="contact-item">
-      <h3>Call / WhatsApp</h3>
-      <a href="tel:7676332452">7676 332 452</a>
+  <div class="contact-content">
+    <h2 class="reveal">Begin your journey today</h2>
+    <p class="reveal">Join our online community and experience the transformative power of therapeutic yoga from anywhere in the world.</p>
+    
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <h3>Call / WhatsApp</h3>
+        <a href="tel:7676332452">7676 332 452</a>
+      </div>
+      <div class="contact-item">
+        <h3>Format</h3>
+        <p>Online Classes</p>
+      </div>
     </div>
-    <div class="contact-item">
-      <h3>Format</h3>
-      <p style="color:#fff;opacity:0.9;margin:0;font-size:20px;font-weight:500;">Online Classes</p>
+    
+    <div class="social-links reveal">
+      <a href="https://www.youtube.com/@Thanuyogastudio" target="_blank" rel="noopener" class="social-link" aria-label="YouTube" title="Watch on YouTube">▶</a>
+      <a href="https://www.instagram.com/thanuyogastudio/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram" title="Follow on Instagram">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.509.5.902 1.105 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772c-.5.509-1.105.902-1.772 1.153-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z"/>
+        </svg>
+      </a>
     </div>
-  </div>
-  
-  <div class="social-links reveal">
-    <a href="https://www.youtube.com/@Thanuyogastudio" target="_blank" rel="noopener" class="social-link" aria-label="YouTube" title="Watch on YouTube">▶</a>
-    <a href="https://www.instagram.com/thanuyogastudio/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram" title="Follow on Instagram">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.509.5.902 1.105 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 01-1.153 1.772c-.5.509-1.105.902-1.772 1.153-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 01-1.772-1.153 4.904 4.904 0 01-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 011.153-1.772A4.897 4.897 0 015.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.25a1.25 1.25 0 10-2.5 0 1.25 1.25 0 002.5 0zM12 9a3 3 0 110 6 3 3 0 010-6z"/>
-      </svg>
-    </a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 Thanu Yoga Studio. All rights reserved.</p>
+  <p>&copy; 2025 Thanu Yoga Studio. All rights reserved.</p>
   <p>Online Yoga Classes • English • Telugu • Kannada</p>
   <p>Designed by <a href="mailto:stseenuri@outlook.com">Seenuri</a></p>
 </footer>
 
 <script>
+// ===========================
 // YOGA DATABASE
+// ===========================
 const yogaDatabase = {
   stress: [
     {name: "Child's Pose", sanskrit: "Balasana", benefits: "Calms the mind, relieves stress and anxiety, gently stretches the back"},
     {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Relieves stress, improves breathing, massages spine and organs"},
     {name: "Corpse Pose", sanskrit: "Shavasana", benefits: "Deep relaxation, reduces anxiety, lowers blood pressure"},
-    {name: "Bridge Pose", sanskrit: "Setu Bandhasana", benefits: "Calms the brain, reduces anxiety and stress, opens chest"}
+    {name: "Bridge Pose", sanskrit: "Setu Bandhasana", benefits: "Calms the brain, reduces anxiety and stress, opens chest"},
+    {name: "Legs Up the Wall", sanskrit: "Viparita Karani", benefits: "Calms nervous system, reduces anxiety, promotes relaxation"}
   ],
   neck: [
     {name: "Neck Rolls", sanskrit: "Greeva Sanchalana", benefits: "Releases neck tension, improves flexibility, reduces stiffness"},
     {name: "Thread the Needle", sanskrit: "Parsva Balasana", benefits: "Stretches shoulders, relieves upper back tension"},
     {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Stretches neck and spine, improves flexibility"},
-    {name: "Eagle Pose", sanskrit: "Garudasana", benefits: "Stretches shoulders and upper back, improves focus"}
+    {name: "Eagle Pose", sanskrit: "Garudasana", benefits: "Stretches shoulders and upper back, improves focus"},
+    {name: "Fish Pose", sanskrit: "Matsyasana", benefits: "Opens chest and throat, relieves neck tension"}
   ],
   back: [
     {name: "Downward Dog", sanskrit: "Adho Mukha Svanasana", benefits: "Strengthens back, relieves sciatica, stretches hamstrings"},
     {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Relieves back pain, improves spinal flexibility"},
     {name: "Cobra Pose", sanskrit: "Bhujangasana", benefits: "Strengthens spine, stretches abdomen, relieves sciatica"},
-    {name: "Child's Pose", sanskrit: "Balasana", benefits: "Gently stretches lower back, relieves tension"}
+    {name: "Child's Pose", sanskrit: "Balasana", benefits: "Gently stretches lower back, relieves tension"},
+    {name: "Sphinx Pose", sanskrit: "Salamba Bhujangasana", benefits: "Strengthens spine, gentle backbend for beginners"}
   ],
   legs: [
     {name: "Warrior II", sanskrit: "Virabhadrasana II", benefits: "Strengthens legs and ankles, improves stamina and balance"},
     {name: "Triangle Pose", sanskrit: "Trikonasana", benefits: "Strengthens legs, stretches hamstrings, improves balance"},
     {name: "Chair Pose", sanskrit: "Utkatasana", benefits: "Strengthens thighs and ankles, tones leg muscles"},
-    {name: "Garland Pose", sanskrit: "Malasana", benefits: "Stretches ankles, groins and back, tones belly"}
+    {name: "Garland Pose", sanskrit: "Malasana", benefits: "Stretches ankles, groins and back, tones belly"},
+    {name: "Tree Pose", sanskrit: "Vrksasana", benefits: "Strengthens legs, improves balance and focus"}
   ],
   digestion: [
     {name: "Wind-Relieving Pose", sanskrit: "Pawanmuktasana", benefits: "Aids digestion, relieves gas and bloating"},
     {name: "Seated Twist", sanskrit: "Ardha Matsyendrasana", benefits: "Massages digestive organs, improves metabolism"},
     {name: "Cat-Cow Pose", sanskrit: "Marjaryasana-Bitilasana", benefits: "Massages internal organs, improves digestion"},
-    {name: "Bow Pose", sanskrit: "Dhanurasana", benefits: "Stimulates digestive organs, relieves constipation"}
+    {name: "Bow Pose", sanskrit: "Dhanurasana", benefits: "Stimulates digestive organs, relieves constipation"},
+    {name: "Supine Twist", sanskrit: "Supta Matsyendrasana", benefits: "Massages abdominal organs, aids digestion"}
   ],
   sleep: [
     {name: "Legs Up the Wall", sanskrit: "Viparita Karani", benefits: "Promotes relaxation, calms the mind, prepares for sleep"},
     {name: "Corpse Pose", sanskrit: "Shavasana", benefits: "Deep relaxation, reduces insomnia, calms nervous system"},
     {name: "Child's Pose", sanskrit: "Balasana", benefits: "Calming effect, relieves tension, prepares for rest"},
-    {name: "Reclined Butterfly", sanskrit: "Supta Baddha Konasana", benefits: "Relieves tension, promotes deep relaxation"}
+    {name: "Reclined Butterfly", sanskrit: "Supta Baddha Konasana", benefits: "Relieves tension, promotes deep relaxation"},
+    {name: "Yoga Nidra", sanskrit: "Yogic Sleep", benefits: "Deep conscious relaxation, improves sleep quality"}
   ],
   flexibility: [
     {name: "Forward Fold", sanskrit: "Uttanasana", benefits: "Stretches hamstrings and spine, improves flexibility"},
     {name: "Downward Dog", sanskrit: "Adho Mukha Svanasana", benefits: "Full body stretch, improves flexibility"},
     {name: "Triangle Pose", sanskrit: "Trikonasana", benefits: "Stretches spine, hips and groin, improves flexibility"},
-    {name: "Pigeon Pose", sanskrit: "Eka Pada Rajakapotasana", benefits: "Deep hip stretch, increases flexibility"}
+    {name: "Pigeon Pose", sanskrit: "Eka Pada Rajakapotasana", benefits: "Deep hip stretch, increases flexibility"},
+    {name: "Seated Forward Bend", sanskrit: "Paschimottanasana", benefits: "Stretches entire back body, improves flexibility"}
   ],
   energy: [
     {name: "Sun Salutation", sanskrit: "Surya Namaskar", benefits: "Energizes entire body, improves circulation, boosts vitality"},
     {name: "Warrior I", sanskrit: "Virabhadrasana I", benefits: "Builds stamina, energizes the body, improves focus"},
     {name: "Camel Pose", sanskrit: "Ustrasana", benefits: "Opens chest, energizes the body, improves posture"},
-    {name: "Mountain Pose", sanskrit: "Tadasana", benefits: "Improves posture, energizes mind, builds awareness"}
+    {name: "Mountain Pose", sanskrit: "Tadasana", benefits: "Improves posture, energizes mind, builds awareness"},
+    {name: "Breath of Fire", sanskrit: "Kapalabhati", benefits: "Energizes body, clears mind, increases vitality"}
   ]
 };
 
+// ===========================
 // LOADER
+// ===========================
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('done');
   }, 2200);
 });
 
-// CURSOR
+// ===========================
+// CUSTOM CURSOR
+// ===========================
 const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
 let cursorX = 0, cursorY = 0;
+let dotX = 0, dotY = 0;
 let targetX = 0, targetY = 0;
 
 document.addEventListener('mousemove', (e) => {
@@ -1433,30 +2717,67 @@ document.addEventListener('mousemove', (e) => {
 function animateCursor() {
   cursorX += (targetX - cursorX) * 0.1;
   cursorY += (targetY - cursorY) * 0.1;
+  
+  dotX += (targetX - dotX) * 0.3;
+  dotY += (targetY - dotY) * 0.3;
+  
   cursor.style.left = cursorX + 'px';
   cursor.style.top = cursorY + 'px';
+  
+  cursorDot.style.left = dotX + 'px';
+  cursorDot.style.top = dotY + 'px';
+  
   requestAnimationFrame(animateCursor);
 }
 animateCursor();
 
-// Cursor hover
-const hoverElements = document.querySelectorAll('a, button, .class-card, .language-card, .body-part-card, .testimonial-card');
+// Cursor hover effects
+const hoverElements = document.querySelectorAll('a, button, .class-card, .language-card, .body-part-card, .testimonial-card, .stat-card, .specialization-card, .meta-item');
 hoverElements.forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
 });
 
+// ===========================
 // HEADER SCROLL
+// ===========================
 const header = document.getElementById('header');
+let lastScroll = 0;
+
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 100) {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
   }
+  
+  lastScroll = currentScroll;
 });
 
+// ===========================
+// MOBILE MENU
+// ===========================
+const menuToggle = document.getElementById('menuToggle');
+const nav = document.getElementById('nav');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  nav.classList.toggle('active');
+});
+
+// Close menu on link click
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    nav.classList.remove('active');
+  });
+});
+
+// ===========================
 // YOGA FINDER FUNCTIONALITY
+// ===========================
 const bodyPartCards = document.querySelectorAll('.body-part-card');
 const resultsArea = document.getElementById('results');
 const asanaGrid = document.getElementById('asanaGrid');
@@ -1494,6 +2815,11 @@ function showAsanas(part) {
   });
   
   resultsArea.classList.add('show');
+  
+  // Smooth scroll to results
+  setTimeout(() => {
+    resultsArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 200);
 }
 
 function clearResults() {
@@ -1502,30 +2828,54 @@ function clearResults() {
   asanaGrid.innerHTML = '';
 }
 
+// ===========================
 // REVEAL ON SCROLL
-const reveals = document.querySelectorAll('.reveal');
+// ===========================
+const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
 const revealOnScroll = () => {
   reveals.forEach(el => {
     const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
+    const revealPoint = window.innerHeight - 120;
+    
+    if (top < revealPoint) {
       el.classList.add('in-view');
     }
   });
 };
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
 
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll(); // Initial check
+
+// ===========================
 // SMOOTH SCROLL
+// ===========================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const offsetTop = target.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
     }
   });
 });
-</script>
 
-</body>
-</html>
+// ===========================
+// PARALLAX EFFECT
+// ===========================
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const parallaxElements = document.querySelectorAll('.floating-element');
+  
+  parallaxElements.forEach((el, index) => {
+    const speed = 0.05 + (index * 0.02);
+    el.style.transform = `translateY(${scrolled * speed}px)`;
+  });
+});
+
+// ===========================
+// STATS COUNTER ANIMATION
