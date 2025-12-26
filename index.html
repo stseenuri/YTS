@@ -19,7 +19,7 @@
 
   <style>
     :root {
-      /* La La Land palette [web:97][web:100][web:113] */
+      /* La La Land palette */
       --indigo-deep: #0b0424;
       --indigo-rich: #170063;
       --purple-primary: #3a1c9c;
@@ -91,7 +91,7 @@
       position: relative;
     }
 
-    /* Cameron-style atmospheric background with La La Land gradient [web:97][web:102] */
+    /* Cameron-style atmospheric background with La La Land gradient */
     .ambient-layer {
       position: fixed;
       inset: 0;
@@ -139,7 +139,7 @@
       padding: 0 48px;
     }
 
-    /* Nav: Glass morphism with La La Land tint [web:119] */
+    /* Nav: Glass morphism with La La Land tint */
     .nav {
       position: fixed;
       top: 0;
@@ -238,7 +238,7 @@
       box-shadow: 0 12px 40px rgba(246, 213, 72, 0.6), 0 0 70px var(--glow-yellow);
     }
 
-    /* Hero: Full cinematic scale with La La Land grading [web:97][web:119] */
+    /* Hero: Full cinematic scale with La La Land grading */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -448,7 +448,7 @@
       color: var(--teal-accent);
     }
 
-    /* Section: Cinematic chapters [web:119][web:122] */
+    /* Section: Cinematic chapters */
     section {
       padding: 160px 48px;
       position: relative;
@@ -595,6 +595,90 @@
       color: var(--pink-soft);
     }
 
+    /* About Instructor */
+    .about {
+      background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(253, 255, 3, 0.08) 0%,
+        rgba(11, 4, 36, 1) 70%
+      );
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      max-width: 1360px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+    }
+
+    .about-image {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-card);
+      border: var(--border-width) solid rgba(251, 251, 255, 0.25);
+      box-shadow: 10px 10px 0 var(--indigo-deep), var(--shadow-deep), 0 0 100px var(--glow-yellow);
+      transition: all 420ms ease;
+    }
+
+    .about-image:hover {
+      transform: translate(-6px, -6px);
+      box-shadow: 16px 16px 0 var(--indigo-deep), var(--shadow-deep), 0 0 140px var(--glow-yellow);
+    }
+
+    .about-content h3 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 28px;
+      color: var(--off-white);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
+    }
+
+    .about-content p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--pink-soft);
+      margin-bottom: 24px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .about-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .about-meta-item {
+      padding: 20px;
+      background: rgba(122, 63, 214, 0.08);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(122, 63, 214, 0.25);
+      border-radius: var(--radius-card);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .about-meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      font-size: 11px;
+      color: var(--teal-accent);
+      margin-bottom: 8px;
+    }
+
+    .about-meta-value {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--off-white);
+    }
+
     /* Classes */
     .classes {
       background: radial-gradient(
@@ -720,8 +804,8 @@
 
     .stories-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 36px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
       max-width: 1360px;
       margin: 0 auto;
     }
@@ -731,10 +815,12 @@
       backdrop-filter: blur(24px);
       border: var(--border-width) solid rgba(122, 63, 214, 0.25);
       padding: 48px 40px;
-      text-align: center;
       box-shadow: var(--shadow-epic), 0 0 60px var(--glow-purple);
       transition: all 420ms ease;
       border-radius: var(--radius-card);
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
     }
 
     .story-card:hover {
@@ -742,28 +828,27 @@
       box-shadow: var(--shadow-deep), 0 0 100px var(--glow-purple);
     }
 
+    .story-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: var(--radius-card);
+      border: var(--border-width) solid rgba(253, 255, 3, 0.3);
+      box-shadow: 5px 5px 0 var(--indigo-deep), 0 12px 40px rgba(253, 255, 3, 0.4);
+    }
+
     .story-quote {
       font-size: 17px;
       line-height: 1.8;
       color: var(--pink-soft);
-      margin-bottom: 32px;
       font-style: italic;
     }
 
     .story-meta {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       gap: 14px;
-    }
-
-    .story-avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      border: var(--border-width) solid var(--indigo-deep);
-      background: linear-gradient(135deg, var(--purple-primary), var(--lala-yellow));
-      box-shadow: 5px 5px 0 var(--indigo-deep), 0 12px 36px rgba(253, 255, 3, 0.5), 0 0 60px var(--glow-yellow);
     }
 
     .story-author {
@@ -921,9 +1006,17 @@
     /* Responsive */
     @media (max-width: 1200px) {
       .journey-grid,
-      .classes-grid,
+      .classes-grid {
+        grid-template-columns: 1fr;
+      }
+
       .stories-grid {
         grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
       }
 
       .hero-stats {
@@ -966,6 +1059,10 @@
       .nav-inner {
         padding: 18px 28px;
       }
+
+      .about-meta {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -980,6 +1077,7 @@
       <div class="nav-inner">
         <a href="#top" class="brand">Yoga by Thanu</a>
         <nav class="nav-links">
+          <a href="#about">About</a>
           <a href="#journey">Journey</a>
           <a href="#classes">Classes</a>
           <a href="#stories">Stories</a>
@@ -1006,8 +1104,8 @@
             <button class="btn-primary" onclick="scrollToCTA()">
               Book Free Trial
             </button>
-            <button class="btn-secondary" onclick="scrollToClasses()">
-              Explore Classes
+            <button class="btn-secondary" onclick="scrollToAbout()">
+              Meet the Instructor
             </button>
           </div>
           <div class="hero-stats">
@@ -1027,11 +1125,67 @@
         </div>
       </section>
 
+      <!-- ABOUT INSTRUCTOR -->
+      <section id="about" class="about">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-chapter">ACT II · THE GUIDE</div>
+            <h2 class="section-title">Meet Thanuja</h2>
+            <p class="section-desc">
+              A certified practitioner bringing honest, accessible yoga to real bodies through live online sessions.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-image-wrapper">
+              <img 
+                src="about_the_instructor.webp" 
+                alt="Thanuja - Certified Yoga Instructor" 
+                class="about-image"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="about-content">
+              <h3>Certified, Compassionate, Connected</h3>
+              <p>
+                I am Thanuja, a certified yoga practitioner with a 200-hour Yoga Teacher Training (YTT), Therapeutic Yoga training, and a Diploma in Yoga. I have been practicing yoga for over 5 years and teaching for nearly a year.
+              </p>
+              <p>
+                My teaching approach is grounded in slow, mindful movement. I design each session to be accessible and therapeutic—perfect for stiff backs, busy parents, desk workers, and anyone seeking pain-free movement and deeper rest.
+              </p>
+              <p>
+                Through my teachings, I help individuals move toward pain-free movement, better sleep, hormonal balance, and inner harmony, supporting the body, mind, and soul.
+              </p>
+
+              <div class="about-meta">
+                <div class="about-meta-item">
+                  <div class="about-meta-label">Certifications</div>
+                  <div class="about-meta-value">200hr YTT + Therapeutic Yoga</div>
+                </div>
+                <div class="about-meta-item">
+                  <div class="about-meta-label">Experience</div>
+                  <div class="about-meta-value">5+ Years Practice · 1 Year Teaching</div>
+                </div>
+                <div class="about-meta-item">
+                  <div class="about-meta-label">Specialization</div>
+                  <div class="about-meta-value">Therapeutic & Restorative Yoga</div>
+                </div>
+                <div class="about-meta-item">
+                  <div class="about-meta-label">Languages</div>
+                  <div class="about-meta-value">English · Telugu · Kannada</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- JOURNEY -->
       <section id="journey" class="journey">
         <div class="container">
           <div class="section-header">
-            <div class="section-chapter">ACT II · THE PATH</div>
+            <div class="section-chapter">ACT III · THE PATH</div>
             <h2 class="section-title">Your Journey Begins</h2>
             <p class="section-desc">
               Three cinematic steps to transform your practice from anywhere in
@@ -1080,7 +1234,7 @@
       <section id="classes" class="classes">
         <div class="container">
           <div class="section-header">
-            <div class="section-chapter">ACT III · THE PRACTICE</div>
+            <div class="section-chapter">ACT IV · THE PRACTICE</div>
             <h2 class="section-title">Designed for Real Bodies</h2>
             <p class="section-desc">
               Slow, accessible sessions for stiff backs, busy parents, and
@@ -1129,48 +1283,49 @@
       <section id="stories" class="stories">
         <div class="container">
           <div class="section-header">
-            <div class="section-chapter">ACT IV · THE COMMUNITY</div>
+            <div class="section-chapter">ACT V · THE COMMUNITY</div>
             <h2 class="section-title">Stories of Transformation</h2>
             <p class="section-desc">
-              People who found a softer, more honest way to move with cinematic
-              online yoga.
+              Real students sharing their journey with cinematic online yoga.
             </p>
           </div>
 
           <div class="stories-grid">
             <article class="story-card">
-              <p class="story-quote">
-                "After years of back pain, this is the first space where I don't
-                feel judged for moving slowly. It's honest and calm."
-              </p>
-              <div class="story-meta">
-                <div class="story-avatar"></div>
-                <div class="story-author">Shreya M.</div>
-                <div class="story-role">New to yoga</div>
+              <img 
+                src="yts1.webp" 
+                alt="Yoga student testimonial" 
+                class="story-image"
+                loading="lazy"
+              />
+              <div>
+                <p class="story-quote">
+                  "After years of back pain, this is the first space where I don't
+                  feel judged for moving slowly. It's honest and calm."
+                </p>
+                <div class="story-meta">
+                  <div class="story-author">Shreya M.</div>
+                  <div class="story-role">New to yoga</div>
+                </div>
               </div>
             </article>
 
             <article class="story-card">
-              <p class="story-quote">
-                "The teaching is clear and the pace is real. My mom and I join
-                together on weekends from different cities."
-              </p>
-              <div class="story-meta">
-                <div class="story-avatar"></div>
-                <div class="story-author">Sana K.</div>
-                <div class="story-role">Weekend batch</div>
-              </div>
-            </article>
-
-            <article class="story-card">
-              <p class="story-quote">
-                "Classes are calm, never rushed. I join from Bangalore after long
-                work days — it feels like coming home."
-              </p>
-              <div class="story-meta">
-                <div class="story-avatar"></div>
-                <div class="story-author">Rahul P.</div>
-                <div class="story-role">Remote worker</div>
+              <img 
+                src="yts2.webp" 
+                alt="Yoga student testimonial" 
+                class="story-image"
+                loading="lazy"
+              />
+              <div>
+                <p class="story-quote">
+                  "The teaching is clear and the pace is real. My mom and I join
+                  together on weekends from different cities."
+                </p>
+                <div class="story-meta">
+                  <div class="story-author">Sana K.</div>
+                  <div class="story-role">Weekend batch</div>
+                </div>
               </div>
             </article>
           </div>
@@ -1185,7 +1340,7 @@
             Your first trial class is free. No credit card, no commitment. One
             live session to see if this practice transforms your routine.
           </p>
-          <button class="cta-btn" onclick="alert('WhatsApp: +91 XXXXXXXXXX')">
+          <button class="cta-btn" onclick="alert('WhatsApp: +91 7676332452')">
             Book Your Free Trial
           </button>
         </div>
@@ -1200,6 +1355,7 @@
         English, Telugu, and Kannada.
       </p>
       <div class="footer-links">
+        <a href="#about">About</a>
         <a href="#journey">Journey</a>
         <a href="#classes">Classes</a>
         <a href="#stories">Stories</a>
@@ -1220,6 +1376,11 @@
     // Scroll helpers
     function scrollToCTA() {
       var el = document.querySelector(".cta");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function scrollToAbout() {
+      var el = document.getElementById("about");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
