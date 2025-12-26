@@ -2627,8 +2627,87 @@ footer a:hover{
   <p>Online Yoga Classes • English • Telugu • Kannada</p>
   <p>Designed by <a href="mailto:stseenuri@outlook.com">Seenuri</a></p>
 </footer>
+   
+// ===========================
+// STATS COUNTER ANIMATION
+// ===========================
+const statNumbers = document.querySelectorAll('.stat-number');
 
-<script>
+const animateStats = () => {
+  statNumbers.forEach(stat => {
+    const target = stat.textContent.replace(/[^0-9]/g, '');
+    const suffix = stat.textContent.replace(/[0-9]/g, '');
+    let current = 0;
+    const increment = parseInt(target) / 50;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        stat.textContent = target + suffix;
+        clearInterval(timer);
+      } else {
+        stat.textContent = Math.floor(current) + suffix;
+      }
+    }, 30);
+  });
+};
+
+// Trigger stats animation when in view
+let statsAnimated = false;
+window.addEventListener('scroll', () => {
+  if (!statsAnimated) {
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+      const rect = statsSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        animateStats();
+        statsAnimated = true;
+      }
+    }
+  }
+});
+
+// ===========================
+// PERFORMANCE OPTIMIZATIONS
+// ===========================
+// Lazy load images
+if ('loading' in HTMLImageElement.prototype) {
+  const images = document.querySelectorAll('img[loading="lazy"]');
+  images.forEach(img => {
+    img.src = img.src;
+  });
+} else {
+  // Fallback for older browsers
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+  document.body.appendChild(script);
+}
+
+// ===========================
+// ACCESSIBILITY ENHANCEMENTS
+// ===========================
+// Keyboard navigation for cards
+const interactiveCards = document.querySelectorAll('.body-part-card, .class-card, .testimonial-card');
+interactiveCards.forEach(card => {
+  card.setAttribute('tabindex', '0');
+  card.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.click();
+    }
+  });
+});
+
+// ===========================
+// FORM VALIDATION (if needed)
+// ===========================
+// Add any form validation logic here if you add contact forms later
+
+console.log('Thanu Yoga Studio - Website loaded successfully! 🧘‍♀️');
+</script>
+
+</body>
+</html>
+
 // ===========================
 // YOGA DATABASE
 // ===========================
