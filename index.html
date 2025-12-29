@@ -15,7 +15,6 @@
    MISSION CONTROL DESIGN SYSTEM
    ============================================ */
 :root {
-  /* Core Colors */
   --terminal-black: #0d0d0d;
   --panel-dark: #1a1a1a;
   --panel-mid: #242424;
@@ -33,19 +32,15 @@
   --text-secondary: #a0a0a0;
   --text-tertiary: #666666;
   
-  /* Typography */
   --font-mono: 'IBM Plex Mono', monospace;
   --font-sans: 'Space Grotesk', sans-serif;
   
-  /* Spacing */
   --grid-unit: 8px;
   
-  /* Effects */
   --glow-green: 0 0 20px rgba(0, 255, 136, 0.3);
   --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.3);
   --glow-sage: 0 0 30px var(--sage-glow);
   
-  /* Timing */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -759,17 +754,17 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
 }
 
 /* ============================================
-   ABOUT - SPLIT TERMINAL
+   ABOUT - REVOLUTIONARY LAYOUT
    ============================================ */
 .about {
   min-height: 100vh;
   background: var(--terminal-black);
   position: relative;
-  display: flex;
+  padding: calc(var(--grid-unit) * 20) calc(var(--grid-unit) * 6);
 }
 
 .about::before {
-  content: 'INSTRUCTOR.DATA';
+  content: 'INSTRUCTOR.PROFILE';
   position: absolute;
   top: calc(var(--grid-unit) * 3);
   left: calc(var(--grid-unit) * 3);
@@ -780,66 +775,13 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
   z-index: 10;
 }
 
-.about-left {
-  width: 50%;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: calc(var(--grid-unit) * 10);
-  border-right: 1px solid var(--border-color);
+.about-container {
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
-.about-image-frame {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  aspect-ratio: 3/4;
-  border: 1px solid var(--border-bright);
-  padding: calc(var(--grid-unit) * 2);
-  background: var(--panel-mid);
-}
-
-.about-image-frame::before {
-  content: 'IMG_INSTRUCTOR.001';
-  position: absolute;
-  top: calc(var(--grid-unit) * 1);
-  left: calc(var(--grid-unit) * 2);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: var(--text-tertiary);
-  letter-spacing: 0.1em;
-}
-
-.about-image-frame::after {
-  content: '';
-  position: absolute;
-  bottom: calc(var(--grid-unit) * 1);
-  right: calc(var(--grid-unit) * 2);
-  width: 40px;
-  height: 1px;
-  background: var(--primary-green);
-  box-shadow: var(--glow-green);
-}
-
-.about-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(0.3) contrast(1.1);
-  transition: all 0.6s var(--ease-out);
-}
-
-.about-image-frame:hover .about-image {
-  filter: grayscale(0) contrast(1.2);
-  transform: scale(1.02);
-}
-
-.about-right {
-  width: 50%;
-  padding: calc(var(--grid-unit) * 20) calc(var(--grid-unit) * 8);
+.about-header {
+  margin-bottom: calc(var(--grid-unit) * 10);
 }
 
 .section-tag {
@@ -868,12 +810,110 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
   text-transform: uppercase;
 }
 
+/* Image Gallery Layout */
+.about-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: calc(var(--grid-unit) * 3);
+  margin-bottom: calc(var(--grid-unit) * 10);
+  position: relative;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 3/4;
+  border: 1px solid var(--border-bright);
+  overflow: hidden;
+  background: var(--panel-mid);
+  transition: all 0.4s var(--ease-out);
+}
+
+.gallery-item::before {
+  content: attr(data-label);
+  position: absolute;
+  top: calc(var(--grid-unit) * 2);
+  left: calc(var(--grid-unit) * 2);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--primary-green);
+  letter-spacing: 0.1em;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gallery-item:hover::before {
+  opacity: 1;
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, var(--terminal-black) 0%, transparent 50%);
+  opacity: 0.6;
+  transition: opacity 0.4s;
+  z-index: 1;
+}
+
+.gallery-item:hover::after {
+  opacity: 0.3;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-green);
+  box-shadow: 0 20px 60px rgba(0, 255, 136, 0.15);
+}
+
+.gallery-item.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.2) contrast(1.1);
+  transition: all 0.4s var(--ease-out);
+}
+
+.gallery-item:hover img {
+  filter: grayscale(0) contrast(1.2);
+  transform: scale(1.05);
+}
+
+/* Content Grid */
+.about-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--grid-unit) * 8);
+  margin-bottom: calc(var(--grid-unit) * 10);
+}
+
+.about-bio {
+  padding: calc(var(--grid-unit) * 5);
+  background: var(--panel-mid);
+  border: 1px solid var(--border-bright);
+  border-left: 3px solid var(--primary-green);
+}
+
+.about-bio-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary-green);
+  margin-bottom: calc(var(--grid-unit) * 3);
+}
+
 .about-text {
   font-size: 16px;
   line-height: 1.8;
   color: var(--text-secondary);
   margin-bottom: calc(var(--grid-unit) * 3);
-  font-family: var(--font-sans);
 }
 
 .about-text.lead {
@@ -882,47 +922,114 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
   color: var(--text-primary);
 }
 
-.data-block {
+/* Timeline Visualization */
+.journey-timeline {
+  padding: calc(var(--grid-unit) * 5);
   background: var(--panel-mid);
   border: 1px solid var(--border-bright);
-  border-left: 3px solid var(--primary-green);
-  padding: calc(var(--grid-unit) * 4);
-  margin: calc(var(--grid-unit) * 6) 0;
   position: relative;
 }
 
-.data-block::before {
-  content: 'CORE.BELIEF';
+.timeline-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary-green);
+  margin-bottom: calc(var(--grid-unit) * 5);
+}
+
+.timeline-items {
+  position: relative;
+  padding-left: calc(var(--grid-unit) * 3);
+}
+
+.timeline-items::before {
+  content: '';
   position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary-green), var(--border-bright));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: calc(var(--grid-unit) * 4);
+  padding-left: calc(var(--grid-unit) * 4);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--grid-unit) * -1.5);
   top: calc(var(--grid-unit) * 1);
-  right: calc(var(--grid-unit) * 2);
+  width: 8px;
+  height: 8px;
+  background: var(--primary-green);
+  box-shadow: var(--glow-green);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: calc(var(--grid-unit) * 1);
+}
+
+.timeline-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Philosophy Block */
+.philosophy-block {
+  padding: calc(var(--grid-unit) * 6);
+  background: var(--panel-mid);
+  border: 1px solid var(--border-bright);
+  border-left: 3px solid var(--secondary-cyan);
+  margin-bottom: calc(var(--grid-unit) * 8);
+  position: relative;
+}
+
+.philosophy-block::before {
+  content: 'CORE.PHILOSOPHY';
+  position: absolute;
+  top: calc(var(--grid-unit) * 2);
+  right: calc(var(--grid-unit) * 3);
   font-family: var(--font-mono);
   font-size: 8px;
   color: var(--text-tertiary);
   letter-spacing: 0.1em;
 }
 
-.data-block p {
-  font-size: 17px;
+.philosophy-block p {
+  font-size: 20px;
   line-height: 1.7;
   color: var(--text-primary);
   font-style: italic;
   margin: 0;
 }
 
+/* Credentials Grid */
 .credentials-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: calc(var(--grid-unit) * 3);
-  margin-top: calc(var(--grid-unit) * 8);
 }
 
 .credential-panel {
-  padding: calc(var(--grid-unit) * 3);
+  padding: calc(var(--grid-unit) * 4);
   background: var(--panel-mid);
   border: 1px solid var(--border-bright);
   transition: all 0.3s var(--ease-out);
   position: relative;
+  text-align: center;
 }
 
 .credential-panel::before {
@@ -930,25 +1037,26 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
   position: absolute;
   top: 0;
   left: 0;
-  width: 2px;
-  height: 100%;
+  width: 100%;
+  height: 2px;
   background: var(--primary-green);
-  transform: scaleY(0);
-  transform-origin: top;
+  transform: scaleX(0);
+  transform-origin: center;
   transition: transform 0.3s var(--ease-out);
 }
 
 .credential-panel:hover::before {
-  transform: scaleY(1);
+  transform: scaleX(1);
 }
 
 .credential-panel:hover {
   border-color: var(--primary-green);
-  transform: translateX(4px);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
 }
 
 .credential-icon {
-  font-size: 32px;
+  font-size: 40px;
   margin-bottom: calc(var(--grid-unit) * 2);
   display: block;
 }
@@ -964,10 +1072,10 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
 }
 
 .credential-value {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 /* ============================================
@@ -1331,34 +1439,24 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
   padding: 0 calc(var(--grid-unit) * 6);
 }
 
-.testimonials-stream {
-  display: flex;
-  gap: calc(var(--grid-unit) * 4);
-  animation: streamScroll 60s linear infinite;
-  padding: 0 calc(var(--grid-unit) * 4);
+.testimonials-grid {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 calc(var(--grid-unit) * 6);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: calc(var(--grid-unit) * 3);
 }
 
-.testimonials-stream:hover {
-  animation-play-state: paused;
-}
-
-@keyframes streamScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.testimonial-terminal {
-  min-width: 550px;
-  max-width: 550px;
+.testimonial-card {
   padding: calc(var(--grid-unit) * 5);
   background: var(--panel-mid);
   border: 1px solid var(--border-bright);
-  transition: all 0.4s var(--ease-out);
-  flex-shrink: 0;
+  transition: all 0.4s;
   position: relative;
 }
 
-.testimonial-terminal::before {
+.testimonial-card::before {
   content: attr(data-id);
   position: absolute;
   top: calc(var(--grid-unit) * 1.5);
@@ -1369,14 +1467,14 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
   letter-spacing: 0.1em;
 }
 
-.testimonial-terminal:hover {
+.testimonial-card:hover {
   border-color: var(--primary-green);
   transform: translateY(-8px);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 .testimonial-quote {
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: calc(var(--grid-unit) * 4);
@@ -1396,7 +1494,7 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
 
 .testimonial-author {
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: calc(var(--grid-unit) * 1);
@@ -1420,37 +1518,6 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
 .star {
   color: var(--warning-amber);
   font-size: 14px;
-}
-
-.testimonials-grid {
-  max-width: 1600px;
-  margin: calc(var(--grid-unit) * 12) auto 0;
-  padding: 0 calc(var(--grid-unit) * 6);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: calc(var(--grid-unit) * 3);
-}
-
-.testimonial-card-small {
-  padding: calc(var(--grid-unit) * 4);
-  background: var(--panel-mid);
-  border: 1px solid var(--border-bright);
-  transition: all 0.4s;
-}
-
-.testimonial-card-small:hover {
-  border-color: var(--primary-green);
-  transform: translateY(-8px);
-}
-
-.testimonial-card-small .testimonial-quote {
-  font-size: 15px;
-  padding-left: 0;
-  margin-bottom: calc(var(--grid-unit) * 3);
-}
-
-.testimonial-card-small .testimonial-quote::before {
-  display: none;
 }
 
 /* ============================================
@@ -1643,20 +1710,17 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
    RESPONSIVE
    ============================================ */
 @media (max-width: 1200px) {
-  .about-left,
-  .about-right {
-    width: 100%;
+  .about-gallery {
+    grid-template-columns: 1fr 1fr;
   }
   
-  .about {
-    flex-direction: column;
+  .gallery-item.featured {
+    grid-column: span 2;
+    grid-row: span 1;
   }
   
-  .about-left {
-    position: relative;
-    height: 80vh;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
+  .about-content-grid {
+    grid-template-columns: 1fr;
   }
   
   .stats-grid {
@@ -1676,6 +1740,10 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
   }
   
   .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .credentials-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1734,14 +1802,20 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
     transform: rotate(-45deg) translateY(-6px);
   }
   
+  .about-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-item.featured {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
   .stats-grid,
   .expertise-grid,
   .finder-grid,
   .asanas-grid,
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-  
+  .testimonials-grid,
   .credentials-grid {
     grid-template-columns: 1fr;
   }
@@ -1753,11 +1827,6 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
   
   .contact-field a {
     font-size: 28px;
-  }
-  
-  .testimonial-terminal {
-    min-width: 350px;
-    max-width: 350px;
   }
 }
 </style>
@@ -1891,45 +1960,83 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
   </div>
 </section>
 
-<!-- ABOUT SPLIT TERMINAL -->
+<!-- ABOUT - REVOLUTIONARY LAYOUT -->
 <section class="about" id="about">
-  <div class="about-left">
-    <div class="about-image-frame">
-      <img src="about_the_instructor.webp" alt="Instructor Thanuja" class="about-image">
+  <div class="about-container">
+    <div class="about-header">
+      <span class="section-tag">About Instructor</span>
+      <h2 class="section-title">Meet Thanuja</h2>
     </div>
-  </div>
-  
-  <div class="about-right">
-    <span class="section-tag">About</span>
-    <h2 class="section-title">Meet Thanuja</h2>
     
-    <p class="about-text lead">
-      I am Thanuja, a certified yoga practitioner with a 200-hour Yoga Teacher Training certification, Therapeutic Yoga training, and a Diploma in Yoga.
-    </p>
+    <!-- 3 Image Gallery -->
+    <div class="about-gallery">
+      <div class="gallery-item featured" data-label="IMG.PRIMARY.001">
+        <img src="about_the_instructor.webp" alt="Thanuja - Primary">
+      </div>
+      <div class="gallery-item" data-label="IMG.SESSION.002">
+        <img src="about_the_instructor_2.webp" alt="Thanuja - Session">
+      </div>
+      <div class="gallery-item" data-label="IMG.PRACTICE.003">
+        <img src="about_the_instructor_3.webp" alt="Thanuja - Practice">
+      </div>
+    </div>
     
-    <p class="about-text">
-      I have been practicing yoga for over 5 years and teaching for nearly a year, guiding individuals through mindful, condition-based yoga practices. Over this period, I have taught 100+ students through both online and offline sessions from my home studio, offering personalized attention and consistent support.
-    </p>
+    <!-- Content Grid -->
+    <div class="about-content-grid">
+      <div class="about-bio">
+        <div class="about-bio-title">INSTRUCTOR.BIO</div>
+        <p class="about-text lead">
+          I am Thanuja, a certified yoga practitioner with a 200-hour Yoga Teacher Training certification, Therapeutic Yoga training, and a Diploma in Yoga.
+        </p>
+        <p class="about-text">
+          I have been practicing yoga for over 5 years and teaching for nearly a year, guiding individuals through mindful, condition-based yoga practices. Over this period, I have taught 100+ students through both online and offline sessions from my home studio, offering personalized attention and consistent support.
+        </p>
+        <p class="about-text">
+          My expertise lies in therapeutic yoga, with a strong focus on back pain management, sleep-related issues, women's hormonal health like PCOD and PCOS, and menstrual wellness. I specialize in creating customized yoga protocols based on individual needs, combining asana, pranayama, and relaxation techniques for real, lasting results.
+        </p>
+      </div>
+      
+      <!-- Journey Timeline -->
+      <div class="journey-timeline">
+        <div class="timeline-title">JOURNEY.TIMELINE</div>
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <div class="timeline-year">2019</div>
+            <div class="timeline-desc">Started personal yoga practice</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2021</div>
+            <div class="timeline-desc">Completed 200hr YTT Certification</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2022</div>
+            <div class="timeline-desc">Therapeutic Yoga Specialization</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-desc">Diploma in Yoga & Started Teaching</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-desc">100+ Students · Home Studio Launch</div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-    <p class="about-text">
-      My expertise lies in therapeutic yoga, with a strong focus on back pain management, sleep-related issues, women's hormonal health like PCOD and PCOS, and menstrual wellness. I specialize in creating customized yoga protocols based on individual needs, combining asana, pranayama, and relaxation techniques for real, lasting results.
-    </p>
-    
-    <div class="data-block">
+    <!-- Philosophy Block -->
+    <div class="philosophy-block">
       <p>
-        I strongly believe in yoga as a holistic healing system, not just a physical practice. My approach emphasizes breath awareness, mindful movement, and deep relaxation, helping students restore balance, improve body awareness, and build long-term well-being.
+        I strongly believe in yoga as a holistic healing system, not just a physical practice. My approach emphasizes breath awareness, mindful movement, and deep relaxation, helping students restore balance, improve body awareness, and build long-term well-being. Through my teachings, I help individuals move toward pain-free movement, better sleep, hormonal balance, and inner harmony, supporting the body, mind, and soul.
       </p>
     </div>
     
-    <p class="about-text">
-      Through my teachings, I help individuals move toward pain-free movement, better sleep, hormonal balance, and inner harmony, supporting the body, mind, and soul.
-    </p>
-    
+    <!-- Credentials Grid -->
     <div class="credentials-grid">
       <div class="credential-panel">
         <span class="credential-icon">📜</span>
         <div class="credential-label">Certifications</div>
-        <div class="credential-value">200hr YTT + Therapeutic Yoga + Diploma</div>
+        <div class="credential-value">200hr YTT + Therapeutic + Diploma</div>
       </div>
       
       <div class="credential-panel">
@@ -1941,7 +2048,7 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
       <div class="credential-panel">
         <span class="credential-icon">🎯</span>
         <div class="credential-label">Specialization</div>
-        <div class="credential-value">Therapeutic & Condition-Based Yoga</div>
+        <div class="credential-value">Therapeutic & Condition-Based</div>
       </div>
       
       <div class="credential-panel">
@@ -2069,71 +2176,38 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
     <h2 class="section-title">User Success Data</h2>
   </div>
   
-  <div class="testimonials-stream">
-    <div class="testimonial-terminal" data-id="USER.001">
-      <p class="testimonial-quote">
-        I practiced yoga with Thanuja for a month. And being very honest I could see very good results with my PCOD issue. The way she teaches and her patience is very good.
-      </p>
-      <div class="testimonial-author">Chandana V.</div>
-      <div class="testimonial-role">PCOD Management</div>
-      <div class="testimonial-rating">
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-      </div>
-    </div>
-    
-    <div class="testimonial-terminal" data-id="USER.002">
-      <p class="testimonial-quote">
-        Instructor's instructions are very clear and impactful. Thanks for all the efforts you put in to shape us. Only a truly passionate human can do it. Wishing you all success the coming year.
-      </p>
-      <div class="testimonial-author">Vani Reddy</div>
-      <div class="testimonial-role">Regular Student</div>
-      <div class="testimonial-rating">
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-      </div>
-    </div>
-    
-    <!-- Duplicates for seamless loop -->
-    <div class="testimonial-terminal" data-id="USER.001">
-      <p class="testimonial-quote">
-        I practiced yoga with Thanuja for a month. And being very honest I could see very good results with my PCOD issue. The way she teaches and her patience is very good.
-      </p>
-      <div class="testimonial-author">Chandana V.</div>
-      <div class="testimonial-role">PCOD Management</div>
-      <div class="testimonial-rating">
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-      </div>
-    </div>
-    
-    <div class="testimonial-terminal" data-id="USER.002">
-      <p class="testimonial-quote">
-        Instructor's instructions are very clear and impactful. Thanks for all the efforts you put in to shape us. Only a truly passionate human can do it. Wishing you all success the coming year.
-      </p>
-      <div class="testimonial-author">Vani Reddy</div>
-      <div class="testimonial-role">Regular Student</div>
-      <div class="testimonial-rating">
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-      </div>
-    </div>
-  </div>
-  
   <div class="testimonials-grid">
-    <div class="testimonial-card-small">
+    <div class="testimonial-card" data-id="USER.001">
+      <p class="testimonial-quote">
+        I practiced yoga with Thanuja for a month. And being very honest I could see very good results with my PCOD issue. The way she teaches and her patience is very good.
+      </p>
+      <div class="testimonial-author">Chandana V.</div>
+      <div class="testimonial-role">PCOD Management</div>
+      <div class="testimonial-rating">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+    </div>
+    
+    <div class="testimonial-card" data-id="USER.002">
+      <p class="testimonial-quote">
+        Instructor's instructions are very clear and impactful. Thanks for all the efforts you put in to shape us. Only a truly passionate human can do it. Wishing you all success the coming year.
+      </p>
+      <div class="testimonial-author">Vani Reddy</div>
+      <div class="testimonial-role">Regular Student</div>
+      <div class="testimonial-rating">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+    </div>
+    
+    <div class="testimonial-card" data-id="USER.003">
       <p class="testimonial-quote">
         Thanu's yoga classes have helped me build more discipline and strength. It has also helped me better my health and reverse my condition of PCOD. Practicing yoga with Thanu has made me healthier, stronger and happier.
       </p>
@@ -2148,7 +2222,7 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
       </div>
     </div>
     
-    <div class="testimonial-card-small">
+    <div class="testimonial-card" data-id="USER.004">
       <p class="testimonial-quote">
         It was really good to be a part of online yoga class. My health is so much better now. Thanuja is very friendly and she teaches yoga from the basic which is very helpful for the beginners. Had a wonderful experience.
       </p>
@@ -2163,7 +2237,7 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
       </div>
     </div>
     
-    <div class="testimonial-card-small">
+    <div class="testimonial-card" data-id="USER.005">
       <p class="testimonial-quote">
         Hi Thanu, thank you for being such a positive influence and the energy you bring. I really appreciate how clear your yoga sessions are; they encourage me to go further in my learning.
       </p>
@@ -2178,7 +2252,7 @@ button { background: none; border: none; font-family: inherit; cursor: none; }
       </div>
     </div>
     
-    <div class="testimonial-card-small">
+    <div class="testimonial-card" data-id="USER.006">
       <p class="testimonial-quote">
         I appreciate the way you teach yoga—not just as a practice, but as a way of life. Your calm presence and thoughtful guidance make every session meaningful. Thank you for inspiring mindfulness and self-growth.
       </p>
