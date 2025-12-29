@@ -1213,15 +1213,31 @@ nav a:hover::after{
 }
 
 /* TESTIMONIALS - HORIZONTAL CAROUSEL */
+  /* TESTIMONIALS - BLOCK LAYOUT WITH SLIDER */
 .testimonials{
   padding:100px 24px;
   background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.testimonials::before{
+  content:'';
+  position:absolute;
+  top:-10%;
+  left:-10%;
+  width:400px;
+  height:400px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(139,157,131,0.1) 0%, transparent 70%);
 }
 
 .testimonials-header{
   max-width:800px;
   margin:0 auto 60px auto;
   text-align:center;
+  position:relative;
+  z-index:1;
 }
 
 .testimonials-title{
@@ -1239,9 +1255,11 @@ nav a:hover::after{
   line-height:1.6;
 }
 
-.testimonials-carousel{
+/* SLIDER WRAPPER */
+.testimonials-slider-wrapper{
   position:relative;
-  overflow:hidden;
+  max-width:900px;
+  margin:0 auto;
   padding:0 0 60px 0;
 }
 
@@ -1253,6 +1271,8 @@ nav a:hover::after{
   scrollbar-width:none;
   -webkit-overflow-scrolling:touch;
   padding:0 24px;
+  position:relative;
+  z-index:1;
 }
 
 .testimonials-track::-webkit-scrollbar{
@@ -1260,54 +1280,89 @@ nav a:hover::after{
 }
 
 .testimonial-slide{
-  min-width:calc(100% - 48px);
+  min-width:100%;
   flex-shrink:0;
   scroll-snap-align:center;
 }
 
-.testimonial-card{
+.testimonial-block{
   background:#fff;
   border:2px solid var(--border);
   border-radius:20px;
-  padding:40px 32px;
-  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  height:100%;
+  padding:40px;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position:relative;
+  overflow:hidden;
+  height:100%;
 }
 
-.testimonial-card::before{
+.testimonial-block::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:0;
+  width:6px;
+  height:100%;
+  background:linear-gradient(to bottom, var(--sage), var(--accent));
+  transform:scaleY(0);
+  transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-block:hover::before{
+  transform:scaleY(1);
+}
+
+.testimonial-block::after{
   content:'"';
   position:absolute;
-  top:20px;
-  left:24px;
-  font-size:80px;
+  top:24px;
+  right:32px;
+  font-size:120px;
   color:var(--sage);
-  opacity:0.1;
+  opacity:0.05;
   font-family:Georgia, serif;
   line-height:1;
+  pointer-events:none;
 }
 
-.testimonial-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 16px 40px rgba(0,0,0,0.12);
+.testimonial-block:hover{
   border-color:var(--sage);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.12);
 }
 
-.testimonial-quote{
-  font-size:16px;
-  line-height:1.7;
-  color:var(--gray);
-  margin-bottom:24px;
-  font-style:italic;
-  position:relative;
-  z-index:1;
+.testimonial-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:20px;
+}
+
+.testimonial-avatar{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--sage) 0%, var(--accent) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:24px;
+  font-weight:700;
+  flex-shrink:0;
+  box-shadow:0 4px 16px rgba(139,157,131,0.3);
+}
+
+.testimonial-info{
+  flex:1;
 }
 
 .testimonial-author{
-  font-size:18px;
+  font-size:20px;
   font-weight:600;
   color:var(--earth);
-  margin-bottom:6px;
+  margin-bottom:4px;
+  line-height:1;
 }
 
 .testimonial-condition{
@@ -1316,11 +1371,100 @@ nav a:hover::after{
   font-weight:600;
   text-transform:uppercase;
   letter-spacing:0.5px;
+  display:inline-block;
+  background:rgba(139,157,131,0.1);
+  padding:4px 12px;
+  border-radius:100px;
+}
+
+.testimonial-quote{
+  font-size:17px;
+  line-height:1.7;
+  color:var(--gray);
+  font-style:italic;
+  position:relative;
+  z-index:1;
+  margin:0 0 20px 0;
+}
+
+.testimonial-rating{
+  display:flex;
+  gap:4px;
+}
+
+.star{
+  color:var(--accent);
+  font-size:18px;
+}
+
+/* SLIDER DOTS */
+.testimonials-dots{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:32px;
+}
+
+.testimonial-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ddd;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor:pointer;
+  border:none;
+  padding:0;
+}
+
+.testimonial-dot.active{
+  background:linear-gradient(135deg, var(--sage) 0%, var(--accent) 100%);
+  width:32px;
+  border-radius:5px;
+  box-shadow:0 4px 12px rgba(139,157,131,0.4);
+}
+
+/* NAVIGATION ARROWS (Optional - Desktop only) */
+.testimonials-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid var(--border);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:10;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size:24px;
+  color:var(--earth);
+  font-weight:bold;
+}
+
+.testimonials-nav:hover{
+  background:var(--sage);
+  color:#fff;
+  border-color:var(--sage);
+  transform:translateY(-50%) scale(1.1);
+  box-shadow:0 8px 20px rgba(139,157,131,0.3);
+}
+
+.testimonials-nav.prev{
+  left:-60px;
+}
+
+.testimonials-nav.next{
+  right:-60px;
 }
 
 .testimonials-cta{
   text-align:center;
   margin-top:60px;
+  position:relative;
+  z-index:1;
 }
 
 .testimonials-cta p{
@@ -1328,6 +1472,34 @@ nav a:hover::after{
   color:var(--gray);
   margin-bottom:28px;
 }
+
+/* Desktop - Show arrows */
+@media(min-width:1200px){
+  .testimonials-nav{
+    display:flex;
+  }
+}
+
+/* Tablet - 2 columns */
+@media(min-width:768px) and (max-width:1023px){
+  .testimonial-slide{
+    min-width:calc(50% - 10px);
+  }
+}
+
+/* Mobile adjustments */
+@media(max-width:767px){
+  .testimonial-block{
+    padding:32px 24px;
+  }
+  
+  .testimonial-block::after{
+    font-size:80px;
+    top:16px;
+    right:20px;
+  }
+}
+
 
 /* FAQ - ACCORDION DROPDOWN */
 .faq{
@@ -2169,6 +2341,7 @@ footer a:hover{
 </section>
 
 <!-- TESTIMONIALS - HORIZONTAL CAROUSEL -->
+<!-- TESTIMONIALS - BLOCK LAYOUT WITH SLIDER -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-header">
     <p class="section-label">Real Students. Real Results.</p>
@@ -2176,50 +2349,102 @@ footer a:hover{
     <p class="testimonials-intro">These aren't paid testimonials. These are real messages from real students who tried therapeutic yoga after everything else failed.</p>
   </div>
 
-  <div class="testimonials-carousel">
-    <div class="testimonials-track" id="testimonialsSlider">
+  <div class="testimonials-slider-wrapper">
+    <!-- Navigation Arrows (Desktop only) -->
+    <button class="testimonials-nav prev" onclick="moveTestimonialSlider(-1)" aria-label="Previous">‹</button>
+    <button class="testimonials-nav next" onclick="moveTestimonialSlider(1)" aria-label="Next">›</button>
+
+    <div class="testimonials-track" id="testimonialsTrack">
       <div class="testimonial-slide">
-        <div class="testimonial-card">
+        <div class="testimonial-block">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">C</div>
+            <div class="testimonial-info">
+              <div class="testimonial-author">Chandana V.</div>
+              <span class="testimonial-condition">PCOD Reversal</span>
+            </div>
+          </div>
           <p class="testimonial-quote">
             "I practiced yoga with Thanuja for a month. Being very honest, I could see very good results with my PCOD issue. The way she teaches and her patience is very good."
           </p>
-          <div class="testimonial-author">Chandana V.</div>
-          <div class="testimonial-condition">PCOD Reversal</div>
+          <div class="testimonial-rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
         </div>
       </div>
 
       <div class="testimonial-slide">
-        <div class="testimonial-card">
+        <div class="testimonial-block">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">V</div>
+            <div class="testimonial-info">
+              <div class="testimonial-author">Vaishnavi</div>
+              <span class="testimonial-condition">PCOD Wellness</span>
+            </div>
+          </div>
           <p class="testimonial-quote">
             "Thanu's yoga classes have helped me build more discipline and strength. It has also helped me better my health and reverse my condition of PCOD. Practicing yoga with Thanu has made me healthier, stronger and happier."
           </p>
-          <div class="testimonial-author">Vaishnavi</div>
-          <div class="testimonial-condition">PCOD Wellness</div>
+          <div class="testimonial-rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
         </div>
       </div>
 
       <div class="testimonial-slide">
-        <div class="testimonial-card">
+        <div class="testimonial-block">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">P</div>
+            <div class="testimonial-info">
+              <div class="testimonial-author">Priya R.</div>
+              <span class="testimonial-condition">Back Pain Relief</span>
+            </div>
+          </div>
           <p class="testimonial-quote">
             "The personalized approach really works. My chronic back pain has reduced significantly after just 6 weeks of practice. Thanuja understands the body mechanics perfectly."
           </p>
-          <div class="testimonial-author">Priya R.</div>
-          <div class="testimonial-condition">Back Pain Relief</div>
+          <div class="testimonial-rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
         </div>
       </div>
 
       <div class="testimonial-slide">
-        <div class="testimonial-card">
+        <div class="testimonial-block">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-info">
+              <div class="testimonial-author">Meera K.</div>
+              <span class="testimonial-condition">Sleep Optimization</span>
+            </div>
+          </div>
           <p class="testimonial-quote">
             "Finally sleeping through the night! The relaxation techniques and breathing practices have completely transformed my sleep quality. Can't recommend enough."
           </p>
-          <div class="testimonial-author">Meera K.</div>
-          <div class="testimonial-condition">Sleep Optimization</div>
+          <div class="testimonial-rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
         </div>
       </div>
     </div>
-    
-    <div class="slider-dots" id="testimonialsDots"></div>
+
+    <div class="testimonials-dots" id="testimonialsDots"></div>
   </div>
 
   <div class="testimonials-cta">
