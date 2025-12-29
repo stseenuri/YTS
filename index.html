@@ -416,6 +416,24 @@ nav a:hover::after{
   100%{transform:translateY(100%);}
 }
 
+/* ENHANCED ANIMATIONS (Nina-style) */
+.scale-in{
+  opacity:0;
+  transform:scale(0.92);
+  transition:all 1.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.scale-in.in-view{
+  opacity:1;
+  transform:scale(1);
+}
+
+.magnetic-hover{
+  transition:transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.magnetic-hover:hover{
+  transform:translateY(-8px) scale(1.01);
+}
+
 /* STATS BAR */
 .stats-bar{
   padding:80px 60px;
@@ -481,13 +499,13 @@ nav a:hover::after{
   border:1px solid rgba(255,255,255,0.1);
   border-radius:20px;
   padding:40px;
-  transition:all 0.4s;
+  transition:all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   text-align:center;
 }
 .schedule-card:hover{
   background:rgba(255,255,255,0.1);
   border-color:var(--accent);
-  transform:translateY(-5px);
+  transform:translateY(-8px) scale(1.02);
 }
 .schedule-time{
   font-size:36px;
@@ -576,11 +594,10 @@ nav a:hover::after{
 /* YOGA FINDER TOOL */
 .yoga-finder{
   padding:150px 60px;
-  background:var(--secondary);
+  background:var(--sage);
   color:#fff;
   position:relative;
   overflow:hidden;
-  background:var(--sage);
 }
 
 .finder-container{
@@ -624,17 +641,18 @@ nav a:hover::after{
   border:1px solid rgba(255,255,255,0.1);
   border-radius:20px;
   padding:30px;
-  transition:all 0.4s;
+  transition:all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor:pointer;
 }
 .body-part-card:hover{
   background:rgba(255,255,255,0.1);
   border-color:var(--accent);
-  transform:translateY(-5px);
+  transform:translateY(-8px) scale(1.02);
 }
 .body-part-card.active{
   background:var(--earth);
   border-color:var(--earth);
+  transform:scale(1.05);
 }
 
 .body-part-icon{
@@ -661,10 +679,10 @@ nav a:hover::after{
 }
 .results-area.show{
   display:block;
-  animation:fadeSlideUp 0.6s ease;
+  animation:fadeSlideUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 @keyframes fadeSlideUp{
-  from{opacity:0;transform:translateY(30px);}
+  from{opacity:0;transform:translateY(40px);}
   to{opacity:1;transform:translateY(0);}
 }
 
@@ -705,11 +723,11 @@ nav a:hover::after{
   border:1px solid rgba(255,255,255,0.1);
   border-radius:16px;
   padding:25px;
-  transition:all 0.3s;
+  transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .asana-card:hover{
   background:rgba(255,255,255,0.08);
-  transform:translateY(-3px);
+  transform:translateY(-5px);
 }
 
 .asana-name{
@@ -766,12 +784,12 @@ nav a:hover::after{
   border:2px solid #e8e8e8;
   border-radius:20px;
   padding:40px 30px;
-  transition:all 0.4s;
+  transition:all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   position:relative;
 }
 .price-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.1);
+  transform:translateY(-12px) scale(1.02);
+  box-shadow:0 20px 60px rgba(0,0,0,0.12);
   border-color:var(--sage);
 }
 .price-card.featured{
@@ -852,15 +870,87 @@ nav a:hover::after{
   text-transform:uppercase;
   letter-spacing:1px;
   cursor:pointer;
-  transition:all 0.3s;
+  transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   text-decoration:none;
   display:block;
   text-align:center;
 }
 .price-cta:hover{
   background:var(--earth);
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(107,93,79,0.3);
+  transform:translateY(-3px);
+  box-shadow:0 12px 32px rgba(107,93,79,0.3);
+}
+
+/* MOBILE CAROUSEL FOR PRICING */
+.mobile-carousel{
+  display:none;
+}
+
+.carousel-wrapper{
+  position:relative;
+  overflow:hidden;
+  padding:20px 0 60px 0;
+}
+
+.carousel-track{
+  display:flex;
+  transition:transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  gap:20px;
+}
+
+.carousel-slide{
+  min-width:100%;
+  flex-shrink:0;
+  padding:0 10px;
+}
+
+.carousel-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.95);
+  border:2px solid #e8e8e8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:10;
+  transition:all 0.3s;
+  font-size:24px;
+  color:var(--earth);
+  font-weight:bold;
+}
+.carousel-nav:hover{
+  background:white;
+  box-shadow:0 6px 20px rgba(0,0,0,0.15);
+  border-color:var(--sage);
+}
+.carousel-nav.prev{left:10px;}
+.carousel-nav.next{right:10px;}
+
+.carousel-dots{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:30px;
+}
+
+.carousel-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ddd;
+  border:none;
+  cursor:pointer;
+  transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.carousel-dot.active{
+  background:var(--sage);
+  width:32px;
+  border-radius:5px;
 }
 
 .guarantee{
@@ -921,11 +1011,11 @@ nav a:hover::after{
   background:#fff;
   border:1px solid #e8e8e8;
   border-radius:20px;
-  transition:all 0.4s;
+  transition:all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .language-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.08);
+  transform:translateY(-12px) scale(1.02);
+  box-shadow:0 20px 60px rgba(0,0,0,0.1);
   border-color:var(--sage);
 }
 .language-icon{
@@ -970,6 +1060,10 @@ nav a:hover::after{
   border-radius:20px;
   overflow:hidden;
   box-shadow:0 20px 60px rgba(0,0,0,0.1);
+  transition:transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.about-image-main:hover{
+  transform:scale(1.02);
 }
 .about-image-main img{
   width:100%;
@@ -982,6 +1076,10 @@ nav a:hover::after{
   border-radius:20px;
   overflow:hidden;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  transition:transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.about-image-small:hover{
+  transform:scale(1.05);
 }
 .about-image-small img{
   width:100%;
@@ -1110,11 +1208,11 @@ nav a:hover::after{
   border:1px solid #e8e8e8;
   border-radius:20px;
   padding:40px;
-  transition:all 0.5s cubic-bezier(0.7,0,0.3,1);
+  transition:all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .testimonial-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.1);
+  transform:translateY(-12px) scale(1.02);
+  box-shadow:0 20px 60px rgba(0,0,0,0.12);
   border-color:var(--sage);
 }
 
@@ -1176,11 +1274,12 @@ nav a:hover::after{
   border-radius:16px;
   padding:30px;
   margin-bottom:20px;
-  transition:all 0.3s;
+  transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .faq-item:hover{
   border-color:var(--sage);
-  box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  box-shadow:0 6px 24px rgba(0,0,0,0.06);
+  transform:translateY(-3px);
 }
 .faq-question{
   font-size:20px;
@@ -1265,12 +1364,12 @@ nav a:hover::after{
   text-transform:uppercase;
   letter-spacing:1px;
   text-decoration:none;
-  transition:all 0.4s;
+  transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   margin-bottom:20px;
 }
 .cta-button-large:hover{
-  transform:translateY(-4px);
-  box-shadow:0 15px 50px rgba(0,0,0,0.3);
+  transform:translateY(-5px) scale(1.05);
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
 }
 .cta-phone{
   font-size:16px;
@@ -1337,10 +1436,11 @@ nav a:hover::after{
   text-decoration:none;
   font-size:32px;
   font-weight:700;
-  transition:color 0.3s;
+  transition:all 0.3s;
 }
 .contact-item a:hover{
   color:var(--accent);
+  transform:scale(1.1);
 }
 
 .social-links{
@@ -1359,12 +1459,12 @@ nav a:hover::after{
   color:#fff;
   text-decoration:none;
   font-size:20px;
-  transition:all 0.4s;
+  transition:all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .social-link:hover{
   background:#fff;
   color:var(--earth);
-  transform:translateY(-5px);
+  transform:translateY(-8px) scale(1.1);
 }
 
 /* FOOTER */
@@ -1392,7 +1492,7 @@ footer a:hover{
 .reveal{
   opacity:0;
   transform:translateY(60px);
-  transition:all 1s cubic-bezier(0.7,0,0.3,1);
+  transition:all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .reveal.in-view{
   opacity:1;
@@ -1401,35 +1501,56 @@ footer a:hover{
 
 /* RESPONSIVE */
 @media(max-width:900px){
+  body{cursor:auto;}
+  .cursor{display:none;}
+  
   header{padding:20px 24px;}
   header.scrolled{padding:15px 24px;}
   nav{gap:16px;}
   nav a{font-size:11px;display:none;}
-  nav a.cta-btn{display:block;}
+  nav a.cta-btn{display:block;padding:10px 20px;font-size:12px;}
+  
   .hero-content{padding:0 24px;}
   .hero h1{line-height:1.1;}
+  
+  .stats-bar{padding:60px 24px;}
+  .class-schedule{padding:80px 24px;}
+  .schedule-grid{grid-template-columns:1fr;}
+  
+  .problem-section{padding:80px 24px;}
+  
   .yoga-finder{padding:80px 24px;}
   .body-map-grid{grid-template-columns:1fr;}
   .asana-grid{grid-template-columns:1fr;}
+  
+  /* MOBILE PRICING CAROUSEL */
   .pricing{padding:80px 24px;}
-  .pricing-grid{grid-template-columns:1fr;}
+  .pricing-grid{display:none;}
+  .mobile-carousel{display:block;}
+  
   .languages{padding:80px 24px;}
   .language-cards{flex-direction:column;}
+  
   .about{padding:80px 24px;}
   .about-grid{grid-template-columns:1fr;gap:50px;}
   .about-images{grid-template-columns:1fr;}
   .journey-highlights{grid-template-columns:1fr;}
+  
   .testimonials{padding:80px 24px;}
   .testimonials-grid{grid-template-columns:1fr;}
+  
   .faq{padding:80px 24px;}
+  
   .cta-section{padding:80px 24px;}
+  
   .contact{padding:80px 24px;}
   .contact-info{flex-direction:column;gap:30px;}
-  .stats-bar{padding:60px 24px;}
-  .problem-section{padding:80px 24px;}
-  .class-schedule{padding:80px 24px;}
-  .schedule-grid{grid-template-columns:1fr;}
+  
   footer{padding:30px 24px;}
+}
+
+@media(min-width:901px){
+  .mobile-carousel{display:none !important;}
 }
 </style>
 </head>
@@ -1647,8 +1768,9 @@ footer a:hover{
     <p class="pricing-intro">Most online yoga instructors charge ₹3000-5000 per month for group classes where you're just another face on Zoom. Here's what makes us different—personalized attention at an accessible price.</p>
   </div>
 
+  <!-- Desktop Grid -->
   <div class="pricing-grid">
-    <div class="price-card reveal">
+    <div class="price-card reveal magnetic-hover">
       <h3 class="price-name">Monthly Plan</h3>
       <div class="price-old">₹1500/month</div>
       <div class="price-new">₹1200</div>
@@ -1663,7 +1785,7 @@ footer a:hover{
       <a href="tel:7676332452" class="price-cta">Start Free Trial</a>
     </div>
 
-    <div class="price-card featured reveal">
+    <div class="price-card featured reveal magnetic-hover">
       <div class="badge">Most Popular</div>
       <h3 class="price-name">Quarterly Plan</h3>
       <div class="price-old">₹4500 total</div>
@@ -1680,7 +1802,7 @@ footer a:hover{
       <a href="tel:7676332452" class="price-cta">Claim This Offer</a>
     </div>
 
-    <div class="price-card reveal">
+    <div class="price-card reveal magnetic-hover">
       <h3 class="price-name">6-Month Transformation</h3>
       <div class="price-old">₹9000 total</div>
       <div class="price-new">₹6500</div>
@@ -1696,7 +1818,7 @@ footer a:hover{
       <a href="tel:7676332452" class="price-cta">Lock In This Price</a>
     </div>
 
-    <div class="price-card reveal">
+    <div class="price-card reveal magnetic-hover">
       <h3 class="price-name">1:1 Private Coaching</h3>
       <div class="price-old">₹3500/month</div>
       <div class="price-new">₹2500</div>
@@ -1711,6 +1833,90 @@ footer a:hover{
       </ul>
       <a href="tel:7676332452" class="price-cta">Book Private Session</a>
     </div>
+  </div>
+
+  <!-- Mobile Carousel -->
+  <div class="mobile-carousel">
+    <div class="carousel-wrapper">
+      <button class="carousel-nav prev" onclick="movePriceCarousel(-1)" aria-label="Previous">‹</button>
+      <button class="carousel-nav next" onclick="movePriceCarousel(1)" aria-label="Next">›</button>
+      
+      <div class="carousel-track" id="priceCarousel">
+        <div class="carousel-slide">
+          <div class="price-card">
+            <h3 class="price-name">Monthly Plan</h3>
+            <div class="price-old">₹1500/month</div>
+            <div class="price-new">₹1200</div>
+            <div class="price-period">/month</div>
+            <ul class="price-features">
+              <li>3 live group sessions daily</li>
+              <li>Condition-based therapeutic protocols</li>
+              <li>Classes in English/Telugu/Kannada</li>
+              <li>WhatsApp support for questions</li>
+              <li>Try 3 classes free before joining</li>
+            </ul>
+            <a href="tel:7676332452" class="price-cta">Start Free Trial</a>
+          </div>
+        </div>
+        
+        <div class="carousel-slide">
+          <div class="price-card featured">
+            <div class="badge">Most Popular</div>
+            <h3 class="price-name">Quarterly Plan</h3>
+            <div class="price-old">₹4500 total</div>
+            <div class="price-new">₹3200</div>
+            <div class="price-period">for 3 months</div>
+            <div class="price-save">Save ₹1300</div>
+            <ul class="price-features">
+              <li>Everything in Monthly Plan</li>
+              <li>Personalized progress tracking</li>
+              <li>Monthly goal-setting calls</li>
+              <li>Priority class booking</li>
+              <li>Try 3 classes free before joining</li>
+            </ul>
+            <a href="tel:7676332452" class="price-cta">Claim This Offer</a>
+          </div>
+        </div>
+        
+        <div class="carousel-slide">
+          <div class="price-card">
+            <h3 class="price-name">6-Month Transformation</h3>
+            <div class="price-old">₹9000 total</div>
+            <div class="price-new">₹6500</div>
+            <div class="price-period">for 6 months</div>
+            <div class="price-save">Save ₹2500</div>
+            <ul class="price-features">
+              <li>Everything in Quarterly Plan</li>
+              <li>Customized diet guidance</li>
+              <li>Bi-weekly one-on-one check-ins</li>
+              <li>Lifetime access to recordings</li>
+              <li>Try 3 classes free before joining</li>
+            </ul>
+            <a href="tel:7676332452" class="price-cta">Lock In This Price</a>
+          </div>
+        </div>
+        
+        <div class="carousel-slide">
+          <div class="price-card">
+            <h3 class="price-name">1:1 Private Coaching</h3>
+            <div class="price-old">₹3500/month</div>
+            <div class="price-new">₹2500</div>
+            <div class="price-period">/month</div>
+            <p style="font-size:14px;color:var(--gray);margin-bottom:20px;">For intensive therapeutic intervention for serious health conditions</p>
+            <ul class="price-features">
+              <li>Private 1:1 sessions (4 per month)</li>
+              <li>Fully personalized routine</li>
+              <li>Daily WhatsApp support</li>
+              <li>Custom meal planning</li>
+              <li>Try 1 session free before joining</li>
+            </ul>
+            <a href="tel:7676332452" class="price-cta">Book Private Session</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="carousel-dots" id="priceDots"></div>
   </div>
 
   <div class="guarantee reveal">
@@ -1747,7 +1953,7 @@ footer a:hover{
 <!-- ABOUT INSTRUCTOR -->
 <section class="about" id="about">
   <div class="about-grid">
-    <div class="about-images reveal">
+    <div class="about-images reveal scale-in">
       <div class="about-image-main">
         <img src="about_the_instructor.webp" alt="Thanuja - Certified Yoga Instructor specializing in therapeutic yoga">
       </div>
@@ -2031,7 +2237,7 @@ function animateCursor() {
 animateCursor();
 
 // Cursor hover
-const hoverElements = document.querySelectorAll('a, button, .price-card, .language-card, .body-part-card, .testimonial-card, .schedule-card');
+const hoverElements = document.querySelectorAll('a, button, .price-card, .language-card, .body-part-card, .testimonial-card, .schedule-card, .faq-item');
 hoverElements.forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
@@ -2093,26 +2299,106 @@ function clearResults() {
   asanaGrid.innerHTML = '';
 }
 
-// REVEAL ON SCROLL
-const reveals = document.querySelectorAll('.reveal');
-const revealOnScroll = () => {
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add('in-view');
+// MOBILE PRICING CAROUSEL
+let priceCurrentSlide = 0;
+const priceCarousel = document.getElementById('priceCarousel');
+const priceSlides = priceCarousel ? priceCarousel.querySelectorAll('.carousel-slide') : [];
+const priceTotalSlides = priceSlides.length;
+
+// Create dots
+const priceDotsContainer = document.getElementById('priceDots');
+if (priceDotsContainer && priceTotalSlides > 0) {
+  for (let i = 0; i < priceTotalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot';
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToPriceSlide(i));
+    priceDotsContainer.appendChild(dot);
+  }
+}
+
+function movePriceCarousel(direction) {
+  priceCurrentSlide += direction;
+  
+  if (priceCurrentSlide < 0) {
+    priceCurrentSlide = priceTotalSlides - 1;
+  } else if (priceCurrentSlide >= priceTotalSlides) {
+    priceCurrentSlide = 0;
+  }
+  
+  updatePriceCarousel();
+}
+
+function goToPriceSlide(index) {
+  priceCurrentSlide = index;
+  updatePriceCarousel();
+}
+
+function updatePriceCarousel() {
+  if (priceCarousel) {
+    priceCarousel.style.transform = `translateX(-${priceCurrentSlide * 100}%)`;
+  }
+  
+  const dots = document.querySelectorAll('.carousel-dot');
+  dots.forEach((dot, index) => {
+    if (index === priceCurrentSlide) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
     }
   });
-};
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
+}
+
+// Touch support for mobile carousel
+let priceTouchStartX = 0;
+let priceTouchEndX = 0;
+
+if (priceCarousel) {
+  priceCarousel.addEventListener('touchstart', (e) => {
+    priceTouchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  priceCarousel.addEventListener('touchend', (e) => {
+    priceTouchEndX = e.changedTouches[0].screenX;
+    handlePriceSwipe();
+  }, { passive: true });
+}
+
+function handlePriceSwipe() {
+  if (priceTouchEndX < priceTouchStartX - 50) {
+    movePriceCarousel(1);
+  }
+  if (priceTouchEndX > priceTouchStartX + 50) {
+    movePriceCarousel(-1);
+  }
+}
+
+// REVEAL ON SCROLL
+const revealElements = document.querySelectorAll('.reveal, .scale-in');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+    }
+  });
+}, {
+  threshold: 0.15,
+  rootMargin: '0px 0px -100px 0px'
+});
+
+revealElements.forEach(el => revealObserver.observe(el));
 
 // SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   });
 });
@@ -2120,3 +2406,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 </body>
 </html>
+
