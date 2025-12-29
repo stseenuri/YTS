@@ -428,7 +428,7 @@ nav a:hover::after{
   line-height:1.4;
 }
 
-/* SCHEDULE SECTION - HORIZONTAL SLIDER */
+/* SCHEDULE SECTION - BLOCK LAYOUT */
 .class-schedule{
   padding:100px 24px;
   background:var(--earth);
@@ -443,14 +443,6 @@ nav a:hover::after{
   max-width:800px;
   margin-left:auto;
   margin-right:auto;
-}
-
-.section-label{
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:16px;
 }
 
 .schedule-title{
@@ -468,56 +460,63 @@ nav a:hover::after{
   line-height:1.6;
 }
 
-/* SLIDER WRAPPER */
-.slider-wrapper{
+.schedule-blocks{
+  max-width:900px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.schedule-block{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  border:2px solid rgba(255,255,255,0.12);
+  border-radius:20px;
+  padding:32px;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display:flex;
+  align-items:center;
+  gap:32px;
   position:relative;
   overflow:hidden;
-  padding:0 0 60px 0;
 }
 
-.slider-track{
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  scrollbar-width:none;
-  -webkit-overflow-scrolling:touch;
-  padding:0 24px;
-}
-
-.slider-track::-webkit-scrollbar{
-  display:none;
-}
-
-.slider-slide{
-  min-width:280px;
-  flex-shrink:0;
-  scroll-snap-align:center;
-}
-
-.schedule-card{
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:20px;
-  padding:40px 32px;
-  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  text-align:center;
+.schedule-block::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:0;
+  width:6px;
   height:100%;
-  backdrop-filter:blur(10px);
+  background:linear-gradient(to bottom, var(--accent), transparent);
+  transform:scaleY(0);
+  transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.schedule-card:hover{
+.schedule-block:hover::before{
+  transform:scaleY(1);
+}
+
+.schedule-block:hover{
   background:rgba(255,255,255,0.12);
   border-color:var(--accent);
-  transform:translateY(-8px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  transform:translateX(8px);
+  box-shadow:0 12px 32px rgba(0,0,0,0.3);
+}
+
+.schedule-time-block{
+  flex-shrink:0;
+  text-align:center;
+  min-width:140px;
 }
 
 .schedule-time{
-  font-size:32px;
+  font-size:28px;
   font-weight:700;
   color:var(--accent);
-  margin-bottom:12px;
+  margin-bottom:8px;
+  line-height:1;
 }
 
 .schedule-period{
@@ -525,39 +524,34 @@ nav a:hover::after{
   text-transform:uppercase;
   letter-spacing:2px;
   color:rgba(255,255,255,0.6);
-  margin-bottom:20px;
+}
+
+.schedule-divider{
+  width:2px;
+  height:80px;
+  background:linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent);
+  flex-shrink:0;
+}
+
+.schedule-content{
+  flex:1;
+}
+
+.schedule-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:8px;
 }
 
 .schedule-desc{
-  font-size:15px;
-  color:rgba(255,255,255,0.85);
+  font-size:16px;
+  color:rgba(255,255,255,0.9);
   line-height:1.6;
+  margin:0;
 }
 
-/* SLIDER DOTS */
-.slider-dots{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:32px;
-}
-
-.slider-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.3);
-  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor:pointer;
-  border:none;
-  padding:0;
-}
-
-.slider-dot.active{
-  background:var(--accent);
-  width:32px;
-  border-radius:4px;
-}
 
 /* PROBLEM SECTION */
 .problem-section{
@@ -1857,6 +1851,7 @@ footer a:hover{
 </section>
 
 <!-- CLASS SCHEDULE - HORIZONTAL SLIDER -->
+<!-- CLASS SCHEDULE - BLOCK LAYOUT -->
 <section class="class-schedule" id="schedule">
   <div class="schedule-header">
     <p class="section-label">Flexible Timings</p>
@@ -1864,34 +1859,42 @@ footer a:hover{
     <p class="schedule-subtitle">3 live sessions every day. Join the time that fits your schedule—morning energy boost or evening relaxation.</p>
   </div>
 
-  <div class="slider-wrapper">
-    <div class="slider-track" id="scheduleSlider">
-      <div class="slider-slide">
-        <div class="schedule-card">
-          <div class="schedule-time">5:30 - 6:30 AM</div>
-          <div class="schedule-period">Early Morning</div>
-          <p class="schedule-desc">Start your day with energizing asanas. Perfect for building strength, improving focus, and setting positive intentions.</p>
-        </div>
+  <div class="schedule-blocks">
+    <div class="schedule-block">
+      <div class="schedule-time-block">
+        <div class="schedule-time">5:30 - 6:30 AM</div>
+        <div class="schedule-period">Early Morning</div>
       </div>
-
-      <div class="slider-slide">
-        <div class="schedule-card">
-          <div class="schedule-time">6:35 - 7:35 AM</div>
-          <div class="schedule-period">Morning</div>
-          <p class="schedule-desc">Ideal for working professionals. Therapeutic poses targeting stress relief and posture correction before your workday begins.</p>
-        </div>
-      </div>
-
-      <div class="slider-slide">
-        <div class="schedule-card">
-          <div class="schedule-time">7:00 - 8:00 PM</div>
-          <div class="schedule-period">Evening</div>
-          <p class="schedule-desc">Wind down after a long day. Gentle stretches, breathing exercises, and relaxation techniques for better sleep and recovery.</p>
-        </div>
+      <div class="schedule-divider"></div>
+      <div class="schedule-content">
+        <div class="schedule-label">Morning Energy</div>
+        <p class="schedule-desc">Start your day with energizing asanas. Perfect for building strength, improving focus, and setting positive intentions for the day ahead.</p>
       </div>
     </div>
-    
-    <div class="slider-dots" id="scheduleDots"></div>
+
+    <div class="schedule-block">
+      <div class="schedule-time-block">
+        <div class="schedule-time">6:35 - 7:35 AM</div>
+        <div class="schedule-period">Morning</div>
+      </div>
+      <div class="schedule-divider"></div>
+      <div class="schedule-content">
+        <div class="schedule-label">Pre-Work Session</div>
+        <p class="schedule-desc">Ideal for working professionals. Therapeutic poses targeting stress relief and posture correction before your workday begins.</p>
+      </div>
+    </div>
+
+    <div class="schedule-block">
+      <div class="schedule-time-block">
+        <div class="schedule-time">7:00 - 8:00 PM</div>
+        <div class="schedule-period">Evening</div>
+      </div>
+      <div class="schedule-divider"></div>
+      <div class="schedule-content">
+        <div class="schedule-label">Evening Relaxation</div>
+        <p class="schedule-desc">Wind down after a long day. Gentle stretches, breathing exercises, and relaxation techniques for better sleep and recovery.</p>
+      </div>
+    </div>
   </div>
 </section>
 
