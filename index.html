@@ -1213,47 +1213,6 @@ nav a:hover::after{
 }
 
 /* TESTIMONIALS - CAROUSEL BLOCKS WITH SLIDER */
-.testimonials{
-  padding:100px 24px;
-  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
-  position:relative;
-  overflow:hidden;
-}
-
-.testimonials::before{
-  content:'';
-  position:absolute;
-  top:-10%;
-  left:-10%;
-  width:400px;
-  height:400px;
-  border-radius:50%;
-  background:radial-gradient(circle, rgba(139,157,131,0.1) 0%, transparent 70%);
-}
-
-.testimonials-header{
-  max-width:800px;
-  margin:0 auto 60px auto;
-  text-align:center;
-  position:relative;
-  z-index:1;
-}
-
-.testimonials-title{
-  font-size:clamp(32px,6vw,56px);
-  font-weight:600;
-  letter-spacing:-1.5px;
-  color:var(--earth);
-  margin-bottom:16px;
-  line-height:1.2;
-}
-
-.testimonials-intro{
-  font-size:17px;
-  color:var(--gray);
-  line-height:1.6;
-}
-
 /* CAROUSEL WRAPPER */
 .testimonials-carousel{
   position:relative;
@@ -1276,7 +1235,8 @@ nav a:hover::after{
 }
 
 .testimonial-slide{
-  min-width:calc(100% - 48px);
+  min-width:360px;
+  max-width:360px;
   flex-shrink:0;
   scroll-snap-align:center;
 }
@@ -1285,13 +1245,14 @@ nav a:hover::after{
   background:#fff;
   border:2px solid var(--border);
   border-radius:20px;
-  padding:40px;
+  padding:32px;
   transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position:relative;
   overflow:hidden;
-  height:100%;
+  height:360px;
   display:flex;
   flex-direction:column;
+  justify-content:space-between;
 }
 
 .testimonial-block::before{
@@ -1307,9 +1268,9 @@ nav a:hover::after{
 .testimonial-block::after{
   content:'"';
   position:absolute;
-  top:24px;
-  right:32px;
-  font-size:120px;
+  top:16px;
+  right:24px;
+  font-size:100px;
   color:var(--sage);
   opacity:0.05;
   font-family:Georgia, serif;
@@ -1326,20 +1287,20 @@ nav a:hover::after{
 .testimonial-header{
   display:flex;
   align-items:center;
-  gap:16px;
-  margin-bottom:24px;
+  gap:14px;
+  margin-bottom:20px;
 }
 
 .testimonial-avatar{
-  width:64px;
-  height:64px;
+  width:56px;
+  height:56px;
   border-radius:50%;
   background:linear-gradient(135deg, var(--sage) 0%, var(--accent) 100%);
   display:flex;
   align-items:center;
   justify-content:center;
   color:#fff;
-  font-size:28px;
+  font-size:24px;
   font-weight:700;
   flex-shrink:0;
   box-shadow:0 6px 20px rgba(139,157,131,0.3);
@@ -1350,7 +1311,7 @@ nav a:hover::after{
 }
 
 .testimonial-author{
-  font-size:22px;
+  font-size:18px;
   font-weight:600;
   color:var(--earth);
   margin-bottom:6px;
@@ -1358,150 +1319,139 @@ nav a:hover::after{
 }
 
 .testimonial-condition{
-  font-size:12px;
+  font-size:11px;
   color:var(--sage);
   font-weight:600;
   text-transform:uppercase;
   letter-spacing:0.5px;
   display:inline-block;
   background:rgba(139,157,131,0.12);
-  padding:6px 14px;
+  padding:4px 10px;
   border-radius:100px;
 }
 
+.testimonial-content{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
 .testimonial-quote{
-  font-size:18px;
-  line-height:1.8;
+  font-size:15px;
+  line-height:1.65;
   color:var(--gray);
   font-style:italic;
   position:relative;
   z-index:1;
-  margin:0 0 24px 0;
+  margin:0;
   flex:1;
+  display:-webkit-box;
+  -webkit-line-clamp:6;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
 }
 
 .testimonial-footer{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding-top:20px;
+  padding-top:16px;
   border-top:1px solid #f0f0f0;
+  margin-top:auto;
 }
 
 .testimonial-rating{
   display:flex;
-  gap:4px;
+  gap:3px;
 }
 
 .star{
   color:var(--accent);
-  font-size:20px;
+  font-size:16px;
 }
 
 .testimonial-verified{
-  font-size:13px;
+  font-size:11px;
   color:var(--sage);
   font-weight:600;
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
 }
 
 .testimonial-verified::before{
   content:'✓';
-  width:20px;
-  height:20px;
+  width:18px;
+  height:18px;
   background:var(--sage);
   color:#fff;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
+  font-size:11px;
   font-weight:700;
 }
 
-/* SLIDER DOTS */
-.testimonials-dots{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:32px;
-}
-
-.testimonial-dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#ddd;
-  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor:pointer;
-  border:none;
-  padding:0;
-}
-
-.testimonial-dot.active{
-  background:linear-gradient(135deg, var(--sage) 0%, var(--accent) 100%);
-  width:32px;
-  border-radius:5px;
-  box-shadow:0 4px 12px rgba(139,157,131,0.4);
-}
-
-.testimonials-cta{
-  text-align:center;
-  margin-top:60px;
-  position:relative;
-  z-index:1;
-}
-
-.testimonials-cta p{
-  font-size:17px;
-  color:var(--gray);
-  margin-bottom:28px;
-}
-
-/* Tablet - Show 2 cards */
+/* Tablet - Show 2 squares */
 @media(min-width:768px){
   .testimonial-slide{
-    min-width:calc(50% - 30px);
-  }
-}
-
-/* Desktop - Show 2 cards, larger */
-@media(min-width:1024px){
-  .testimonial-slide{
-    min-width:calc(50% - 30px);
+    min-width:340px;
+    max-width:340px;
   }
   
-  .testimonials-track{
-    padding:0 40px 20px 40px;
+  .testimonial-block{
+    height:340px;
   }
 }
 
-/* Mobile adjustments */
-@media(max-width:767px){
+/* Desktop - Show 3 squares */
+@media(min-width:1024px){
+  .testimonial-slide{
+    min-width:320px;
+    max-width:320px;
+  }
+  
   .testimonial-block{
-    padding:32px 24px;
+    height:320px;
+  }
+}
+
+/* Mobile - Smaller squares */
+@media(max-width:767px){
+  .testimonial-slide{
+    min-width:300px;
+    max-width:300px;
+  }
+  
+  .testimonial-block{
+    padding:28px 24px;
+    height:300px;
   }
   
   .testimonial-block::after{
     font-size:80px;
-    top:16px;
+    top:12px;
     right:20px;
   }
   
   .testimonial-avatar{
-    width:56px;
-    height:56px;
-    font-size:24px;
+    width:48px;
+    height:48px;
+    font-size:20px;
   }
   
   .testimonial-author{
-    font-size:18px;
+    font-size:16px;
   }
   
   .testimonial-quote{
-    font-size:16px;
+    font-size:14px;
+    -webkit-line-clamp:7;
+  }
+  
+  .star{
+    font-size:14px;
   }
 }
 
@@ -2346,7 +2296,7 @@ footer a:hover{
   </div>
 </section>
 
-<!-- TESTIMONIALS - CAROUSEL BLOCKS WITH SLIDER -->
+<!-- TESTIMONIALS - SQUARE CAROUSEL BLOCKS -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-header">
     <p class="section-label">Real Students. Real Results.</p>
@@ -2366,9 +2316,11 @@ footer a:hover{
               <span class="testimonial-condition">PCOD Reversal</span>
             </div>
           </div>
-          <p class="testimonial-quote">
-            "I practiced yoga with Thanuja for a month. Being very honest, I could see very good results with my PCOD issue. The way she teaches and her patience is very good."
-          </p>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">
+              "I practiced yoga with Thanuja for a month. Being very honest, I could see very good results with my PCOD issue. The way she teaches and her patience is very good."
+            </p>
+          </div>
           <div class="testimonial-footer">
             <div class="testimonial-rating">
               <span class="star">★</span>
@@ -2391,9 +2343,11 @@ footer a:hover{
               <span class="testimonial-condition">PCOD Wellness</span>
             </div>
           </div>
-          <p class="testimonial-quote">
-            "Thanu's yoga classes have helped me build more discipline and strength. It has also helped me better my health and reverse my condition of PCOD. Practicing yoga with Thanu has made me healthier, stronger and happier."
-          </p>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">
+              "Thanu's yoga classes have helped me build more discipline and strength. It has also helped me better my health and reverse my condition of PCOD. Practicing yoga with Thanu has made me healthier, stronger and happier."
+            </p>
+          </div>
           <div class="testimonial-footer">
             <div class="testimonial-rating">
               <span class="star">★</span>
@@ -2416,9 +2370,11 @@ footer a:hover{
               <span class="testimonial-condition">Back Pain Relief</span>
             </div>
           </div>
-          <p class="testimonial-quote">
-            "The personalized approach really works. My chronic back pain has reduced significantly after just 6 weeks of practice. Thanuja understands the body mechanics perfectly."
-          </p>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">
+              "The personalized approach really works. My chronic back pain has reduced significantly after just 6 weeks of practice. Thanuja understands the body mechanics perfectly."
+            </p>
+          </div>
           <div class="testimonial-footer">
             <div class="testimonial-rating">
               <span class="star">★</span>
@@ -2438,12 +2394,14 @@ footer a:hover{
             <div class="testimonial-avatar">M</div>
             <div class="testimonial-info">
               <div class="testimonial-author">Meera K.</div>
-              <span class="testimonial-condition">Sleep Optimization</span>
+              <span class="testimonial-condition">Sleep Issues</span>
             </div>
           </div>
-          <p class="testimonial-quote">
-            "Finally sleeping through the night! The relaxation techniques and breathing practices have completely transformed my sleep quality. Can't recommend enough."
-          </p>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">
+              "Finally sleeping through the night! The relaxation techniques and breathing practices have completely transformed my sleep quality. Can't recommend enough."
+            </p>
+          </div>
           <div class="testimonial-footer">
             <div class="testimonial-rating">
               <span class="star">★</span>
@@ -2463,12 +2421,14 @@ footer a:hover{
             <div class="testimonial-avatar">R</div>
             <div class="testimonial-info">
               <div class="testimonial-author">Rajesh S.</div>
-              <span class="testimonial-condition">Stress Management</span>
+              <span class="testimonial-condition">Stress Relief</span>
             </div>
           </div>
-          <p class="testimonial-quote">
-            "Working in IT, I was constantly stressed and anxious. The breathing techniques and therapeutic poses have made a huge difference in my mental clarity and overall well-being."
-          </p>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">
+              "Working in IT, I was constantly stressed. The breathing techniques and therapeutic poses have made a huge difference in my mental clarity and overall well-being."
+            </p>
+          </div>
           <div class="testimonial-footer">
             <div class="testimonial-rating">
               <span class="star">★</span>
@@ -2490,85 +2450,6 @@ footer a:hover{
   <div class="testimonials-cta">
     <p><strong>Experience the difference for yourself. Try 3 classes completely free.</strong></p>
     <a href="tel:7676332452" class="btn-primary">Claim My 3 Free Classes</a>
-  </div>
-</section>
-
-<!-- FAQ - ACCORDION -->
-<section class="faq">
-  <div class="faq-header">
-    <h2 class="faq-title">Questions? We've Got Answers.</h2>
-  </div>
-
-  <div class="faq-container">
-    <div class="faq-item">
-      <div class="faq-question">
-        I've never done yoga before. Will this be too hard?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Perfect! 60% of our students are complete beginners. We design every session around YOUR current fitness level—not some impossible standard you need to reach. All ages and fitness levels welcome.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        How is this different from YouTube videos?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>YouTube gives you the same routine as everyone else. We give you poses specifically chosen for YOUR condition. Plus live feedback so you don't injure yourself with incorrect form.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        I have PCOD/back pain. Will this actually help?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Our therapeutic protocols are built from 5+ years of practice helping people with specific conditions. Check Chandana's and Vaishnavi's testimonials above—real PCOD results in 30-60 days. Same for back pain and sleep issues.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        What if I can't make the live classes?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Every session is recorded. Watch anytime that fits your schedule. But we strongly recommend live classes for real-time corrections and personalized guidance.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        Are these classes only for women?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Not at all! While many of our students are women dealing with PCOD, we have plenty of male students working on back pain, flexibility, stress management, and overall wellness. Everyone is welcome.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        Can I really learn yoga in Telugu/Kannada?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Absolutely! Understanding instructions in your mother tongue helps you focus on the practice—not translation. Choose your comfortable language during signup.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        What's your refund policy?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Try 3 classes completely free. If you join and don't see improvement in 30 days, full refund. No questions asked.</p>
-      </div>
-    </div>
   </div>
 </section>
 
