@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Pricing - Affordable Therapeutic Yoga Plans Starting ₹1200/Month | Thanu Yoga</title>
+<meta name="description" content="Transparent pricing for live online yoga classes. Monthly, quarterly, and 6-month plans. No hidden fees. Try 3 classes free before you commit. Money-back guarantee.">
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#1a1a1a;
+  --white:#fafafa;
+  --sage:#8b9d83;
+  --sand:#e8dcc4;
+  --earth:#6b5d4f;
+  --accent:#d4a574;
+  --gray:#999;
+  --border:#e8e8e8;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--white);
+  color:var(--black);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+::selection{
+  background:var(--sage);
+  color:#fff;
+}
+
+/* SCROLL PROGRESS */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0%;
+  height:3px;
+  background:linear-gradient(90deg, var(--sage) 0%, var(--accent) 100%);
+  z-index:10001;
+  transition:width 0.1s linear;
+  box-shadow:0 0 15px rgba(139,157,131,0.4);
+}
+
+/* NOISE */
+.noise{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9998;
+  opacity:0.02;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:20px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(20px) saturate(180%);
+  box-shadow:0 4px 24px rgba(0,0,0,0.06);
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+
+.logo{
+  font-size:20px;
+  font-weight:700;
+  color:var(--earth);
+  letter-spacing:-0.5px;
+  text-decoration:none;
+}
+
+nav{
+  display:flex;
+  gap:32px;
+  align-items:center;
+}
+
+nav a{
+  color:var(--earth);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  transition:color 0.3s;
+}
+
+nav a:hover{
+  color:var(--sage);
+}
+
+.cta-btn{
+  padding:12px 24px;
+  background:var(--sage);
+  color:#fff;
+  border-radius:100px;
+  font-size:13px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration:none;
+  box-shadow:0 4px 12px rgba(139,157,131,0.25);
+}
+
+.cta-btn:hover{
+  background:var(--earth);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(107,93,79,0.3);
+}
+
+/* HERO */
+.hero{
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--sage) 0%,var(--earth) 100%);
+  padding:140px 40px 100px 40px;
+  color:#fff;
+}
+
+.floating-shape{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  animation:float-shape 20s ease-in-out infinite;
+}
+
+.floating-shape:nth-child(1){
+  width:300px;
+  height:300px;
+  top:10%;
+  left:-5%;
+}
+
+.floating-shape:nth-child(2){
+  width:200px;
+  height:200px;
+  bottom:15%;
+  right:5%;
+  animation-delay:5s;
+}
+
+@keyframes float-shape{
+  0%, 100%{transform:translate(0, 0) scale(1);}
+  25%{transform:translate(30px, -30px) scale(1.1);}
+  50%{transform:translate(-20px, 20px) scale(0.95);}
+  75%{transform:translate(25px, 15px) scale(1.05);}
+}
+
+.hero-content{
+  text-align:center;
+  max-width:900px;
+  position:relative;
+  z-index:10;
+}
+
+.hero-label{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:24px;
+}
+
+.hero h1{
+  font-size:clamp(48px,8vw,90px);
+  font-weight:600;
+  line-height:1.1;
+  letter-spacing:-2px;
+  margin-bottom:24px;
+}
+
+.hero-subtitle{
+  font-size:clamp(18px,2.5vw,24px);
+  color:rgba(255,255,255,0.95);
+  margin-bottom:20px;
+  line-height:1.6;
+  font-weight:400;
+}
+
+/* INTRO SECTION */
+.intro-section{
+  padding:100px 24px;
+  background:var(--white);
+}
+
+.intro-content{
+  max-width:800px;
+  margin:0 auto;
+}
+
+.section-label{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--sage);
+  margin-bottom:16px;
+  text-align:center;
+}
+
+.intro-content h2{
+  font-size:clamp(32px,6vw,48px);
+  font-weight:600;
+  letter-spacing:-1.5px;
+  color:var(--earth);
+  margin-bottom:32px;
+  line-height:1.2;
+  text-align:center;
+}
+
+.intro-content p{
+  font-size:18px;
+  color:var(--gray);
+  line-height:1.8;
+  margin-bottom:24px;
+}
+
+.intro-content strong{
+  color:var(--earth);
+  font-weight:600;
+}
+
+.highlight-box{
+  background:linear-gradient(135deg,rgba(139,157,131,0.08) 0%,rgba(232,220,196,0.12) 100%);
+  border-left:4px solid var(--sage);
+  padding:32px;
+  margin:40px 0;
+  border-radius:0 12px 12px 0;
+}
+
+.highlight-box p{
+  margin:0;
+  font-size:18px;
+  font-style:italic;
+  color:var(--earth);
+  font-weight:500;
+  line-height:1.8;
+}
+
+/* COMPARISON TABLE */
+.comparison-section{
+  padding:60px 24px;
+  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+}
+
+.comparison-container{
+  max-width:900px;
+  margin:0 auto;
+}
+
+.comparison-table{
+  background:#fff;
+  border:2px solid var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.08);
+}
+
+.comparison-header{
+  background:linear-gradient(135deg, var(--sage) 0%, var(--earth) 100%);
+  color:#fff;
+  padding:32px;
+  text-align:center;
+}
+
+.comparison-header h3{
+  font-size:28px;
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+.comparison-header p{
+  font-size:16px;
+  color:rgba(255,255,255,0.9);
+}
+
+.comparison-row{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  border-bottom:1px solid var(--border);
+  transition:background 0.3s;
+}
+
+.comparison-row:hover{
+  background:rgba(139,157,131,0.03);
+}
+
+.comparison-row:last-child{
+  border-bottom:none;
+}
+
+.comparison-cell{
+  padding:24px;
+  font-size:16px;
+  color:var(--gray);
+  display:flex;
+  align-items:center;
+}
+
+.comparison-cell.feature{
+  font-weight:500;
+  color:var(--earth);
+}
+
+.comparison-cell.yes{
+  justify-content:center;
+  color:var(--sage);
+  font-weight:700;
+  font-size:24px;
+}
+
+.comparison-cell.no{
+  justify-content:center;
+  color:#ddd;
+  font-size:24px;
+}
+
+/* PRICING CARDS */
+.pricing-section{
+  padding:100px 24px;
+  background:var(--white);
+}
+
+.pricing-header{
+  text-align:center;
+  margin-bottom:80px;
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.pricing-header h2{
+  font-size:clamp(36px,7vw,64px);
+  font-weight:600;
+  letter-spacing:-2px;
+  color:var(--earth);
+  margin-bottom:20px;
+  line-height:1.1;
+}
+
+.pricing-header p{
+  font-size:19px;
+  color:var(--gray);
+  line-height:1.7;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:32px;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.price-card{
+  background:#fff;
+  border:3px solid var(--border);
+  border-radius:24px;
+  padding:48px 40px;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+
+.price-card.featured{
+  border-color:var(--sage);
+  border-width:4px;
+  background:linear-gradient(135deg,rgba(139,157,131,0.03) 0%,#fff 100%);
+  transform:scale(1.05);
+}
+
+.price-card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.15);
+}
+
+.price-card.featured:hover{
+  transform:scale(1.05) translateY(-12px);
+}
+
+.badge{
+  position:absolute;
+  top:-16px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg, var(--sage) 0%, var(--earth) 100%);
+  color:#fff;
+  padding:8px 24px;
+  border-radius:100px;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  box-shadow:0 6px 20px rgba(139,157,131,0.4);
+}
+
+.price-name{
+  font-size:28px;
+  font-weight:700;
+  color:var(--earth);
+  margin-bottom:24px;
+  text-align:center;
+}
+
+.price-old{
+  font-size:18px;
+  color:var(--gray);
+  text-decoration:line-through;
+  margin-bottom:12px;
+  text-align:center;
+}
+
+.price-new{
+  font-size:56px;
+  font-weight:800;
+  background:linear-gradient(135deg, var(--sage) 0%, var(--accent) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:8px;
+  line-height:1;
+  text-align:center;
+}
+
+.price-period{
+  font-size:16px;
+  color:var(--gray);
+  margin-bottom:12px;
+  text-align:center;
+}
+
+.price-save{
+  font-size:15px;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:32px;
+  text-align:center;
+}
+
+.price-features{
+  list-style:none;
+  margin-bottom:32px;
+  flex:1;
+}
+
+.price-features li{
+  font-size:16px;
+  color:var(--gray);
+  padding:14px 0;
+  padding-left:32px;
+  position:relative;
+  border-bottom:1px solid #f5f5f5;
+  line-height:1.6;
+}
+
+.price-features li::before{
+  content:'✓';
+  position:absolute;
+  left:0;
+  color:var(--sage);
+  font-weight:700;
+  font-size:18px;
+}
+
+.price-cta{
+  width:100%;
+  padding:18px 40px;
+  background:linear-gradient(135deg, var(--sage) 0%, var(--earth) 100%);
+  color:#fff;
+  border:none;
+  border-radius:100px;
+  font-size:16px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  cursor:pointer;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration:none;
+  display:block;
+  text-align:center;
+  box-shadow:0 8px 24px rgba(139,157,131,0.3);
+}
+
+.price-cta:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 32px rgba(107,93,79,0.4);
+}
+
+/* GUARANTEE SECTION */
+.guarantee-section{
+  padding:80px 24px;
+  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+}
+
+.guarantee-box{
+  max-width:800px;
+  margin:0 auto;
+  text-align:center;
+  padding:48px 40px;
+  background:#fff;
+  border:3px solid var(--sage);
+  border-radius:24px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.1);
+}
+
+.guarantee-icon{
+  font-size:64px;
+  margin-bottom:24px;
+}
+
+.guarantee-box h3{
+  font-size:32px;
+  font-weight:600;
+  color:var(--earth);
+  margin-bottom:20px;
+  line-height:1.2;
+}
+
+.guarantee-box p{
+  font-size:18px;
+  color:var(--gray);
+  line-height:1.8;
+  margin-bottom:16px;
+}
+
+.guarantee-box strong{
+  color:var(--earth);
+  font-weight:600;
+}
+
+/* FAQ */
+.faq-section{
+  padding:100px 24px;
+  background:var(--white);
+}
+
+.faq-header{
+  text-align:center;
+  margin-bottom:60px;
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.faq-header h2{
+  font-size:clamp(36px,7vw,56px);
+  font-weight:600;
+  letter-spacing:-1.5px;
+  color:var(--earth);
+  margin-bottom:20px;
+  line-height:1.2;
+}
+
+.faq-container{
+  max-width:900px;
+  margin:0 auto;
+}
+
+.faq-item{
+  background:#fff;
+  border:2px solid var(--border);
+  border-radius:16px;
+  margin-bottom:16px;
+  overflow:hidden;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item:hover{
+  border-color:var(--sage);
+}
+
+.faq-question{
+  font-size:18px;
+  font-weight:600;
+  color:var(--earth);
+  padding:24px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  user-select:none;
+  background:#fff;
+  transition:background 0.3s;
+}
+
+.faq-question:hover{
+  background:rgba(139,157,131,0.03);
+}
+
+.faq-icon{
+  font-size:24px;
+  color:var(--sage);
+  transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink:0;
+  margin-left:20px;
+}
+
+.faq-item.active .faq-icon{
+  transform:rotate(45deg);
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding:0 28px;
+}
+
+.faq-item.active .faq-answer{
+  max-height:600px;
+  padding:0 28px 28px 28px;
+}
+
+.faq-answer p{
+  font-size:16px;
+  color:var(--gray);
+  line-height:1.8;
+  margin:0 0 16px 0;
+}
+
+.faq-answer p:last-child{
+  margin-bottom:0;
+}
+
+/* CTA SECTION */
+.cta-section{
+  padding:100px 24px;
+  background:linear-gradient(135deg, var(--earth) 0%, var(--sage) 100%);
+  color:#fff;
+  text-align:center;
+}
+
+.cta-content{
+  max-width:800px;
+  margin:auto;
+}
+
+.cta-content h2{
+  font-size:clamp(36px,7vw,56px);
+  font-weight:600;
+  letter-spacing:-1.5px;
+  margin-bottom:24px;
+  line-height:1.2;
+}
+
+.cta-content p{
+  font-size:19px;
+  color:rgba(255,255,255,0.95);
+  line-height:1.8;
+  margin-bottom:40px;
+}
+
+.cta-button-large{
+  display:inline-block;
+  padding:20px 48px;
+  background:#fff;
+  color:var(--sage);
+  border-radius:100px;
+  font-size:17px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  text-decoration:none;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:0 12px 32px rgba(0,0,0,0.3);
+  margin-bottom:20px;
+}
+
+.cta-button-large:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.4);
+}
+
+.cta-phone{
+  font-size:16px;
+  color:rgba(255,255,255,0.9);
+  margin-top:20px;
+}
+
+/* FOOTER */
+footer{
+  padding:40px 24px;
+  background:var(--black);
+  color:#fff;
+  text-align:center;
+  font-size:13px;
+}
+
+footer a{
+  color:#fff;
+  text-decoration:none;
+  opacity:0.8;
+  transition:opacity 0.3s;
+}
+
+footer a:hover{
+  opacity:1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  header{padding:16px 24px;}
+  nav a{display:none;}
+  nav a.cta-btn{display:block;padding:10px 20px;font-size:12px;}
+  
+  .hero{padding:120px 24px 80px 24px;}
+  .intro-section{padding:80px 24px;}
+  .comparison-section{padding:60px 24px;}
+  .pricing-section{padding:80px 24px;}
+  .guarantee-section{padding:60px 24px;}
+  .faq-section{padding:80px 24px;}
+  .cta-section{padding:80px 24px;}
+  
+  .pricing-grid{
+    grid-template-columns:1fr;
+  }
+  
+  .price-card.featured{
+    transform:scale(1);
+  }
+  
+  .price-card.featured:hover{
+    transform:translateY(-12px);
+  }
+  
+  .comparison-row{
+    grid-template-columns:1fr;
+  }
+  
+  .comparison-cell{
+    justify-content:flex-start !important;
+  }
+  
+  .comparison-cell.yes::before,
+  .comparison-cell.no::before{
+    content:attr(data-label);
+    font-size:14px;
+    margin-right:12px;
+    font-weight:600;
+    color:var(--earth);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NOISE -->
+<div class="noise"></div>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">Thanu Yoga</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="yoga-finder.html">Yoga Finder</a>
+    <a href="index.html#about">Instructor</a>
+    <a href="tel:7676332452" class="cta-btn">Try 3 Free Classes</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="floating-shape"></div>
+  <div class="floating-shape"></div>
+
+  <div class="hero-content">
+    <div class="hero-label">💰 Simple, Honest Pricing</div>
+    <h1>No Hidden Fees. No Surprises.</h1>
+    <p class="hero-subtitle">Just therapeutic yoga that actually works—at a price that makes sense for Indian budgets.</p>
+  </div>
+</section>
+
+<!-- INTRO SECTION -->
+<section class="intro-section">
+  <div class="intro-content">
+    <p class="section-label">Let's Talk Money</p>
+    <h2>Why Our Pricing Is Different</h2>
+    
+    <p>Most online yoga instructors charge ₹3000-5000 per month for group classes where you're just another face on Zoom. No personal attention. No real corrections. Just a recording you could've found on YouTube.</p>
+
+    <p><strong>Here's our philosophy:</strong> Therapeutic yoga should be accessible to the people who actually need it—not just those who can afford luxury wellness retreats.</p>
+
+    <p>You're getting:</p>
+    <ul style="list-style:none;padding:0;margin:32px 0;">
+      <li style="padding:12px 0 12px 32px;position:relative;font-size:17px;color:var(--gray);"><span style="position:absolute;left:0;color:var(--sage);font-weight:700;">✓</span> Live classes 3 times daily (21 sessions per week)</li>
+      <li style="padding:12px 0 12px 32px;position:relative;font-size:17px;color:var(--gray);"><span style="position:absolute;left:0;color:var(--sage);font-weight:700;">✓</span> Personalized corrections every single class</li>
+      <li style="padding:12px 0 12px 32px;position:relative;font-size:17px;color:var(--gray);"><span style="position:absolute;left:0;color:var(--sage);font-weight:700;">✓</span> Small groups (10-15 students max)</li>
+      <li style="padding:12px 0 12px 32px;position:relative;font-size:17px;color:var(--gray);"><span style="position:absolute;left:0;color:var(--sage);font-weight:700;">✓</span> Condition-specific therapeutic protocols</li>
+      <li style="padding:12px 0 12px 32px;position:relative;font-size:17px;color:var(--gray);"><span style="position:absolute;left:0;color:var(--sage);font-weight:700;">✓</span> WhatsApp support for questions</li>
+      <li style="padding:12px 0 12px 32px;position:relative;font-size:17px;color:var(--gray);"><span style="position:absolute;left:0;color:var(--sage);font-weight:700;">✓</span> 200Hr YTT certified instructor with 5+ years practice</li>
+    </ul>
+
+    <p><strong>For less than the cost of a single cafe visit per day.</strong></p>
+
+    <div class="highlight-box">
+      <p>"I don't believe in expensive wellness gatekeeping. If you're dealing with PCOD, chronic pain, or anxiety—you deserve help. Not a ₹50,000 invoice." — Thanuja</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="comparison-section">
+  <div class="comparison-container">
+    <div class="comparison-table">
+      <div class="comparison-header">
+        <h3>Us vs. Other Online Yoga Classes</h3>
+        <p>Let's be transparent about what you're actually getting</p>
+      </div>
+      
+      <div class="comparison-row">
+        <div class="comparison-cell feature">Live interactive classes with real-time corrections</div>
+        <div class="comparison-cell yes">✓</div>
+        <div class="comparison-cell no">✗</div>
+      </div>
+      
+      <div class="comparison-row">
+        <div class="comparison-cell feature">Small groups (10-15 students for personal attention)</div>
+        <div class="comparison-cell yes">✓</div>
+        <div class="comparison-cell no">✗</div>
+      </div>
+      
+      <div class="comparison-row">
+        <div class="comparison-cell feature">Classes in your mother tongue (Telugu/Kannada/English)</div>
+        <div class="comparison-cell yes">✓</div>
+        <div class="comparison-cell no">✗</div>
+      </div>
+      
+      <div class="comparison-row">
+        <div class="comparison-cell feature">Condition-specific therapeutic protocols (not generic)</div>
+        <div class="comparison-cell yes">✓</div>
+        <div class="comparison-cell no">✗</div>
+      </div>
+      
+      <div class="comparison-row">
+        <div class="comparison-cell feature">3 sessions daily (flexibility to join any time)</div>
+        <div class="comparison-cell yes">✓</div>
+        <div class="comparison-cell no">✗</div>
+      </div>
+      
+      <div class="comparison-row">
+        <div class="comparison-cell feature">Try 3 classes completely free before paying</div>
+        <div class="comparison-cell yes">✓</div>
+        <div class="comparison-cell no">✗</div>
+      </div>
+      
+      <div class="comparison-row">
+        <div class="comparison-cell feature">30-day money-back guarantee</div>
+        <div class="comparison-cell yes">✓</div>
+        <div class="comparison-cell no">✗</div>
+      </div>
+      
+      <div class="comparison-row">
+        <div class="comparison-cell feature"><strong>Monthly Price</strong></div>
+        <div class="comparison-cell yes" style="color:var(--sage);font-size:20px;font-weight:700;">₹1200</div>
+        <div class="comparison-cell no" style="color:var(--gray);font-size:18px;font-weight:600;">₹3000-5000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING CARDS -->
+<section class="pricing-section">
+  <div class="pricing-header">
+    <p class="section-label">Choose Your Investment</p>
+    <h2>Pick the Plan That Fits Your Goals</h2>
+    <p>All plans include the same benefits. Longer commitments = bigger savings. Simple.</p>
+  </div>
+
+  <div class="pricing-grid">
+    
+    <!-- MONTHLY -->
+    <div class="price-card">
+      <h3 class="price-name">Monthly Plan</h3>
+      <div class="price-old">₹1500/month</div>
+      <div class="price-new">₹1200</div>
+      <div class="price-period">/month</div>
+      <p class="price-save">Perfect for trying it out</p>
+      
+      <ul class="price-features">
+        <li>3 live group sessions daily (21/week)</li>
+        <li>Condition-based therapeutic protocols</li>
+        <li>Classes in English/Telugu/Kannada</li>
+        <li>WhatsApp support for questions</li>
+        <li>Small groups (10-15 students max)</li>
+        <li>Try 3 classes free before joining</li>
+        <li>Cancel anytime, no questions asked</li>
+      </ul>
+      
+      <a href="tel:7676332452" class="price-cta">Start Free Trial</a>
+    </div>
+
+    <!-- QUARTERLY - FEATURED -->
+    <div class="price-card featured">
+      <div class="badge">Most Popular</div>
+      <h3 class="price-name">Quarterly Plan</h3>
+      <div class="price-old">₹4500 total (₹1500/month)</div>
+      <div class="price-new">₹3200</div>
+      <div class="price-period">for 3 months (₹1067/month)</div>
+      <p class="price-save">Save ₹1300 • Best value</p>
+      
+      <ul class="price-features">
+        <li>Everything in Monthly Plan</li>
+        <li>Personalized progress tracking</li>
+        <li>Monthly goal-setting calls</li>
+        <li>Priority class booking</li>
+        <li>Dedicated WhatsApp support</li>
+        <li>Try 3 classes free before joining</li>
+        <li>30-day money-back guarantee</li>
+      </ul>
+      
+      <a href="tel:7676332452" class="price-cta">Claim This Offer</a>
+    </div>
+
+    <!-- 6 MONTHS -->
+    <div class="price-card">
+      <h3 class="price-name">6-Month Transformation</h3>
+      <div class="price-old">₹9000 total (₹1500/month)</div>
+      <div class="price-new">₹6500</div>
+      <div class="price-period">for 6 months (₹1083/month)</div>
+      <p class="price-save">Save ₹2500 • Serious healing</p>
+      
+      <ul class="price-features">
+        <li>Everything in Quarterly Plan</li>
+        <li>Customized diet guidance</li>
+        <li>Bi-weekly one-on-one check-ins</li>
+        <li>Lifetime access to class recordings</li>
+        <li>Priority scheduling for special sessions</li>
+        <li>Try 3 classes free before joining</li>
+        <li>30-day money-back guarantee</li>
+      </ul>
+      
+      <a href="tel:7676332452" class="price-cta">Lock In This Price</a>
+    </div>
+
+  </div>
+
+  <!-- PRIVATE COACHING -->
+  <div style="max-width:600px;margin:80px auto 0 auto;text-align:center;">
+    <div class="price-card" style="border-color:var(--accent);">
+      <h3 class="price-name">1:1 Private Coaching</h3>
+      <div class="price-old">₹3500/month</div>
+      <div class="price-new">₹2500</div>
+      <div class="price-period">/month (4 private sessions)</div>
+      <p style="font-size:15px;color:var(--gray);margin-bottom:24px;">For serious health conditions requiring intensive intervention</p>
+      
+      <ul class="price-features">
+        <li>Private 1:1 sessions (4 per month, 45 min each)</li>
+        <li>Fully personalized routine for YOUR body</li>
+        <li>Daily WhatsApp support and check-ins</li>
+        <li>Custom meal planning & lifestyle guidance</li>
+        <li>Video analysis of your form</li>
+        <li>Try 1 private session free before committing</li>
+      </ul>
+      
+      <a href="tel:7676332452" class="price-cta">Book Private Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE SECTION -->
+<section class="guarantee-section">
+  <div class="guarantee-box">
+    <div class="guarantee-icon">🛡️</div>
+    <h3>Our 30-Day Money-Back Guarantee</h3>
+    <p><strong>Try it risk-free.</strong> If you don't feel a difference in your body within 30 days of joining, we'll refund every single rupee. No paperwork. No questions. No hoops to jump through.</p>
+    <p>Why? Because we've seen this work for 100+ students. We know therapeutic yoga changes lives when done correctly. If it doesn't work for you, you shouldn't pay for it.</p>
+    <p style="margin:0;"><strong>That's our promise.</strong></p>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+  <div class="faq-header">
+    <h2>Pricing Questions?</h2>
+  </div>
+
+  <div class="faq-container">
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        Can I really try 3 classes for free?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Yes. Completely free. No credit card required. No "free trial" that auto-charges you later. Just call us, tell us your primary health concern, and we'll add you to 3 upcoming classes. After that, if you love it, choose a plan. If not, no worries.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        What payment methods do you accept?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>UPI, Google Pay, PhonePe, Paytm, bank transfer, or credit/debit card. Whatever's easiest for you. We'll send you payment details after your free trial when you're ready to join.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Do I need to pay upfront for 3 or 6 months?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Yes, but that's why we offer the free trial first. Try the classes. See if you like Thanuja's teaching style. Make sure the timings work for you. THEN commit to a longer plan if it makes sense. We want you confident before you pay.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        What if I need to pause my membership?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Life happens. Traveling? Surgery? Family emergency? Just let us know and we'll pause your membership. You won't lose your remaining sessions—they'll be there when you're ready to return. We're flexible because we're human too.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        How does the money-back guarantee work?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>If you've attended classes regularly for 30 days and don't feel ANY improvement in your condition—just tell us. We'll process a full refund within 48 hours. No forms to fill. No "proof" required. Your word is enough.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Is this a subscription that auto-renews?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>No. We don't do sneaky auto-renewals. When your plan ends, it just... ends. If you want to continue, you choose to renew. We'll remind you a week before it expires, but we won't charge you unless you explicitly say "yes, I want to continue."</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Can I upgrade from monthly to quarterly later?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Absolutely! We'll adjust the pricing so you get credit for what you've already paid. Many students start with monthly just to test the waters, then upgrade once they realize how much it helps.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Why is private coaching more expensive?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Because it's fully customized. Thanuja spends time analyzing YOUR specific condition, creating routines just for you, tracking your progress daily, and adjusting poses based on your feedback. It's intensive, one-on-one therapeutic intervention—not group classes. The results are faster and more targeted.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Ready to Start Healing?</h2>
+    <p>Remember: You're not just paying for yoga classes. You're investing in better sleep. Less pain. Balanced hormones. A body that actually feels good again. Try 3 classes free. See the difference yourself.</p>
+    <a href="tel:7676332452" class="cta-button-large">Try 3 Classes FREE</a>
+    <p class="cta-phone">Call/WhatsApp: 7676 332 452</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Thanu Yoga Studio. Therapeutic Yoga for Real Health Transformation.</p>
+  <p><a href="index.html">Home</a> • <a href="schedule.html">Schedule</a> • <a href="yoga-finder.html">Yoga Finder</a></p>
+</footer>
+
+<script>
+// SCROLL PROGRESS
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+});
+
+// FAQ ACCORDION
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  
+  question.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
+    
+    faqItems.forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('active');
+      }
+    });
+    
+    if (isActive) {
+      item.classList.remove('active');
+    } else {
+      item.classList.add('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
