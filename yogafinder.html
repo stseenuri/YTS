@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Yoga Finder - Find Perfect Asanas for Your Health | Thanu Yoga Studio</title>
+<meta name="description" content="Discover the perfect yoga poses for your specific health concerns. Interactive tool to find therapeutic asanas for PCOD, back pain, stress, sleep, digestion & more.">
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#1a1a1a;
+  --white:#fafafa;
+  --sage:#8b9d83;
+  --sand:#e8dcc4;
+  --earth:#6b5d4f;
+  --accent:#d4a574;
+  --gray:#999;
+  --border:#e8e8e8;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--white);
+  color:var(--black);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+::selection{
+  background:var(--sage);
+  color:#fff;
+}
+
+/* SCROLL PROGRESS */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0%;
+  height:3px;
+  background:linear-gradient(90deg, var(--sage) 0%, var(--accent) 100%);
+  z-index:10001;
+  transition:width 0.1s linear;
+  box-shadow:0 0 15px rgba(139,157,131,0.4);
+}
+
+/* NOISE */
+.noise{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9998;
+  opacity:0.02;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:20px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(20px) saturate(180%);
+  box-shadow:0 4px 24px rgba(0,0,0,0.06);
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+
+.logo{
+  font-size:20px;
+  font-weight:700;
+  color:var(--earth);
+  letter-spacing:-0.5px;
+  text-decoration:none;
+}
+
+nav{
+  display:flex;
+  gap:32px;
+  align-items:center;
+}
+
+nav a{
+  color:var(--earth);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  transition:color 0.3s;
+}
+
+nav a:hover{
+  color:var(--sage);
+}
+
+.cta-btn{
+  padding:12px 24px;
+  background:var(--sage);
+  color:#fff;
+  border-radius:100px;
+  font-size:13px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration:none;
+  box-shadow:0 4px 12px rgba(139,157,131,0.25);
+}
+
+.cta-btn:hover{
+  background:var(--earth);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(107,93,79,0.3);
+}
+
+/* HERO */
+.hero{
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--sage) 0%,var(--earth) 100%);
+  padding:140px 40px 100px 40px;
+  color:#fff;
+}
+
+.floating-shape{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  animation:float-shape 20s ease-in-out infinite;
+}
+
+.floating-shape:nth-child(1){
+  width:300px;
+  height:300px;
+  top:10%;
+  left:-5%;
+}
+
+.floating-shape:nth-child(2){
+  width:200px;
+  height:200px;
+  bottom:15%;
+  right:5%;
+  animation-delay:5s;
+}
+
+@keyframes float-shape{
+  0%, 100%{transform:translate(0, 0) scale(1);}
+  25%{transform:translate(30px, -30px) scale(1.1);}
+  50%{transform:translate(-20px, 20px) scale(0.95);}
+  75%{transform:translate(25px, 15px) scale(1.05);}
+}
+
+.hero-content{
+  text-align:center;
+  max-width:900px;
+  position:relative;
+  z-index:10;
+}
+
+.hero-label{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:24px;
+}
+
+.hero h1{
+  font-size:clamp(48px,8vw,90px);
+  font-weight:600;
+  line-height:1.1;
+  letter-spacing:-2px;
+  margin-bottom:24px;
+}
+
+.hero-subtitle{
+  font-size:clamp(18px,2.5vw,24px);
+  color:rgba(255,255,255,0.9);
+  margin-bottom:20px;
+  line-height:1.6;
+  font-weight:400;
+}
+
+.hero-desc{
+  font-size:17px;
+  color:rgba(255,255,255,0.8);
+  line-height:1.7;
+  max-width:700px;
+  margin:0 auto 40px auto;
+}
+
+/* INTRO SECTION */
+.intro-section{
+  padding:100px 24px;
+  background:var(--white);
+}
+
+.intro-content{
+  max-width:800px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.section-label{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--sage);
+  margin-bottom:16px;
+}
+
+.intro-content h2{
+  font-size:clamp(32px,6vw,56px);
+  font-weight:600;
+  letter-spacing:-1.5px;
+  color:var(--earth);
+  margin-bottom:24px;
+  line-height:1.2;
+}
+
+.intro-content p{
+  font-size:18px;
+  color:var(--gray);
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.intro-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:24px;
+  margin-top:60px;
+}
+
+.intro-card{
+  padding:32px 24px;
+  background:linear-gradient(135deg,rgba(139,157,131,0.05) 0%,rgba(232,220,196,0.08) 100%);
+  border:2px solid var(--border);
+  border-radius:16px;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.intro-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--sage);
+  box-shadow:0 12px 32px rgba(0,0,0,0.1);
+}
+
+.intro-icon{
+  font-size:48px;
+  margin-bottom:16px;
+}
+
+.intro-card h3{
+  font-size:20px;
+  font-weight:600;
+  color:var(--earth);
+  margin-bottom:12px;
+}
+
+.intro-card p{
+  font-size:15px;
+  color:var(--gray);
+  line-height:1.6;
+  margin:0;
+}
+
+/* CATEGORIES GRID */
+.categories-section{
+  padding:100px 24px;
+  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+}
+
+.categories-header{
+  text-align:center;
+  margin-bottom:80px;
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.categories-header h2{
+  font-size:clamp(36px,7vw,64px);
+  font-weight:600;
+  letter-spacing:-2px;
+  color:var(--earth);
+  margin-bottom:20px;
+  line-height:1.1;
+}
+
+.categories-header p{
+  font-size:19px;
+  color:var(--gray);
+  line-height:1.7;
+}
+
+.categories-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.category-card{
+  background:#fff;
+  border:2px solid var(--border);
+  border-radius:24px;
+  padding:40px 32px;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+
+.category-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:6px;
+  background:linear-gradient(90deg, var(--sage) 0%, var(--accent) 100%);
+  transform:scaleX(0);
+  transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-card:hover::before{
+  transform:scaleX(1);
+}
+
+.category-card:hover{
+  border-color:var(--sage);
+  transform:translateY(-12px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.category-icon{
+  font-size:64px;
+  margin-bottom:24px;
+  display:block;
+}
+
+.category-name{
+  font-size:24px;
+  font-weight:600;
+  color:var(--earth);
+  margin-bottom:12px;
+  line-height:1.2;
+}
+
+.category-desc{
+  font-size:16px;
+  color:var(--gray);
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.category-count{
+  font-size:13px;
+  color:var(--sage);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+
+/* RESULTS SECTION */
+.results-section{
+  padding:100px 24px;
+  background:var(--earth);
+  color:#fff;
+  display:none;
+}
+
+.results-section.active{
+  display:block;
+}
+
+.results-header{
+  max-width:1200px;
+  margin:0 auto 60px auto;
+  text-align:center;
+}
+
+.results-header h2{
+  font-size:clamp(36px,7vw,64px);
+  font-weight:600;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+  line-height:1.1;
+}
+
+.results-header p{
+  font-size:19px;
+  color:rgba(255,255,255,0.85);
+  line-height:1.7;
+}
+
+.results-actions{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-bottom:60px;
+  flex-wrap:wrap;
+}
+
+.clear-btn{
+  padding:14px 32px;
+  background:rgba(255,255,255,0.12);
+  border:2px solid rgba(255,255,255,0.3);
+  color:#fff;
+  border-radius:100px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clear-btn:hover{
+  background:rgba(255,255,255,0.2);
+  transform:translateY(-2px);
+}
+
+.back-btn{
+  padding:14px 32px;
+  background:var(--accent);
+  border:none;
+  color:#fff;
+  border-radius:100px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 8px 20px rgba(212,165,116,0.3);
+}
+
+.back-btn:hover{
+  background:var(--sage);
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(139,157,131,0.4);
+}
+
+/* ASANA CARDS - PINTEREST STYLE */
+.asana-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:28px;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.asana-card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  border:2px solid rgba(255,255,255,0.12);
+  border-radius:24px;
+  padding:40px;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position:relative;
+  overflow:hidden;
+}
+
+.asana-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:6px;
+  height:100%;
+  background:linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.asana-card:hover{
+  background:rgba(255,255,255,0.12);
+  border-color:var(--accent);
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+
+.asana-header{
+  margin-bottom:24px;
+}
+
+.asana-name{
+  font-size:26px;
+  font-weight:700;
+  color:var(--accent);
+  margin-bottom:8px;
+  line-height:1.2;
+}
+
+.asana-sanskrit{
+  font-size:16px;
+  font-style:italic;
+  color:rgba(255,255,255,0.6);
+  margin-bottom:4px;
+}
+
+.asana-category{
+  display:inline-block;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--accent);
+  background:rgba(212,165,116,0.15);
+  padding:6px 12px;
+  border-radius:100px;
+  margin-top:8px;
+}
+
+.asana-benefits{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,0.15);
+}
+
+.asana-benefits h4{
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:12px;
+}
+
+.asana-benefits ul{
+  list-style:none;
+  padding:0;
+}
+
+.asana-benefits li{
+  font-size:15px;
+  color:rgba(255,255,255,0.9);
+  line-height:1.7;
+  padding-left:24px;
+  position:relative;
+  margin-bottom:8px;
+}
+
+.asana-benefits li::before{
+  content:'✓';
+  position:absolute;
+  left:0;
+  color:var(--accent);
+  font-weight:700;
+}
+
+.asana-difficulty{
+  margin-top:20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.difficulty-label{
+  font-size:13px;
+  color:rgba(255,255,255,0.6);
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.difficulty-level{
+  flex:1;
+  height:6px;
+  background:rgba(255,255,255,0.15);
+  border-radius:100px;
+  overflow:hidden;
+}
+
+.difficulty-fill{
+  height:100%;
+  background:linear-gradient(90deg, var(--sage) 0%, var(--accent) 100%);
+  border-radius:100px;
+  transition:width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CTA SECTION */
+.cta-section{
+  padding:100px 24px;
+  background:linear-gradient(135deg, var(--sage) 0%, var(--earth) 100%);
+  color:#fff;
+  text-align:center;
+}
+
+.cta-content{
+  max-width:800px;
+  margin:auto;
+}
+
+.cta-content h2{
+  font-size:clamp(36px,7vw,56px);
+  font-weight:600;
+  letter-spacing:-1.5px;
+  margin-bottom:24px;
+  line-height:1.2;
+}
+
+.cta-content p{
+  font-size:19px;
+  color:rgba(255,255,255,0.95);
+  line-height:1.7;
+  margin-bottom:40px;
+}
+
+.cta-button-large{
+  display:inline-block;
+  padding:20px 48px;
+  background:#fff;
+  color:var(--sage);
+  border-radius:100px;
+  font-size:17px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  text-decoration:none;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:0 12px 32px rgba(0,0,0,0.3);
+}
+
+.cta-button-large:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.4);
+}
+
+/* FOOTER */
+footer{
+  padding:40px 24px;
+  background:var(--black);
+  color:#fff;
+  text-align:center;
+  font-size:13px;
+}
+
+footer a{
+  color:#fff;
+  text-decoration:none;
+  opacity:0.8;
+  transition:opacity 0.3s;
+}
+
+footer a:hover{
+  opacity:1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  header{padding:16px 24px;}
+  nav a{display:none;}
+  nav a.cta-btn{display:block;padding:10px 20px;font-size:12px;}
+  
+  .hero{padding:120px 24px 80px 24px;}
+  .intro-section{padding:80px 24px;}
+  .categories-section{padding:80px 24px;}
+  .results-section{padding:80px 24px;}
+  .cta-section{padding:80px 24px;}
+  
+  .categories-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  
+  .asana-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+}
+
+@media(min-width:768px){
+  .asana-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(min-width:1200px){
+  .asana-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NOISE -->
+<div class="noise"></div>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">Thanu Yoga</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#schedule">Schedule</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="index.html#about">Instructor</a>
+    <a href="tel:7676332452" class="cta-btn">Try 3 Free Classes</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="floating-shape"></div>
+  <div class="floating-shape"></div>
+
+  <div class="hero-content">
+    <div class="hero-label">🧘 Interactive Yoga Finder Tool</div>
+    <h1>Find Your Perfect Asana</h1>
+    <p class="hero-subtitle">Discover therapeutic yoga poses designed specifically for your health concerns</p>
+    <p class="hero-desc">Not all yoga is created equal. Each pose targets specific body systems, organs, and conditions. Use our interactive finder to discover which asanas will actually help YOUR unique situation.</p>
+  </div>
+</section>
+
+<!-- INTRO SECTION -->
+<section class="intro-section">
+  <div class="intro-content">
+    <p class="section-label">How It Works</p>
+    <h2>Choose Your Health Concern, Get Personalized Asanas</h2>
+    <p>Every health condition requires a different therapeutic approach. Whether you're dealing with PCOD, chronic pain, digestive issues, or stress—there are specific asanas scientifically proven to help.</p>
+    <p><strong>Simply click on your primary concern below to see recommended poses, their Sanskrit names, benefits, and difficulty levels.</strong></p>
+  </div>
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="intro-icon">🎯</div>
+      <h3>Condition-Specific</h3>
+      <p>Each asana targets particular body systems and health conditions with precision</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-icon">📚</div>
+      <h3>Detailed Guidance</h3>
+      <p>Get Sanskrit names, benefits, and difficulty levels for every recommended pose</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-icon">🔬</div>
+      <h3>Evidence-Based</h3>
+      <p>Recommendations based on 5+ years of therapeutic yoga practice with 100+ students</p>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES GRID -->
+<section class="categories-section" id="categories">
+  <div class="categories-header">
+    <p class="section-label">Select Your Primary Concern</p>
+    <h2>What Do You Need Help With?</h2>
+    <p>Choose the health area you'd most like to improve. Each category shows yoga poses specifically designed to address that concern.</p>
+  </div>
+
+  <div class="categories-grid">
+    <div class="category-card" onclick="showResults('stress')">
+      <span class="category-icon">🧠</span>
+      <h3 class="category-name">Stress & Anxiety</h3>
+      <p class="category-desc">Mental tension, overthinking, worry, anxiety attacks, constant stress</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('neck')">
+      <span class="category-icon">🦴</span>
+      <h3 class="category-name">Neck & Shoulders</h3>
+      <p class="category-desc">Stiffness, tension, pain from desk work, cervical spondylosis</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('back')">
+      <span class="category-icon">💪</span>
+      <h3 class="category-name">Back Pain</h3>
+      <p class="category-desc">Lower back pain, upper back discomfort, sciatica, poor posture</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('legs')">
+      <span class="category-icon">🦵</span>
+      <h3 class="category-name">Legs & Knees</h3>
+      <p class="category-desc">Pain, weakness, stiffness, arthritis, poor circulation</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('digestion')">
+      <span class="category-icon">🫃</span>
+      <h3 class="category-name">Digestion Issues</h3>
+      <p class="category-desc">Bloating, constipation, IBS, indigestion, gas, acidity</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('sleep')">
+      <span class="category-icon">😴</span>
+      <h3 class="category-name">Sleep Problems</h3>
+      <p class="category-desc">Insomnia, restlessness, difficulty falling asleep, poor sleep quality</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('flexibility')">
+      <span class="category-icon">🤸</span>
+      <h3 class="category-name">Flexibility</h3>
+      <p class="category-desc">Improve range of motion, reduce stiffness, increase mobility</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('energy')">
+      <span class="category-icon">⚡</span>
+      <h3 class="category-name">Low Energy</h3>
+      <p class="category-desc">Fatigue, lethargy, tiredness, lack of motivation, weakness</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('pcod')">
+      <span class="category-icon">🌸</span>
+      <h3 class="category-name">PCOD/PCOS</h3>
+      <p class="category-desc">Hormonal imbalance, irregular periods, weight gain, fertility issues</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('breathing')">
+      <span class="category-icon">💨</span>
+      <h3 class="category-name">Breathing Issues</h3>
+      <p class="category-desc">Shallow breathing, asthma, respiratory problems, lung capacity</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('weight')">
+      <span class="category-icon">⚖️</span>
+      <h3 class="category-name">Weight Management</h3>
+      <p class="category-desc">Metabolism boost, fat burning, toning, healthy weight loss</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+
+    <div class="category-card" onclick="showResults('immunity')">
+      <span class="category-icon">🛡️</span>
+      <h3 class="category-name">Immunity Boost</h3>
+      <p class="category-desc">Strengthen immune system, lymphatic drainage, disease prevention</p>
+      <span class="category-count">4 Recommended Asanas</span>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS SECTION -->
+<section class="results-section" id="resultsSection">
+  <div class="results-header">
+    <h2 id="resultsTitle">Recommended Asanas for You</h2>
+    <p id="resultsDesc">These therapeutic poses are specifically designed to address your concern</p>
+  </div>
+
+  <div class="results-actions">
+    <button class="clear-btn" onclick="clearResults()">← Back to Categories</button>
+    <a href="tel:7676332452" class="back-btn">Book Free Trial Class</a>
+  </div>
+
+  <div class="asana-grid" id="asanaGrid"></div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Ready to Start Your Healing Journey?</h2>
+    <p>These asanas work best with proper guidance and personalized correction. Join our live therapeutic yoga classes and experience the difference expert instruction makes.</p>
+    <a href="tel:7676332452" class="cta-button-large">Try 3 Classes FREE</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Thanu Yoga Studio. Therapeutic Yoga for Real Health Transformation.</p>
+  <p><a href="index.html">Back to Home</a></p>
+</footer>
+
+<script>
+// YOGA DATABASE - EXPANDED
+const yogaDatabase = {
+  stress: [
+    {
+      name: "Child's Pose",
+      sanskrit: "Balasana",
+      benefits: ["Calms the mind and relieves stress", "Gently stretches the lower back", "Promotes deep relaxation", "Reduces anxiety and tension"],
+      difficulty: 30,
+      category: "Stress & Anxiety"
+    },
+    {
+      name: "Cat-Cow Pose",
+      sanskrit: "Marjaryasana-Bitilasana",
+      benefits: ["Relieves stress and mental tension", "Improves breathing patterns", "Massages spine and organs", "Creates mind-body connection"],
+      difficulty: 20,
+      category: "Stress & Anxiety"
+    },
+    {
+      name: "Corpse Pose",
+      sanskrit: "Shavasana",
+      benefits: ["Deep relaxation for mind and body", "Reduces anxiety significantly", "Lowers blood pressure", "Promotes better sleep"],
+      difficulty: 10,
+      category: "Stress & Anxiety"
+    },
+    {
+      name: "Bridge Pose",
+      sanskrit: "Setu Bandhasana",
+      benefits: ["Calms the brain and nervous system", "Reduces stress and anxiety", "Opens chest for better breathing", "Energizes while relaxing"],
+      difficulty: 40,
+      category: "Stress & Anxiety"
+    }
+  ],
+  neck: [
+    {
+      name: "Neck Rolls",
+      sanskrit: "Greeva Sanchalana",
+      benefits: ["Releases neck tension immediately", "Improves flexibility", "Reduces stiffness from desk work", "Prevents cervical problems"],
+      difficulty: 15,
+      category: "Neck & Shoulders"
+    },
+    {
+      name: "Thread the Needle",
+      sanskrit: "Parsva Balasana",
+      benefits: ["Deep shoulder and neck stretch", "Relieves upper back tension", "Improves shoulder mobility", "Reduces tech neck pain"],
+      difficulty: 35,
+      category: "Neck & Shoulders"
+    },
+    {
+      name: "Cat-Cow Pose",
+      sanskrit: "Marjaryasana-Bitilasana",
+      benefits: ["Stretches neck and spine", "Improves neck flexibility", "Relieves tension headaches", "Strengthens neck muscles"],
+      difficulty: 20,
+      category: "Neck & Shoulders"
+    },
+    {
+      name: "Eagle Pose",
+      sanskrit: "Garudasana",
+      benefits: ["Stretches shoulders deeply", "Improves upper back posture", "Releases shoulder blade tension", "Enhances focus and balance"],
+      difficulty: 55,
+      category: "Neck & Shoulders"
+    }
+  ],
+  back: [
+    {
+      name: "Downward Dog",
+      sanskrit: "Adho Mukha Svanasana",
+      benefits: ["Strengthens entire back", "Relieves sciatica pain", "Stretches hamstrings and spine", "Improves posture"],
+      difficulty: 45,
+      category: "Back Pain"
+    },
+    {
+      name: "Cat-Cow Pose",
+      sanskrit: "Marjaryasana-Bitilasana",
+      benefits: ["Relieves back pain naturally", "Improves spinal flexibility", "Massages back muscles", "Reduces lower back stiffness"],
+      difficulty: 20,
+      category: "Back Pain"
+    },
+    {
+      name: "Cobra Pose",
+      sanskrit: "Bhujangasana",
+      benefits: ["Strengthens spine muscles", "Stretches abdomen", "Relieves sciatica symptoms", "Opens chest and shoulders"],
+      difficulty: 40,
+      category: "Back Pain"
+    },
+    {
+      name: "Child's Pose",
+      sanskrit: "Balasana",
+      benefits: ["Gently stretches lower back", "Relieves tension in spine", "Soothes back pain", "Promotes spinal relaxation"],
+      difficulty: 15,
+      category: "Back Pain"
+    }
+  ],
+  legs: [
+    {
+      name: "Warrior II",
+      sanskrit: "Virabhadrasana II",
+      benefits: ["Strengthens legs and ankles", "Improves stamina and balance", "Tones thigh muscles", "Increases leg endurance"],
+      difficulty: 50,
+      category: "Legs & Knees"
+    },
+    {
+      name: "Triangle Pose",
+      sanskrit: "Trikonasana",
+      benefits: ["Strengthens legs deeply", "Stretches hamstrings", "Improves balance", "Tones leg muscles"],
+      difficulty: 45,
+      category: "Legs & Knees"
+    },
+    {
+      name: "Chair Pose",
+      sanskrit: "Utkatasana",
+      benefits: ["Strengthens thighs and ankles", "Tones leg muscles", "Builds endurance", "Improves knee stability"],
+      difficulty: 55,
+      category: "Legs & Knees"
+    },
+    {
+      name: "Garland Pose",
+      sanskrit: "Malasana",
+      benefits: ["Stretches ankles and groins", "Tones belly", "Improves hip flexibility", "Strengthens legs naturally"],
+      difficulty: 40,
+      category: "Legs & Knees"
+    }
+  ],
+  digestion: [
+    {
+      name: "Wind-Relieving Pose",
+      sanskrit: "Pawanmuktasana",
+      benefits: ["Aids digestion immediately", "Relieves gas and bloating", "Massages intestines", "Reduces constipation"],
+      difficulty: 25,
+      category: "Digestion Issues"
+    },
+    {
+      name: "Seated Twist",
+      sanskrit: "Ardha Matsyendrasana",
+      benefits: ["Massages digestive organs", "Improves metabolism", "Detoxifies system", "Stimulates liver and kidneys"],
+      difficulty: 40,
+      category: "Digestion Issues"
+    },
+    {
+      name: "Cat-Cow Pose",
+      sanskrit: "Marjaryasana-Bitilasana",
+      benefits: ["Massages internal organs", "Improves digestion", "Stimulates abdominal organs", "Promotes gut health"],
+      difficulty: 20,
+      category: "Digestion Issues"
+    },
+    {
+      name: "Bow Pose",
+      sanskrit: "Dhanurasana",
+      benefits: ["Stimulates digestive organs", "Relieves constipation", "Strengthens abdomen", "Improves metabolism"],
+      difficulty: 60,
+      category: "Digestion Issues"
+    }
+  ],
+  sleep: [
+    {
+      name: "Legs Up the Wall",
+      sanskrit: "Viparita Karani",
+      benefits: ["Promotes deep relaxation", "Calms the mind", "Prepares for sleep naturally", "Reduces insomnia"],
+      difficulty: 15,
+      category: "Sleep Problems"
+    },
+    {
+      name: "Corpse Pose",
+      sanskrit: "Shavasana",
+      benefits: ["Deep relaxation technique", "Reduces insomnia", "Calms nervous system", "Prepares body for rest"],
+      difficulty: 10,
+      category: "Sleep Problems"
+    },
+    {
+      name: "Child's Pose",
+      sanskrit: "Balasana",
+      benefits: ["Calming effect on mind", "Relieves tension", "Prepares for rest", "Promotes relaxation"],
+      difficulty: 15,
+      category: "Sleep Problems"
+    },
+    {
+      name: "Reclined Butterfly",
+      sanskrit: "Supta Baddha Konasana",
+      benefits: ["Relieves tension completely", "Promotes deep relaxation", "Calms nervous system", "Improves sleep quality"],
+      difficulty: 20,
+      category: "Sleep Problems"
+    }
+  ],
+  flexibility: [
+    {
+      name: "Forward Fold",
+      sanskrit: "Uttanasana",
+      benefits: ["Stretches hamstrings deeply", "Improves spine flexibility", "Calms mind", "Increases overall flexibility"],
+      difficulty: 40,
+      category: "Flexibility"
+    },
+    {
+      name: "Downward Dog",
+      sanskrit: "Adho Mukha Svanasana",
+      benefits: ["Full body stretch", "Improves flexibility", "Strengthens while stretching", "Opens shoulders and hamstrings"],
+      difficulty: 45,
+      category: "Flexibility"
+    },
+    {
+      name: "Triangle Pose",
+      sanskrit: "Trikonasana",
+      benefits: ["Stretches spine and hips", "Improves groin flexibility", "Opens chest", "Increases side body mobility"],
+      difficulty: 45,
+      category: "Flexibility"
+    },
+    {
+      name: "Pigeon Pose",
+      sanskrit: "Eka Pada Rajakapotasana",
+      benefits: ["Deep hip stretch", "Increases flexibility", "Opens hip flexors", "Releases emotional tension"],
+      difficulty: 65,
+      category: "Flexibility"
+    }
+  ],
+  energy: [
+    {
+      name: "Sun Salutation",
+      sanskrit: "Surya Namaskar",
+      benefits: ["Energizes entire body", "Improves circulation", "Boosts vitality", "Increases stamina"],
+      difficulty: 50,
+      category: "Low Energy"
+    },
+    {
+      name: "Warrior I",
+      sanskrit: "Virabhadrasana I",
+      benefits: ["Builds stamina quickly", "Energizes the body", "Improves focus", "Boosts confidence"],
+      difficulty: 50,
+      category: "Low Energy"
+    },
+    {
+      name: "Camel Pose",
+      sanskrit: "Ustrasana",
+      benefits: ["Opens chest for energy", "Energizes the body", "Improves posture", "Stimulates nervous system"],
+      difficulty: 60,
+      category: "Low Energy"
+    },
+    {
+      name: "Mountain Pose",
+      sanskrit: "Tadasana",
+      benefits: ["Improves posture", "Energizes mind", "Builds body awareness", "Foundation for energy"],
+      difficulty: 20,
+      category: "Low Energy"
+    }
+  ],
+  pcod: [
+    {
+      name: "Butterfly Pose",
+      sanskrit: "Baddha Konasana",
+      benefits: ["Stimulates reproductive organs", "Improves ovarian function", "Regulates hormones", "Reduces PCOD symptoms"],
+      difficulty: 30,
+      category: "PCOD/PCOS"
+    },
+    {
+      name: "Cobra Pose",
+      sanskrit: "Bhujangasana",
+      benefits: ["Stimulates ovaries", "Regulates menstrual cycle", "Reduces abdominal fat", "Improves hormonal balance"],
+      difficulty: 40,
+      category: "PCOD/PCOS"
+    },
+    {
+      name: "Boat Pose",
+      sanskrit: "Navasana",
+      benefits: ["Strengthens core", "Burns abdominal fat", "Improves metabolism", "Tones reproductive organs"],
+      difficulty: 55,
+      category: "PCOD/PCOS"
+    },
+    {
+      name: "Supported Shoulder Stand",
+      sanskrit: "Salamba Sarvangasana",
+      benefits: ["Regulates thyroid", "Balances hormones", "Improves circulation to pelvis", "Reduces PCOD symptoms"],
+      difficulty: 70,
+      category: "PCOD/PCOS"
+    }
+  ],
+  breathing: [
+    {
+      name: "Cobra Pose",
+      sanskrit: "Bhujangasana",
+      benefits: ["Opens chest for breathing", "Expands lung capacity", "Improves respiratory function", "Strengthens diaphragm"],
+      difficulty: 40,
+      category: "Breathing Issues"
+    },
+    {
+      name: "Fish Pose",
+      sanskrit: "Matsyasana",
+      benefits: ["Opens airways", "Improves lung function", "Relieves asthma symptoms", "Expands chest cavity"],
+      difficulty: 45,
+      category: "Breathing Issues"
+    },
+    {
+      name: "Camel Pose",
+      sanskrit: "Ustrasana",
+      benefits: ["Opens chest deeply", "Improves lung capacity", "Strengthens respiratory muscles", "Enhances breathing"],
+      difficulty: 60,
+      category: "Breathing Issues"
+    },
+    {
+      name: "Easy Pose with Pranayama",
+      sanskrit: "Sukhasana",
+      benefits: ["Focuses on breath control", "Improves lung function", "Calms respiratory system", "Enhances oxygen intake"],
+      difficulty: 15,
+      category: "Breathing Issues"
+    }
+  ],
+  weight: [
+    {
+      name: "Sun Salutation",
+      sanskrit: "Surya Namaskar",
+      benefits: ["Burns calories effectively", "Boosts metabolism", "Tones entire body", "Promotes weight loss"],
+      difficulty: 50,
+      category: "Weight Management"
+    },
+    {
+      name: "Warrior III",
+      sanskrit: "Virabhadrasana III",
+      benefits: ["Burns fat", "Builds lean muscle", "Improves balance", "Tones legs and core"],
+      difficulty: 65,
+      category: "Weight Management"
+    },
+    {
+      name: "Boat Pose",
+      sanskrit: "Navasana",
+      benefits: ["Burns abdominal fat", "Strengthens core", "Boosts metabolism", "Tones midsection"],
+      difficulty: 55,
+      category: "Weight Management"
+    },
+    {
+      name: "Plank Pose",
+      sanskrit: "Phalakasana",
+      benefits: ["Burns calories", "Builds core strength", "Tones arms and legs", "Improves metabolism"],
+      difficulty: 50,
+      category: "Weight Management"
+    }
+  ],
+  immunity: [
+    {
+      name: "Supported Shoulder Stand",
+      sanskrit: "Salamba Sarvangasana",
+      benefits: ["Stimulates thymus gland", "Boosts immune system", "Improves lymphatic drainage", "Enhances immunity"],
+      difficulty: 70,
+      category: "Immunity Boost"
+    },
+    {
+      name: "Bow Pose",
+      sanskrit: "Dhanurasana",
+      benefits: ["Stimulates immune organs", "Improves circulation", "Detoxifies body", "Strengthens immunity"],
+      difficulty: 60,
+      category: "Immunity Boost"
+    },
+    {
+      name: "Bridge Pose",
+      sanskrit: "Setu Bandhasana",
+      benefits: ["Stimulates thyroid", "Boosts immunity", "Improves blood circulation", "Energizes immune system"],
+      difficulty: 40,
+      category: "Immunity Boost"
+    },
+    {
+      name: "Legs Up the Wall",
+      sanskrit: "Viparita Karani",
+      benefits: ["Promotes lymphatic drainage", "Boosts circulation", "Reduces inflammation", "Supports immune health"],
+      difficulty: 15,
+      category: "Immunity Boost"
+    }
+  ]
+};
+
+// SCROLL PROGRESS
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+});
+
+// SHOW RESULTS
+function showResults(category) {
+  const resultsSection = document.getElementById('resultsSection');
+  const categoriesSection = document.getElementById('categories');
+  const asanaGrid = document.getElementById('asanaGrid');
+  const resultsTitle = document.getElementById('resultsTitle');
+  const resultsDesc = document.getElementById('resultsDesc');
+  
+  // Get asanas for category
+  const asanas = yogaDatabase[category];
+  
+  // Update title
+  const categoryName = asanas[0].category;
+  resultsTitle.textContent = `Recommended Asanas for ${categoryName}`;
+  resultsDesc.textContent = `These ${asanas.length} therapeutic poses are specifically designed to address ${categoryName.toLowerCase()}`;
+  
+  // Clear and populate grid
+  asanaGrid.innerHTML = '';
+  
+  asanas.forEach((asana, index) => {
+    const card = document.createElement('div');
+    card.className = 'asana-card';
+    card.style.animation = `fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards ${index * 0.1}s`;
+    card.style.opacity = '0';
+    
+    const benefitsList = asana.benefits.map(b => `<li>${b}</li>`).join('');
+    
+    card.innerHTML = `
+      <div class="asana-header">
+        <h3 class="asana-name">${asana.name}</h3>
+        <p class="asana-sanskrit">${asana.sanskrit}</p>
+        <span class="asana-category">${asana.category}</span>
+      </div>
+      <div class="asana-benefits">
+        <h4>Key Benefits</h4>
+        <ul>${benefitsList}</ul>
+      </div>
+      <div class="asana-difficulty">
+        <span class="difficulty-label">Difficulty</span>
+        <div class="difficulty-level">
+          <div class="difficulty-fill" style="width:${asana.difficulty}%"></div>
+        </div>
+      </div>
+    `;
+    
+    asanaGrid.appendChild(card);
+  });
+  
+  // Show results, hide categories
+  resultsSection.classList.add('active');
+  categoriesSection.style.display = 'none';
+  
+  // Scroll to results
+  resultsSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+// CLEAR RESULTS
+function clearResults() {
+  const resultsSection = document.getElementById('resultsSection');
+  const categoriesSection = document.getElementById('categories');
+  
+  resultsSection.classList.remove('active');
+  categoriesSection.style.display = 'block';
+  
+  // Scroll to categories
+  categoriesSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+// FADE IN ANIMATION
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>
