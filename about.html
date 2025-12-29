@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Meet Thanuja - Your Yoga Instructor | Thanu Yoga Studio</title>
+<meta name="description" content="Meet Thanuja, 200Hr YTT certified yoga instructor from Hyderabad. 5+ years practice, 100+ students healed from PCOD, back pain, and chronic conditions.">
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#1a1a1a;
+  --white:#fafafa;
+  --sage:#8b9d83;
+  --sand:#e8dcc4;
+  --earth:#6b5d4f;
+  --accent:#d4a574;
+  --gray:#999;
+  --border:#e8e8e8;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--white);
+  color:var(--black);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+::selection{
+  background:var(--sage);
+  color:#fff;
+}
+
+/* SCROLL PROGRESS */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0%;
+  height:3px;
+  background:linear-gradient(90deg, var(--sage) 0%, var(--accent) 100%);
+  z-index:10001;
+  transition:width 0.1s linear;
+  box-shadow:0 0 15px rgba(139,157,131,0.4);
+}
+
+/* NOISE */
+.noise{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9998;
+  opacity:0.02;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:20px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(20px) saturate(180%);
+  box-shadow:0 4px 24px rgba(0,0,0,0.06);
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+
+.logo{
+  font-size:20px;
+  font-weight:700;
+  color:var(--earth);
+  letter-spacing:-0.5px;
+  text-decoration:none;
+}
+
+nav{
+  display:flex;
+  gap:32px;
+  align-items:center;
+}
+
+nav a{
+  color:var(--earth);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  transition:color 0.3s;
+}
+
+nav a:hover{
+  color:var(--sage);
+}
+
+.cta-btn{
+  padding:12px 24px;
+  background:var(--sage);
+  color:#fff;
+  border-radius:100px;
+  font-size:13px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration:none;
+  box-shadow:0 4px 12px rgba(139,157,131,0.25);
+}
+
+.cta-btn:hover{
+  background:var(--earth);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(107,93,79,0.3);
+}
+
+/* HERO WITH UNEXPECTED IMAGE LAYOUT */
+.hero{
+  min-height:100vh;
+  padding:120px 24px 60px 24px;
+  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-grid{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  grid-template-rows:repeat(8, 80px);
+  gap:16px;
+  position:relative;
+}
+
+/* UNEXPECTED BENTO-STYLE IMAGE GRID */
+.hero-image-1{
+  grid-column:1 / 5;
+  grid-row:1 / 4;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+  transform:rotate(-2deg);
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-image-2{
+  grid-column:5 / 9;
+  grid-row:1 / 5;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+  z-index:2;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-image-3{
+  grid-column:9 / 13;
+  grid-row:1 / 3;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+  transform:rotate(2deg);
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-image-4{
+  grid-column:1 / 4;
+  grid-row:4 / 7;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-image-5{
+  grid-column:9 / 13;
+  grid-row:3 / 6;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+  transform:rotate(-3deg);
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-text-box{
+  grid-column:4 / 10;
+  grid-row:5 / 9;
+  background:linear-gradient(135deg, var(--sage) 0%, var(--earth) 100%);
+  border-radius:24px;
+  padding:48px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  z-index:3;
+}
+
+.hero-image-6{
+  grid-column:10 / 13;
+  grid-row:6 / 9;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-image-1:hover,
+.hero-image-2:hover,
+.hero-image-3:hover,
+.hero-image-4:hover,
+.hero-image-5:hover,
+.hero-image-6:hover{
+  transform:scale(1.05) rotate(0deg);
+  z-index:10;
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+}
+
+.hero-image-1 img,
+.hero-image-2 img,
+.hero-image-3 img,
+.hero-image-4 img,
+.hero-image-5 img,
+.hero-image-6 img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-image-1:hover img,
+.hero-image-2:hover img,
+.hero-image-3:hover img,
+.hero-image-4:hover img,
+.hero-image-5:hover img,
+.hero-image-6:hover img{
+  transform:scale(1.1);
+}
+
+.hero-label{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:16px;
+}
+
+.hero-text-box h1{
+  font-size:clamp(36px,6vw,72px);
+  font-weight:600;
+  line-height:1.1;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+
+.hero-text-box p{
+  font-size:clamp(16px,2vw,20px);
+  line-height:1.6;
+  color:rgba(255,255,255,0.95);
+}
+
+/* STORY SECTION */
+.story-section{
+  padding:120px 24px;
+  background:var(--white);
+}
+
+.story-content{
+  max-width:800px;
+  margin:0 auto;
+}
+
+.section-label{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--sage);
+  margin-bottom:16px;
+  text-align:center;
+}
+
+.story-content h2{
+  font-size:clamp(32px,6vw,48px);
+  font-weight:600;
+  letter-spacing:-1.5px;
+  color:var(--earth);
+  margin-bottom:32px;
+  line-height:1.2;
+  text-align:center;
+}
+
+.story-content p{
+  font-size:18px;
+  color:var(--gray);
+  line-height:1.8;
+  margin-bottom:24px;
+}
+
+.story-content strong{
+  color:var(--earth);
+  font-weight:600;
+}
+
+.quote-box{
+  background:linear-gradient(135deg,rgba(139,157,131,0.08) 0%,rgba(232,220,196,0.12) 100%);
+  border-left:4px solid var(--sage);
+  padding:32px;
+  margin:40px 0;
+  border-radius:0 12px 12px 0;
+  position:relative;
+}
+
+.quote-box::before{
+  content:'"';
+  position:absolute;
+  top:-10px;
+  left:20px;
+  font-size:80px;
+  color:var(--sage);
+  opacity:0.15;
+  font-family:Georgia, serif;
+  line-height:1;
+}
+
+.quote-box p{
+  margin:0;
+  font-size:20px;
+  font-style:italic;
+  color:var(--earth);
+  font-weight:500;
+  line-height:1.7;
+  position:relative;
+  z-index:1;
+}
+
+/* CREDENTIALS */
+.credentials-section{
+  padding:100px 24px;
+  background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
+}
+
+.credentials-header{
+  text-align:center;
+  margin-bottom:80px;
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.credentials-header h2{
+  font-size:clamp(36px,7vw,56px);
+  font-weight:600;
+  letter-spacing:-1.5px;
+  color:var(--earth);
+  margin-bottom:20px;
+  line-height:1.1;
+}
+
+.credentials-header p{
+  font-size:19px;
+  color:var(--gray);
+  line-height:1.7;
+}
+
+.credentials-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.credential-card{
+  background:#fff;
+  border:2px solid var(--border);
+  border-radius:20px;
+  padding:40px 32px;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align:center;
+}
+
+.credential-card:hover{
+  border-color:var(--sage);
+  transform:translateY(-8px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.12);
+}
+
+.credential-icon{
+  width:80px;
+  height:80px;
+  margin:0 auto 24px auto;
+  background:linear-gradient(135deg, var(--sage) 0%, var(--accent) 100%);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  box-shadow:0 8px 24px rgba(139,157,131,0.3);
+}
+
+.credential-card h3{
+  font-size:22px;
+  font-weight:600;
+  color:var(--earth);
+  margin-bottom:12px;
+  line-height:1.3;
+}
+
+.credential-card p{
+  font-size:16px;
+  color:var(--gray);
+  line-height:1.6;
+  margin:0;
+}
+
+/* PHILOSOPHY SECTION */
+.philosophy-section{
+  padding:100px 24px;
+  background:var(--earth);
+  color:#fff;
+}
+
+.philosophy-content{
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.philosophy-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.philosophy-header h2{
+  font-size:clamp(36px,7vw,56px);
+  font-weight:600;
+  letter-spacing:-1.5px;
+  margin-bottom:20px;
+  line-height:1.1;
+}
+
+.philosophy-header p{
+  font-size:19px;
+  color:rgba(255,255,255,0.9);
+  line-height:1.7;
+}
+
+.philosophy-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:32px;
+}
+
+.philosophy-card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  border:2px solid rgba(255,255,255,0.12);
+  border-radius:20px;
+  padding:40px 32px;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.philosophy-card:hover{
+  background:rgba(255,255,255,0.12);
+  border-color:var(--accent);
+  transform:translateY(-8px);
+}
+
+.philosophy-number{
+  font-size:48px;
+  font-weight:700;
+  color:var(--accent);
+  margin-bottom:16px;
+  line-height:1;
+}
+
+.philosophy-card h3{
+  font-size:24px;
+  font-weight:600;
+  margin-bottom:16px;
+  line-height:1.3;
+}
+
+.philosophy-card p{
+  font-size:16px;
+  color:rgba(255,255,255,0.9);
+  line-height:1.7;
+  margin:0;
+}
+
+/* JOURNEY STATS */
+.stats-section{
+  padding:100px 24px;
+  background:var(--white);
+}
+
+.stats-grid{
+  max-width:1000px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:48px;
+}
+
+.stat-item{
+  text-align:center;
+}
+
+.stat-value{
+  font-size:clamp(48px,8vw,80px);
+  font-weight:700;
+  background:linear-gradient(135deg, var(--sage) 0%, var(--accent) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;
+  margin-bottom:12px;
+}
+
+.stat-label{
+  font-size:17px;
+  color:var(--gray);
+  font-weight:500;
+  line-height:1.4;
+}
+
+/* CTA SECTION */
+.cta-section{
+  padding:100px 24px;
+  background:linear-gradient(135deg, var(--sage) 0%, var(--earth) 100%);
+  color:#fff;
+  text-align:center;
+}
+
+.cta-content{
+  max-width:800px;
+  margin:auto;
+}
+
+.cta-content h2{
+  font-size:clamp(36px,7vw,56px);
+  font-weight:600;
+  letter-spacing:-1.5px;
+  margin-bottom:24px;
+  line-height:1.2;
+}
+
+.cta-content p{
+  font-size:19px;
+  color:rgba(255,255,255,0.95);
+  line-height:1.8;
+  margin-bottom:40px;
+}
+
+.cta-button-large{
+  display:inline-block;
+  padding:20px 48px;
+  background:#fff;
+  color:var(--sage);
+  border-radius:100px;
+  font-size:17px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  text-decoration:none;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:0 12px 32px rgba(0,0,0,0.3);
+  margin-bottom:20px;
+}
+
+.cta-button-large:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.4);
+}
+
+.cta-phone{
+  font-size:16px;
+  color:rgba(255,255,255,0.9);
+  margin-top:20px;
+}
+
+/* FOOTER */
+footer{
+  padding:40px 24px;
+  background:var(--black);
+  color:#fff;
+  text-align:center;
+  font-size:13px;
+}
+
+footer a{
+  color:#fff;
+  text-decoration:none;
+  opacity:0.8;
+  transition:opacity 0.3s;
+}
+
+footer a:hover{
+  opacity:1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  header{padding:16px 24px;}
+  nav a{display:none;}
+  nav a.cta-btn{display:block;padding:10px 20px;font-size:12px;}
+  
+  .hero{padding:100px 24px 40px 24px;}
+  
+  .hero-grid{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  
+  .hero-image-1,
+  .hero-image-2,
+  .hero-image-3,
+  .hero-image-4,
+  .hero-image-5,
+  .hero-image-6{
+    grid-column:auto;
+    grid-row:auto;
+    height:250px;
+    transform:rotate(0deg);
+  }
+  
+  .hero-text-box{
+    grid-column:auto;
+    grid-row:auto;
+    padding:32px 24px;
+  }
+  
+  .story-section{padding:80px 24px;}
+  .credentials-section{padding:80px 24px;}
+  .philosophy-section{padding:80px 24px;}
+  .stats-section{padding:80px 24px;}
+  .cta-section{padding:80px 24px;}
+  
+  .stats-grid{gap:32px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NOISE -->
+<div class="noise"></div>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">Thanu Yoga</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="yoga-finder.html">Yoga Finder</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="tel:7676332452" class="cta-btn">Try 3 Free Classes</a>
+  </nav>
+</header>
+
+<!-- HERO WITH UNEXPECTED BENTO GRID -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-image-1">
+      <img src="YTS/webp/yts1.webp" alt="Thanuja teaching yoga">
+    </div>
+    <div class="hero-image-2">
+      <img src="YTS/webp/yts2.webp" alt="Yoga instructor Thanuja">
+    </div>
+    <div class="hero-image-3">
+      <img src="YTS/webp/yts3.webp" alt="Therapeutic yoga session">
+    </div>
+    <div class="hero-image-4">
+      <img src="YTS/webp/yts4.webp" alt="Yoga practice">
+    </div>
+    
+    <div class="hero-text-box">
+      <div class="hero-label">Meet Your Instructor</div>
+      <h1>Thanuja</h1>
+      <p>Not the Instagram yoga influencer. Not the bendy girl doing handstands. Just someone who learned yoga actually heals—and decided to spend her life teaching that.</p>
+    </div>
+    
+    <div class="hero-image-6">
+      <img src="YTS/webp/yts6.webp" alt="Yoga studio Hyderabad">
+    </div>
+  </div>
+</section>
+
+<!-- STORY SECTION -->
+<section class="story-section">
+  <div class="story-content">
+    <p class="section-label">The Real Story</p>
+    <h2>How I Went From Student to Teacher</h2>
+    
+    <p>Let me be honest with you.</p>
+
+    <p>I didn't grow up wanting to be a yoga teacher. I wasn't the spiritual kid who meditated at 5 AM. I was just a regular person dealing with my own health problems—the kind doctors couldn't really fix with pills.</p>
+
+    <p><strong>That's when I found yoga. Actually, yoga found me.</strong></p>
+
+    <p>And I fell in love with it. Not because it looked cool on Instagram. But because after years of trying everything else—medicines, diets, treatments—this actually worked. My body felt better. My mind felt calmer. The problems I thought were "just how I am" started going away.</p>
+
+    <div class="quote-box">
+      <p>So I made a decision: I'm going to learn everything about this. Not to teach. Just to understand what was happening to my body.</p>
+    </div>
+
+    <p>I practiced for <strong>5 whole years</strong> before teaching a single student.</p>
+
+    <p>Most people finish their yoga teacher training and immediately start teaching. I didn't. I wanted to really understand how the body works. Why certain poses help with certain conditions. What makes therapeutic yoga different from regular exercise.</p>
+
+    <p>I got my <strong>200-Hour Yoga Teacher Training certification</strong>. Then I specialized in <strong>therapeutic yoga for health conditions</strong>. Then I kept practicing, kept learning, kept reading.</p>
+
+    <p><strong>Because here's what I realized:</strong> Teaching yoga isn't just about showing poses. It's about understanding what's happening inside someone's body when they're in pain. When they can't sleep. When their hormones are all over the place. When they're stressed out of their mind.</p>
+
+    <p>That's the yoga I teach. Not the fancy stuff. The healing stuff.</p>
+  </div>
+</section>
+
+<!-- CREDENTIALS SECTION -->
+<section class="credentials-section">
+  <div class="credentials-header">
+    <p class="section-label">Qualifications & Training</p>
+    <h2>What Makes Me Qualified?</h2>
+    <p>Because you deserve to know who's teaching you</p>
+  </div>
+
+  <div class="credentials-grid">
+    
+    <div class="credential-card">
+      <div class="credential-icon">🎓</div>
+      <h3>200 Hour YTT Certified</h3>
+      <p>Completed intensive 200-hour Yoga Teacher Training program covering anatomy, alignment, philosophy, and teaching methodology</p>
+    </div>
+
+    <div class="credential-card">
+      <div class="credential-icon">🩺</div>
+      <h3>Therapeutic Yoga Specialist</h3>
+      <p>Advanced certification in therapeutic yoga for specific health conditions like PCOD, chronic pain, and stress disorders</p>
+    </div>
+
+    <div class="credential-card">
+      <div class="credential-icon">📚</div>
+      <h3>5+ Years Personal Practice</h3>
+      <p>Practiced yoga intensively for 5 years before teaching—learning through my own body what actually works</p>
+    </div>
+
+    <div class="credential-card">
+      <div class="credential-icon">👥</div>
+      <h3>100+ Students Taught</h3>
+      <p>Nearly 1 year of teaching experience helping students heal from PCOD, back pain, sleep issues, and more</p>
+    </div>
+
+    <div class="credential-card">
+      <div class="credential-icon">🗣️</div>
+      <h3>Multilingual Teaching</h3>
+      <p>Teach in English, Telugu, and Kannada—so you learn in whichever language feels most comfortable</p>
+    </div>
+
+    <div class="credential-card">
+      <div class="credential-icon">📍</div>
+      <h3>Based in Hyderabad</h3>
+      <p>Teaching online to students across India and abroad—from time zones that work for Indian schedules</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHILOSOPHY SECTION -->
+<section class="philosophy-section">
+  <div class="philosophy-content">
+    <div class="philosophy-header">
+      <p class="section-label">Teaching Philosophy</p>
+      <h2>What You Can Expect From My Classes</h2>
+      <p>I teach differently than most yoga instructors. Here's how:</p>
+    </div>
+
+    <div class="philosophy-grid">
+      
+      <div class="philosophy-card">
+        <div class="philosophy-number">01</div>
+        <h3>No Fancy Instagram Poses</h3>
+        <p>I don't care if you can do a headstand. I care if your back pain goes away. We focus on therapeutic poses that actually fix your specific problem—not what looks good in photos.</p>
+      </div>
+
+      <div class="philosophy-card">
+        <div class="philosophy-number">02</div>
+        <h3>Your Pace, Not Mine</h3>
+        <p>Yoga isn't a competition. If you need to rest, rest. If a pose hurts, we modify it. I'll never push you into something your body isn't ready for. Progress happens slowly—and that's perfectly fine.</p>
+      </div>
+
+      <div class="philosophy-card">
+        <div class="philosophy-number">03</div>
+        <h3>Real Corrections, Every Class</h3>
+        <p>Small groups mean I can actually see your screen, watch your posture, and tell you exactly what to adjust. You're not just another face in a 100-person Zoom room. I remember your name and your concerns.</p>
+      </div>
+
+      <div class="philosophy-card">
+        <div class="philosophy-number">04</div>
+        <h3>Speak Your Language</h3>
+        <p>If you're more comfortable in Telugu or Kannada, we'll do the class in that. Because when you're holding a difficult pose, you shouldn't have to translate instructions in your head.</p>
+      </div>
+
+      <div class="philosophy-card">
+        <div class="philosophy-number">05</div>
+        <h3>Science + Practice</h3>
+        <p>I'll explain WHY we're doing a pose. What it does to your organs, your hormones, your nervous system. You're not just following along blindly—you're understanding how your body heals.</p>
+      </div>
+
+      <div class="philosophy-card">
+        <div class="philosophy-number">06</div>
+        <h3>Patience Above Everything</h3>
+        <p>Some students see results in a week. Some take two months. Everyone's body is different. I won't rush you or make you feel bad for going slow. We're here for healing, not speed records.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY STATS -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-value">5+</div>
+      <div class="stat-label">Years of Personal Yoga Practice</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">100+</div>
+      <div class="stat-label">Students Healed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">3</div>
+      <div class="stat-label">Languages Taught</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">21</div>
+      <div class="stat-label">Live Classes Per Week</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Want to See If We're a Good Fit?</h2>
+    <p>I'm not for everyone. And that's okay. Some people want high-energy workouts. Some want silent meditation. I teach therapeutic healing for real health problems. If that's what you need, let's talk.</p>
+    <a href="tel:7676332452" class="cta-button-large">Try 3 Classes FREE</a>
+    <p class="cta-phone">Call/WhatsApp: 7676 332 452</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Thanu Yoga Studio. Therapeutic Yoga for Real Health Transformation.</p>
+  <p><a href="index.html">Home</a> • <a href="schedule.html">Schedule</a> • <a href="yoga-finder.html">Yoga Finder</a> • <a href="pricing.html">Pricing</a></p>
+</footer>
+
+<script>
+// SCROLL PROGRESS
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+});
+</script>
+
+</body>
+</html>
