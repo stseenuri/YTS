@@ -38,7 +38,6 @@ body{
   color:#fff;
 }
 
-/* SCROLL PROGRESS */
 .scroll-progress{
   position:fixed;
   top:0;
@@ -50,8 +49,6 @@ body{
   transition:width 0.1s linear;
   box-shadow:0 0 15px rgba(139,157,131,0.4);
 }
-
-/* NOISE */
 .noise{
   position:fixed;
   inset:0;
@@ -61,7 +58,6 @@ body{
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* HEADER */
 header{
   position:fixed;
   top:0;
@@ -140,14 +136,12 @@ nav a:hover{
   box-shadow:0 8px 20px rgba(107,93,79,0.3);
 }
 
-/* LAYOUT SHELL */
 .main-wrap{
   max-width:1440px;
   margin:0 auto;
   padding:120px 24px 80px;
 }
 
-/* PINTEREST / MASONRY WALL */
 .wall{
   column-count:4;
   column-gap:24px;
@@ -164,10 +158,7 @@ nav a:hover{
   border:1px solid rgba(0,0,0,0.04);
 }
 
-/* CARD TYPES */
-
-/* HERO IDENTITY CARD */
-.card-hero{
+ .card-hero{
   background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
   padding:28px 24px 26px;
   position:relative;
@@ -203,7 +194,6 @@ nav a:hover{
   line-height:1.7;
 }
 
-/* IMAGE CARDS */
 .card-image img{
   width:100%;
   display:block;
@@ -216,8 +206,7 @@ nav a:hover{
   color:var(--earth);
 }
 
-/* TEXT STORY CARD */
-.card-text{
+  .card-text{
   padding:24px 22px 26px;
 }
 
@@ -250,7 +239,6 @@ nav a:hover{
   font-weight:600;
 }
 
-/* QUOTE CARD */
 .card-quote{
   padding:26px 24px 28px;
   background:linear-gradient(135deg,rgba(139,157,131,0.08) 0%,rgba(232,220,196,0.18) 100%);
@@ -281,7 +269,6 @@ nav a:hover{
   line-height:1.7;
 }
 
-/* CREDENTIAL CARD */
 .credential-card{
   padding:26px 22px 28px;
   text-align:center;
@@ -313,7 +300,6 @@ nav a:hover{
   line-height:1.6;
 }
 
-/* GROUP HEADER CARD (CREDENTIALS / PHILOSOPHY / STATS) */
 .card-header{
   padding:24px 22px 24px;
   background:linear-gradient(135deg,var(--sand) 0%,var(--white) 100%);
@@ -332,7 +318,6 @@ nav a:hover{
   color:var(--gray);
 }
 
-/* PHILOSOPHY CARD */
 .philosophy-card{
   background:linear-gradient(135deg,rgba(107,93,79,0.96) 0%, rgba(52,44,38,0.98) 100%);
   color:#fff;
@@ -360,7 +345,6 @@ nav a:hover{
   line-height:1.7;
 }
 
-/* STAT CARD */
 .stat-card{
   padding:24px 22px 26px;
   text-align:center;
@@ -384,7 +368,6 @@ nav a:hover{
   line-height:1.4;
 }
 
-/* CTA CARD */
 .card-cta{
   padding:30px 24px 28px;
   background:linear-gradient(135deg, var(--sage) 0%, var(--earth) 100%);
@@ -433,7 +416,6 @@ nav a:hover{
   color:rgba(255,255,255,0.9);
 }
 
-/* FOOTER */
 footer{
   padding:32px 24px 40px;
   background:var(--black);
@@ -453,7 +435,6 @@ footer a:hover{
   opacity:1;
 }
 
-/* RESPONSIVE */
 @media(max-width:1100px){
   .wall{column-count:3;}
 }
@@ -474,13 +455,10 @@ footer a:hover{
 
 <body>
 
-<!-- SCROLL PROGRESS -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- NOISE -->
 <div class="noise"></div>
 
-<!-- HEADER -->
 <header>
   <a href="index.html" class="logo-wrap">
     <img src="logo.jpeg" alt="Thanu Yoga logo">
@@ -500,7 +478,6 @@ footer a:hover{
 
   <div class="wall">
 
-    <!-- HERO IDENTITY -->
     <article class="wall-card card-hero">
       <div class="card-hero-badge">Meet Your Instructor</div>
       <h1>Thanuja</h1>
@@ -508,7 +485,6 @@ footer a:hover{
       <p>Not the Instagram yoga influencer. Not the bendy girl doing handstands. Just someone who learned yoga actually heals—and decided to spend her life teaching that.</p>
     </article>
 
-    <!-- IMAGES -->
     <article class="wall-card card-image">
       <img src="webp/yts1.webp" alt="Thanuja teaching yoga">
       <div class="card-image-caption">Guiding students through therapeutic yoga sequences tailored to real health issues.</div>
@@ -534,7 +510,6 @@ footer a:hover{
       <div class="card-image-caption">Online classes from Hyderabad for students across India and abroad.</div>
     </article>
 
-    <!-- STORY -->
     <article class="wall-card card-text">
       <p class="section-label">The Real Story</p>
       <h2>How I Went From Student to Teacher</h2>
@@ -544,12 +519,10 @@ footer a:hover{
       <p>And I fell in love with it. Not because it looked cool on Instagram. But because after years of trying everything else—medicines, diets, treatments—this actually worked. My body felt better. My mind felt calmer. The problems I thought were "just how I am" started going away.</p>
     </article>
 
-    <!-- QUOTE -->
     <article class="wall-card card-quote">
       <p>So I made a decision: I'm going to learn everything about this. Not to teach. Just to understand what was happening to my body.</p>
     </article>
 
-    <!-- STORY CONTINUATION -->
     <article class="wall-card card-text">
       <h2>5 Years of Practice Before Teaching</h2>
       <p>I practiced for <strong>5 whole years</strong> before teaching a single student.</p>
@@ -559,14 +532,12 @@ footer a:hover{
       <p>That's the yoga I teach. Not the fancy stuff. The healing stuff.</p>
     </article>
 
-    <!-- CREDENTIALS HEADER -->
     <article class="wall-card card-header">
       <p class="section-label">Qualifications &amp; Training</p>
       <h2>What Makes Me Qualified?</h2>
       <p>Because you deserve to know who's teaching you.</p>
     </article>
 
-    <!-- CREDENTIAL CARDS -->
     <article class="wall-card credential-card">
       <div class="credential-icon">🎓</div>
       <h3>200 Hour YTT Certified</h3>
@@ -603,14 +574,12 @@ footer a:hover{
       <p>Teaching online to students across India and abroad—from time zones that work for Indian schedules.</p>
     </article>
 
-    <!-- PHILOSOPHY HEADER -->
     <article class="wall-card card-header">
       <p class="section-label">Teaching Philosophy</p>
       <h2>What You Can Expect From My Classes</h2>
       <p>I teach differently than most yoga instructors. Here's how:</p>
     </article>
 
-    <!-- PHILOSOPHY CARDS -->
     <article class="wall-card philosophy-card">
       <div class="philosophy-number">01</div>
       <h3>No Fancy Instagram Poses</h3>
@@ -647,14 +616,12 @@ footer a:hover{
       <p>Some students see results in a week. Some take two months. Everyone's body is different. I won't rush you or make you feel bad for going slow. We're here for healing, not speed records.</p>
     </article>
 
-    <!-- STATS HEADER -->
     <article class="wall-card card-header">
       <p class="section-label">Journey Stats</p>
       <h2>Numbers Behind the Practice</h2>
       <p>Because healing is measurable too.</p>
     </article>
 
-    <!-- STATS CARDS -->
     <article class="wall-card stat-card">
       <div class="stat-value">5+</div>
       <div class="stat-label">Years of Personal Yoga Practice</div>
@@ -675,7 +642,6 @@ footer a:hover{
       <div class="stat-label">Live Classes Per Week</div>
     </article>
 
-    <!-- CTA CARD -->
     <article class="wall-card card-cta">
       <h2>Want to See If We're a Good Fit?</h2>
       <p>I'm not for everyone. And that's okay. Some people want high-energy workouts. Some want silent meditation. I teach therapeutic healing for real health problems. If that's what you need, let's talk.</p>
@@ -686,14 +652,12 @@ footer a:hover{
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <p>&copy; 2025 Thanu Yoga Studio. Therapeutic Yoga for Real Health Transformation.</p>
   <p><a href="index.html">Home</a> • <a href="schedule.html">Schedule</a> • <a href="yogafinder.html">Yoga Finder</a> • <a href="pricing.html">Pricing</a></p>
 </footer>
 
 <script>
-// SCROLL PROGRESS
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
